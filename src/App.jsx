@@ -27,7 +27,7 @@ const KOLAS_LOGO = "/kolas-symbol.jpg";
 const MFDS_LOGO = "/mfds-symbol.jpg";
 
 const SECTION = "py-14 lg:py-16";
-const SECTION_TIGHT = "py-12 lg:py-14";
+const SECTION_TIGHT = "py-11 lg:py-13";
 const BG_WHITE = "bg-[#FAFCFC]";
 const BG_SOFT = "bg-[#F1F7F6]";
 const BG_PANEL = "bg-[#F7FAFA]";
@@ -39,15 +39,15 @@ function cx(...classes) {
 function LinkButton({ href, children, variant = "primary", className = "" }) {
   const variants = {
     primary:
-      "bg-[#3E7B7F] text-white hover:bg-[#346A6E] shadow-[0_14px_32px_rgba(62,123,127,0.18)]",
+      "bg-[#2F6770] text-white hover:bg-[#285A62] shadow-[0_16px_34px_rgba(47,103,112,0.22)]",
     secondary:
       "bg-white text-[#2E525A] border border-[#D8E5E7] hover:border-[#98BBC0]",
     light:
       "bg-white text-[#2E525A] border border-white/30 hover:bg-[#F7FBFB]",
     yellow:
       "bg-[#FEE500] text-[#2D2926] hover:bg-[#F6D600] shadow-[0_12px_28px_rgba(254,229,0,0.22)]",
-    dark:
-      "bg-[#2F5F66] text-white hover:bg-[#294F55] shadow-[0_14px_32px_rgba(47,95,102,0.16)]",
+    outlineDark:
+      "bg-transparent text-[#2E525A] border border-[#AECACC] hover:bg-white",
   };
 
   return (
@@ -81,7 +81,7 @@ function Card({ children, className = "" }) {
 
 function SectionTitle({ eyebrow, titleText, description, light = false }) {
   return (
-    <div className="mb-9">
+    <div className="mb-8">
       <p
         className={cx(
           "mb-4 text-[11px] font-black uppercase tracking-[0.24em]",
@@ -92,8 +92,8 @@ function SectionTitle({ eyebrow, titleText, description, light = false }) {
       </p>
       <h2
         className={cx(
-          "whitespace-nowrap text-[clamp(1.05rem,2.6vw,2rem)] font-black leading-[1.1] tracking-[-0.04em]",
-          light ? "text-white" : "text-[#27434A]"
+          "whitespace-nowrap text-[clamp(1.05rem,2.5vw,2rem)] font-black leading-[1.08] tracking-[-0.045em]",
+          light ? "text-white" : "text-[#263F46]"
         )}
       >
         {titleText}
@@ -101,7 +101,7 @@ function SectionTitle({ eyebrow, titleText, description, light = false }) {
       {description ? (
         <p
           className={cx(
-            "mt-5 whitespace-nowrap text-[clamp(0.78rem,1.2vw,1.05rem)] leading-8",
+            "mt-5 whitespace-nowrap text-[clamp(0.78rem,1.16vw,1rem)] leading-8",
             light ? "text-[#EFFAFA]" : "text-[#60767B]"
           )}
         >
@@ -165,18 +165,6 @@ function FamilySiteSelect() {
   );
 }
 
-const heroTitle =
-  "whitespace-nowrap text-[clamp(1.52rem,3.35vw,3.05rem)] font-black leading-[1.08] tracking-[-0.058em] text-[#243F46]";
-
-const heroServiceTitle =
-  "mb-5 whitespace-nowrap text-[clamp(1.1rem,2.25vw,1.92rem)] font-black leading-[1.1] tracking-[-0.04em] text-[#4F888B]";
-
-const cardTitle =
-  "whitespace-nowrap text-[clamp(1.08rem,2vw,1.62rem)] font-black tracking-[-0.04em]";
-
-const oneLineLight =
-  "whitespace-nowrap text-[clamp(0.8rem,1.25vw,1.06rem)] leading-8 text-[#EFFAFA]";
-
 const proofItems = [
   "식약처 지정 제18호",
   "KOLAS 제364호",
@@ -184,12 +172,7 @@ const proofItems = [
   "대표 수수료 공개",
 ];
 
-const conversionChecklist = [
-  "제품명",
-  "제형",
-  "성적서 용도",
-  "희망 납기",
-];
+const conversionChecklist = ["제품명", "제형", "성적서 용도", "희망 납기"];
 
 const customerQuestions = [
   {
@@ -494,11 +477,11 @@ function Header({ showKakao = false }) {
         </a>
 
         <nav className="hidden items-center gap-4 text-sm font-bold text-[#60767B] xl:flex">
-          <a href="/#sales" className="hover:text-[#3E7B7F]">
-            선택이유
-          </a>
           <a href="/#decision" className="hover:text-[#3E7B7F]">
             상담기준
+          </a>
+          <a href="/#sales" className="hover:text-[#3E7B7F]">
+            선택이유
           </a>
           <a href="/#services" className="hover:text-[#3E7B7F]">
             검사항목
@@ -531,46 +514,6 @@ function Header({ showKakao = false }) {
         </div>
       </div>
     </header>
-  );
-}
-
-function BrandTrustBar() {
-  return (
-    <section className="border-y border-[#D8E5E7] bg-[#F4F7F7]">
-      <div className="mx-auto grid max-w-7xl gap-4 px-5 py-6 md:grid-cols-4">
-        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <TrustLogo src={YS_LOGO} alt="와이에스환경기술연구원 로고" />
-          <div>
-            <p className="text-sm font-black text-[#27434A]">와이에스환경기술연구원</p>
-            <p className="text-xs font-bold text-[#73878C]">시험분석 전문기관</p>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <TrustLogo src={YONSEI_LOGO} alt="연세대학교 심볼" type="circle" />
-          <div>
-            <p className="text-sm font-black text-[#27434A]">연세대학교 교원창업기업</p>
-            <p className="text-xs font-bold text-[#73878C]">연구 기반 시험분석 서비스</p>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <TrustLogo src={MFDS_LOGO} alt="식품의약품안전처 심볼" />
-          <div>
-            <p className="text-sm font-black text-[#27434A]">식약처 지정 제18호</p>
-            <p className="text-xs font-bold text-[#73878C]">화장품 시험검사기관</p>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <TrustLogo src={KOLAS_LOGO} alt="KOLAS 심볼" type="wide" />
-          <div>
-            <p className="text-sm font-black text-[#27434A]">KOLAS 제364호</p>
-            <p className="text-xs font-bold text-[#73878C]">국제공인시험기관</p>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -646,6 +589,46 @@ function MobileStickyButtons() {
   );
 }
 
+function BrandTrustBar() {
+  return (
+    <section className="border-y border-[#D8E5E7] bg-[#F4F7F7]">
+      <div className="mx-auto grid max-w-7xl gap-4 px-5 py-6 md:grid-cols-4">
+        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
+          <TrustLogo src={YS_LOGO} alt="와이에스환경기술연구원 로고" />
+          <div>
+            <p className="text-sm font-black text-[#27434A]">와이에스환경기술연구원</p>
+            <p className="text-xs font-bold text-[#73878C]">시험분석 전문기관</p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
+          <TrustLogo src={YONSEI_LOGO} alt="연세대학교 심볼" type="circle" />
+          <div>
+            <p className="text-sm font-black text-[#27434A]">연세대학교 교원창업기업</p>
+            <p className="text-xs font-bold text-[#73878C]">연구 기반 시험분석 서비스</p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
+          <TrustLogo src={MFDS_LOGO} alt="식품의약품안전처 심볼" />
+          <div>
+            <p className="text-sm font-black text-[#27434A]">식약처 지정 제18호</p>
+            <p className="text-xs font-bold text-[#73878C]">화장품 시험검사기관</p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
+          <TrustLogo src={KOLAS_LOGO} alt="KOLAS 심볼" type="wide" />
+          <div>
+            <p className="text-sm font-black text-[#27434A]">KOLAS 제364호</p>
+            <p className="text-xs font-bold text-[#73878C]">국제공인시험기관</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function QuickActionSection() {
   return (
     <section className={cx("overflow-hidden border-t border-[#D8E5E7]", SECTION_TIGHT, BG_SOFT)}>
@@ -690,71 +673,70 @@ function QuickActionSection() {
 
 function HeroConversionPanel() {
   return (
-    <Card className="border-0 bg-white/92 p-3 shadow-[0_28px_72px_rgba(36,72,82,0.13)]">
-      <div className="rounded-[22px] bg-[#3E6F76] p-7 text-white">
-        <p className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#DDF4F1]">
-          Fast Check
+    <Card className="relative overflow-hidden border-0 bg-white shadow-[0_32px_82px_rgba(36,72,82,0.15)]">
+      <div className="absolute right-[-4rem] top-[-4rem] h-40 w-40 rounded-full bg-[#DCEDE9]" />
+      <div className="relative p-7">
+        <p className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
+          Quote Ready
         </p>
-        <h2 className={cardTitle}>성적서 일정부터 확인하세요</h2>
-        <p className="mt-4 leading-7 text-[#EFFAFA]">
-          제품명과 희망 납기를 알려주시면 가능 여부를 먼저 검토합니다
+        <h2 className="whitespace-nowrap text-[clamp(1.05rem,2.3vw,1.7rem)] font-black leading-[1.08] tracking-[-0.045em] text-[#263F46]">
+          오늘 문의하면 먼저 확인하는 4가지
+        </h2>
+        <p className="mt-4 leading-7 text-[#60767B]">
+          상담 전에 완벽히 알 필요 없습니다. 아래 정보만 있으면 우선 검토가 빨라집니다.
         </p>
-      </div>
 
-      <div className="grid gap-3 p-5">
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
-            <p className="text-sm font-bold text-[#73878C]">일반 의뢰</p>
-            <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
-              7일 소요
-            </p>
-          </div>
-          <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
-            <p className="text-sm font-bold text-[#73878C]">긴급 의뢰</p>
-            <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
-              3일 상담
-            </p>
-          </div>
-        </div>
-
-        <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
-          <p className="text-sm font-black text-[#4F888B]">
-            먼저 알려주시면 빠릅니다
-          </p>
-          <div className="mt-3 grid grid-cols-2 gap-2">
-            {conversionChecklist.map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-black text-[#27434A]"
-              >
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4F888B]" />
-                {item}
+        <div className="mt-6 grid gap-3">
+          {conversionChecklist.map((item, index) => (
+            <div
+              key={item}
+              className="flex items-center gap-4 rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4"
+            >
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#2F6770] text-sm font-black text-white">
+                {index + 1}
               </div>
-            ))}
+              <div>
+                <p className="text-base font-black text-[#263F46]">{item}</p>
+                <p className="mt-1 text-sm font-semibold text-[#73878C]">
+                  {item === "제품명" && "정식 제품명 또는 임시 제품명"}
+                  {item === "제형" && "크림, 앰플, 토너, 선크림 등"}
+                  {item === "성적서 용도" && "자가품질, 납품, 출시, 수입, 광고 검증"}
+                  {item === "희망 납기" && "성적서가 필요한 날짜"}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 grid gap-3 rounded-[22px] bg-[#EEF5F4] p-4 sm:grid-cols-3">
+          <div>
+            <p className="text-xs font-black text-[#73878C]">일반 의뢰</p>
+            <p className="mt-1 text-xl font-black text-[#263F46]">7일 소요</p>
+          </div>
+          <div>
+            <p className="text-xs font-black text-[#73878C]">긴급 의뢰</p>
+            <p className="mt-1 text-xl font-black text-[#263F46]">3일 상담</p>
+          </div>
+          <div>
+            <p className="text-xs font-black text-[#73878C]">대표전화</p>
+            <p className="mt-1 text-xl font-black text-[#263F46]">02-312-0540</p>
           </div>
         </div>
 
-        <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
-          <p className="text-sm font-bold text-[#73878C]">대표 전화</p>
-          <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
-            02-312-0540
-          </p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <a
+            href="tel:02-312-0540"
+            className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-[#2F6770] px-4 text-center font-black text-white transition hover:bg-[#285A62]"
+          >
+            <Phone className="h-5 w-5" /> 전화 상담
+          </a>
+          <a
+            href="mailto:testing@ysiet.com"
+            className="flex h-14 items-center justify-center gap-2 rounded-2xl border border-[#D8E5E7] bg-white px-4 text-center font-black text-[#2E525A] transition hover:border-[#98BBC0]"
+          >
+            <Mail className="h-5 w-5" /> 이메일 견적
+          </a>
         </div>
-      </div>
-
-      <div className="grid gap-3 px-5 pb-5 sm:grid-cols-2">
-        <a
-          href="tel:02-312-0540"
-          className="flex items-center justify-center gap-2 rounded-2xl bg-[#3E7B7F] px-4 py-4 text-center font-black text-white transition hover:bg-[#346A6E]"
-        >
-          <Phone className="h-5 w-5" /> 전화 상담
-        </a>
-        <a
-          href="mailto:testing@ysiet.com"
-          className="flex items-center justify-center gap-2 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4 text-center font-black text-[#2E525A] transition hover:border-[#98BBC0]"
-        >
-          <Mail className="h-5 w-5" /> 이메일 견적
-        </a>
       </div>
     </Card>
   );
@@ -767,22 +749,30 @@ function HomePage() {
 
       <section id="top" className="relative overflow-hidden bg-[#EDF5F4]">
         <div className="absolute inset-0">
+          <div className="absolute left-0 top-0 h-full w-[54%] bg-[#E6F1EF]" />
           <div className="absolute -left-36 top-24 h-[30rem] w-[30rem] rounded-full bg-[#DCEDE9] blur-3xl" />
           <div className="absolute -right-32 -top-36 h-[36rem] w-[36rem] rounded-full bg-[#DDEBF0] blur-3xl" />
           <div className="absolute bottom-[-14rem] left-[35%] h-[28rem] w-[28rem] rounded-full bg-[#F7F3E8] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:py-20">
-          <div className="min-w-0 pt-2">
-            <p className={heroServiceTitle}>화장품 품질검사 위탁 서비스</p>
+        <div className="relative mx-auto grid max-w-7xl gap-11 px-5 py-14 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-18">
+          <div className="min-w-0">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#CFE1E2] bg-white/76 px-4 py-2 text-sm font-black text-[#2F6770] shadow-sm">
+              <ShieldCheck className="h-4 w-4" />
+              식약처 지정·KOLAS 공인 화장품 품질검사 위탁기관
+            </div>
 
-            <h1 className={heroTitle}>
+            <p className="mb-5 whitespace-nowrap text-[clamp(1.05rem,2.2vw,1.8rem)] font-black leading-[1.1] tracking-[-0.04em] text-[#4F888B]">
+              화장품 품질검사 위탁 서비스
+            </p>
+
+            <h1 className="whitespace-nowrap text-[clamp(1.18rem,3.55vw,3.18rem)] font-black leading-[1.05] tracking-[-0.06em] text-[#243F46]">
               성적서가 필요한 날짜가 정해졌다면 먼저 가능 여부부터 확인하세요
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4F656A]">
               출시·납품 일정에 맞춰 자가품질 위탁검사, 납품용 성적서,
-              기능성화장품 품질검사까지 제품명·제형·희망 납기를 기준으로 빠르게 안내드립니다
+              기능성화장품 품질검사까지 제품명·제형·희망 납기를 기준으로 빠르게 안내드립니다.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -798,15 +788,17 @@ function HomePage() {
               </LinkButton>
             </div>
 
-            <div className="mt-8 rounded-[28px] border border-[#D8E5E7] bg-white/72 p-5 shadow-[0_16px_36px_rgba(36,72,82,0.05)]">
-              <p className="text-sm font-black text-[#3E7B7F]">
-                출시와 납품 일정에 맞춰 성적서 가능 여부부터 빠르게 확인해주는 화장품 품질검사 위탁기관
-              </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="mt-8 overflow-hidden rounded-[30px] border border-[#CFE1E2] bg-white shadow-[0_20px_48px_rgba(36,72,82,0.08)]">
+              <div className="bg-[#2F6770] px-6 py-4 text-white">
+                <p className="whitespace-nowrap text-[clamp(0.9rem,1.6vw,1.12rem)] font-black tracking-[-0.03em]">
+                  출시와 납품 일정에 맞춰 성적서 가능 여부부터 빠르게 확인해주는 화장품 품질검사 위탁기관
+                </p>
+              </div>
+              <div className="grid gap-0 sm:grid-cols-4">
                 {proofItems.map((item) => (
                   <div
                     key={item}
-                    className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-3 text-sm font-black text-[#27434A] shadow-sm"
+                    className="flex items-center gap-3 border-t border-[#E0ECEE] px-4 py-4 text-sm font-black text-[#27434A] sm:border-l sm:border-t-0 first:sm:border-l-0"
                   >
                     <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4F888B]" />
                     <span>{item}</span>
@@ -820,52 +812,51 @@ function HomePage() {
         </div>
       </section>
 
-      <BrandTrustBar />
+      <section id="decision" className="relative overflow-hidden bg-[#263F46] py-12 text-white">
+        <div className="absolute inset-0 opacity-[0.08]">
+          <div className="absolute left-12 top-8 h-44 w-44 rounded-full bg-white blur-3xl" />
+          <div className="absolute bottom-0 right-20 h-52 w-52 rounded-full bg-white blur-3xl" />
+        </div>
 
-      <section id="decision" className={cx("overflow-hidden", SECTION_TIGHT, BG_WHITE)}>
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle
-            eyebrow="Customer First"
-            titleText="고객이 가장 먼저 알고 싶은 것부터 답합니다"
-            description="기관 규모보다 먼저 확인해야 하는 것은 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다"
-          />
+        <div className="relative mx-auto max-w-7xl px-5">
+          <div className="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+            <div>
+              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#BFE6E2]">
+                Customer First
+              </p>
+              <h2 className="whitespace-nowrap text-[clamp(1.05rem,2.65vw,2.08rem)] font-black leading-[1.08] tracking-[-0.045em]">
+                고객이 가장 먼저 알고 싶은 것부터 답합니다
+              </h2>
+              <p className="mt-5 leading-8 text-[#E5F5F3]">
+                기관 규모보다 먼저 확인해야 하는 것은 성적서가 언제, 어떤 항목으로,
+                어느 정도 비용으로 가능한지입니다.
+              </p>
+              <LinkButton href="#contact" variant="light" className="mt-7">
+                우선 검토 요청
+              </LinkButton>
+            </div>
 
-          <div className="grid gap-5 lg:grid-cols-3">
-            {customerQuestions.map((item) => (
-              <Card
-                key={item.title}
-                className="overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(36,72,82,0.08)]"
-              >
-                <div className="border-b border-[#D8E5E7] bg-[#F4F9F8] px-7 py-5">
-                  <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
+            <div className="grid gap-4 md:grid-cols-3">
+              {customerQuestions.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-[24px] border border-white/18 bg-white/[0.10] p-6 backdrop-blur"
+                >
+                  <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#BFE6E2]">
                     {item.point}
                   </p>
-                  <h3 className="mt-3 whitespace-nowrap text-2xl font-black tracking-[-0.04em] text-[#27434A]">
+                  <h3 className="mt-4 whitespace-nowrap text-xl font-black tracking-[-0.04em]">
                     {item.title}
                   </h3>
+                  <p className="mt-4 text-sm leading-7 text-[#E8F6F5]">{item.desc}</p>
                 </div>
-                <div className="p-7">
-                  <p className="leading-8 text-[#60767B]">{item.desc}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-
-          <div className="mt-7 rounded-[28px] border border-[#D8E5E7] bg-[#3E6F76] p-7 text-white md:flex md:items-center md:justify-between">
-            <div>
-              <p className="whitespace-nowrap text-[clamp(1rem,2.2vw,1.35rem)] font-black tracking-[-0.035em]">
-                검사항목을 몰라도 괜찮습니다
-              </p>
-              <p className="mt-3 leading-7 text-[#EFFAFA]">
-                제품명, 제형, 성적서 용도, 희망 납기만 알려주시면 먼저 검토 후 안내드립니다
-              </p>
+              ))}
             </div>
-            <LinkButton href="#contact" variant="light" className="mt-5 md:mt-0">
-              우선 검토 요청
-            </LinkButton>
           </div>
         </div>
       </section>
+
+      <BrandTrustBar />
 
       <section id="sales" className={cx("overflow-hidden", SECTION, BG_SOFT)}>
         <div className="mx-auto max-w-7xl px-5">
@@ -893,34 +884,58 @@ function HomePage() {
         </div>
       </section>
 
-      <section className={cx("overflow-hidden bg-[#4B7D82] text-white", SECTION_TIGHT)}>
+      <section className="overflow-hidden bg-[#FAFCFC] py-12">
         <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle
-            eyebrow="Trust Position"
-            titleText="공식 지정·국제공인·연구 기반을 한 번에 확인하세요"
-            description="식약처 지정기관, KOLAS 공인기관, 연세대학교 교원창업기업이라는 신뢰근거를 시험상담 동선 안에서 바로 보여드립니다"
-            light
-          />
-
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {keyStrengths.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[24px] border border-white/18 bg-white/[0.11] p-7"
-              >
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#4B7D82]">
-                  {item.icon}
-                </div>
-                <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 leading-7 text-[#EFFAFA]">{item.desc}</p>
+          <div className="overflow-hidden rounded-[34px] border border-[#D8E5E7] bg-white shadow-[0_26px_70px_rgba(36,72,82,0.07)]">
+            <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="bg-[#3E6F76] p-8 text-white lg:p-10">
+                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#DDF4F1]">
+                  Trust Position
+                </p>
+                <h2 className="whitespace-nowrap text-[clamp(1.05rem,2.35vw,2rem)] font-black leading-[1.08] tracking-[-0.045em]">
+                  공식 지정·국제공인·연구 기반
+                </h2>
+                <p className="mt-5 leading-8 text-[#EFFAFA]">
+                  시험기관 선택에서 가장 중요한 신뢰 근거를 한 화면에서 바로 확인할 수 있도록 묶었습니다.
+                </p>
               </div>
-            ))}
+
+              <div className="grid gap-0 md:grid-cols-3">
+                <div className="border-b border-[#D8E5E7] p-7 md:border-b-0 md:border-l">
+                  <TrustLogo src={MFDS_LOGO} alt="식품의약품안전처 심볼" />
+                  <h3 className="mt-5 whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                    식약처 지정 제18호
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#60767B]">
+                    화장품 시험검사기관 지정 근거 기반 상담
+                  </p>
+                </div>
+
+                <div className="border-b border-[#D8E5E7] p-7 md:border-b-0 md:border-l">
+                  <TrustLogo src={KOLAS_LOGO} alt="KOLAS 심볼" type="wide" />
+                  <h3 className="mt-5 whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                    KOLAS 제364호
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#60767B]">
+                    국제공인시험기관 품질 체계 기반 분석
+                  </p>
+                </div>
+
+                <div className="p-7 md:border-l">
+                  <TrustLogo src={YONSEI_LOGO} alt="연세대학교 심볼" type="circle" />
+                  <h3 className="mt-5 whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                    연세대학교 교원창업기업
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#60767B]">
+                    연구 기반 전문성과 현장형 시험분석 서비스
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
+      
       <section id="paths" className={cx("overflow-hidden", SECTION, BG_WHITE)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
@@ -1039,7 +1054,7 @@ function HomePage() {
               />
               <p className="mt-[-1.5rem] text-lg leading-8 text-[#60767B]">
                 품질검사 시설이 없는 경우 식약처 지정 시험검사기관과 품질검사 위탁계약을
-                체결하여 품질관리를 진행할 수 있습니다
+                체결하여 품질관리를 진행할 수 있습니다.
               </p>
             </div>
 
@@ -1147,19 +1162,20 @@ function HomePage() {
 
       <section id="contact" className={cx("overflow-hidden", SECTION, BG_WHITE)}>
         <div className="mx-auto max-w-7xl px-5">
-          <div className="overflow-hidden rounded-[32px] bg-[#4B7D82] p-8 text-white shadow-[0_30px_80px_rgba(62,123,127,0.16)] md:p-12">
-            <div className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
-              <div>
-                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#DDF4F1]">
+          <div className="overflow-hidden rounded-[34px] bg-[#263F46] text-white shadow-[0_34px_90px_rgba(38,63,70,0.20)]">
+            <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
+              <div className="p-8 md:p-12">
+                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#BFE6E2]">
                   Request Quote
                 </p>
-                <h2 className="whitespace-nowrap text-[clamp(1.08rem,3vw,2.55rem)] font-black leading-[1.08] tracking-[-0.05em]">
-                  성적서 납기를 먼저 알려주세요
+                <h2 className="whitespace-nowrap text-[clamp(1.05rem,3vw,2.5rem)] font-black leading-[1.08] tracking-[-0.05em]">
+                  제품명과 희망 납기만 보내도 먼저 검토합니다
                 </h2>
-                <p className={`mt-7 ${oneLineLight}`}>
+                <p className="mt-7 whitespace-nowrap text-[clamp(0.8rem,1.18vw,1.02rem)] leading-8 text-[#EFFAFA]">
                   제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면 우선 검토 후 안내드립니다
                 </p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                <div className="mt-8 grid gap-3 sm:grid-cols-2">
                   <a
                     href="tel:02-312-0540"
                     className="inline-flex h-14 items-center justify-center rounded-full bg-white px-8 font-black text-[#2E525A]"
@@ -1175,11 +1191,11 @@ function HomePage() {
                 </div>
               </div>
 
-              <div className="rounded-[26px] bg-white p-6 text-[#27434A]">
+              <div className="bg-white p-7 text-[#27434A] md:p-8">
                 <p className="text-sm font-black text-[#4F888B]">
-                  견적 요청 시 알려주세요
+                  빠른 검토를 위한 5가지
                 </p>
-                <ul className="mt-4 space-y-3">
+                <ul className="mt-5 space-y-3">
                   {[
                     "제품명 / 제형",
                     "희망 검사항목",
@@ -1187,7 +1203,10 @@ function HomePage() {
                     "희망 납기",
                     "시료 준비 가능일",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-3 font-bold">
+                    <li
+                      key={item}
+                      className="flex items-center gap-3 rounded-2xl bg-[#F3F7F7] px-4 py-3 font-bold"
+                    >
                       <CheckCircle2 className="h-5 w-5 shrink-0 text-[#4F888B]" />
                       {item}
                     </li>
@@ -1195,11 +1214,11 @@ function HomePage() {
                 </ul>
                 <a
                   href="mailto:testing@ysiet.com"
-                  className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#3E7B7F] font-black text-white"
+                  className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#2F6770] font-black text-white"
                 >
-                  빠른 견적 요청하기
+                  제품 정보 보내고 검토 요청
                 </a>
-                <div className="mt-5 flex gap-3 rounded-2xl bg-[#F3F7F7] p-4 text-sm font-bold leading-6 text-[#4F656A]">
+                <div className="mt-5 flex gap-3 rounded-2xl border border-[#D8E5E7] bg-white p-4 text-sm font-bold leading-6 text-[#4F656A]">
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
                   서울시 종로구 인사동5길 42 종로빌딩 10층
                 </div>
@@ -1208,7 +1227,7 @@ function HomePage() {
           </div>
         </div>
       </section>
-
+      
       <section id="faq" className={cx("overflow-hidden", SECTION, BG_SOFT)}>
         <div className="mx-auto max-w-5xl px-5">
           <SectionTitle eyebrow="FAQ" titleText="자주 묻는 질문" />
