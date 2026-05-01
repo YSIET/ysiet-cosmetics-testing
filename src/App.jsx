@@ -6,6 +6,7 @@ import {
   CalendarClock,
   CheckCircle2,
   ClipboardCheck,
+  FileCheck2,
   FlaskConical,
   HelpCircle,
   Mail,
@@ -13,6 +14,7 @@ import {
   Microscope,
   Phone,
   ShieldCheck,
+  Sparkles,
   TimerReset,
   Users,
 } from "lucide-react";
@@ -78,33 +80,56 @@ const proofItems = [
   "식약처 지정 제18호",
   "KOLAS 제364호",
   "연세대학교 교원창업기업",
-  "이태규 교수 연구실 창업",
+  "대표 수수료 공개",
 ];
 
 const customerPaths = [
   {
     title: "출시 전 성적서",
-    desc: "출고일이 정해졌다면 희망 납기부터 확인하세요",
+    desc: "출고일이 정해졌다면 필요한 항목과 희망 납기부터 확인하세요",
   },
   {
     title: "자가품질 위탁검사",
-    desc: "처음 의뢰해도 계약과 준비서류를 안내합니다",
+    desc: "처음 의뢰해도 계약, 시료, 서류, 성적서까지 순서대로 안내합니다",
+  },
+  {
+    title: "납품용 성적서",
+    desc: "거래처 제출 일정에 맞춰 시험 가능 여부를 먼저 확인합니다",
   },
   {
     title: "수입화장품 검사",
-    desc: "통관과 제출 목적에 맞춰 필요한 항목을 확인합니다",
+    desc: "통관과 제출 목적에 맞춰 필요한 시험항목을 확인합니다",
   },
   {
     title: "기능성화장품",
-    desc: "미백 주름개선 자외선차단 관련 항목을 상담합니다",
-  },
-  {
-    title: "원료 부자재 분석",
-    desc: "원료 납품과 제품개발 목적의 분석을 상담합니다",
+    desc: "미백, 주름개선, 자외선차단 관련 품질검사 항목을 상담합니다",
   },
   {
     title: "광고 검증 분석",
     desc: "무첨가 표시와 성분 검증 목적의 분석을 안내합니다",
+  },
+];
+
+const salesReasons = [
+  {
+    icon: <TimerReset className="h-6 w-6" />,
+    title: "납기부터 확인",
+    desc: "성적서가 필요한 날짜가 있다면 시험 가능 여부를 먼저 안내합니다",
+  },
+  {
+    icon: <Banknote className="h-6 w-6" />,
+    title: "수수료 먼저 확인",
+    desc: "대표 시험항목 수수료를 공개해 문의 전 비용 감을 잡을 수 있습니다",
+  },
+  {
+    icon: <ClipboardCheck className="h-6 w-6" />,
+    title: "처음 의뢰도 안내",
+    desc: "검사항목을 몰라도 제품 정보와 제출 목적부터 상담할 수 있습니다",
+  },
+  {
+    icon: <FileCheck2 className="h-6 w-6" />,
+    title: "성적서 중심 진행",
+    desc: "기관 소개보다 고객이 필요한 시험성적서 발급 동선에 집중합니다",
   },
 ];
 
@@ -125,9 +150,9 @@ const keyStrengths = [
     desc: "성적서가 필요한 날짜가 있다면 가능 여부를 먼저 확인합니다",
   },
   {
-    icon: <Banknote className="h-6 w-6" />,
-    title: "대표 수수료 공개",
-    desc: "문의 전 주요 항목의 비용 범위를 먼저 확인할 수 있습니다",
+    icon: <Users className="h-6 w-6" />,
+    title: "1건 의뢰 상담",
+    desc: "처음 진행하는 브랜드와 소량 의뢰도 필요한 순서대로 안내합니다",
   },
 ];
 
@@ -152,26 +177,18 @@ const feeRows = [
 ];
 
 const documents = [
-  "품질검사 위탁계약: 사업자등록증 사본, 대표자 도장",
-  "시험의뢰서: 시료명, 용량, 제조일자, 제조번호, 시험항목",
-  "수입화장품: 표준통관예정보고서 EDI",
-  "기능성화장품: 제품 기준 및 시험방법 등 필요 시",
-  "최초 의뢰: 사업자등록증 사본",
+  "제품명, 제형, 용량, 제조번호, 제조일자",
+  "성적서 제출처와 희망 납기",
+  "희망 검사항목 또는 제출 목적",
+  "품질검사 위탁계약 시 사업자등록증 사본",
+  "수입화장품은 표준통관예정보고서 EDI",
 ];
 
 const process = [
-  ["01", "납기 확인", "제품명, 제형, 제출처, 희망 납기를 먼저 알려주세요"],
-  [
-    "02",
-    "항목 안내",
-    "자가품질, 납품, 수입, 기능성 여부에 따라 필요한 항목을 안내합니다",
-  ],
-  [
-    "03",
-    "시료 접수",
-    "우편 또는 방문 접수 후 수수료 납입 시점부터 분석을 진행합니다",
-  ],
-  ["04", "성적서 발급", "시험 완료 후 시험성적서 원본을 우편으로 전달합니다"],
+  ["01", "납기 확인", "성적서가 필요한 날짜와 제출처를 먼저 확인합니다"],
+  ["02", "항목 안내", "제품 유형과 제출 목적에 따라 필요한 시험항목을 안내합니다"],
+  ["03", "시료 접수", "시료와 의뢰 정보를 확인한 뒤 분석 일정을 잡습니다"],
+  ["04", "성적서 발급", "시험 완료 후 시험성적서 발급 절차를 안내합니다"],
 ];
 
 const trustItems = [
@@ -188,7 +205,7 @@ const trustItems = [
   {
     icon: <Microscope className="h-6 w-6" />,
     title: "연세대학교 교원창업기업",
-    desc: "연세대학교 화공생명공학과 이태규 교수 연구실에서 출발한 분석 전문 기업입니다",
+    desc: "연구 기반 전문성과 현장형 시험분석 서비스를 함께 제공합니다",
   },
   {
     icon: <Users className="h-6 w-6" />,
@@ -239,14 +256,14 @@ export default function App() {
             <a href="#paths" className="hover:text-[#2F6F73]">
               의뢰상황
             </a>
+            <a href="#sales" className="hover:text-[#2F6F73]">
+              선택이유
+            </a>
             <a href="#services" className="hover:text-[#2F6F73]">
               검사항목
             </a>
             <a href="#fees" className="hover:text-[#2F6F73]">
               수수료
-            </a>
-            <a href="#documents" className="hover:text-[#2F6F73]">
-              준비서류
             </a>
             <a href="#contact" className="hover:text-[#2F6F73]">
               문의
@@ -360,7 +377,7 @@ export default function App() {
           {[
             [ShieldCheck, "식약처 지정 제18호"],
             [Award, "KOLAS 제364호"],
-            [CalendarClock, "이태규 교수 연구실 창업"],
+            [CalendarClock, "일반 7일 긴급 3일"],
             [Banknote, "대표 수수료 공개"],
           ].map(([Icon, text]) => (
             <div key={text} className="flex items-center gap-3 py-5 md:px-5">
@@ -372,30 +389,80 @@ export default function App() {
       </section>
 
       <section
-        id="paths"
+        id="sales"
         className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
       >
         <div className="mb-12">
-          <p className={label}>Start Here</p>
-          <h2 className={title}>어떤 상황이신가요</h2>
+          <p className={label}>Why YSIET</p>
+          <h2 className={title}>비교하다가도 문의하게 되는 이유</h2>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-[#5B7278]">
+            고객이 홈페이지에서 가장 먼저 알고 싶은 것은 기관의 규모가 아니라
+            성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다
+          </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {customerPaths.map((item) => (
-            <a key={item.title} href="#contact" className="group">
-              <Card className="h-full transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_26px_75px_rgba(37,78,88,0.1)]">
-                <div className="p-7">
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E6F4F2] text-[#3B8E92]">
-                    <ArrowRight className="h-5 w-5" />
-                  </div>
-                  <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 leading-7 text-[#5B7278]">{item.desc}</p>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {salesReasons.map((item) => (
+            <Card key={item.title}>
+              <div className="p-7">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#E6F4F2] text-[#3B8E92]">
+                  {item.icon}
                 </div>
-              </Card>
-            </a>
+                <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                  {item.title}
+                </h3>
+                <p className="mt-4 leading-7 text-[#5B7278]">{item.desc}</p>
+              </div>
+            </Card>
           ))}
+        </div>
+
+        <div className="mt-8 rounded-[28px] border border-[#D9E6E8] bg-[#FBFDFC] p-6 md:flex md:items-center md:justify-between">
+          <div>
+            <p className="text-xl font-black tracking-[-0.03em] text-[#263F46]">
+              이미 여러 시험기관을 보고 오셨다면
+            </p>
+            <p className="mt-2 leading-7 text-[#5B7278]">
+              YSIET에서는 먼저 필요한 성적서의 항목, 납기, 준비서류부터 확인하실 수 있습니다
+            </p>
+          </div>
+          <LinkButton href="#contact" className="mt-5 md:mt-0">
+            바로 문의하기
+          </LinkButton>
+        </div>
+      </section>
+
+      <section
+        id="paths"
+        className="overflow-hidden bg-[#EEF6F4] px-5 py-20 lg:py-24"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12">
+            <p className={label}>Start Here</p>
+            <h2 className={title}>어떤 상황이신가요</h2>
+            <p className="mt-5 max-w-3xl text-lg leading-8 text-[#5B7278]">
+              시험항목을 정확히 몰라도 괜찮습니다. 제품 상황과 제출 목적을 기준으로
+              필요한 순서를 안내합니다
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {customerPaths.map((item) => (
+              <a key={item.title} href="#contact" className="group">
+                <Card className="h-full transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_26px_75px_rgba(37,78,88,0.1)]">
+                  <div className="p-7">
+                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E6F4F2] text-[#3B8E92]">
+                      <ArrowRight className="h-5 w-5" />
+                    </div>
+                    <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 leading-7 text-[#5B7278]">{item.desc}</p>
+                  </div>
+                </Card>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
