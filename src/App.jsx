@@ -79,8 +79,8 @@ const cardTitle =
 const proofItems = [
   "식약처 지정 제18호",
   "KOLAS 제364호",
-  "일반 7일 긴급 3일 상담",
-  "1건 의뢰 상담 가능",
+  "연세대학교 교원창업기업",
+  "이태규 교수 연구실 창업",
 ];
 
 const customerPaths = [
@@ -181,13 +181,13 @@ const trustItems = [
   },
   {
     icon: <Microscope className="h-6 w-6" />,
-    title: "전문 분석 인력",
-    desc: "숙련된 연구진과 분석 장비를 기반으로 결과를 제공합니다",
+    title: "연세대학교 교원창업기업",
+    desc: "연세대학교 화공생명공학과 이태규 교수 연구실에서 출발한 분석 전문 기업입니다",
   },
   {
     icon: <Users className="h-6 w-6" />,
-    title: "처음 의뢰 상담",
-    desc: "검사항목을 몰라도 제품 정보와 제출 목적부터 안내합니다",
+    title: "대표이사 엄유진 박사",
+    desc: "전문 연구 인력을 중심으로 처음 의뢰도 차근차근 안내합니다",
   },
 ];
 
@@ -251,7 +251,7 @@ export default function App() {
           <div className="min-w-0">
             <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-[#BED7E4] bg-white/85 px-4 py-2 text-sm font-black text-[#071A2D] shadow-sm">
               <BadgeCheck className="h-4 w-4 shrink-0 text-[#1F7F91]" />
-              <span className="truncate">필요한 날짜가 있다면 먼저 알려주세요</span>
+              <span className="truncate">연세대학교 교원창업기업</span>
             </div>
 
             <h1 className={heroTitle}>화장품 성적서 납기 확인</h1>
@@ -259,6 +259,15 @@ export default function App() {
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-700">
               식약처 지정 제18호와 KOLAS 제364호의 신뢰성으로 자가품질 위탁검사부터 시험성적서 발급까지 안내합니다
             </p>
+
+            <div className="mt-4 max-w-xl rounded-2xl border border-[#BED7E4] bg-white/70 px-5 py-4">
+              <p className="text-sm font-black leading-6 text-[#071A2D]">
+                연세대학교 화공생명공학과 이태규 교수 연구실 창업기업
+              </p>
+              <p className="mt-1 text-sm font-bold leading-6 text-[#1F7F91]">
+                대표이사 엄유진 박사
+              </p>
+            </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <LinkButton href="#contact" className="h-14 px-8 text-base">
@@ -339,7 +348,7 @@ export default function App() {
           {[
             [ShieldCheck, "식약처 지정 제18호"],
             [Award, "KOLAS 제364호"],
-            [CalendarClock, "일반 7일 긴급 3일"],
+            [CalendarClock, "이태규 교수 연구실 창업"],
             [Banknote, "대표 수수료 공개"],
           ].map(([Icon, text]) => (
             <div key={text} className="flex items-center gap-3 py-5 md:px-5">
@@ -692,6 +701,12 @@ export default function App() {
               와이에스환경기술연구원
             </p>
             <p className="mt-3 max-w-xl leading-7 text-slate-400">
+              연세대학교 화공생명공학과 이태규 교수 연구실 창업기업
+            </p>
+            <p className="mt-2 max-w-xl leading-7 text-slate-400">
+              대표이사 엄유진 박사
+            </p>
+            <p className="mt-2 max-w-xl leading-7 text-slate-400">
               식약처 지정 화장품 시험검사기관 제18호 · KOLAS 국제공인시험기관 제364호
             </p>
           </div>
