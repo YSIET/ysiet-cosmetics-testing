@@ -146,7 +146,7 @@ function FamilySiteSelect() {
   }
 
   return (
-    <div className="relative w-full lg:w-[138px]">
+    <div className="relative w-full lg:w-[148px]">
       <select
         defaultValue=""
         onChange={handleChange}
@@ -551,8 +551,8 @@ function Footer() {
   return (
     <footer className="border-t border-[#D8DCDD] bg-[#ECEEEE]">
       <div className="mx-auto max-w-7xl px-5 py-5">
-        <div className="grid gap-3 lg:grid-cols-[150px_minmax(0,1fr)_150px] lg:items-start">
-          <div className="flex items-start justify-start pt-1">
+        <div className="grid gap-2 lg:grid-cols-[116px_minmax(0,1fr)_148px] lg:items-start">
+          <div className="flex items-start justify-start pt-[3px]">
             <img
               src={YS_LOGO}
               alt="와이에스환경기술연구원 로고"
@@ -561,7 +561,7 @@ function Footer() {
           </div>
 
           <div className="min-w-0">
-            <div className="space-y-0.5 text-[15px] font-semibold leading-[1.45] text-[#6B7679]">
+            <div className="space-y-[1px] text-[15.5px] font-semibold leading-[1.32] text-[#687477]">
               <p>
                 (주)와이에스환경기술연구원 | (03149) 서울특별시 종로구 인사동5길 42 종로빌딩 10층
               </p>
@@ -573,12 +573,12 @@ function Footer() {
               </p>
             </div>
 
-            <div className="mt-4 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap gap-2">
               {footerPolicyLinks.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="inline-flex h-10 items-center justify-center border border-[#D8DCDD] bg-white px-5 text-[13px] font-semibold text-[#747F82] transition hover:bg-[#F8F9F9]"
+                  className="inline-flex h-9 items-center justify-center border border-[#D8DCDD] bg-white px-5 text-[13px] font-semibold text-[#747F82] transition hover:bg-[#F8F9F9]"
                 >
                   {item.label}
                   <span className="ml-3 text-[#A1AAAD]">›</span>
