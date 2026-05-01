@@ -16,6 +16,7 @@ import {
   ShieldCheck,
   Sparkles,
   TimerReset,
+  UserCheck,
 } from "lucide-react";
 
 const KAKAO_URL = "https://pf.kakao.com/_xbUlsn";
@@ -205,12 +206,12 @@ const strongestReasons = [
     desc: "자체 시험시설이 없는 책임판매업자도 식약처 지정기관 위탁검사로 법적 요건을 충족할 수 있습니다.",
   },
   {
-    title: "납기와 제출목적 기준 검토",
-    desc: "납품, 입점, 출시, 수입, 광고 검증 등 목적에 맞춰 일정과 항목을 함께 확인합니다.",
+    title: "납품·입점 일정 기준 검토",
+    desc: "납품, 입점, 출시, 유통 협의가 지연되지 않도록 필요한 성적서 가능 일정을 먼저 확인합니다.",
   },
   {
-    title: "공식 인정서와 품질체계 확인 가능",
-    desc: "식약처 지정서, KOLAS 공인 체계, 품질보증 프로세스를 홈페이지에서 바로 확인할 수 있습니다.",
+    title: "전담 담당자 1:1 안내",
+    desc: "처음 의뢰하거나 검사기관을 전환하는 경우에도 필요한 항목과 접수 절차를 함께 정리해드립니다.",
   },
 ];
 
@@ -243,12 +244,12 @@ const bestFitBrands = [
     desc: "다품종 소량 생산으로 로트별 검사가 빈번한 제조사",
   },
   {
-    title: "빠른 런칭 팀",
-    desc: "납기 단축이 필요하고 일정에 맞춰 유연한 검토가 필요한 팀",
+    title: "납품·입점 일정이 있는 팀",
+    desc: "성적서 지연으로 납품, 입점, 유통 협의가 밀리지 않도록 사전 확인이 필요한 팀",
   },
   {
-    title: "인허가 초기 팀",
-    desc: "검사항목 설계부터 결과 해석까지 실무 가이드가 필요한 창업팀",
+    title: "검사기관 전환 고객",
+    desc: "기존 검사기관에서 일정·상담·항목 안내에 불편을 느껴 전담 안내가 필요한 고객",
   },
 ];
 
@@ -304,15 +305,15 @@ const firstCheckItems = [
   },
   {
     title: "희망 납기",
-    desc: "성적서가 필요한 날짜를 기준으로 일반 또는 긴급 진행 가능 여부를 살펴봅니다.",
+    desc: "성적서가 필요한 날짜를 기준으로 통상 일정 또는 긴급 진행 가능 여부를 살펴봅니다.",
   },
   {
     title: "시료 준비 가능일",
     desc: "시료 접수 가능일을 확인해 실제 분석 일정과 발급 가능 시점을 안내합니다.",
   },
   {
-    title: "비용 예상 범위",
-    desc: "대표 수수료를 기준으로 하되, 실제 비용은 항목과 긴급 여부를 확인한 뒤 안내합니다.",
+    title: "전담 안내 필요 여부",
+    desc: "처음 의뢰하거나 기관을 전환하는 경우, 항목과 절차를 담당자가 함께 정리합니다.",
   },
 ];
 
@@ -329,7 +330,7 @@ const whyConsultItems = [
   {
     icon: <TimerReset className="h-6 w-6" />,
     title: "납기는 항목별로 달라집니다",
-    desc: "일반 7일, 긴급 3일 상담이 가능하지만 제품 유형과 시험항목에 따라 가능 여부가 달라질 수 있습니다.",
+    desc: "일반 의뢰는 통상 7일 기준으로 안내되며, 긴급 의뢰는 3일 기준으로 상담 가능합니다. 단, 제품 유형과 시험항목에 따라 가능 여부는 달라질 수 있습니다.",
   },
   {
     icon: <FileCheck2 className="h-6 w-6" />,
@@ -386,15 +387,15 @@ const faqs = [
   ],
   [
     "성적서 발급까지 얼마나 걸리나요",
-    "수수료 안내자료 기준 일반 의뢰 소요일은 7일, 긴급 의뢰는 3일입니다. 단, 긴급 의뢰 가능 여부는 시험 일정과 항목에 따라 달라질 수 있습니다.",
+    "일반 의뢰는 통상 7일 기준으로 안내되며, 긴급 의뢰는 3일 기준으로 상담 가능합니다. 단, 시험 일정과 항목에 따라 가능 여부가 달라질 수 있습니다.",
   ],
   [
     "자가품질 위탁검사는 왜 필요한가요",
     "화장품책임판매업자는 제조번호별 품질검사를 마친 후 제품을 유통해야 하며, 자체 시설이 없는 경우 식약처 지정 시험·검사기관 위탁으로 요건을 충족할 수 있습니다.",
   ],
   [
-    "Raw Data도 받을 수 있나요",
-    "시험결과에 대한 Raw Data는 사전 요청 시 제공 가능하며, 수수료는 의뢰항목 수수료의 10%로 안내되어 있습니다.",
+    "납품이나 입점 일정이 촉박해도 상담 가능한가요",
+    "가능합니다. 납품·입점·유통 일정이 정해져 있다면 먼저 알려주세요. 성적서 준비가 지연되지 않도록 가능 일정과 필요한 항목을 우선 확인합니다.",
   ],
   [
     "1건만 의뢰해도 상담 가능한가요",
@@ -600,7 +601,7 @@ function HeroConversionPanel() {
         <div className="mt-6 grid gap-3 rounded-[22px] bg-[#EEF5F4] p-4 sm:grid-cols-3">
           <div>
             <p className="text-xs font-black text-[#73878C]">일반 의뢰</p>
-            <p className="mt-1 text-xl font-black text-[#263F46]">7일</p>
+            <p className="mt-1 text-xl font-black text-[#263F46]">통상 7일</p>
           </div>
           <div>
             <p className="text-xs font-black text-[#73878C]">긴급 의뢰</p>
@@ -711,11 +712,11 @@ function HomePage() {
             </p>
 
             <h1 className="max-w-3xl text-[clamp(1.75rem,2.85vw,2.55rem)] font-black leading-[1.14] tracking-[-0.055em] text-[#243F46]">
-              검사항목을 몰라도 성적서 가능 여부부터 확인하세요
+              납품·입점 일정 전 성적서 가능 여부부터 확인하세요
             </h1>
 
             <p className="mt-5 max-w-2xl text-[clamp(0.95rem,1.22vw,1.08rem)] leading-8 text-[#4F656A]">
-              제품명·제형·성적서 용도·희망 납기만 알려주시면 와이에스가 필요한 항목, 가능 일정, 준비사항을 먼저 정리해드립니다.
+              검사항목을 몰라도 괜찮습니다. 제품명·제형·성적서 용도·희망 납기만 알려주시면 필요한 항목, 가능 일정, 준비사항을 전담 안내해드립니다.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -777,7 +778,7 @@ function HomePage() {
           <SectionTitle
             eyebrow="Why YSIET"
             titleText="와이에스를 먼저 비교해야 하는 이유"
-            description="화장품 품질검사는 단순히 가격만 비교하기보다, 법정 위탁검사 대응력, 공식기관 신뢰근거, 분석 품질관리, 납기 검토 능력을 함께 확인해야 합니다."
+            description="화장품 품질검사는 단순히 가격만 비교하기보다, 법정 위탁검사 대응력, 공식기관 신뢰근거, 전담 안내, 납품·입점 일정 검토 능력을 함께 확인해야 합니다."
             light
           />
 
@@ -989,7 +990,7 @@ function HomePage() {
                 비용보다 먼저 제품명과 납기를 알려주세요
               </p>
               <p className="mt-2 text-[#EFFAFA]">
-                필요한 항목과 실제 가능 일정을 함께 확인해드립니다.
+                납품·입점·유통 일정이 있다면 성적서 준비가 지연되지 않도록 가능 일정을 먼저 확인해드립니다.
               </p>
               <p className="mt-2 text-sm font-bold text-[#CFE8E8]">
                 Raw Data는 사전 요청 시 제공 가능하며, 별도 수수료가 적용됩니다.
@@ -1074,7 +1075,7 @@ function HomePage() {
                   성적서가 필요한 날짜가 있다면 지금 확인하세요
                 </h2>
                 <p className="mt-7 text-[clamp(0.92rem,1.18vw,1.02rem)] leading-8 text-[#EFFAFA]">
-                  제품명과 희망 납기만 보내주셔도 가능한 일정과 필요한 항목을 먼저 검토해드립니다.
+                  제품명과 희망 납기만 보내주셔도 전담 담당자가 가능한 일정과 필요한 항목을 먼저 검토해드립니다.
                 </p>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -1090,6 +1091,13 @@ function HomePage() {
                   >
                     <Mail className="mr-2 h-5 w-5" /> 제품명·희망납기 보내기
                   </a>
+                </div>
+
+                <div className="mt-6 flex items-start gap-3 rounded-2xl border border-white/15 bg-white/10 p-4">
+                  <UserCheck className="mt-1 h-5 w-5 shrink-0 text-[#BFE6E2]" />
+                  <p className="text-sm font-bold leading-7 text-[#E8F6F5]">
+                    처음 의뢰하거나 검사기관을 전환하는 경우에도, 필요한 항목과 제출 일정 확인을 담당자가 함께 도와드립니다.
+                  </p>
                 </div>
               </div>
 
@@ -1312,7 +1320,7 @@ function AboutPage() {
                 기관 정보를 확인하셨다면 바로 상담하세요
               </h2>
               <p className="mt-5 leading-8 text-[#E8F6F5]">
-                필요한 성적서 용도, 제품명, 제형, 희망 납기, 검사항목을 알려주시면 우선 검토 후 안내드립니다.
+                필요한 성적서 용도, 제품명, 제형, 희망 납기, 검사항목을 알려주시면 담당자가 우선 검토 후 안내드립니다.
               </p>
             </div>
 
