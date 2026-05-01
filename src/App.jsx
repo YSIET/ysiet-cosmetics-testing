@@ -24,7 +24,6 @@ const KOLAS_LOGO = "/kolas-symbol.jpg";
 const MFDS_LOGO = "/mfds-symbol.jpg";
 
 const SECTION = "py-12 lg:py-14";
-const SECTION_TIGHT = "py-8 lg:py-10";
 
 function cx(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -241,25 +240,6 @@ const strongReasons = [
   },
 ];
 
-const serviceGroups = [
-  {
-    title: "자가품질 위탁검사",
-    desc: "화장품 품질검사 위탁계약, 시료 접수, 성적서 발급 안내",
-  },
-  {
-    title: "납품·출시 성적서",
-    desc: "거래처 제출, 출고 일정, 제품 출시 목적의 시험성적서 상담",
-  },
-  {
-    title: "기능성화장품 품질검사",
-    desc: "미백, 주름개선, 자외선차단 관련 품질관리 항목 상담",
-  },
-  {
-    title: "원료·부자재·R&D 분석",
-    desc: "원료, 부자재, 신제품 개발, 광고 검증 목적의 분석 지원",
-  },
-];
-
 const feeRows = [
   ["내용량 / pH", "각 5,000원", "항목별 확인"],
   ["납 비소 안티몬 카드뮴 니켈", "각 30,000원", "항목별 확인"],
@@ -366,11 +346,11 @@ function Header({ showKakao = false }) {
           <a href="/#strength" className="hover:text-[#285F67]">
             신뢰근거
           </a>
-          <a href="/#services" className="hover:text-[#285F67]">
-            검사항목
-          </a>
           <a href="/#fees" className="hover:text-[#285F67]">
             수수료
+          </a>
+          <a href="/#documents" className="hover:text-[#285F67]">
+            준비서류
           </a>
           <a href="/#contact" className="hover:text-[#285F67]">
             문의
@@ -683,32 +663,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="services" className="overflow-hidden bg-[#F1F7F6] py-8 lg:py-10">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle
-            eyebrow="Testing Scope"
-            titleText="필요한 성적서 유형만 빠르게 확인하세요"
-            description="일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다."
-            compact
-          />
-
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {serviceGroups.map((item) => (
-              <Card key={item.title} className="h-full">
-                <div className="p-6">
-                  <CheckCircle2 className="mb-4 h-6 w-6 text-[#4F888B]" />
-                  <h3 className="whitespace-nowrap text-lg font-black tracking-[-0.03em] text-[#263F46]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 leading-7 text-[#60767B]">{item.desc}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="fees" className="overflow-hidden bg-[#FAFCFC] py-8 lg:py-10">
+      <section id="fees" className="overflow-hidden bg-[#FAFCFC] pt-10 pb-14 lg:pt-11 lg:pb-16">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Fee Guide"
@@ -735,7 +690,7 @@ function HomePage() {
             ))}
           </div>
 
-          <div className="mt-5 rounded-[22px] bg-[#315F66] p-5 text-white md:flex md:items-center md:justify-between">
+          <div className="mt-6 rounded-[22px] bg-[#315F66] p-5 text-white md:flex md:items-center md:justify-between">
             <div>
               <p className="text-[clamp(1rem,2.2vw,1.15rem)] font-black">
                 비용을 보기 전에 제품명과 납기를 먼저 알려주세요
@@ -751,7 +706,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="documents" className="overflow-hidden bg-[#F1F7F6] py-7 lg:py-8">
+      <section id="documents" className="overflow-hidden bg-[#F1F7F6] py-9 lg:py-10">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Before Request"
@@ -774,7 +729,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="process" className="overflow-hidden bg-[#FAFCFC] py-8 lg:py-9">
+      <section id="process" className="overflow-hidden bg-[#FAFCFC] pt-10 pb-14 lg:pt-11 lg:pb-16">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle eyebrow="Process" titleText="성적서 발급 4단계" compact />
 
@@ -802,7 +757,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="overflow-hidden bg-[#FAFCFC] py-10 lg:py-12">
+      <section id="contact" className="overflow-hidden bg-[#FAFCFC] pt-8 pb-14 lg:pt-10 lg:pb-16">
         <div className="mx-auto max-w-7xl px-5">
           <div className="overflow-hidden rounded-[34px] bg-[#263F46] text-white shadow-[0_34px_90px_rgba(38,63,70,0.20)]">
             <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
