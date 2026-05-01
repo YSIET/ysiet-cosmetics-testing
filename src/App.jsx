@@ -260,15 +260,6 @@ export default function App() {
               식약처 지정 제18호와 KOLAS 제364호의 신뢰성으로 자가품질 위탁검사부터 시험성적서 발급까지 안내합니다
             </p>
 
-            <div className="mt-4 max-w-xl rounded-2xl border border-[#BED7E4] bg-white/70 px-5 py-4">
-              <p className="text-sm font-black leading-6 text-[#071A2D]">
-                연세대학교 화공생명공학과 이태규 교수 연구실 창업기업
-              </p>
-              <p className="mt-1 text-sm font-bold leading-6 text-[#1F7F91]">
-                대표이사 엄유진 박사
-              </p>
-            </div>
-
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <LinkButton href="#contact" className="h-14 px-8 text-base">
                 성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
