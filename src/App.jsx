@@ -118,7 +118,7 @@ function TrustLogo({ src, alt, type = "square" }) {
   return (
     <div
       className={cx(
-        "flex shrink-0 items-center justify-center overflow-hidden border border-[#E1ECEE] bg-white",
+        "flex shrink-0 items-center justify-center border border-[#E1ECEE] bg-white",
         boxClass
       )}
     >
@@ -289,8 +289,12 @@ function Header({ showKakao = false }) {
     <header className="sticky top-0 z-50 border-b border-[#D8E5E7] bg-[#FCFEFE]/95 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
         <a href="/" className="flex min-w-0 items-center gap-3">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[#DCE8EA] bg-white">
-            <img src={YS_LOGO} alt="와이에스환경기술연구원 로고" className="h-10 w-10 object-contain" />
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#DCE8EA] bg-white">
+            <img
+              src={YS_LOGO}
+              alt="와이에스환경기술연구원 로고"
+              className="h-10 w-10 object-contain"
+            />
           </div>
           <div className="min-w-0">
             <p className="whitespace-nowrap text-[13px] font-black tracking-[-0.02em] text-[#263F46] sm:text-base">
@@ -303,12 +307,24 @@ function Header({ showKakao = false }) {
         </a>
 
         <nav className="hidden items-center gap-4 text-sm font-bold text-[#60767B] xl:flex">
-          <a href="/#strength" className="hover:text-[#285F67]">신뢰근거</a>
-          <a href="/#fees" className="hover:text-[#285F67]">수수료</a>
-          <a href="/#documents" className="hover:text-[#285F67]">준비서류</a>
-          <a href="/#process" className="hover:text-[#285F67]">절차</a>
-          <a href="/#contact" className="hover:text-[#285F67]">문의</a>
-          <a href="/about" className="hover:text-[#285F67]">기관소개</a>
+          <a href="/#strength" className="hover:text-[#285F67]">
+            신뢰근거
+          </a>
+          <a href="/#fees" className="hover:text-[#285F67]">
+            수수료
+          </a>
+          <a href="/#documents" className="hover:text-[#285F67]">
+            준비서류
+          </a>
+          <a href="/#process" className="hover:text-[#285F67]">
+            절차
+          </a>
+          <a href="/#contact" className="hover:text-[#285F67]">
+            문의
+          </a>
+          <a href="/about" className="hover:text-[#285F67]">
+            기관소개
+          </a>
           {showKakao ? (
             <a
               href={KAKAO_URL}
@@ -384,10 +400,16 @@ function MobileStickyButtons() {
   return (
     <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 rounded-full bg-[#263F46] p-2 shadow-2xl md:hidden">
       <div className="grid grid-cols-2 gap-2">
-        <a href="tel:02-312-0540" className="rounded-full bg-white px-4 py-3 text-center text-sm font-black text-[#28474E]">
+        <a
+          href="tel:02-312-0540"
+          className="rounded-full bg-white px-4 py-3 text-center text-sm font-black text-[#28474E]"
+        >
           전화 상담
         </a>
-        <a href="mailto:testing@ysiet.com" className="rounded-full bg-[#285F67] px-4 py-3 text-center text-sm font-black text-white">
+        <a
+          href="mailto:testing@ysiet.com"
+          className="rounded-full bg-[#285F67] px-4 py-3 text-center text-sm font-black text-white"
+        >
           이메일 견적
         </a>
       </div>
@@ -486,7 +508,11 @@ function HomePage() {
               <LinkButton href="#contact" className="h-14 px-8 text-base">
                 납기 가능 여부 먼저 확인 <ArrowRight className="ml-2 h-5 w-5" />
               </LinkButton>
-              <LinkButton href="mailto:testing@ysiet.com" variant="secondary" className="h-14 px-8 text-base">
+              <LinkButton
+                href="mailto:testing@ysiet.com"
+                variant="secondary"
+                className="h-14 px-8 text-base"
+              >
                 제품명·희망납기 보내기
               </LinkButton>
             </div>
@@ -511,7 +537,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="strength" className="bg-[#263F46] py-12 text-white">
+      <section id="strength" className="bg-[#263F46] py-14 text-white">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Customer First"
@@ -522,11 +548,16 @@ function HomePage() {
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {strengthItems.map((item) => (
-              <div key={item.title} className="rounded-[24px] border border-white/16 bg-white/[0.10] p-6">
+              <div
+                key={item.title}
+                className="rounded-[24px] border border-white/16 bg-white/[0.10] p-6"
+              >
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#285F67]">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-black tracking-[-0.03em] text-white">{item.title}</h3>
+                <h3 className="text-xl font-black tracking-[-0.03em] text-white">
+                  {item.title}
+                </h3>
                 <p className="mt-4 text-sm leading-7 text-[#E8F6F5]">{item.desc}</p>
               </div>
             ))}
@@ -542,14 +573,17 @@ function HomePage() {
             description="실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수 있습니다."
           />
 
-          <div className="hidden overflow-hidden rounded-[24px] border border-[#D8E5E7] bg-white md:block">
-            <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr] bg-[#EEF5F4] px-5 py-3 text-sm font-black text-[#263F46]">
+          <div className="hidden rounded-[24px] border border-[#D8E5E7] bg-white md:block">
+            <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr] rounded-t-[24px] bg-[#EEF5F4] px-5 py-3 text-sm font-black text-[#263F46]">
               <div>대표 시험항목</div>
               <div>수수료</div>
               <div>비고</div>
             </div>
             {feeRows.map(([name, price, note]) => (
-              <div key={name} className="grid grid-cols-[1.2fr_0.8fr_0.8fr] border-t border-[#D8E5E7] px-5 py-3">
+              <div
+                key={name}
+                className="grid grid-cols-[1.2fr_0.8fr_0.8fr] border-t border-[#D8E5E7] px-5 py-3"
+              >
                 <div className="font-bold text-[#4F656A]">{name}</div>
                 <div className="font-black text-[#285F67]">{price}</div>
                 <div className="font-bold text-[#73878C]">{note}</div>
@@ -595,7 +629,10 @@ function HomePage() {
 
           <div className="grid gap-3 md:grid-cols-2">
             {documents.map((item) => (
-              <div key={item} className="flex gap-3 rounded-[18px] border border-[#D8E5E7] bg-white px-5 py-3 shadow-sm">
+              <div
+                key={item}
+                className="flex gap-3 rounded-[18px] border border-[#D8E5E7] bg-white px-5 py-3 shadow-sm"
+              >
                 <ClipboardCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
                 <p className="font-bold text-[#4F656A]">{item}</p>
               </div>
@@ -608,7 +645,7 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle eyebrow="Process" titleText="성적서 발급 4단계" />
 
-          <div className="overflow-hidden rounded-[24px] border border-[#D8E5E7] bg-white shadow-[0_18px_44px_rgba(36,72,82,0.055)]">
+          <div className="rounded-[24px] border border-[#D8E5E7] bg-white shadow-[0_18px_44px_rgba(36,72,82,0.055)]">
             <div className="grid md:grid-cols-4">
               {process.map(([step, name, desc], index) => (
                 <div
@@ -618,8 +655,12 @@ function HomePage() {
                     index !== 0 && "border-t border-[#D8E5E7] md:border-l md:border-t-0"
                   )}
                 >
-                  <p className="text-3xl font-black tracking-[-0.05em] text-[#BFD9DC]">{step}</p>
-                  <h3 className="mt-2 text-lg font-black tracking-[-0.03em] text-[#263F46]">{name}</h3>
+                  <p className="text-3xl font-black tracking-[-0.05em] text-[#BFD9DC]">
+                    {step}
+                  </p>
+                  <h3 className="mt-2 text-lg font-black tracking-[-0.03em] text-[#263F46]">
+                    {name}
+                  </h3>
                   <p className="mt-2 text-sm leading-6 text-[#60767B]">{desc}</p>
                 </div>
               ))}
@@ -630,7 +671,7 @@ function HomePage() {
 
       <section id="contact" className="bg-[#FAFCFC] py-16">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="overflow-hidden rounded-[34px] bg-[#263F46] text-white shadow-[0_34px_90px_rgba(38,63,70,0.20)]">
+          <div className="rounded-[34px] bg-[#263F46] text-white shadow-[0_34px_90px_rgba(38,63,70,0.20)]">
             <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
               <div className="p-8 md:p-12">
                 <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#BFE6E2]">
@@ -644,26 +685,46 @@ function HomePage() {
                 </p>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                  <a href="tel:02-312-0540" className="inline-flex h-14 items-center justify-center rounded-full bg-white px-8 font-black text-[#28474E]">
+                  <a
+                    href="tel:02-312-0540"
+                    className="inline-flex h-14 items-center justify-center rounded-full bg-white px-8 font-black text-[#28474E]"
+                  >
                     <Phone className="mr-2 h-5 w-5" /> 02-312-0540
                   </a>
-                  <a href="mailto:testing@ysiet.com" className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/12 px-8 font-black text-white">
+                  <a
+                    href="mailto:testing@ysiet.com"
+                    className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/12 px-8 font-black text-white"
+                  >
                     <Mail className="mr-2 h-5 w-5" /> 제품명·희망납기 보내기
                   </a>
                 </div>
               </div>
 
-              <div className="bg-white p-7 text-[#263F46] md:p-8">
-                <p className="text-sm font-black text-[#4F888B]">빠른 검토를 위한 5가지</p>
+              <div className="rounded-b-[34px] bg-white p-7 text-[#263F46] md:p-8 lg:rounded-b-none lg:rounded-r-[34px]">
+                <p className="text-sm font-black text-[#4F888B]">
+                  빠른 검토를 위한 5가지
+                </p>
                 <ul className="mt-5 space-y-3">
-                  {["제품명 / 제형", "희망 검사항목", "성적서 제출처", "희망 납기", "시료 준비 가능일"].map((item) => (
-                    <li key={item} className="flex items-center gap-3 rounded-2xl bg-[#F3F7F7] px-4 py-3 font-bold">
+                  {[
+                    "제품명 / 제형",
+                    "희망 검사항목",
+                    "성적서 제출처",
+                    "희망 납기",
+                    "시료 준비 가능일",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-3 rounded-2xl bg-[#F3F7F7] px-4 py-3 font-bold"
+                    >
                       <CheckCircle2 className="h-5 w-5 shrink-0 text-[#4F888B]" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <a href="mailto:testing@ysiet.com" className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#285F67] font-black text-white">
+                <a
+                  href="mailto:testing@ysiet.com"
+                  className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#285F67] font-black text-white"
+                >
                   납기 가능 여부 먼저 확인
                 </a>
                 <div className="mt-5 flex gap-3 rounded-2xl border border-[#D8E5E7] bg-white p-4 text-sm font-bold leading-6 text-[#4F656A]">
@@ -682,7 +743,10 @@ function HomePage() {
 
           <div className="space-y-3">
             {faqs.map(([q, a]) => (
-              <details key={q} className="group rounded-[20px] border border-[#D8E5E7] bg-white px-6 py-4 shadow-sm">
+              <details
+                key={q}
+                className="group rounded-[20px] border border-[#D8E5E7] bg-white px-6 py-4 shadow-sm"
+              >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-black text-[#263F46]">
                   <span className="flex items-center gap-3">
                     <HelpCircle className="h-5 w-5 shrink-0 text-[#4F888B]" />
@@ -735,19 +799,31 @@ function AboutPage() {
           <Card className="border-0 bg-white p-4 shadow-[0_28px_72px_rgba(36,72,82,0.1)]">
             <div className="grid gap-4 rounded-[22px] bg-[#F8FBFB] p-6">
               <div className="flex items-center gap-4 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-                <img src={YS_LOGO} alt="YS 로고" className="h-14 w-14 rounded-2xl border border-[#E2EDEF] bg-white p-1 object-contain" />
+                <img
+                  src={YS_LOGO}
+                  alt="YS 로고"
+                  className="h-14 w-14 rounded-2xl border border-[#E2EDEF] bg-white p-1 object-contain"
+                />
                 <div>
                   <p className="font-black text-[#263F46]">(주)와이에스환경기술연구원</p>
-                  <p className="text-sm font-bold text-[#73878C]">YS Institute of Environmental Technology</p>
+                  <p className="text-sm font-bold text-[#73878C]">
+                    YS Institute of Environmental Technology
+                  </p>
                 </div>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="flex items-center gap-4 rounded-2xl border border-[#D8E5E7] bg-white p-4">
-                  <img src={MFDS_LOGO} alt="식품의약품안전처 심볼" className="h-12 w-12 object-contain" />
+                  <img
+                    src={MFDS_LOGO}
+                    alt="식품의약품안전처 심볼"
+                    className="h-12 w-12 object-contain"
+                  />
                   <div>
                     <p className="text-sm font-bold text-[#73878C]">화장품 시험검사기관</p>
-                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#263F46]">식약처 지정 제18호</p>
+                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#263F46]">
+                      식약처 지정 제18호
+                    </p>
                   </div>
                 </div>
 
@@ -755,16 +831,24 @@ function AboutPage() {
                   <img src={KOLAS_LOGO} alt="KOLAS 심볼" className="h-12 w-16 object-contain" />
                   <div>
                     <p className="text-sm font-bold text-[#73878C]">국제공인시험기관</p>
-                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#263F46]">KOLAS 제364호</p>
+                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#263F46]">
+                      KOLAS 제364호
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div className="flex items-center gap-4 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-                <img src={YONSEI_LOGO} alt="연세대학교 심볼" className="h-14 w-14 rounded-full object-cover" />
+                <img
+                  src={YONSEI_LOGO}
+                  alt="연세대학교 심볼"
+                  className="h-14 w-14 rounded-full object-cover"
+                />
                 <div>
                   <p className="font-black text-[#263F46]">연세대학교 교원창업기업</p>
-                  <p className="text-sm font-bold text-[#73878C]">연구 기반 전문 시험분석 서비스</p>
+                  <p className="text-sm font-bold text-[#73878C]">
+                    연구 기반 전문 시험분석 서비스
+                  </p>
                 </div>
               </div>
             </div>
@@ -784,8 +868,12 @@ function AboutPage() {
             {aboutCards.map(([title, desc]) => (
               <Card key={title}>
                 <div className="p-7">
-                  <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">{title}</p>
-                  <p className="text-lg font-black leading-8 tracking-[-0.02em] text-[#263F46]">{desc}</p>
+                  <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
+                    {title}
+                  </p>
+                  <p className="text-lg font-black leading-8 tracking-[-0.02em] text-[#263F46]">
+                    {desc}
+                  </p>
                 </div>
               </Card>
             ))}
@@ -806,7 +894,9 @@ function AboutPage() {
               <Card key={item.title}>
                 <div className="p-7">
                   <Microscope className="mb-5 h-6 w-6 text-[#4F888B]" />
-                  <h3 className="text-xl font-black tracking-[-0.03em] text-[#263F46]">{item.title}</h3>
+                  <h3 className="text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                    {item.title}
+                  </h3>
                   <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
                 </div>
               </Card>
@@ -819,7 +909,9 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-5">
           <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
             <div>
-              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#BFE6E2]">Contact</p>
+              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#BFE6E2]">
+                Contact
+              </p>
               <h2 className="text-[clamp(1.35rem,2.8vw,2.35rem)] font-black leading-[1.12] tracking-[-0.05em]">
                 기관 정보를 확인하셨다면 바로 상담하세요
               </h2>
@@ -829,11 +921,17 @@ function AboutPage() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <a href="tel:02-312-0540" className="inline-flex h-14 items-center justify-center rounded-2xl bg-white px-6 font-black text-[#28474E]">
+              <a
+                href="tel:02-312-0540"
+                className="inline-flex h-14 items-center justify-center rounded-2xl bg-white px-6 font-black text-[#28474E]"
+              >
                 <Phone className="mr-2 h-5 w-5" />
                 전화 상담
               </a>
-              <a href="mailto:testing@ysiet.com" className="inline-flex h-14 items-center justify-center rounded-2xl border border-white/25 bg-white/12 px-6 font-black text-white">
+              <a
+                href="mailto:testing@ysiet.com"
+                className="inline-flex h-14 items-center justify-center rounded-2xl border border-white/25 bg-white/12 px-6 font-black text-white"
+              >
                 <Mail className="mr-2 h-5 w-5" />
                 이메일 견적
               </a>
@@ -852,7 +950,7 @@ export default function App() {
   const path = window.location.pathname;
 
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-[#FAFCFC] text-[#263F46] antialiased">
+    <main className="min-h-screen w-full bg-[#FAFCFC] text-[#263F46] antialiased">
       {path === "/about" ? <AboutPage /> : <HomePage />}
     </main>
   );
