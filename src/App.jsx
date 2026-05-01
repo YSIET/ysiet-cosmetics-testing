@@ -198,9 +198,9 @@ const documents = [
 ];
 
 const process = [
-  ["01", "납기 확인", "성적서가 필요한 날짜와 제출처를 먼저 확인합니다"],
-  ["02", "항목 안내", "제품 유형과 제출 목적에 맞는 시험항목을 안내합니다"],
-  ["03", "시료 접수", "시료와 의뢰 정보를 확인한 뒤 분석 일정을 잡습니다"],
+  ["01", "납기 확인", "필요한 날짜와 제출처를 먼저 확인합니다"],
+  ["02", "항목 안내", "제품 유형과 목적에 맞는 시험항목을 안내합니다"],
+  ["03", "시료 접수", "시료와 의뢰 정보를 확인한 뒤 일정을 잡습니다"],
   ["04", "성적서 발급", "시험 완료 후 성적서 발급 절차를 안내합니다"],
 ];
 
@@ -215,11 +215,11 @@ const contactItems = [
 const faqs = [
   [
     "검사항목을 몰라도 문의할 수 있나요",
-    "가능합니다. 제품 유형, 제형, 제출처, 희망 납기를 알려주시면 먼저 확인해야 할 항목과 준비사항을 안내드립니다.",
+    "가능합니다. 제품 유형, 제형, 제출처, 희망 납기를 알려주시면 우선 확인해야 할 항목과 준비사항을 안내드립니다.",
   ],
   [
     "성적서 발급까지 얼마나 걸리나요",
-    "일반 의뢰 소요일은 7일, 긴급 의뢰 소요일은 3일입니다. 단, 시험 일정과 항목에 따라 가능 여부가 달라질 수 있습니다.",
+    "일반 의뢰 소요일은 7일, 긴급 의뢰는 3일 상담이 가능합니다. 단, 시험 일정과 항목에 따라 가능 여부가 달라질 수 있습니다.",
   ],
   [
     "자가품질 위탁검사는 처음인데 진행 가능한가요",
@@ -425,15 +425,15 @@ function HeroConversionPanel() {
 
         <div className="mt-6 grid gap-3 rounded-[22px] bg-[#EEF5F4] p-4 sm:grid-cols-3">
           <div>
-            <p className="text-xs font-black text-[#73878C]">일반</p>
+            <p className="text-xs font-black text-[#73878C]">일반 의뢰</p>
             <p className="mt-1 text-xl font-black text-[#263F46]">7일</p>
           </div>
           <div>
-            <p className="text-xs font-black text-[#73878C]">긴급</p>
+            <p className="text-xs font-black text-[#73878C]">긴급 의뢰</p>
             <p className="mt-1 text-xl font-black text-[#263F46]">3일 상담</p>
           </div>
           <div>
-            <p className="text-xs font-black text-[#73878C]">전화</p>
+            <p className="text-xs font-black text-[#73878C]">대표전화</p>
             <p className="mt-1 text-xl font-black text-[#263F46]">02-312-0540</p>
           </div>
         </div>
@@ -479,7 +479,7 @@ function HomePage() {
             </h1>
 
             <p className="mt-5 max-w-2xl text-[clamp(0.95rem,1.22vw,1.08rem)] leading-8 text-[#4F656A]">
-              제품명·제형·성적서 용도·희망 납기만 알려주시면 필요한 시험항목과 진행 가능 여부를 우선 안내드립니다.
+              제품명·제형·성적서 용도·희망 납기만 알려주시면 필요한 시험항목과 진행 가능 여부를 빠르게 안내드립니다.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -520,7 +520,7 @@ function HomePage() {
           <SectionTitle
             eyebrow="Fee Guide"
             titleText="대표 수수료 확인"
-            description="실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수 있습니다."
+            description="자주 문의하시는 대표 항목을 먼저 확인하실 수 있습니다. 실제 견적은 제품 유형, 시험항목, 긴급 여부에 따라 상담 후 확정됩니다."
           />
 
           <div className="hidden rounded-[24px] border border-[#D8E5E7] bg-white md:block">
@@ -556,10 +556,10 @@ function HomePage() {
           <div className="mt-8 rounded-[22px] bg-[#315F66] p-6 text-white md:flex md:items-center md:justify-between">
             <div>
               <p className="text-[clamp(1rem,2.2vw,1.18rem)] font-black">
-                비용을 보기 전에 제품명과 납기를 먼저 알려주세요
+                비용보다 먼저 제품명과 납기를 알려주세요
               </p>
               <p className="mt-2 text-[#EFFAFA]">
-                항목과 긴급 여부에 따라 실제 견적 기준으로 안내드립니다.
+                필요한 항목과 실제 가능 일정을 함께 확인해드립니다.
               </p>
             </div>
             <LinkButton href="#contact" variant="light" className="mt-5 h-11 px-5 md:mt-0">
@@ -574,7 +574,7 @@ function HomePage() {
           <SectionTitle
             eyebrow="Before Request"
             titleText="문의 전 이것만 준비하시면 빠릅니다"
-            description="모든 항목을 정확히 몰라도 괜찮습니다. 제품 정보와 희망 납기만 있어도 우선 검토가 가능합니다."
+            description="모든 항목을 완벽히 몰라도 괜찮습니다. 아래 정보가 있으면 검토와 접수가 훨씬 빨라집니다."
           />
 
           <div className="grid gap-3 md:grid-cols-2">
@@ -593,7 +593,11 @@ function HomePage() {
 
       <section id="process" className="bg-[#FAFCFC] py-12">
         <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle eyebrow="Process" titleText="성적서 발급 4단계" />
+          <SectionTitle
+            eyebrow="Process"
+            titleText="성적서 발급 4단계"
+            description="처음 의뢰하시는 경우에도 필요한 순서대로 안내드립니다."
+          />
 
           <div className="rounded-[24px] border border-[#D8E5E7] bg-white shadow-[0_18px_44px_rgba(36,72,82,0.055)]">
             <div className="grid md:grid-cols-4">
@@ -632,7 +636,7 @@ function HomePage() {
                   제품명과 희망 납기만 보내도 먼저 검토합니다
                 </h2>
                 <p className="mt-7 text-[clamp(0.92rem,1.18vw,1.02rem)] leading-8 text-[#EFFAFA]">
-                  제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면 우선 검토 후 안내드립니다.
+                  성적서가 필요한 날짜가 정해져 있다면 먼저 알려주세요. 가능한 일정과 필요한 항목을 우선 확인해드립니다.
                 </p>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -687,7 +691,11 @@ function HomePage() {
       
       <section id="faq" className="bg-[#F1F7F6] py-10">
         <div className="mx-auto max-w-5xl px-5">
-          <SectionTitle eyebrow="FAQ" titleText="자주 묻는 질문" />
+          <SectionTitle
+            eyebrow="FAQ"
+            titleText="자주 묻는 질문"
+            description="처음 의뢰하시는 분들이 가장 많이 확인하시는 내용입니다."
+          />
 
           <div className="space-y-3">
             {faqs.map(([q, a]) => (
