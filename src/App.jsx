@@ -8,7 +8,6 @@ import {
   CalendarClock,
   CheckCircle2,
   ClipboardCheck,
-  FileCheck2,
   FlaskConical,
   HelpCircle,
   Mail,
@@ -41,8 +40,6 @@ function Button({
       "bg-white text-[#0B2A4A] shadow-lg shadow-slate-900/10 hover:bg-slate-50",
     outline:
       "border border-slate-300 bg-white text-[#0B2A4A] hover:border-[#0B2A4A] hover:bg-slate-50",
-    ghost:
-      "bg-transparent text-[#0B2A4A] hover:bg-slate-100",
   };
 
   const sizes = {
@@ -83,10 +80,16 @@ function CardContent({ children, className = "", ...props }) {
 }
 
 const sectionTitle =
-  "font-black tracking-[-0.045em] text-[#0B1F33] text-[clamp(2rem,4.2vw,4rem)] leading-[1.06]";
+  "whitespace-nowrap font-black tracking-[-0.04em] text-[#0B1F33] text-[clamp(1.55rem,2.6vw,2.85rem)] leading-[1.08]";
 
-const compactTitle =
-  "font-black tracking-[-0.04em] text-[#0B1F33] text-[clamp(1.75rem,3.3vw,3.25rem)] leading-[1.08]";
+const lightSectionTitle =
+  "whitespace-nowrap font-black tracking-[-0.04em] text-white text-[clamp(1.55rem,2.6vw,2.85rem)] leading-[1.08]";
+
+const heroTitle =
+  "font-black tracking-[-0.06em] text-[#081C2E] text-[clamp(2.25rem,5.4vw,5.3rem)] leading-[1.02]";
+
+const darkHeroTitle =
+  "font-black tracking-[-0.055em] text-white text-[clamp(2rem,4.3vw,4.2rem)] leading-[1.04]";
 
 const proofBadges = [
   "식약처 지정 화장품 시험·검사기관 제18호",
@@ -269,10 +272,10 @@ export default function YSIETCosmeticsLanding() {
               다른 시험기관을 살펴보다 오셨다면, 먼저 성적서 납기부터 확인하세요
             </div>
 
-            <h1 className="max-w-5xl text-[clamp(3rem,7vw,6.4rem)] font-black leading-[0.98] tracking-[-0.07em] text-[#081C2E]">
-              화장품 성적서,
+            <h1 className={heroTitle}>
+              화장품 성적서
               <span className="block text-[#1F7A8C]">더 이상 기다리지 말고</span>
-              먼저 일정 잡으세요.
+              먼저 일정 잡으세요
             </h1>
 
             <p className="mt-8 max-w-2xl text-xl leading-9 text-slate-700">
@@ -317,8 +320,8 @@ export default function YSIETCosmeticsLanding() {
                   <p className="text-sm font-black text-[#9AD7E8]">
                     FAST CHECK
                   </p>
-                  <h2 className="mt-2 text-3xl font-black tracking-[-0.04em]">
-                    여러 시험기관을 살펴보다 오셨나요?
+                  <h2 className="mt-2 whitespace-nowrap text-[clamp(1.45rem,2.3vw,1.9rem)] font-black tracking-[-0.035em]">
+                    여러 시험기관을 살펴보다 오셨나요
                   </h2>
                   <p className="mt-3 leading-7 text-slate-200">
                     아래 4가지를 먼저 확인해보세요. 납기, 지정기관, KOLAS, 수수료.
@@ -383,7 +386,7 @@ export default function YSIETCosmeticsLanding() {
               Institution Comparison
             </p>
             <h2 className={sectionTitle}>
-              다른 시험기관을 살펴보다가도 YSIET에 문의하게 되는 이유.
+              다른 시험기관을 살펴보다가도 YSIET에 문의하게 되는 이유
             </h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               의뢰 전에는 “성적서가 언제 나오고, 비용은 어느 정도이며, 무엇을 준비해야 하는지”가 가장 중요합니다.
@@ -420,8 +423,8 @@ export default function YSIETCosmeticsLanding() {
             <p className="text-sm font-black uppercase tracking-[0.25em] text-[#9AD7E8]">
               Key Points
             </p>
-            <h2 className="text-[clamp(2rem,4vw,3.8rem)] font-black leading-[1.06] tracking-[-0.05em]">
-              성적서 의뢰 전 꼭 확인할 4가지.
+            <h2 className={lightSectionTitle}>
+              성적서 의뢰 전 꼭 확인할 4가지
             </h2>
           </div>
 
@@ -453,7 +456,7 @@ export default function YSIETCosmeticsLanding() {
             <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               Testing Services
             </p>
-            <h2 className={compactTitle}>검사 가능한 서비스를 한눈에.</h2>
+            <h2 className={sectionTitle}>검사 가능한 서비스를 한눈에</h2>
           </div>
           <p className="text-lg leading-8 text-slate-600">
             일반 화장품, 기능성 화장품, 원료·부자재, R&D 지원까지.
@@ -485,7 +488,7 @@ export default function YSIETCosmeticsLanding() {
               <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
                 Fee Guide
               </p>
-              <h2 className={compactTitle}>가격 감을 먼저 잡게 해드립니다.</h2>
+              <h2 className={sectionTitle}>가격 감을 먼저 잡게 해드립니다</h2>
             </div>
             <p className="text-lg leading-8 text-slate-600">
               대표 수수료를 먼저 확인하고, 실제 견적은 시험항목·제품유형·긴급 여부에 따라 상담 후 안내받으실 수 있습니다.
@@ -510,7 +513,7 @@ export default function YSIETCosmeticsLanding() {
           <div className="mt-6 rounded-[1.75rem] bg-[#0B2A4A] p-6 text-white md:flex md:items-center md:justify-between">
             <div>
               <p className="text-xl font-black">
-                견적을 기다리기 전에, 먼저 범위를 확인하세요.
+                견적을 기다리기 전에 먼저 범위를 확인하세요
               </p>
               <p className="mt-2 text-slate-200">
                 제품명과 필요 항목을 보내주시면 실제 견적 기준으로 안내드립니다.
@@ -529,8 +532,8 @@ export default function YSIETCosmeticsLanding() {
             <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               Self Quality Testing
             </p>
-            <h2 className={compactTitle}>
-              자가품질 위탁검사, 처음이어도 바로 시작할 수 있게.
+            <h2 className={sectionTitle}>
+              자가품질 위탁검사 처음이어도 바로 시작할 수 있게
             </h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               화장품 제조업자·책임판매업자는 품질검사 시설이 없는 경우 식약처 지정 시험·검사기관과
@@ -567,8 +570,8 @@ export default function YSIETCosmeticsLanding() {
             <p className="text-sm font-black uppercase tracking-[0.25em] text-[#9AD7E8]">
               Before Request
             </p>
-            <h2 className="text-[clamp(2rem,3.7vw,3.4rem)] font-black leading-[1.08] tracking-[-0.05em]">
-              문의 전 준비하면 견적이 빨라집니다.
+            <h2 className={lightSectionTitle}>
+              문의 전 준비하면 견적이 빨라집니다
             </h2>
             <p className="mt-6 text-lg leading-8 text-slate-200">
               준비서류와 제품 정보를 미리 알려주시면 상담과 접수가 훨씬 빨라집니다.
@@ -595,7 +598,7 @@ export default function YSIETCosmeticsLanding() {
             <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               Trust Proof
             </p>
-            <h2 className={compactTitle}>확인된 신뢰근거를 한눈에.</h2>
+            <h2 className={sectionTitle}>확인된 신뢰근거를 한눈에</h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">
               식약처 지정, KOLAS 인정, 전문 인력, 상담 지원까지 의뢰 전 필요한 신뢰 정보를 확인하실 수 있습니다.
             </p>
@@ -656,7 +659,7 @@ export default function YSIETCosmeticsLanding() {
             <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               Process
             </p>
-            <h2 className={compactTitle}>복잡한 설명 없이, 성적서까지 4단계.</h2>
+            <h2 className={sectionTitle}>복잡한 설명 없이 성적서까지 4단계</h2>
             <p className="mt-5 text-lg leading-8 text-slate-600">
               고객이 중간에 헤매지 않도록 필요한 정보만 빠르게 확인하고 진행합니다.
             </p>
@@ -685,8 +688,8 @@ export default function YSIETCosmeticsLanding() {
               <p className="text-sm font-black uppercase tracking-[0.25em] text-[#9AD7E8]">
                 Request Quote
               </p>
-              <h2 className="mt-3 text-[clamp(2.25rem,5vw,5rem)] font-black leading-[1.03] tracking-[-0.06em]">
-                기관 비교는 충분합니다. 이제 YSIET에 납기부터 확인하세요.
+              <h2 className={darkHeroTitle}>
+                기관 비교는 충분합니다 이제 YSIET에 납기부터 확인하세요
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
                 일반 7일 · 긴급 3일 가능 여부 상담. 제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면
@@ -741,9 +744,7 @@ export default function YSIETCosmeticsLanding() {
             <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               FAQ
             </p>
-            <h2 className="mt-3 text-[clamp(2rem,4vw,3.8rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#0B1F33]">
-              자주 묻는 질문
-            </h2>
+            <h2 className={sectionTitle}>자주 묻는 질문</h2>
           </div>
 
           <div className="space-y-4">
