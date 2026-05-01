@@ -732,9 +732,6 @@ export default function App() {
               와이에스환경기술연구원
             </p>
             <p className="mt-3 max-w-xl leading-7 text-[#DDEDEE]">
-              연세대학교 화공생명공학과 이태규 교수 연구실 창업기업
-            </p>
-            <p className="mt-2 max-w-xl leading-7 text-[#DDEDEE]">
               대표이사 엄유진 박사
             </p>
             <p className="mt-2 max-w-xl leading-7 text-[#DDEDEE]">
