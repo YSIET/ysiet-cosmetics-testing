@@ -578,10 +578,13 @@ function HomePage() {
           />
 
           <div className="grid gap-3 md:grid-cols-2">
-            {documents.map((item) => (
+            {documents.map((item, index) => (
               <div
                 key={item}
-                className="flex gap-3 rounded-[18px] border border-[#D8E5E7] bg-white px-5 py-3 shadow-sm"
+                className={cx(
+                  "flex gap-3 rounded-[18px] border border-[#D8E5E7] bg-white px-5 py-3 shadow-sm",
+                  index === documents.length - 1 && "md:col-span-2"
+                )}
               >
                 <ClipboardCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
                 <p className="font-bold text-[#4F656A]">{item}</p>
