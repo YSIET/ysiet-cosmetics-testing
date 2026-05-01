@@ -347,6 +347,14 @@ function Header() {
           <a href="/about" className="hover:text-[#2F6F73]">
             기관소개
           </a>
+          <a
+            href={KAKAO_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[#2F6F73] hover:text-[#285E62]"
+          >
+            카톡문의
+          </a>
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2 md:flex">
