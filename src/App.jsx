@@ -11,7 +11,6 @@ import {
   HelpCircle,
   Mail,
   MapPin,
-  MessageCircle,
   Microscope,
   Phone,
   ShieldCheck,
@@ -32,8 +31,6 @@ function LinkButton({ href, children, variant = "primary", className = "" }) {
     secondary:
       "bg-white text-[#254E58] border border-[#D7E3E5] hover:border-[#8AB7BC]",
     light: "bg-white text-[#254E58] hover:bg-[#F4FAFA]",
-    kakao:
-      "bg-[#FEE500] text-[#2A2A2A] hover:bg-[#F6D900] shadow-[0_12px_30px_rgba(254,229,0,0.2)]",
     ghost: "bg-white/12 text-white border border-white/25 hover:bg-white/18",
   };
 
@@ -356,10 +353,6 @@ function Header() {
           <LinkButton href="/#contact" className="h-10 px-5">
             납기 확인
           </LinkButton>
-          <LinkButton href={KAKAO_URL} variant="kakao" className="h-10 px-5">
-            <MessageCircle className="mr-1.5 h-4 w-4" />
-            카톡 상담
-          </LinkButton>
         </div>
       </div>
     </header>
@@ -385,6 +378,14 @@ function Footer() {
           <p className="font-bold text-[#DDEDEE]">대표 전화: 02-312-0540</p>
           <p className="font-bold text-[#DDEDEE]">이메일: testing@ysiet.com</p>
           <p className="font-bold text-[#DDEDEE]">팩스: 02-312-0560</p>
+          <a
+            href={KAKAO_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="font-bold text-[#FEE500] underline-offset-4 hover:underline"
+          >
+            카카오톡 채널: @와이에스환경기술연구원
+          </a>
         </div>
       </div>
       <div className="mx-auto mt-10 max-w-7xl border-t border-white/15 pt-6 text-sm text-[#C4D8DB]">
@@ -397,24 +398,16 @@ function Footer() {
 function MobileStickyButtons() {
   return (
     <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 rounded-full bg-[#2D5056] p-2 shadow-2xl md:hidden">
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-2 gap-2">
         <a
           href="tel:02-312-0540"
-          className="rounded-full bg-white px-2 py-3 text-center text-xs font-black text-[#254E58]"
+          className="rounded-full bg-white px-4 py-3 text-center text-sm font-black text-[#254E58]"
         >
           전화 상담
         </a>
         <a
-          href={KAKAO_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-full bg-[#FEE500] px-2 py-3 text-center text-xs font-black text-[#2A2A2A]"
-        >
-          카톡 상담
-        </a>
-        <a
           href="mailto:testing@ysiet.com"
-          className="rounded-full bg-[#3B8E92] px-2 py-3 text-center text-xs font-black text-white"
+          className="rounded-full bg-[#3B8E92] px-4 py-3 text-center text-sm font-black text-white"
         >
           이메일 견적
         </a>
@@ -449,14 +442,6 @@ function HomePage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <LinkButton href="#contact" className="h-14 px-8 text-base">
                 성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
-              </LinkButton>
-              <LinkButton
-                href={KAKAO_URL}
-                variant="kakao"
-                className="h-14 px-8 text-base"
-              >
-                <MessageCircle className="mr-2 h-5 w-5" />
-                카톡 상담
               </LinkButton>
               <LinkButton
                 href="#fees"
@@ -505,9 +490,9 @@ function HomePage() {
                 </p>
               </div>
               <div className="rounded-2xl border border-[#DDE9EB] bg-[#F7FAF9] p-4">
-                <p className="text-sm font-bold text-[#6B8288]">카카오톡 상담</p>
+                <p className="text-sm font-bold text-[#6B8288]">대표 전화</p>
                 <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#263F46]">
-                  빠른 문의 가능
+                  02-312-0540
                 </p>
               </div>
             </div>
@@ -520,12 +505,10 @@ function HomePage() {
                 <Phone className="h-5 w-5" /> 전화 상담
               </a>
               <a
-                href={KAKAO_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center gap-2 rounded-2xl bg-[#FEE500] px-4 py-4 text-center font-black text-[#2A2A2A] transition hover:bg-[#F6D900]"
+                href="mailto:testing@ysiet.com"
+                className="flex items-center justify-center gap-2 rounded-2xl border border-[#D9E6E8] bg-white px-4 py-4 text-center font-black text-[#254E58] transition hover:border-[#8AB7BC]"
               >
-                <MessageCircle className="h-5 w-5" /> 카톡 상담
+                <Mail className="h-5 w-5" /> 이메일 견적
               </a>
             </div>
           </Card>
@@ -583,9 +566,8 @@ function HomePage() {
               YSIET에서는 먼저 필요한 성적서의 항목, 납기, 준비서류부터 확인하실 수 있습니다
             </p>
           </div>
-          <LinkButton href={KAKAO_URL} variant="kakao" className="mt-5 md:mt-0">
-            <MessageCircle className="mr-2 h-5 w-5" />
-            카톡으로 바로 문의
+          <LinkButton href="#contact" className="mt-5 md:mt-0">
+            바로 문의하기
           </LinkButton>
         </div>
       </section>
@@ -603,7 +585,7 @@ function HomePage() {
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {customerPaths.map((item) => (
-              <a key={item.title} href={KAKAO_URL} target="_blank" rel="noreferrer" className="group">
+              <a key={item.title} href="#contact" className="group">
                 <Card className="h-full transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_26px_75px_rgba(37,78,88,0.1)]">
                   <div className="p-7">
                     <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E6F4F2] text-[#3B8E92]">
@@ -722,9 +704,8 @@ function HomePage() {
                 제품명과 필요 항목을 보내주시면 실제 견적 기준으로 안내드립니다
               </p>
             </div>
-            <LinkButton href={KAKAO_URL} variant="kakao" className="mt-5 md:mt-0">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              카톡 견적 요청
+            <LinkButton href="#contact" variant="light" className="mt-5 md:mt-0">
+              견적 요청하기
             </LinkButton>
           </div>
         </div>
@@ -860,14 +841,6 @@ function HomePage() {
                   <Phone className="mr-2 h-5 w-5" /> 02-312-0540
                 </a>
                 <a
-                  href={KAKAO_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-14 items-center justify-center rounded-full bg-[#FEE500] px-8 font-black text-[#2A2A2A]"
-                >
-                  <MessageCircle className="mr-2 h-5 w-5" /> 카톡 상담
-                </a>
-                <a
                   href="mailto:testing@ysiet.com"
                   className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/12 px-8 font-black text-white"
                 >
@@ -895,13 +868,10 @@ function HomePage() {
                 ))}
               </ul>
               <a
-                href={KAKAO_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#FEE500] font-black text-[#2A2A2A]"
+                href="mailto:testing@ysiet.com"
+                className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#2F6F73] font-black text-white"
               >
-                <MessageCircle className="mr-2 h-5 w-5" />
-                카톡으로 빠른 견적 요청
+                빠른 견적 요청하기
               </a>
               <div className="mt-5 flex gap-3 rounded-2xl bg-[#F3F8F7] p-4 text-sm font-bold leading-6 text-[#4E666D]">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#3B8E92]" />
@@ -969,10 +939,6 @@ function AboutPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <LinkButton href="/#contact" className="h-14 px-8 text-base">
               성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
-            </LinkButton>
-            <LinkButton href={KAKAO_URL} variant="kakao" className="h-14 px-8 text-base">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              카톡 상담
             </LinkButton>
             <LinkButton href="/" variant="secondary" className="h-14 px-8 text-base">
               메인으로 돌아가기
@@ -1053,9 +1019,8 @@ function AboutPage() {
                 필요한 성적서의 항목, 납기, 준비서류를 바로 상담받으실 수 있습니다
               </p>
             </div>
-            <LinkButton href={KAKAO_URL} variant="kakao" className="mt-5 md:mt-0">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              카톡으로 문의하기
+            <LinkButton href="/#contact" className="mt-5 md:mt-0">
+              성적서 문의하기
             </LinkButton>
           </div>
         </div>
