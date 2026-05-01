@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   ChevronDown,
   ClipboardCheck,
-  FileText,
   HelpCircle,
   Mail,
   MapPin,
@@ -26,7 +25,7 @@ const KOLAS_LOGO = "/kolas-symbol.jpg";
 const MFDS_LOGO = "/mfds-symbol.jpg";
 
 const SECTION = "py-12 lg:py-14";
-const SECTION_TIGHT = "py-10 lg:py-12";
+const SECTION_TIGHT = "py-8 lg:py-10";
 
 function cx(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -75,9 +74,9 @@ function Card({ children, className = "" }) {
   );
 }
 
-function SectionTitle({ eyebrow, titleText, description, light = false }) {
+function SectionTitle({ eyebrow, titleText, description, light = false, compact = false }) {
   return (
-    <div className="mb-8">
+    <div className={compact ? "mb-6" : "mb-8"}>
       <p
         className={cx(
           "mb-4 text-[11px] font-black uppercase tracking-[0.24em]",
@@ -226,22 +225,22 @@ const strongReasons = [
   {
     icon: <ShieldCheck className="h-6 w-6" />,
     title: "공식 지정기관",
-    desc: "식약처 지정 화장품 시험검사기관 제18호로 자가품질 위탁검사 상담이 가능합니다",
+    desc: "식약처 지정 화장품 시험검사기관 제18호",
   },
   {
     icon: <Award className="h-6 w-6" />,
     title: "국제공인 체계",
-    desc: "KOLAS 제364호 국제공인시험기관의 품질 체계를 기반으로 분석합니다",
+    desc: "KOLAS 제364호 국제공인시험기관",
   },
   {
     icon: <TimerReset className="h-6 w-6" />,
     title: "납기 중심 상담",
-    desc: "출시일과 납품일이 정해진 고객에게 필요한 가능 여부를 먼저 확인합니다",
+    desc: "출시일과 납품일 기준 가능 여부 우선 확인",
   },
   {
     icon: <Users className="h-6 w-6" />,
     title: "처음 의뢰도 가능",
-    desc: "검사항목을 몰라도 제품명, 제형, 성적서 용도, 희망 납기 기준으로 안내합니다",
+    desc: "제품명, 제형, 성적서 용도, 희망 납기 기준 안내",
   },
 ];
 
@@ -647,21 +646,21 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="strength" className={cx("overflow-hidden bg-[#FAFCFC]", SECTION)}>
+      <section id="strength" className="overflow-hidden bg-[#FAFCFC] py-10 lg:py-11">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="overflow-hidden rounded-[34px] border border-[#D8E5E7] bg-white shadow-[0_28px_76px_rgba(36,72,82,0.075)]">
-            <div className="grid lg:grid-cols-[0.88fr_1.12fr]">
-              <div className="bg-[#315F66] p-8 text-white lg:p-10">
-                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#DDF4F1]">
+          <div className="overflow-hidden rounded-[30px] border border-[#D8E5E7] bg-white shadow-[0_24px_64px_rgba(36,72,82,0.07)]">
+            <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
+              <div className="bg-[#315F66] p-7 text-white lg:p-8">
+                <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#DDF4F1]">
                   Why YSIET
                 </p>
-                <h2 className="whitespace-nowrap text-[clamp(1.08rem,2.32vw,2rem)] font-black leading-[1.08] tracking-[-0.045em]">
-                  신뢰근거와 문의전환을 한 섹션에 담았습니다
+                <h2 className="whitespace-nowrap text-[clamp(1.05rem,2.1vw,1.78rem)] font-black leading-[1.08] tracking-[-0.045em]">
+                  신뢰근거와 문의전환을 압축했습니다
                 </h2>
-                <p className="mt-5 leading-8 text-[#EFFAFA]">
-                  식약처 지정, KOLAS 공인, 납기 중심 상담, 처음 의뢰 지원까지 고객이 결정하는 이유만 남겼습니다.
+                <p className="mt-4 leading-7 text-[#EFFAFA]">
+                  지정기관, 공인체계, 납기 중심 상담, 처음 의뢰 지원만 남겼습니다.
                 </p>
-                <LinkButton href="#contact" variant="light" className="mt-8">
+                <LinkButton href="#contact" variant="light" className="mt-6 h-11 px-5">
                   제품명·희망납기 보내기
                 </LinkButton>
               </div>
@@ -670,15 +669,15 @@ function HomePage() {
                 {strongReasons.map((item) => (
                   <div
                     key={item.title}
-                    className="border-b border-[#D8E5E7] p-7 md:border-l odd:md:border-l-0 md:[&:nth-child(n+3)]:border-b-0"
+                    className="border-b border-[#D8E5E7] p-5 md:border-l odd:md:border-l-0 md:[&:nth-child(n+3)]:border-b-0"
                   >
-                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[#EDF5F5] text-[#4F888B]">
                       {item.icon}
                     </div>
-                    <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                    <h3 className="whitespace-nowrap text-lg font-black tracking-[-0.03em] text-[#263F46]">
                       {item.title}
                     </h3>
-                    <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
+                    <p className="mt-2 leading-6 text-[#60767B]">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -687,23 +686,24 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="services" className={cx("overflow-hidden bg-[#F1F7F6]", SECTION)}>
+      <section id="services" className={cx("overflow-hidden bg-[#F1F7F6]", SECTION_TIGHT)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Testing Scope"
             titleText="필요한 성적서 유형만 빠르게 확인하세요"
             description="일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다."
+            compact
           />
 
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {serviceGroups.map((item) => (
               <Card key={item.title}>
-                <div className="p-7">
-                  <CheckCircle2 className="mb-5 h-6 w-6 text-[#4F888B]" />
-                  <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                <div className="p-6">
+                  <CheckCircle2 className="mb-4 h-6 w-6 text-[#4F888B]" />
+                  <h3 className="whitespace-nowrap text-lg font-black tracking-[-0.03em] text-[#263F46]">
                     {item.title}
                   </h3>
-                  <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
+                  <p className="mt-3 leading-7 text-[#60767B]">{item.desc}</p>
                 </div>
               </Card>
             ))}
@@ -711,16 +711,17 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="fees" className={cx("overflow-hidden bg-[#FAFCFC]", SECTION)}>
+      <section id="fees" className={cx("overflow-hidden bg-[#FAFCFC]", SECTION_TIGHT)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Fee Guide"
             titleText="대표 수수료 확인"
             description="실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수 있습니다."
+            compact
           />
 
           <div className="hidden overflow-hidden rounded-[24px] border border-[#D8E5E7] bg-white md:block">
-            <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr] bg-[#EEF5F4] px-5 py-4 text-sm font-black text-[#263F46]">
+            <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr] bg-[#EEF5F4] px-5 py-3 text-sm font-black text-[#263F46]">
               <div>대표 시험항목</div>
               <div>수수료</div>
               <div>비고</div>
@@ -728,7 +729,7 @@ function HomePage() {
             {feeRows.map(([name, price, note]) => (
               <div
                 key={name}
-                className="grid grid-cols-[1.2fr_0.8fr_0.8fr] border-t border-[#D8E5E7] px-5 py-4"
+                className="grid grid-cols-[1.2fr_0.8fr_0.8fr] border-t border-[#D8E5E7] px-5 py-3"
               >
                 <div className="font-bold text-[#4F656A]">{name}</div>
                 <div className="font-black text-[#285F67]">{price}</div>
@@ -749,35 +750,36 @@ function HomePage() {
             ))}
           </div>
 
-          <div className="mt-6 rounded-[24px] bg-[#315F66] p-6 text-white md:flex md:items-center md:justify-between">
+          <div className="mt-5 rounded-[22px] bg-[#315F66] p-5 text-white md:flex md:items-center md:justify-between">
             <div>
-              <p className="text-[clamp(1rem,2.2vw,1.2rem)] font-black">
+              <p className="text-[clamp(1rem,2.2vw,1.15rem)] font-black">
                 비용을 보기 전에 제품명과 납기를 먼저 알려주세요
               </p>
               <p className="mt-2 text-[#EFFAFA]">
                 항목과 긴급 여부에 따라 실제 견적 기준으로 안내드립니다.
               </p>
             </div>
-            <LinkButton href="#contact" variant="light" className="mt-5 md:mt-0">
+            <LinkButton href="#contact" variant="light" className="mt-5 h-11 px-5 md:mt-0">
               납기 가능 여부 먼저 확인
             </LinkButton>
           </div>
         </div>
       </section>
 
-      <section id="documents" className={cx("overflow-hidden bg-[#F1F7F6]", SECTION_TIGHT)}>
+      <section id="documents" className="overflow-hidden bg-[#F1F7F6] py-7 lg:py-8">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Before Request"
             titleText="문의 전 이것만 준비하시면 빠릅니다"
             description="모든 항목을 정확히 몰라도 괜찮습니다. 제품 정보와 희망 납기만 있어도 우선 검토가 가능합니다."
+            compact
           />
 
           <div className="grid gap-3 md:grid-cols-2">
             {documents.map((item) => (
               <div
                 key={item}
-                className="flex gap-3 rounded-[20px] border border-[#D8E5E7] bg-white/86 p-5 shadow-sm"
+                className="flex gap-3 rounded-[18px] border border-[#D8E5E7] bg-white/88 px-5 py-3 shadow-sm"
               >
                 <ClipboardCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
                 <p className="font-bold text-[#4F656A]">{item}</p>
@@ -787,21 +789,21 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="process" className={cx("overflow-hidden bg-[#FAFCFC]", SECTION_TIGHT)}>
+      <section id="process" className="overflow-visible bg-[#FAFCFC] pt-8 pb-16 lg:pt-9 lg:pb-20">
         <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle eyebrow="Process" titleText="성적서 발급 4단계" />
+          <SectionTitle eyebrow="Process" titleText="성적서 발급 4단계" compact />
 
-          <div className="grid gap-5 md:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-4">
             {process.map(([step, name, desc]) => (
-              <Card key={step}>
-                <div className="p-7">
-                  <p className="text-5xl font-black tracking-[-0.05em] text-[#D6E7E9]">
+              <Card key={step} className="relative z-10">
+                <div className="p-5">
+                  <p className="text-4xl font-black tracking-[-0.05em] text-[#D6E7E9]">
                     {step}
                   </p>
-                  <h3 className="mt-4 text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                  <h3 className="mt-3 text-lg font-black tracking-[-0.03em] text-[#263F46]">
                     {name}
                   </h3>
-                  <p className="mt-3 leading-7 text-[#60767B]">{desc}</p>
+                  <p className="mt-2 leading-6 text-[#60767B]">{desc}</p>
                 </div>
               </Card>
             ))}
@@ -809,7 +811,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className={cx("overflow-hidden bg-[#FAFCFC]", SECTION)}>
+      <section id="contact" className="overflow-hidden bg-[#FAFCFC] pt-0 pb-12 lg:pb-14">
         <div className="mx-auto max-w-7xl px-5">
           <div className="overflow-hidden rounded-[34px] bg-[#263F46] text-white shadow-[0_34px_90px_rgba(38,63,70,0.20)]">
             <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
@@ -877,17 +879,17 @@ function HomePage() {
         </div>
       </section>
       
-      <section id="faq" className={cx("overflow-hidden bg-[#F1F7F6]", SECTION_TIGHT)}>
+      <section id="faq" className="overflow-hidden bg-[#F1F7F6] py-8 lg:py-9">
         <div className="mx-auto max-w-5xl px-5">
-          <SectionTitle eyebrow="FAQ" titleText="자주 묻는 질문" />
+          <SectionTitle eyebrow="FAQ" titleText="자주 묻는 질문" compact />
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {faqs.map(([q, a]) => (
               <details
                 key={q}
-                className="group rounded-[22px] border border-[#D8E5E7] bg-white p-6 shadow-sm"
+                className="group rounded-[20px] border border-[#D8E5E7] bg-white px-6 py-4 shadow-sm"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-black text-[#263F46]">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-black text-[#263F46]">
                   <span className="flex items-center gap-3">
                     <HelpCircle className="h-5 w-5 shrink-0 text-[#4F888B]" />
                     {q}
