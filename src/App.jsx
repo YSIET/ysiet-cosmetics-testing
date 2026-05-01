@@ -755,7 +755,7 @@ function HomePage() {
           <div className="absolute bottom-[-14rem] left-[35%] h-[28rem] w-[28rem] rounded-full bg-[#F7F3E8] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-11 px-5 py-14 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-18">
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-14 lg:grid-cols-[minmax(0,1fr)_minmax(430px,500px)] lg:items-center lg:py-16">
           <div className="min-w-0">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#CFE1E2] bg-white/76 px-4 py-2 text-sm font-black text-[#2F6770] shadow-sm">
               <ShieldCheck className="h-4 w-4" />
@@ -766,8 +766,8 @@ function HomePage() {
               화장품 품질검사 위탁 서비스
             </p>
 
-            <h1 className="whitespace-nowrap text-[clamp(1.18rem,3.55vw,3.18rem)] font-black leading-[1.05] tracking-[-0.06em] text-[#243F46]">
-              성적서가 필요한 날짜가 정해졌다면 먼저 가능 여부부터 확인하세요
+            <h1 className="whitespace-nowrap text-[clamp(1.75rem,3.05vw,2.85rem)] font-black leading-[1.05] tracking-[-0.06em] text-[#243F46]">
+              성적서 납기 가능 여부를 먼저 확인하세요
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4F656A]">
@@ -790,7 +790,7 @@ function HomePage() {
 
             <div className="mt-8 overflow-hidden rounded-[30px] border border-[#CFE1E2] bg-white shadow-[0_20px_48px_rgba(36,72,82,0.08)]">
               <div className="bg-[#2F6770] px-6 py-4 text-white">
-                <p className="whitespace-nowrap text-[clamp(0.9rem,1.6vw,1.12rem)] font-black tracking-[-0.03em]">
+                <p className="whitespace-nowrap text-[clamp(0.86rem,1.26vw,1.02rem)] font-black tracking-[-0.03em]">
                   출시와 납품 일정에 맞춰 성적서 가능 여부부터 빠르게 확인해주는 화장품 품질검사 위탁기관
                 </p>
               </div>
@@ -1512,55 +1512,6 @@ function AboutPage() {
                     <Mail className="mr-2 h-5 w-5" />
                     이메일 견적
                   </a>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className={cx("overflow-hidden", SECTION, BG_SOFT)}>
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle
-            eyebrow="Location"
-            titleText="찾아오시는 길"
-            description="본사는 종로 인사동에 위치하며 연세대학교와 연계된 연구 기반 서비스를 함께 제공합니다"
-          />
-
-          <div className="grid gap-5 md:grid-cols-2">
-            <Card>
-              <div className="p-7">
-                <MapPin className="mb-5 h-6 w-6 text-[#4F888B]" />
-                <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#27434A]">
-                  본사 종로
-                </h3>
-                <p className="mt-4 leading-7 text-[#60767B]">
-                  서울특별시 종로구 인사동5길 42 종로빌딩 10층
-                </p>
-                <p className="mt-3 leading-7 text-[#60767B]">
-                  종각역 3번 출구 도보 5분 이내, 안국역 6번 출구 도보 10분 이내
-                </p>
-              </div>
-            </Card>
-
-            <Card>
-              <div className="p-7">
-                <Building2 className="mb-5 h-6 w-6 text-[#4F888B]" />
-                <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#27434A]">
-                  연세대학교 연계 연구 기반
-                </h3>
-                <p className="mt-4 leading-7 text-[#60767B]">
-                  연세대학교 교원창업기업으로 연구 기반 전문성과 시험분석 서비스를 연결합니다
-                </p>
-                <div className="mt-5 flex items-center gap-4 rounded-2xl border border-[#D8E5E7] bg-[#F8FBFB] p-4">
-                  <img
-                    src={YONSEI_LOGO}
-                    alt="연세대학교 심볼"
-                    className="h-12 w-12 rounded-full object-cover"
-                  />
-                  <p className="font-black text-[#27434A]">
-                    연세대학교 교원창업기업
-                  </p>
                 </div>
               </div>
             </Card>
