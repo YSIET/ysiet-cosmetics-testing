@@ -258,20 +258,20 @@ const aboutCards = [
     desc: "YS Institute of Environmental Technology",
   },
   {
-    title: "지정 현황",
+    title: "기관 지정",
     desc: "식약처 지정 화장품 시험검사기관 제18호",
   },
   {
-    title: "공인 현황",
+    title: "공인 체계",
     desc: "KOLAS 국제공인시험기관 제364호",
-  },
-  {
-    title: "기관 성격",
-    desc: "연세대학교 교원창업기업",
   },
   {
     title: "대표이사",
     desc: "엄유진 박사",
+  },
+  {
+    title: "소재지",
+    desc: "서울시 종로구 인사동5길 42 종로빌딩 10층",
   },
 ];
 
@@ -279,18 +279,52 @@ const aboutStrengths = [
   {
     icon: <ShieldCheck className="h-6 w-6" />,
     title: "지정기관 기반 신뢰",
-    desc: "화장품 품질검사와 자가품질 위탁검사 상담을 공식 지정 근거에 기반해 안내합니다",
+    desc: "식약처 지정 화장품 시험검사기관으로 자가품질 위탁검사와 품질검사 상담을 공식 지정 근거에 기반해 안내합니다",
   },
   {
     icon: <Award className="h-6 w-6" />,
-    title: "공인시험기관 체계",
-    desc: "KOLAS 공인기관의 품질 체계와 분석 절차를 바탕으로 시험 서비스를 제공합니다",
+    title: "국제공인시험기관 체계",
+    desc: "KOLAS 인정 시험분석 품질시스템과 기술력을 바탕으로 분석결과의 신뢰성을 높입니다",
   },
   {
     icon: <Microscope className="h-6 w-6" />,
-    title: "연구 기반 전문성",
-    desc: "연세대학교 교원창업기업으로 연구 기반의 분석 전문성과 현장형 시험분석 서비스를 함께 제공합니다",
+    title: "석박사급 연구인력",
+    desc: "화장품 완제품, 원료, 유해물질, 기능성 성분 분석을 전문 연구인력이 수행합니다",
   },
+];
+
+const aboutServiceFields = [
+  {
+    title: "일반 화장품 분석",
+    desc: "국내 제조 및 수입 화장품, 화장비누, 유통화장품 안전관리 항목, 중금속 및 유해물질 항목을 확인합니다",
+  },
+  {
+    title: "기능성 화장품 분석",
+    desc: "미백, 주름개선, 자외선차단 등 기능성화장품 품질관리와 주성분 확인, 함량 및 허용치 검사를 지원합니다",
+  },
+  {
+    title: "화장품 원료 분석",
+    desc: "원료와 부자재의 납품용 위해성 분석, 기능성 원료 효능 평가, 원재료 관련 분석을 지원합니다",
+  },
+  {
+    title: "화장품 R&D 지원",
+    desc: "신제품 개발, 원재료 연구, 시험방법 유효성 확인시험, 신제품 공동 개발과 컨설팅을 함께 지원합니다",
+  },
+];
+
+const aboutProcess = [
+  ["01", "의뢰접수와 상담", "시험의뢰서, 제품정보, 시험항목, 희망 납기를 먼저 확인합니다"],
+  ["02", "시료 전달과 수납확인", "우편 또는 직접 접수 후 수수료 납입 시점부터 분석을 진행합니다"],
+  ["03", "시험분석 진행", "전문 시험요원이 인증 시험법과 표준물질 관리 체계를 바탕으로 분석합니다"],
+  ["04", "성적서 발급", "분석 완료 후 요청 방식에 따라 성적서를 이메일 또는 우편으로 안내합니다"],
+];
+
+const aboutValues = [
+  "정확",
+  "정밀",
+  "정직",
+  "디테일",
+  "변화",
 ];
 
 const faqs = [
@@ -933,27 +967,66 @@ function AboutPage() {
         <div className="absolute inset-0">
           <div className="absolute -left-36 top-32 h-[30rem] w-[30rem] rounded-full bg-[#DDEFE9] blur-3xl" />
           <div className="absolute -right-32 -top-36 h-[38rem] w-[38rem] rounded-full bg-[#D9EAF0] blur-3xl" />
+          <div className="absolute bottom-[-16rem] left-[42%] h-[28rem] w-[28rem] rounded-full bg-[#FAF6EB] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 py-20 lg:py-24">
-          <p className="mb-4 text-[clamp(0.95rem,2vw,1.2rem)] font-black tracking-[0.03em] text-[#3B8E92]">
-            About YSIET
-          </p>
-          <h1 className="whitespace-nowrap text-[clamp(1.85rem,4.1vw,3.65rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#263F46]">
-            와이에스환경기술연구원 기관소개
-          </h1>
-          <p className="mt-6 max-w-4xl text-lg leading-8 text-[#4E666D]">
-            화장품 품질검사와 자가품질 위탁검사를 위한 시험분석 서비스를 제공합니다
-          </p>
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:py-24">
+          <div>
+            <p className="mb-5 whitespace-nowrap text-[clamp(1.05rem,2vw,1.45rem)] font-black tracking-[-0.02em] text-[#3B8E92]">
+              화장품시험검사기관 소개
+            </p>
+            <h1 className="whitespace-nowrap text-[clamp(1.9rem,4vw,3.35rem)] font-black leading-[1.05] tracking-[-0.06em] text-[#263F46]">
+              신뢰할 수 있는 분석결과를 제공합니다
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#4E666D]">
+              와이에스환경기술연구원은 KOLAS 국제공인시험기관이자 식약처 지정 화장품 시험검사기관으로,
+              화장품 품질검사와 시험분석, 품질보증 서비스를 제공합니다
+            </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <LinkButton href="/#contact" className="h-14 px-8 text-base">
-              성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
-            </LinkButton>
-            <LinkButton href="/" variant="secondary" className="h-14 px-8 text-base">
-              메인으로 돌아가기
-            </LinkButton>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <LinkButton href="/#contact" className="h-14 px-8 text-base">
+                성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
+              </LinkButton>
+              <LinkButton href={KAKAO_URL} variant="yellow" className="h-14 px-8 text-base">
+                카톡문의
+              </LinkButton>
+              <LinkButton href="/" variant="secondary" className="h-14 px-8 text-base">
+                메인으로 돌아가기
+              </LinkButton>
+            </div>
           </div>
+
+          <Card className="border-0 bg-white/90 p-3 shadow-[0_28px_72px_rgba(37,78,88,0.11)]">
+            <div className="rounded-[22px] bg-[#3F7F83] p-7 text-white">
+              <p className="mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#D7F0EF]">
+                Institution Profile
+              </p>
+              <h2 className="whitespace-nowrap text-[clamp(1.2rem,2.2vw,1.8rem)] font-black tracking-[-0.04em]">
+                지정과 공인으로 확인되는 시험기관
+              </h2>
+            </div>
+
+            <div className="grid gap-3 p-5">
+              <div className="rounded-2xl border border-[#DDE9EB] bg-[#F7FAF9] p-4">
+                <p className="text-sm font-bold text-[#6B8288]">화장품 시험검사기관</p>
+                <p className="mt-1 text-xl font-black tracking-[-0.04em] text-[#263F46]">
+                  식약처 지정 제18호
+                </p>
+              </div>
+              <div className="rounded-2xl border border-[#DDE9EB] bg-[#F7FAF9] p-4">
+                <p className="text-sm font-bold text-[#6B8288]">국제공인시험기관</p>
+                <p className="mt-1 text-xl font-black tracking-[-0.04em] text-[#263F46]">
+                  KOLAS 제364호
+                </p>
+              </div>
+              <div className="rounded-2xl border border-[#DDE9EB] bg-[#F7FAF9] p-4">
+                <p className="text-sm font-bold text-[#6B8288]">상담과 접수</p>
+                <p className="mt-1 text-xl font-black tracking-[-0.04em] text-[#263F46]">
+                  1건 의뢰도 전문 상담
+                </p>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
@@ -962,7 +1035,7 @@ function AboutPage() {
           {[
             [ShieldCheck, "식약처 지정 제18호"],
             [Award, "KOLAS 제364호"],
-            [Microscope, "연세대학교 교원창업기업"],
+            [Microscope, "전문 시험분석 인력"],
             [Users, "대표이사 엄유진 박사"],
           ].map(([Icon, text]) => (
             <div key={text} className="flex items-center gap-3 py-5 md:px-5">
@@ -975,9 +1048,9 @@ function AboutPage() {
 
       <section className="mx-auto max-w-7xl px-5 py-20 lg:py-24">
         <SectionTitle
-          eyebrow="Institution Profile"
+          eyebrow="Company Overview"
           titleText="기관 기본정보"
-          description="방문자가 신뢰근거를 확인할 수 있도록 기관 정보를 별도 페이지에 정리했습니다"
+          description="시험기관 선택 전 확인해야 할 지정, 공인, 소재지, 연락 정보를 한눈에 정리했습니다"
         />
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -999,9 +1072,9 @@ function AboutPage() {
       <section className="overflow-hidden bg-[#EEF6F4] px-5 py-20 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <SectionTitle
-            eyebrow="Trust Point"
+            eyebrow="Why Reliable"
             titleText="시험기관으로서의 신뢰"
-            description="기관 규모보다 고객이 실제로 확인하고 싶은 지정, 공인, 전문성을 중심으로 안내합니다"
+            description="공식 지정과 국제공인 체계, 전문 연구인력, 분석결과 신뢰 보장 프로세스를 기반으로 시험분석 서비스를 제공합니다"
           />
 
           <div className="grid gap-5 md:grid-cols-3">
@@ -1019,19 +1092,150 @@ function AboutPage() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-8 rounded-[28px] border border-[#D9E6E8] bg-white/88 p-6 md:flex md:items-center md:justify-between">
-            <div>
-              <p className="text-xl font-black tracking-[-0.03em] text-[#263F46]">
-                기관 정보를 확인하셨다면
-              </p>
-              <p className="mt-2 leading-7 text-[#5B7278]">
-                필요한 성적서의 항목, 납기, 준비서류를 바로 상담받으실 수 있습니다
-              </p>
+      <section className="mx-auto max-w-7xl px-5 py-20 lg:py-24">
+        <SectionTitle
+          eyebrow="Testing Scope"
+          titleText="화장품 시험검사 서비스 분야"
+          description="완제품 품질검사부터 원료 분석, 기능성화장품, R&D 지원까지 제품 목적에 맞춰 상담합니다"
+        />
+
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {aboutServiceFields.map((item) => (
+            <Card key={item.title}>
+              <div className="p-7">
+                <CheckCircle2 className="mb-5 h-6 w-6 text-[#3B8E92]" />
+                <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                  {item.title}
+                </h3>
+                <p className="mt-4 leading-7 text-[#5B7278]">{item.desc}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="overflow-hidden bg-[#3F7F83] px-5 py-20 text-white lg:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SectionTitle
+            eyebrow="Service Process"
+            titleText="의뢰부터 성적서까지 4단계"
+            description="시험의뢰서, 시료, 수수료, 분석 진행, 성적서 발급까지 고객이 헷갈리지 않도록 안내합니다"
+            light
+          />
+
+          <div className="grid gap-5 md:grid-cols-4">
+            {aboutProcess.map(([step, name, desc]) => (
+              <div
+                key={step}
+                className="rounded-[24px] border border-white/18 bg-white/[0.10] p-7"
+              >
+                <p className="text-5xl font-black tracking-[-0.05em] text-[#D7F0EF]">
+                  {step}
+                </p>
+                <h3 className="mt-5 whitespace-nowrap text-xl font-black tracking-[-0.03em]">
+                  {name}
+                </h3>
+                <p className="mt-4 leading-7 text-[#EEF8F8]">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-20 lg:py-24">
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <SectionTitle
+              eyebrow="Quality Philosophy"
+              titleText="정확한 분석이 고객의 경쟁력입니다"
+              description="와이에스환경기술연구원은 시험분석 서비스를 통해 신뢰할 수 있는 가치를 만들고, 고객기업의 경쟁력 향상에 기여하는 것을 목표로 합니다"
+            />
+            <div className="mt-[-1.5rem] flex flex-wrap gap-3">
+              {aboutValues.map((value) => (
+                <span
+                  key={value}
+                  className="rounded-full border border-[#D9E6E8] bg-white px-5 py-3 text-sm font-black text-[#2F6F73]"
+                >
+                  {value}
+                </span>
+              ))}
             </div>
-            <LinkButton href="/#contact" className="mt-5 md:mt-0">
-              성적서 문의하기
-            </LinkButton>
+          </div>
+
+          <Card>
+            <div className="p-8">
+              <p className="mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#3B8E92]">
+                Contact
+              </p>
+              <h3 className="whitespace-nowrap text-2xl font-black tracking-[-0.04em] text-[#263F46]">
+                기관 정보를 확인하셨다면 바로 상담하세요
+              </h3>
+              <p className="mt-4 leading-8 text-[#5B7278]">
+                필요한 성적서 용도, 제품명, 제형, 희망 납기, 검사항목을 알려주시면 우선 검토 후 안내드립니다
+              </p>
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <a
+                  href="tel:02-312-0540"
+                  className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#2F6F73] px-6 font-black text-white"
+                >
+                  <Phone className="mr-2 h-5 w-5" />
+                  전화 상담
+                </a>
+                <a
+                  href={KAKAO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#FEE500] px-6 font-black text-[#2D2926]"
+                >
+                  카톡문의
+                </a>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      <section className="overflow-hidden bg-[#EEF6F4] px-5 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SectionTitle
+            eyebrow="Location"
+            titleText="찾아오시는 길"
+            description="본사는 종로 인사동에 위치하며, 연세대학교 부설연구소와 함께 시험분석 및 연구 기반 서비스를 제공합니다"
+          />
+
+          <div className="grid gap-5 md:grid-cols-2">
+            <Card>
+              <div className="p-7">
+                <MapPin className="mb-5 h-6 w-6 text-[#3B8E92]" />
+                <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                  본사 종로
+                </h3>
+                <p className="mt-4 leading-7 text-[#5B7278]">
+                  서울특별시 종로구 인사동5길 42 종로빌딩 10층
+                </p>
+                <p className="mt-3 leading-7 text-[#5B7278]">
+                  종각역 3번 출구 도보 5분 이내, 안국역 6번 출구 도보 10분 이내
+                </p>
+              </div>
+            </Card>
+
+            <Card>
+              <div className="p-7">
+                <Microscope className="mb-5 h-6 w-6 text-[#3B8E92]" />
+                <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                  부설연구소 연세대학교
+                </h3>
+                <p className="mt-4 leading-7 text-[#5B7278]">
+                  서울특별시 서대문구 연세로 50 연세대학교
+                </p>
+                <p className="mt-3 leading-7 text-[#5B7278]">
+                  연구 기반 분석 전문성과 현장형 시험검사 서비스를 연결합니다
+                </p>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
