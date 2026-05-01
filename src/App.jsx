@@ -25,6 +25,13 @@ const YONSEI_LOGO = "/yonsei-symbol.jpg";
 const KOLAS_LOGO = "/kolas-symbol.jpg";
 const MFDS_LOGO = "/mfds-symbol.jpg";
 
+const SECTION = "py-14 lg:py-16";
+const SECTION_TIGHT = "py-12 lg:py-14";
+const BG_WHITE = "bg-[#FAFCFC]";
+const BG_SOFT = "bg-[#F1F7F6]";
+const BG_MIST = "bg-[#EEF5F4]";
+const BG_PANEL = "bg-[#F7FAFA]";
+
 function cx(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -72,7 +79,7 @@ function Card({ children, className = "" }) {
 
 function SectionTitle({ eyebrow, titleText, description, light = false }) {
   return (
-    <div className="mb-12">
+    <div className="mb-9">
       <p
         className={cx(
           "mb-4 text-[11px] font-black uppercase tracking-[0.22em]",
@@ -92,7 +99,7 @@ function SectionTitle({ eyebrow, titleText, description, light = false }) {
       {description ? (
         <p
           className={cx(
-            "mt-7 whitespace-nowrap text-[clamp(0.78rem,1.2vw,1.05rem)] leading-8",
+            "mt-5 whitespace-nowrap text-[clamp(0.78rem,1.2vw,1.05rem)] leading-8",
             light ? "text-[#EFFAFA]" : "text-[#60767B]"
           )}
         >
@@ -511,7 +518,7 @@ function BrandTrustBar() {
 function Footer({ showKakao = false }) {
   return (
     <footer className="border-t border-[#D8E5E7] bg-[#F3F6F6]">
-      <div className="mx-auto max-w-7xl px-5 py-12">
+      <div className="mx-auto max-w-7xl px-5 py-10">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="rounded-[28px] border border-[#D8E5E7] bg-white p-7">
             <div className="flex items-start gap-4">
@@ -601,7 +608,7 @@ function MobileStickyButtons() {
 
 function QuickActionSection() {
   return (
-    <section className="overflow-hidden border-t border-[#D8E5E7] bg-[#F3F6F6] py-20 lg:py-24">
+    <section className={cx("overflow-hidden border-t border-[#D8E5E7]", SECTION, BG_SOFT)}>
       <div className="mx-auto max-w-7xl px-5">
         <SectionTitle
           eyebrow="Quick Access"
@@ -653,7 +660,7 @@ function HomePage() {
           <div className="absolute bottom-[-14rem] left-[35%] h-[28rem] w-[28rem] rounded-full bg-[#F7F3E8] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.04fr_0.96fr] lg:items-start lg:py-24">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.04fr_0.96fr] lg:items-start lg:py-20">
           <div className="min-w-0 pt-2">
             <p className={heroServiceTitle}>화장품 품질검사 위탁 서비스</p>
 
@@ -742,52 +749,48 @@ function HomePage() {
 
       <BrandTrustBar />
 
-      <section
-        id="sales"
-        className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
-      >
-        <SectionTitle
-          eyebrow="Why YSIET"
-          titleText="비교하다가도 문의하게 되는 이유"
-          description="고객이 홈페이지에서 가장 먼저 알고 싶은 것은 기관의 규모가 아니라 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다"
-        />
+      <section id="sales" className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Why YSIET"
+            titleText="비교하다가도 문의하게 되는 이유"
+            description="고객이 홈페이지에서 가장 먼저 알고 싶은 것은 기관의 규모가 아니라 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다"
+          />
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {salesReasons.map((item) => (
-            <Card key={item.title}>
-              <div className="p-7">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
-                  {item.icon}
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {salesReasons.map((item) => (
+              <Card key={item.title}>
+                <div className="p-7">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
+                    {item.icon}
+                  </div>
+                  <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#27434A]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
                 </div>
-                <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#27434A]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        <div className="mt-8 rounded-[28px] border border-[#D8E5E7] bg-[#F7FAFA] p-6 md:flex md:items-center md:justify-between">
-          <div>
-            <p className="text-xl font-black tracking-[-0.03em] text-[#27434A]">
-              이미 여러 시험기관을 보고 오셨다면
-            </p>
-            <p className="mt-2 leading-7 text-[#60767B]">
-              YSIET에서는 먼저 필요한 성적서의 항목, 납기, 준비서류부터 확인하실 수 있습니다
-            </p>
+              </Card>
+            ))}
           </div>
-          <LinkButton href="#contact" className="mt-5 md:mt-0">
-            바로 문의하기
-          </LinkButton>
+
+          <div className="mt-7 rounded-[28px] border border-[#D8E5E7] bg-[#F7FAFA] p-6 md:flex md:items-center md:justify-between">
+            <div>
+              <p className="text-xl font-black tracking-[-0.03em] text-[#27434A]">
+                이미 여러 시험기관을 보고 오셨다면
+              </p>
+              <p className="mt-2 leading-7 text-[#60767B]">
+                YSIET에서는 먼저 필요한 성적서의 항목, 납기, 준비서류부터 확인하실 수 있습니다
+              </p>
+            </div>
+            <LinkButton href="#contact" className="mt-5 md:mt-0">
+              바로 문의하기
+            </LinkButton>
+          </div>
         </div>
       </section>
 
-      <section
-        id="paths"
-        className="overflow-hidden bg-[#EEF5F4] px-5 py-20 lg:py-24"
-      >
-        <div className="mx-auto max-w-7xl">
+      <section id="paths" className={cx("overflow-hidden", SECTION, BG_SOFT)}>
+        <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Start Here"
             titleText="어떤 상황이신가요"
@@ -814,7 +817,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-[#4B7D82] py-20 text-white lg:py-24">
+      <section className={cx("overflow-hidden bg-[#4B7D82] text-white", SECTION_TIGHT)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Key Points"
@@ -841,32 +844,31 @@ function HomePage() {
         </div>
       </section>
 
-      <section
-        id="services"
-        className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
-      >
-        <SectionTitle
-          eyebrow="Testing Services"
-          titleText="검사 서비스 한눈에"
-          description="일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다"
-        />
+      <section id="services" className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Testing Services"
+            titleText="검사 서비스 한눈에"
+            description="일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다"
+          />
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <div
-              key={service}
-              className="rounded-[22px] border border-[#D8E5E7] bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(36,72,82,0.07)]"
-            >
-              <CheckCircle2 className="mb-5 h-6 w-6 text-[#4F888B]" />
-              <p className="text-lg font-black leading-7 tracking-[-0.025em] text-[#27434A]">
-                {service}
-              </p>
-            </div>
-          ))}
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {services.map((service) => (
+              <div
+                key={service}
+                className="rounded-[22px] border border-[#D8E5E7] bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(36,72,82,0.07)]"
+              >
+                <CheckCircle2 className="mb-5 h-6 w-6 text-[#4F888B]" />
+                <p className="text-lg font-black leading-7 tracking-[-0.025em] text-[#27434A]">
+                  {service}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="fees" className="overflow-hidden bg-[#FBFCFC] py-20 lg:py-24">
+      <section id="fees" className={cx("overflow-hidden", SECTION, BG_PANEL)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Fee Guide"
@@ -922,46 +924,45 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
-            <SectionTitle
-              eyebrow="Self Quality Testing"
-              titleText="자가품질 위탁검사 안내"
-            />
-            <p className="mt-[-1.5rem] text-lg leading-8 text-[#60767B]">
-              품질검사 시설이 없는 경우 식약처 지정 시험검사기관과 품질검사 위탁계약을
-              체결하여 품질관리를 진행할 수 있습니다
-            </p>
-          </div>
+      <section className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div>
+              <SectionTitle
+                eyebrow="Self Quality Testing"
+                titleText="자가품질 위탁검사 안내"
+              />
+              <p className="mt-[-1.5rem] text-lg leading-8 text-[#60767B]">
+                품질검사 시설이 없는 경우 식약처 지정 시험검사기관과 품질검사 위탁계약을
+                체결하여 품질관리를 진행할 수 있습니다
+              </p>
+            </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              ["위탁계약", "최초 의뢰 또는 변경사항 발생 시 체결"],
-              ["계약비용", "무료, 우편비용 발생 시 실비 청구"],
-              ["분석 시작", "수수료 납입 시점부터 진행"],
-              ["성적서", "시험 완료 후 원본 우편 전달"],
-            ].map(([name, desc]) => (
-              <Card key={name}>
-                <div className="p-6">
-                  <p className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
-                    Check
-                  </p>
-                  <h3 className="text-2xl font-black tracking-[-0.035em] text-[#27434A]">
-                    {name}
-                  </h3>
-                  <p className="mt-4 leading-7 text-[#60767B]">{desc}</p>
-                </div>
-              </Card>
-            ))}
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                ["위탁계약", "최초 의뢰 또는 변경사항 발생 시 체결"],
+                ["계약비용", "무료, 우편비용 발생 시 실비 청구"],
+                ["분석 시작", "수수료 납입 시점부터 진행"],
+                ["성적서", "시험 완료 후 원본 우편 전달"],
+              ].map(([name, desc]) => (
+                <Card key={name}>
+                  <div className="p-6">
+                    <p className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
+                      Check
+                    </p>
+                    <h3 className="text-2xl font-black tracking-[-0.035em] text-[#27434A]">
+                      {name}
+                    </h3>
+                    <p className="mt-4 leading-7 text-[#60767B]">{desc}</p>
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section
-        id="documents"
-        className="overflow-hidden bg-[#EEF5F4] py-20 lg:py-24"
-      >
+      <section id="documents" className={cx("overflow-hidden", SECTION, BG_SOFT)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Before Request"
@@ -983,7 +984,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="process" className="overflow-hidden bg-white py-20 lg:py-24">
+      <section id="process" className={cx("overflow-hidden", SECTION, BG_WHITE)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle eyebrow="Process" titleText="성적서 발급 4단계" />
 
@@ -1005,103 +1006,101 @@ function HomePage() {
         </div>
       </section>
 
-      <section
-        id="trust"
-        className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
-      >
-        <SectionTitle eyebrow="Trust Proof" titleText="신뢰근거 확인" />
+      <section id="trust" className={cx("overflow-hidden", SECTION, BG_PANEL)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle eyebrow="Trust Proof" titleText="신뢰근거 확인" />
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {trustItems.map((item) => (
-            <Card key={item.title}>
-              <div className="p-7">
-                <div className="mb-6 flex h-14 w-20 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
-                  {item.logo ? (
-                    <img
-                      src={item.logo}
-                      alt={item.logoAlt}
-                      className={item.logoType === "wide" ? "h-11 w-16 object-contain" : "h-11 w-11 object-contain"}
-                    />
-                  ) : (
-                    item.icon
-                  )}
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {trustItems.map((item) => (
+              <Card key={item.title}>
+                <div className="p-7">
+                  <div className="mb-6 flex h-14 w-20 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
+                    {item.logo ? (
+                      <img
+                        src={item.logo}
+                        alt={item.logoAlt}
+                        className={item.logoType === "wide" ? "h-11 w-16 object-contain" : "h-11 w-11 object-contain"}
+                      />
+                    ) : (
+                      item.icon
+                    )}
+                  </div>
+                  <h3 className="text-xl font-black tracking-[-0.03em] text-[#27434A]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
                 </div>
-                <h3 className="text-xl font-black tracking-[-0.03em] text-[#27434A]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
-              </div>
-            </Card>
-          ))}
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section
-        id="contact"
-        className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
-      >
-        <div className="overflow-hidden rounded-[32px] bg-[#4B7D82] p-8 text-white shadow-[0_30px_80px_rgba(62,123,127,0.16)] md:p-12">
-          <div className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
-            <div>
-              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#DDF4F1]">
-                Request Quote
-              </p>
-              <h2 className="whitespace-nowrap text-[clamp(1.08rem,3vw,2.55rem)] font-black leading-[1.08] tracking-[-0.05em]">
-                성적서 납기를 먼저 알려주세요
-              </h2>
-              <p className={`mt-7 ${oneLineLight}`}>
-                제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면 우선 검토 후 안내드립니다
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="tel:02-312-0540"
-                  className="inline-flex h-14 items-center justify-center rounded-full bg-white px-8 font-black text-[#2E525A]"
-                >
-                  <Phone className="mr-2 h-5 w-5" /> 02-312-0540
-                </a>
+      <section id="contact" className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="overflow-hidden rounded-[32px] bg-[#4B7D82] p-8 text-white shadow-[0_30px_80px_rgba(62,123,127,0.16)] md:p-12">
+            <div className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
+              <div>
+                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#DDF4F1]">
+                  Request Quote
+                </p>
+                <h2 className="whitespace-nowrap text-[clamp(1.08rem,3vw,2.55rem)] font-black leading-[1.08] tracking-[-0.05em]">
+                  성적서 납기를 먼저 알려주세요
+                </h2>
+                <p className={`mt-7 ${oneLineLight}`}>
+                  제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면 우선 검토 후 안내드립니다
+                </p>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href="tel:02-312-0540"
+                    className="inline-flex h-14 items-center justify-center rounded-full bg-white px-8 font-black text-[#2E525A]"
+                  >
+                    <Phone className="mr-2 h-5 w-5" /> 02-312-0540
+                  </a>
+                  <a
+                    href="mailto:testing@ysiet.com"
+                    className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/12 px-8 font-black text-white"
+                  >
+                    <Mail className="mr-2 h-5 w-5" /> 이메일 견적
+                  </a>
+                </div>
+              </div>
+
+              <div className="rounded-[26px] bg-white p-6 text-[#27434A]">
+                <p className="text-sm font-black text-[#4F888B]">
+                  견적 요청 시 알려주세요
+                </p>
+                <ul className="mt-4 space-y-3">
+                  {[
+                    "제품명 / 제형",
+                    "희망 검사항목",
+                    "성적서 제출처",
+                    "희망 납기",
+                    "시료 준비 가능일",
+                  ].map((item) => (
+                    <li key={item} className="flex items-center gap-3 font-bold">
+                      <CheckCircle2 className="h-5 w-5 shrink-0 text-[#4F888B]" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
                 <a
                   href="mailto:testing@ysiet.com"
-                  className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/12 px-8 font-black text-white"
+                  className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#3E7B7F] font-black text-white"
                 >
-                  <Mail className="mr-2 h-5 w-5" /> 이메일 견적
+                  빠른 견적 요청하기
                 </a>
-              </div>
-            </div>
-
-            <div className="rounded-[26px] bg-white p-6 text-[#27434A]">
-              <p className="text-sm font-black text-[#4F888B]">
-                견적 요청 시 알려주세요
-              </p>
-              <ul className="mt-4 space-y-3">
-                {[
-                  "제품명 / 제형",
-                  "희망 검사항목",
-                  "성적서 제출처",
-                  "희망 납기",
-                  "시료 준비 가능일",
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 font-bold">
-                    <CheckCircle2 className="h-5 w-5 shrink-0 text-[#4F888B]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="mailto:testing@ysiet.com"
-                className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#3E7B7F] font-black text-white"
-              >
-                빠른 견적 요청하기
-              </a>
-              <div className="mt-5 flex gap-3 rounded-2xl bg-[#F3F7F7] p-4 text-sm font-bold leading-6 text-[#4F656A]">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
-                서울시 종로구 인사동5길 42 종로빌딩 10층
+                <div className="mt-5 flex gap-3 rounded-2xl bg-[#F3F7F7] p-4 text-sm font-bold leading-6 text-[#4F656A]">
+                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
+                  서울시 종로구 인사동5길 42 종로빌딩 10층
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="faq" className="overflow-hidden bg-[#EEF5F4] py-20 lg:py-24">
+      <section id="faq" className={cx("overflow-hidden", SECTION, BG_SOFT)}>
         <div className="mx-auto max-w-5xl px-5">
           <SectionTitle eyebrow="FAQ" titleText="자주 묻는 질문" />
 
@@ -1146,7 +1145,7 @@ function AboutPage() {
           <div className="absolute bottom-[-16rem] left-[42%] h-[28rem] w-[28rem] rounded-full bg-[#F7F3E8] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:py-24">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:py-20">
           <div>
             <p className="mb-5 whitespace-nowrap text-[clamp(1rem,1.9vw,1.35rem)] font-black tracking-[-0.02em] text-[#4F888B]">
               화장품시험검사기관 소개
@@ -1235,31 +1234,33 @@ function AboutPage() {
 
       <BrandTrustBar />
 
-      <section className="mx-auto max-w-7xl px-5 py-20 lg:py-24">
-        <SectionTitle
-          eyebrow="Company Overview"
-          titleText="기관 기본정보"
-          description="시험기관 선택 전 확인해야 할 지정, 공인, 소재지, 연락 정보를 한눈에 정리했습니다"
-        />
+      <section className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Company Overview"
+            titleText="기관 기본정보"
+            description="시험기관 선택 전 확인해야 할 지정, 공인, 소재지, 연락 정보를 한눈에 정리했습니다"
+          />
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {aboutCards.map((item) => (
-            <Card key={item.title}>
-              <div className="p-7">
-                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
-                  {item.title}
-                </p>
-                <p className="text-lg font-black leading-8 tracking-[-0.02em] text-[#27434A]">
-                  {item.desc}
-                </p>
-              </div>
-            </Card>
-          ))}
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {aboutCards.map((item) => (
+              <Card key={item.title}>
+                <div className="p-7">
+                  <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
+                    {item.title}
+                  </p>
+                  <p className="text-lg font-black leading-8 tracking-[-0.02em] text-[#27434A]">
+                    {item.desc}
+                  </p>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="overflow-hidden bg-[#EEF5F4] px-5 py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl">
+      <section className={cx("overflow-hidden", SECTION, BG_SOFT)}>
+        <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Why Reliable"
             titleText="시험기관으로서의 신뢰"
@@ -1284,30 +1285,32 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-20 lg:py-24">
-        <SectionTitle
-          eyebrow="Testing Scope"
-          titleText="화장품 시험검사 서비스 분야"
-          description="완제품 품질검사부터 원료 분석, 기능성화장품, R&D 지원까지 제품 목적에 맞춰 상담합니다"
-        />
+      <section className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Testing Scope"
+            titleText="화장품 시험검사 서비스 분야"
+            description="완제품 품질검사부터 원료 분석, 기능성화장품, R&D 지원까지 제품 목적에 맞춰 상담합니다"
+          />
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {aboutServiceFields.map((item) => (
-            <Card key={item.title}>
-              <div className="p-7">
-                <CheckCircle2 className="mb-5 h-6 w-6 text-[#4F888B]" />
-                <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#27434A]">
-                  {item.title}
-                </h3>
-                <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
-              </div>
-            </Card>
-          ))}
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {aboutServiceFields.map((item) => (
+              <Card key={item.title}>
+                <div className="p-7">
+                  <CheckCircle2 className="mb-5 h-6 w-6 text-[#4F888B]" />
+                  <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#27434A]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="overflow-hidden bg-[#4B7D82] px-5 py-20 text-white lg:py-24">
-        <div className="mx-auto max-w-7xl">
+      <section className={cx("overflow-hidden bg-[#4B7D82] text-white", SECTION_TIGHT)}>
+        <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Service Process"
             titleText="의뢰부터 성적서까지 4단계"
@@ -1334,60 +1337,62 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-20 lg:py-24">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
-            <SectionTitle
-              eyebrow="Quality Philosophy"
-              titleText="정확한 분석이 고객의 경쟁력입니다"
-              description="와이에스환경기술연구원은 시험분석 서비스를 통해 신뢰할 수 있는 가치를 만들고, 고객기업의 경쟁력 향상에 기여하는 것을 목표로 합니다"
-            />
-            <div className="mt-[-1.5rem] flex flex-wrap gap-3">
-              {aboutValues.map((value) => (
-                <span
-                  key={value}
-                  className="rounded-full border border-[#D8E5E7] bg-white px-5 py-3 text-sm font-black text-[#3E7B7F]"
-                >
-                  {value}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <Card>
-            <div className="p-8">
-              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
-                Contact
-              </p>
-              <h3 className="whitespace-nowrap text-2xl font-black tracking-[-0.04em] text-[#27434A]">
-                기관 정보를 확인하셨다면 바로 상담하세요
-              </h3>
-              <p className="mt-4 leading-8 text-[#60767B]">
-                필요한 성적서 용도, 제품명, 제형, 희망 납기, 검사항목을 알려주시면 우선 검토 후 안내드립니다
-              </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                <a
-                  href="tel:02-312-0540"
-                  className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#3E7B7F] px-6 font-black text-white"
-                >
-                  <Phone className="mr-2 h-5 w-5" />
-                  전화 상담
-                </a>
-                <a
-                  href="mailto:testing@ysiet.com"
-                  className="inline-flex h-14 items-center justify-center rounded-2xl border border-[#D8E5E7] bg-white px-6 font-black text-[#2E525A]"
-                >
-                  <Mail className="mr-2 h-5 w-5" />
-                  이메일 견적
-                </a>
+      <section className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div>
+              <SectionTitle
+                eyebrow="Quality Philosophy"
+                titleText="정확한 분석이 고객의 경쟁력입니다"
+                description="와이에스환경기술연구원은 시험분석 서비스를 통해 신뢰할 수 있는 가치를 만들고, 고객기업의 경쟁력 향상에 기여하는 것을 목표로 합니다"
+              />
+              <div className="mt-[-1.5rem] flex flex-wrap gap-3">
+                {aboutValues.map((value) => (
+                  <span
+                    key={value}
+                    className="rounded-full border border-[#D8E5E7] bg-white px-5 py-3 text-sm font-black text-[#3E7B7F]"
+                  >
+                    {value}
+                  </span>
+                ))}
               </div>
             </div>
-          </Card>
+
+            <Card>
+              <div className="p-8">
+                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
+                  Contact
+                </p>
+                <h3 className="whitespace-nowrap text-2xl font-black tracking-[-0.04em] text-[#27434A]">
+                  기관 정보를 확인하셨다면 바로 상담하세요
+                </h3>
+                <p className="mt-4 leading-8 text-[#60767B]">
+                  필요한 성적서 용도, 제품명, 제형, 희망 납기, 검사항목을 알려주시면 우선 검토 후 안내드립니다
+                </p>
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  <a
+                    href="tel:02-312-0540"
+                    className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#3E7B7F] px-6 font-black text-white"
+                  >
+                    <Phone className="mr-2 h-5 w-5" />
+                    전화 상담
+                  </a>
+                  <a
+                    href="mailto:testing@ysiet.com"
+                    className="inline-flex h-14 items-center justify-center rounded-2xl border border-[#D8E5E7] bg-white px-6 font-black text-[#2E525A]"
+                  >
+                    <Mail className="mr-2 h-5 w-5" />
+                    이메일 견적
+                  </a>
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
       </section>
 
-      <section className="overflow-hidden bg-[#EEF5F4] px-5 py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl">
+      <section className={cx("overflow-hidden", SECTION, BG_SOFT)}>
+        <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Location"
             titleText="찾아오시는 길"
