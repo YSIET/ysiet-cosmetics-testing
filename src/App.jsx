@@ -35,8 +35,7 @@ function Button({
 
   const variants = {
     default: "bg-slate-950 text-white hover:bg-slate-800",
-    outline:
-      "border border-slate-300 bg-white text-slate-950 hover:bg-slate-50",
+    outline: "border border-slate-300 bg-white text-slate-950 hover:bg-slate-50",
   };
 
   const sizes = {
@@ -260,7 +259,7 @@ export default function YSIETCosmeticsLanding() {
 
             <h1 className="max-w-5xl text-5xl font-black leading-[1.02] tracking-tight md:text-7xl">
               화장품 성적서,
-              <span className="block text-rose-300">크게 기다리지 말고</span>
+              <span className="block text-rose-300">더 이상 기다리지 말고</span>
               먼저 일정 잡으세요.
             </h1>
 
@@ -312,7 +311,7 @@ export default function YSIETCosmeticsLanding() {
                 <div className="mb-7 rounded-3xl bg-gradient-to-br from-rose-600 to-orange-500 p-6 text-white">
                   <p className="text-sm font-black text-rose-100">FAST DECISION</p>
                   <h2 className="mt-2 text-3xl font-black">
-                    KC* 등 시험기관을 살펴보다 오셨나요?
+                    여러 시험기관을 살펴보다 오셨나요?
                   </h2>
                   <p className="mt-3 leading-7 text-rose-50">
                     그럼 아래 4가지만 먼저 확인하세요. 납기, 지정기관, KOLAS, 수수료.
