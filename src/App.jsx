@@ -1,8 +1,6 @@
 import React from "react";
 import {
   ArrowRight,
-  Award,
-  Banknote,
   CheckCircle2,
   ChevronDown,
   ClipboardCheck,
@@ -12,8 +10,6 @@ import {
   Microscope,
   Phone,
   ShieldCheck,
-  TimerReset,
-  Users,
 } from "lucide-react";
 
 const KAKAO_URL = "https://pf.kakao.com/_xbUlsn";
@@ -184,29 +180,6 @@ const trustProofs = [
   },
 ];
 
-const strengthItems = [
-  {
-    icon: <TimerReset className="h-6 w-6" />,
-    title: "납기 먼저 확인",
-    desc: "일반 7일, 긴급 3일 상담 가능 여부를 먼저 봅니다.",
-  },
-  {
-    icon: <ClipboardCheck className="h-6 w-6" />,
-    title: "항목 바로 안내",
-    desc: "제품 유형과 제출 목적에 맞는 시험항목을 안내합니다.",
-  },
-  {
-    icon: <Banknote className="h-6 w-6" />,
-    title: "비용 가늠 가능",
-    desc: "대표 수수료를 먼저 확인하고 실제 견적을 안내합니다.",
-  },
-  {
-    icon: <Users className="h-6 w-6" />,
-    title: "처음 의뢰도 가능",
-    desc: "제품명, 제형, 성적서 용도, 희망 납기만으로 상담 가능합니다.",
-  },
-];
-
 const feeRows = [
   ["내용량 / pH", "각 5,000원", "항목별 확인"],
   ["납 비소 안티몬 카드뮴 니켈", "각 30,000원", "항목별 확인"],
@@ -229,6 +202,14 @@ const process = [
   ["02", "항목 안내", "제품 유형과 제출 목적에 맞는 시험항목을 안내합니다"],
   ["03", "시료 접수", "시료와 의뢰 정보를 확인한 뒤 분석 일정을 잡습니다"],
   ["04", "성적서 발급", "시험 완료 후 성적서 발급 절차를 안내합니다"],
+];
+
+const contactItems = [
+  "제품명 / 제형",
+  "희망 검사항목",
+  "성적서 제출처",
+  "희망 납기",
+  "시료 준비 가능일",
 ];
 
 const faqs = [
@@ -307,9 +288,6 @@ function Header({ showKakao = false }) {
         </a>
 
         <nav className="hidden items-center gap-4 text-sm font-bold text-[#60767B] xl:flex">
-          <a href="/#strength" className="hover:text-[#285F67]">
-            신뢰근거
-          </a>
           <a href="/#fees" className="hover:text-[#285F67]">
             수수료
           </a>
@@ -419,7 +397,7 @@ function MobileStickyButtons() {
 
 function HeroConversionPanel() {
   return (
-    <Card className="relative border-0 bg-white shadow-[0_34px_90px_rgba(36,72,82,0.15)]">
+    <Card className="border-0 bg-white shadow-[0_34px_90px_rgba(36,72,82,0.15)]">
       <div className="p-7">
         <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">
           Quote Ready
@@ -537,34 +515,6 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="strength" className="bg-[#263F46] py-14 text-white">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle
-            eyebrow="Customer First"
-            titleText="고객이 먼저 알고 싶은 것만 남겼습니다"
-            description="성적서가 언제 가능한지, 어떤 항목이 필요한지, 어느 정도 비용인지 먼저 확인할 수 있게 구성했습니다."
-            light
-          />
-
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {strengthItems.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[24px] border border-white/16 bg-white/[0.10] p-6"
-              >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#285F67]">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-black tracking-[-0.03em] text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-4 text-sm leading-7 text-[#E8F6F5]">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="fees" className="bg-[#FAFCFC] py-14">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
@@ -671,12 +621,13 @@ function HomePage() {
 
       <section id="contact" className="bg-[#FAFCFC] py-16">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="rounded-[34px] bg-[#263F46] text-white shadow-[0_34px_90px_rgba(38,63,70,0.20)]">
-            <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
-              <div className="p-8 md:p-12">
-                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#BFE6E2]">
-                  Request Quote
-                </p>
+          <div className="rounded-[34px] bg-[#263F46] p-8 text-white shadow-[0_34px_90px_rgba(38,63,70,0.20)] md:p-12">
+            <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#BFE6E2]">
+              Request Quote
+            </p>
+
+            <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+              <div>
                 <h2 className="text-[clamp(1.45rem,2.9vw,2.42rem)] font-black leading-[1.12] tracking-[-0.05em]">
                   제품명과 희망 납기만 보내도 먼저 검토합니다
                 </h2>
@@ -700,33 +651,30 @@ function HomePage() {
                 </div>
               </div>
 
-              <div className="rounded-b-[34px] bg-white p-7 text-[#263F46] md:p-8 lg:rounded-b-none lg:rounded-r-[34px]">
+              <div className="rounded-[24px] bg-white p-6 text-[#263F46]">
                 <p className="text-sm font-black text-[#4F888B]">
                   빠른 검토를 위한 5가지
                 </p>
-                <ul className="mt-5 space-y-3">
-                  {[
-                    "제품명 / 제형",
-                    "희망 검사항목",
-                    "성적서 제출처",
-                    "희망 납기",
-                    "시료 준비 가능일",
-                  ].map((item) => (
-                    <li
+
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {contactItems.map((item) => (
+                    <div
                       key={item}
                       className="flex items-center gap-3 rounded-2xl bg-[#F3F7F7] px-4 py-3 font-bold"
                     >
                       <CheckCircle2 className="h-5 w-5 shrink-0 text-[#4F888B]" />
                       {item}
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
+
                 <a
                   href="mailto:testing@ysiet.com"
                   className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#285F67] font-black text-white"
                 >
                   납기 가능 여부 먼저 확인
                 </a>
+
                 <div className="mt-5 flex gap-3 rounded-2xl border border-[#D8E5E7] bg-white p-4 text-sm font-bold leading-6 text-[#4F656A]">
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
                   서울시 종로구 인사동5길 42 종로빌딩 10층
