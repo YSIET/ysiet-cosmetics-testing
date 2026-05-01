@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import {
   ArrowRight,
   Award,
@@ -8,7 +7,6 @@ import {
   CalendarClock,
   CheckCircle2,
   ClipboardCheck,
-  FileCheck2,
   FlaskConical,
   HelpCircle,
   Mail,
@@ -24,33 +22,12 @@ function cx(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const colors = {
-  ink: "#081827",
-  navy: "#0B2A4A",
-  teal: "#217E8F",
-  mist: "#EEF7FA",
-  line: "#DCE8EE",
-  gold: "#B8894D",
-};
-
-const label =
-  "text-xs font-black uppercase tracking-[0.28em] text-[#217E8F]";
-
-const title =
-  "whitespace-nowrap text-[clamp(1.35rem,2.15vw,2.35rem)] font-black leading-[1.08] tracking-[-0.045em] text-[#081827]";
-
-const titleLight =
-  "whitespace-nowrap text-[clamp(1.35rem,2.15vw,2.35rem)] font-black leading-[1.08] tracking-[-0.045em] text-white";
-
-const heroTitle =
-  "text-[clamp(2.15rem,4.45vw,4.65rem)] font-black leading-[1.02] tracking-[-0.07em] text-[#081827]";
-
-function PrimaryLink({ href, children, className = "" }) {
+function PrimaryButton({ href, children, className = "" }) {
   return (
     <a
       href={href}
       className={cx(
-        "inline-flex h-12 items-center justify-center rounded-full bg-[#0B2A4A] px-6 text-sm font-black text-white shadow-lg shadow-slate-900/10 transition hover:-translate-y-0.5 hover:bg-[#12385E]",
+        "inline-flex h-12 items-center justify-center rounded-full bg-[#0B2A4A] px-6 text-sm font-black text-white shadow-lg shadow-slate-900/10 transition hover:bg-[#123A63]",
         className
       )}
     >
@@ -59,12 +36,12 @@ function PrimaryLink({ href, children, className = "" }) {
   );
 }
 
-function SecondaryLink({ href, children, className = "" }) {
+function SecondaryButton({ href, children, className = "" }) {
   return (
     <a
       href={href}
       className={cx(
-        "inline-flex h-12 items-center justify-center rounded-full border border-[#C9D9E1] bg-white px-6 text-sm font-black text-[#0B2A4A] shadow-sm transition hover:-translate-y-0.5 hover:border-[#0B2A4A]",
+        "inline-flex h-12 items-center justify-center rounded-full border border-[#C9D9E1] bg-white px-6 text-sm font-black text-[#0B2A4A] shadow-sm transition hover:border-[#0B2A4A]",
         className
       )}
     >
@@ -77,7 +54,7 @@ function Card({ children, className = "" }) {
   return (
     <div
       className={cx(
-        "rounded-[28px] border border-[#DCE8EE] bg-white shadow-[0_20px_60px_rgba(8,24,39,0.06)]",
+        "rounded-[26px] border border-[#DCE8EE] bg-white shadow-[0_18px_54px_rgba(8,24,39,0.06)]",
         className
       )}
     >
@@ -85,6 +62,18 @@ function Card({ children, className = "" }) {
     </div>
   );
 }
+
+const labelClass =
+  "text-xs font-black uppercase tracking-[0.28em] text-[#217E8F]";
+
+const titleClass =
+  "whitespace-nowrap text-[clamp(1.32rem,2.05vw,2.22rem)] font-black leading-[1.1] tracking-[-0.04em] text-[#081827]";
+
+const titleLightClass =
+  "whitespace-nowrap text-[clamp(1.32rem,2.05vw,2.22rem)] font-black leading-[1.1] tracking-[-0.04em] text-white";
+
+const heroTitleClass =
+  "text-[clamp(2.05rem,4.3vw,4.45rem)] font-black leading-[1.03] tracking-[-0.065em] text-[#081827]";
 
 const proofBadges = [
   "식약처 지정 화장품 시험·검사기관 제18호",
@@ -102,25 +91,33 @@ const quickQuestions = [
 
 const keyPoints = [
   {
-    icon: ShieldCheck,
     title: "식약처 지정 제18호",
     desc: "화장품 시험·검사기관 지정 근거를 바탕으로 상담합니다",
+    icon: <ShieldCheck className="h-7 w-7" />,
   },
   {
-    icon: Award,
     title: "KOLAS 제364호",
     desc: "국제공인시험기관의 신뢰성을 기반으로 시험분석을 진행합니다",
+    icon: <Award className="h-7 w-7" />,
   },
   {
-    icon: TimerReset,
     title: "일반 7일 긴급 3일",
     desc: "희망 일정이 있다면 가능 여부를 먼저 확인해드립니다",
+    icon: <TimerReset className="h-7 w-7" />,
   },
   {
-    icon: Banknote,
     title: "대표 수수료 공개",
     desc: "문의 전 주요 시험항목의 비용 범위를 먼저 확인할 수 있습니다",
+    icon: <Banknote className="h-7 w-7" />,
   },
+];
+
+const comparisonRows = [
+  ["기관 설명을 먼저 읽어야 함", "성적서 납기부터 바로 확인"],
+  ["메뉴가 많고 동선이 복잡함", "견적 요청까지 빠르게 이동"],
+  ["가격 감이 늦게 잡힘", "대표 수수료를 먼저 확인"],
+  ["처음 의뢰자는 준비서류가 막막함", "필요 서류를 한눈에 안내"],
+  ["상담과 진행 확인이 느릴 수 있음", "1건 의뢰도 전문 카운셀링 지원"],
 ];
 
 const services = [
@@ -158,6 +155,29 @@ const process = [
   ["04", "성적서 발급", "시험 완료 후 시험성적서 원본을 우편으로 전달합니다"],
 ];
 
+const trustItems = [
+  {
+    title: "식약처 지정 화장품 시험·검사기관",
+    desc: "제18호 지정기관으로 화장품 시험·검사와 자가품질 위탁검사 상담이 가능합니다",
+    icon: <ShieldCheck className="h-7 w-7" />,
+  },
+  {
+    title: "KOLAS 국제공인시험기관",
+    desc: "KOLAS 제364호 국제공인시험기관으로 신뢰도 높은 분석 서비스를 제공합니다",
+    icon: <Award className="h-7 w-7" />,
+  },
+  {
+    title: "전문 분석 인력과 장비",
+    desc: "숙련된 연구진과 분석 장비를 기반으로 신속하고 정확한 분석 결과를 제공합니다",
+    icon: <Microscope className="h-7 w-7" />,
+  },
+  {
+    title: "1건 의뢰도 상담 지원",
+    desc: "처음 의뢰하는 고객도 준비서류와 진행 절차를 안내받을 수 있습니다",
+    icon: <Users className="h-7 w-7" />,
+  },
+];
+
 const faqs = [
   [
     "다른 시험기관 대신 YSIET에 문의해야 하는 이유가 뭔가요",
@@ -177,7 +197,7 @@ const faqs = [
   ],
 ];
 
-export default function YSIETCosmeticsLanding() {
+export default function App() {
   return (
     <main className="min-h-screen bg-[#F7FAFC] text-[#081827] antialiased">
       <header className="sticky top-0 z-50 border-b border-[#DCE8EE]/80 bg-white/85 backdrop-blur-xl">
@@ -195,26 +215,16 @@ export default function YSIETCosmeticsLanding() {
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-bold text-slate-600 xl:flex">
-            <a href="#strength" className="hover:text-[#0B2A4A]">
-              핵심 장점
-            </a>
-            <a href="#services" className="hover:text-[#0B2A4A]">
-              검사항목
-            </a>
-            <a href="#fees" className="hover:text-[#0B2A4A]">
-              수수료
-            </a>
-            <a href="#documents" className="hover:text-[#0B2A4A]">
-              준비서류
-            </a>
-            <a href="#contact" className="hover:text-[#0B2A4A]">
-              문의
-            </a>
+            <a href="#strength" className="hover:text-[#0B2A4A]">핵심 장점</a>
+            <a href="#services" className="hover:text-[#0B2A4A]">검사항목</a>
+            <a href="#fees" className="hover:text-[#0B2A4A]">수수료</a>
+            <a href="#documents" className="hover:text-[#0B2A4A]">준비서류</a>
+            <a href="#contact" className="hover:text-[#0B2A4A]">문의</a>
           </nav>
 
-          <PrimaryLink href="#contact" className="h-10 px-5">
+          <PrimaryButton href="#contact" className="h-10 px-5">
             납기 확인
-          </PrimaryLink>
+          </PrimaryButton>
         </div>
       </header>
 
@@ -222,21 +232,16 @@ export default function YSIETCosmeticsLanding() {
         <div className="absolute inset-0">
           <div className="absolute left-[-12rem] top-24 h-[28rem] w-[28rem] rounded-full bg-[#DDF2F0] blur-3xl" />
           <div className="absolute right-[-10rem] top-[-8rem] h-[34rem] w-[34rem] rounded-full bg-[#CBE4F2] blur-3xl" />
-          <div className="absolute bottom-[-18rem] left-[40%] h-[28rem] w-[28rem] rounded-full bg-white blur-3xl" />
         </div>
 
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65 }}
-          >
+          <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#BED7E4] bg-white/80 px-4 py-2 text-sm font-black text-[#0B2A4A] shadow-sm">
               <BadgeCheck className="h-4 w-4 text-[#217E8F]" />
               다른 시험기관을 살펴보다 오셨다면 먼저 납기부터 확인하세요
             </div>
 
-            <h1 className={heroTitle}>
+            <h1 className={heroTitleClass}>
               화장품 성적서
               <span className="block text-[#217E8F]">더 이상 기다리지 말고</span>
               먼저 일정 잡으세요
@@ -247,12 +252,12 @@ export default function YSIETCosmeticsLanding() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <PrimaryLink href="#contact" className="h-14 px-8 text-base">
+              <PrimaryButton href="#contact" className="h-14 px-8 text-base">
                 지금 성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
-              </PrimaryLink>
-              <SecondaryLink href="#fees" className="h-14 px-8 text-base">
+              </PrimaryButton>
+              <SecondaryButton href="#fees" className="h-14 px-8 text-base">
                 대표 수수료 보기
-              </SecondaryLink>
+              </SecondaryButton>
             </div>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -266,88 +271,84 @@ export default function YSIETCosmeticsLanding() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.08 }}
-          >
-            <Card className="border-0 bg-white/95 p-3 shadow-[0_30px_90px_rgba(8,24,39,0.12)]">
-              <div className="rounded-[24px] bg-[#0B2A4A] p-7 text-white">
-                <p className="text-xs font-black uppercase tracking-[0.26em] text-[#A8DDE8]">
-                  Fast Check
-                </p>
-                <h2 className="mt-3 whitespace-nowrap text-[clamp(1.35rem,2vw,1.8rem)] font-black tracking-[-0.04em]">
-                  여러 시험기관을 살펴보다 오셨나요
-                </h2>
-                <p className="mt-3 leading-7 text-slate-200">
-                  납기, 지정기관, KOLAS, 수수료를 먼저 확인해보세요
-                </p>
-              </div>
+          <Card className="border-0 bg-white/95 p-3 shadow-[0_30px_90px_rgba(8,24,39,0.12)]">
+            <div className="rounded-[24px] bg-[#0B2A4A] p-7 text-white">
+              <p className="text-xs font-black uppercase tracking-[0.26em] text-[#A8DDE8]">
+                Fast Check
+              </p>
+              <h2 className="mt-3 whitespace-nowrap text-[clamp(1.28rem,1.9vw,1.72rem)] font-black tracking-[-0.04em]">
+                여러 시험기관을 살펴보다 오셨나요
+              </h2>
+              <p className="mt-3 leading-7 text-slate-200">
+                납기, 지정기관, KOLAS, 수수료를 먼저 확인해보세요
+              </p>
+            </div>
 
-              <div className="space-y-3 p-5">
-                {quickQuestions.map((item) => (
-                  <div
-                    key={item}
-                    className="flex gap-3 rounded-2xl border border-[#E6EEF2] bg-[#F7FAFC] p-4"
-                  >
-                    <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#217E8F]" />
-                    <p className="font-bold text-slate-800">{item}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="grid gap-3 px-5 pb-5 sm:grid-cols-2">
-                <a
-                  href="tel:02-312-0540"
-                  className="flex h-13 items-center justify-center gap-2 rounded-2xl bg-[#0B2A4A] px-4 py-4 text-center font-black text-white transition hover:bg-[#12385E]"
+            <div className="space-y-3 p-5">
+              {quickQuestions.map((item) => (
+                <div
+                  key={item}
+                  className="flex gap-3 rounded-2xl border border-[#E6EEF2] bg-[#F7FAFC] p-4"
                 >
-                  <Phone className="h-5 w-5" /> 02-312-0540
-                </a>
-                <a
-                  href="mailto:testing@ysiet.com"
-                  className="flex h-13 items-center justify-center gap-2 rounded-2xl border border-[#DCE8EE] bg-white px-4 py-4 text-center font-black text-[#0B2A4A] transition hover:border-[#0B2A4A]"
-                >
-                  <Mail className="h-5 w-5" /> 이메일 견적
-                </a>
-              </div>
-            </Card>
-          </motion.div>
+                  <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#217E8F]" />
+                  <p className="font-bold text-slate-800">{item}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid gap-3 px-5 pb-5 sm:grid-cols-2">
+              <a
+                href="tel:02-312-0540"
+                className="flex items-center justify-center gap-2 rounded-2xl bg-[#0B2A4A] px-4 py-4 text-center font-black text-white transition hover:bg-[#12385E]"
+              >
+                <Phone className="h-5 w-5" /> 02-312-0540
+              </a>
+              <a
+                href="mailto:testing@ysiet.com"
+                className="flex items-center justify-center gap-2 rounded-2xl border border-[#DCE8EE] bg-white px-4 py-4 text-center font-black text-[#0B2A4A] transition hover:border-[#0B2A4A]"
+              >
+                <Mail className="h-5 w-5" /> 이메일 견적
+              </a>
+            </div>
+          </Card>
         </div>
       </section>
 
       <section className="border-y border-[#DCE8EE] bg-white">
-        <div className="mx-auto grid max-w-7xl gap-0 divide-y divide-[#DCE8EE] px-5 md:grid-cols-4 md:divide-x md:divide-y-0">
-          {[
-            [ShieldCheck, "식약처 지정 제18호"],
-            [Award, "KOLAS 제364호"],
-            [CalendarClock, "일반 7일 긴급 3일"],
-            [Banknote, "대표 수수료 공개"],
-          ].map(([Icon, text]) => (
-            <div key={text} className="flex items-center gap-3 py-5 md:px-5">
-              <Icon className="h-5 w-5 text-[#217E8F]" />
-              <p className="font-black">{text}</p>
-            </div>
-          ))}
+        <div className="mx-auto grid max-w-7xl divide-y divide-[#DCE8EE] px-5 md:grid-cols-4 md:divide-x md:divide-y-0">
+          <div className="flex items-center gap-3 py-5 md:px-5">
+            <ShieldCheck className="h-5 w-5 text-[#217E8F]" />
+            <p className="font-black">식약처 지정 제18호</p>
+          </div>
+          <div className="flex items-center gap-3 py-5 md:px-5">
+            <Award className="h-5 w-5 text-[#217E8F]" />
+            <p className="font-black">KOLAS 제364호</p>
+          </div>
+          <div className="flex items-center gap-3 py-5 md:px-5">
+            <CalendarClock className="h-5 w-5 text-[#217E8F]" />
+            <p className="font-black">일반 7일 긴급 3일</p>
+          </div>
+          <div className="flex items-center gap-3 py-5 md:px-5">
+            <Banknote className="h-5 w-5 text-[#217E8F]" />
+            <p className="font-black">대표 수수료 공개</p>
+          </div>
         </div>
       </section>
 
       <section id="strength" className="mx-auto max-w-7xl px-5 py-24">
         <div className="mb-12">
-          <p className={label}>Key Points</p>
-          <h2 className={title}>성적서 의뢰 전 꼭 확인할 4가지</h2>
+          <p className={labelClass}>Key Points</p>
+          <h2 className={titleClass}>성적서 의뢰 전 꼭 확인할 4가지</h2>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {keyPoints.map((item) => (
-            <Card
-              key={item.title}
-              className="group transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(8,24,39,0.1)]"
-            >
+            <Card key={item.title} className="transition duration-300 hover:-translate-y-1">
               <div className="p-7">
                 <div className="mb-6 flex h-13 w-13 items-center justify-center rounded-2xl bg-[#E8F5F7] text-[#217E8F]">
-                  <item.icon className="h-7 w-7" />
+                  {item.icon}
                 </div>
                 <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em]">
                   {item.title}
@@ -365,7 +366,7 @@ export default function YSIETCosmeticsLanding() {
             <p className="text-xs font-black uppercase tracking-[0.28em] text-[#A8DDE8]">
               Before Request
             </p>
-            <h2 className={titleLight}>의뢰 전 자주 막히는 부분</h2>
+            <h2 className={titleLightClass}>의뢰 전 자주 막히는 부분</h2>
             <p className="mt-6 text-lg leading-8 text-slate-200">
               성적서 일정, 준비서류, 수수료 범위를 먼저 확인하시면 상담과 접수가 더 빨라집니다
             </p>
@@ -393,8 +394,8 @@ export default function YSIETCosmeticsLanding() {
       <section id="services" className="mx-auto max-w-7xl px-5 py-24">
         <div className="mb-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
           <div>
-            <p className={label}>Testing Services</p>
-            <h2 className={title}>검사 가능한 서비스를 한눈에</h2>
+            <p className={labelClass}>Testing Services</p>
+            <h2 className={titleClass}>검사 가능한 서비스를 한눈에</h2>
           </div>
           <p className="text-lg leading-8 text-slate-600">
             일반 화장품, 기능성 화장품, 원료·부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다
@@ -405,7 +406,7 @@ export default function YSIETCosmeticsLanding() {
           {services.map((service) => (
             <div
               key={service}
-              className="rounded-[24px] border border-[#DCE8EE] bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(8,24,39,0.08)]"
+              className="rounded-[24px] border border-[#DCE8EE] bg-white p-6 transition hover:-translate-y-1"
             >
               <CheckCircle2 className="mb-5 h-6 w-6 text-[#217E8F]" />
               <p className="text-lg font-black leading-7 tracking-[-0.025em]">
@@ -420,8 +421,8 @@ export default function YSIETCosmeticsLanding() {
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
             <div>
-              <p className={label}>Fee Guide</p>
-              <h2 className={title}>가격 감을 먼저 잡게 해드립니다</h2>
+              <p className={labelClass}>Fee Guide</p>
+              <h2 className={titleClass}>가격 감을 먼저 잡게 해드립니다</h2>
             </div>
             <p className="text-lg leading-8 text-slate-600">
               대표 수수료를 먼저 확인하고 실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수 있습니다
@@ -464,32 +465,42 @@ export default function YSIETCosmeticsLanding() {
       <section className="mx-auto max-w-7xl px-5 py-24">
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
-            <p className={label}>Self Quality Testing</p>
-            <h2 className={title}>자가품질 위탁검사 처음이어도 바로 시작</h2>
+            <p className={labelClass}>Self Quality Testing</p>
+            <h2 className={titleClass}>자가품질 위탁검사 처음이어도 바로 시작</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               품질검사 시설이 없는 경우 식약처 지정 시험·검사기관과 품질검사 위탁계약을 체결하여 품질관리를 진행할 수 있습니다
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              ["위탁계약", "최초 의뢰 또는 변경사항 발생 시 체결"],
-              ["계약비용", "무료, 우편비용 발생 시 실비 청구"],
-              ["분석 시작", "수수료 납입 시점부터 진행"],
-              ["성적서", "시험 완료 후 원본 우편 전달"],
-            ].map(([name, desc]) => (
-              <Card key={name}>
-                <div className="p-6">
-                  <p className="text-xs font-black uppercase tracking-[0.24em] text-[#217E8F]">
-                    Check
-                  </p>
-                  <h3 className="mt-2 text-2xl font-black tracking-[-0.035em]">
-                    {name}
-                  </h3>
-                  <p className="mt-3 leading-7 text-slate-600">{desc}</p>
-                </div>
-              </Card>
-            ))}
+            <Card>
+              <div className="p-6">
+                <p className={labelClass}>Check</p>
+                <h3 className="mt-2 text-2xl font-black tracking-[-0.035em]">위탁계약</h3>
+                <p className="mt-3 leading-7 text-slate-600">최초 의뢰 또는 변경사항 발생 시 체결</p>
+              </div>
+            </Card>
+            <Card>
+              <div className="p-6">
+                <p className={labelClass}>Check</p>
+                <h3 className="mt-2 text-2xl font-black tracking-[-0.035em]">계약비용</h3>
+                <p className="mt-3 leading-7 text-slate-600">무료, 우편비용 발생 시 실비 청구</p>
+              </div>
+            </Card>
+            <Card>
+              <div className="p-6">
+                <p className={labelClass}>Check</p>
+                <h3 className="mt-2 text-2xl font-black tracking-[-0.035em]">분석 시작</h3>
+                <p className="mt-3 leading-7 text-slate-600">수수료 납입 시점부터 진행</p>
+              </div>
+            </Card>
+            <Card>
+              <div className="p-6">
+                <p className={labelClass}>Check</p>
+                <h3 className="mt-2 text-2xl font-black tracking-[-0.035em]">성적서</h3>
+                <p className="mt-3 leading-7 text-slate-600">시험 완료 후 원본 우편 전달</p>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -497,8 +508,8 @@ export default function YSIETCosmeticsLanding() {
       <section id="documents" className="bg-[#EEF7FA] py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className={label}>Before Request</p>
-            <h2 className={title}>문의 전 준비하면 견적이 빨라집니다</h2>
+            <p className={labelClass}>Before Request</p>
+            <h2 className={titleClass}>문의 전 준비하면 견적이 빨라집니다</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               준비서류와 제품 정보를 미리 알려주시면 상담과 접수가 훨씬 빨라집니다
             </p>
@@ -521,8 +532,8 @@ export default function YSIETCosmeticsLanding() {
       <section id="process" className="bg-white py-24">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-12">
-            <p className={label}>Process</p>
-            <h2 className={title}>복잡한 설명 없이 성적서까지 4단계</h2>
+            <p className={labelClass}>Process</p>
+            <h2 className={titleClass}>복잡한 설명 없이 성적서까지 4단계</h2>
           </div>
 
           <div className="grid gap-5 md:grid-cols-4">
@@ -543,6 +554,29 @@ export default function YSIETCosmeticsLanding() {
         </div>
       </section>
 
+      <section id="trust" className="mx-auto max-w-7xl px-5 py-24">
+        <div className="mb-12">
+          <p className={labelClass}>Trust Proof</p>
+          <h2 className={titleClass}>확인된 신뢰근거를 한눈에</h2>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {trustItems.map((item) => (
+            <Card key={item.title}>
+              <div className="p-7">
+                <div className="mb-6 flex h-13 w-13 items-center justify-center rounded-2xl bg-[#E8F5F7] text-[#217E8F]">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-black tracking-[-0.03em]">
+                  {item.title}
+                </h3>
+                <p className="mt-4 leading-7 text-slate-600">{item.desc}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+
       <section id="contact" className="mx-auto max-w-7xl px-5 py-24">
         <div className="overflow-hidden rounded-[36px] bg-[#081827] p-8 text-white shadow-[0_32px_90px_rgba(8,24,39,0.18)] md:p-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
@@ -550,7 +584,7 @@ export default function YSIETCosmeticsLanding() {
               <p className="text-xs font-black uppercase tracking-[0.28em] text-[#A8DDE8]">
                 Request Quote
               </p>
-              <h2 className="whitespace-nowrap text-[clamp(1.55rem,3.2vw,3.25rem)] font-black leading-[1.08] tracking-[-0.055em]">
+              <h2 className="whitespace-nowrap text-[clamp(1.42rem,2.9vw,2.9rem)] font-black leading-[1.08] tracking-[-0.05em]">
                 기관 비교는 충분합니다 이제 납기부터 확인하세요
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
@@ -608,8 +642,8 @@ export default function YSIETCosmeticsLanding() {
       <section id="faq" className="bg-[#F2F8FB] py-24">
         <div className="mx-auto max-w-5xl px-5">
           <div className="mb-10 text-center">
-            <p className={label}>FAQ</p>
-            <h2 className={title}>자주 묻는 질문</h2>
+            <p className={labelClass}>FAQ</p>
+            <h2 className={titleClass}>자주 묻는 질문</h2>
           </div>
 
           <div className="space-y-4">
