@@ -523,83 +523,54 @@ function BrandTrustBar() {
 
 function Footer({ showKakao = false }) {
   return (
-    <footer className="border-t border-[#D7E3E5] bg-[#EEF2F2]">
-      <div className="mx-auto max-w-7xl px-5 py-6">
-        <div className="rounded-[20px] border border-[#D7E3E5] bg-white/88 px-5 py-4 shadow-[0_10px_26px_rgba(36,72,82,0.035)]">
-          <div className="grid gap-4 lg:grid-cols-[0.86fr_1.55fr_0.74fr] lg:items-center">
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#E2EDEF] bg-[#FAFCFC]">
-                <img
-                  src={YS_LOGO}
-                  alt="와이에스환경기술연구원 로고"
-                  className="h-9 w-9 object-contain"
-                />
-              </div>
+    <footer className="border-t border-[#D9E2E3] bg-[#ECEEEE]">
+      <div className="mx-auto max-w-7xl px-5 py-5">
+        <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)_160px] lg:items-start">
+          <div className="flex items-center lg:pt-2">
+            <img
+              src={YS_LOGO}
+              alt="와이에스환경기술연구원 로고"
+              className="h-[54px] w-auto object-contain opacity-90"
+            />
+          </div>
 
-              <div className="min-w-0">
-                <p className="whitespace-nowrap text-[0.95rem] font-black tracking-[-0.03em] text-[#27434A]">
-                  와이에스환경기술연구원
-                </p>
-                <p className="mt-0.5 text-xs font-bold text-[#7B8E92]">
-                  YS Institute of Environmental Technology
-                </p>
-              </div>
+          <div className="min-w-0">
+            <div className="space-y-1 text-[13px] leading-6 text-[#707B7E]">
+              <p className="font-semibold">
+                (주)와이에스환경기술연구원 | (03149) 서울특별시 종로구 인사동5길 42 종로빌딩 10층
+              </p>
+              <p className="font-semibold">
+                대표이사 엄유진 | 사업자등록번호 211-87-79879 | 대표전화 02-312-0540 | 팩스 02-312-0560
+              </p>
+              <p className="pt-1 text-[13px] font-semibold uppercase tracking-[0.01em] text-[#7B8588]">
+                COPYRIGHT © YS INSTITUTE OF ENVIRONMENTAL TECHNOLOGY. ALL RIGHTS RESERVED.
+              </p>
             </div>
 
-            <div className="space-y-1.5 text-[13px] leading-6 text-[#60767B]">
-              <p className="font-bold">
-                (주)와이에스환경기술연구원 | 대표이사 엄유진 박사 | 사업자등록번호 211-87-79879
-              </p>
-              <p className="font-bold">
-                서울특별시 종로구 인사동5길 42 종로빌딩 10층 | 대표전화 02-312-0540 | 팩스 02-312-0560
-              </p>
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                {footerPolicyLinks.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="inline-flex h-8 items-center justify-center rounded-lg border border-[#DDE7E8] bg-[#F8FBFB] px-3 text-xs font-black text-[#65777B] transition hover:border-[#BFD4D7] hover:bg-white hover:text-[#3E7B7F]"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                <span className="text-xs font-bold text-[#9AA9AC]">
-                  COPYRIGHT © YS INSTITUTE OF ENVIRONMENTAL TECHNOLOGY. ALL RIGHTS RESERVED.
-                </span>
-              </div>
-            </div>
-
-            <div className="grid gap-2">
-              <div className="flex items-center justify-between rounded-lg border border-[#DDE7E8] bg-[#F8FBFB] px-3 py-2 text-xs font-black text-[#65777B]">
-                패밀리사이트
-                <ChevronDown className="h-4 w-4" />
-              </div>
-
-              <div className="grid grid-cols-2 gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
+              {footerPolicyLinks.map((item) => (
                 <a
-                  href="mailto:testing@ysiet.com"
-                  className="inline-flex h-9 items-center justify-center rounded-lg border border-[#DDE7E8] bg-white px-3 text-xs font-black text-[#3E7B7F] transition hover:border-[#BFD4D7]"
+                  key={item.label}
+                  href={item.href}
+                  className="inline-flex h-10 items-center justify-center rounded-none border border-[#D8DCDD] bg-white px-5 text-[13px] font-semibold text-[#747F82] transition hover:bg-[#F8F9F9]"
                 >
-                  이메일
+                  {item.label}
                 </a>
-                {showKakao ? (
-                  <a
-                    href={KAKAO_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex h-9 items-center justify-center rounded-lg bg-[#FEE500] px-3 text-xs font-black text-[#2D2926] transition hover:bg-[#F6D600]"
-                  >
-                    카톡문의
-                  </a>
-                ) : (
-                  <a
-                    href="tel:02-312-0540"
-                    className="inline-flex h-9 items-center justify-center rounded-lg bg-[#3E7B7F] px-3 text-xs font-black text-white transition hover:bg-[#346A6E]"
-                  >
-                    전화
-                  </a>
-                )}
-              </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="lg:justify-self-end">
+            <div className="relative w-full lg:w-[130px]">
+              <select
+                defaultValue=""
+                className="h-10 w-full appearance-none border border-[#D8DCDD] bg-white px-4 pr-9 text-[13px] font-semibold text-[#747F82] outline-none"
+              >
+                <option value="" disabled>
+                  패밀리사이트
+                </option>
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8A9497]" />
             </div>
           </div>
         </div>
