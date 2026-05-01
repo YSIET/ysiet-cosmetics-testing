@@ -1,15 +1,19 @@
 import React from "react";
 import {
   ArrowRight,
+  Award,
+  Banknote,
   CheckCircle2,
   ChevronDown,
   ClipboardCheck,
+  FileCheck2,
   HelpCircle,
   Mail,
   MapPin,
   Microscope,
   Phone,
   ShieldCheck,
+  TimerReset,
 } from "lucide-react";
 
 const KAKAO_URL = "https://pf.kakao.com/_xbUlsn";
@@ -180,6 +184,67 @@ const trustProofs = [
   },
 ];
 
+const serviceScopes = [
+  {
+    title: "일반 화장품",
+    desc: "완제품, 유통화장품, 화장비누 등 품질검사와 제출용 성적서 상담을 지원합니다.",
+  },
+  {
+    title: "기능성 화장품",
+    desc: "미백, 주름개선, 자외선차단 등 기능성 관련 품질관리 항목을 검토합니다.",
+  },
+  {
+    title: "원료·부자재",
+    desc: "원료, 부자재, 납품용 위해성 분석, 성분 확인 등 목적별 분석을 상담합니다.",
+  },
+  {
+    title: "R&D 지원",
+    desc: "신제품 개발, 시험방법 검토, 원재료 연구, 광고 검증 목적의 분석을 지원합니다.",
+  },
+];
+
+const purposeItems = [
+  "자가품질 위탁검사",
+  "거래처 납품용 성적서",
+  "제품 출시 전 품질 확인",
+  "수입화장품 제출 목적",
+  "광고·표시 검증 목적",
+  "신제품 R&D 분석 지원",
+];
+
+const whyConsultItems = [
+  {
+    icon: <TimerReset className="h-6 w-6" />,
+    title: "납기는 항목별로 달라집니다",
+    desc: "일반 7일, 긴급 3일 상담이 가능하지만 제품 유형과 시험항목에 따라 가능 여부를 먼저 확인해야 합니다.",
+  },
+  {
+    icon: <FileCheck2 className="h-6 w-6" />,
+    title: "성적서 용도에 따라 항목이 달라집니다",
+    desc: "자가품질, 납품, 출시, 수입, 광고 검증 등 제출 목적에 따라 필요한 검사항목이 달라질 수 있습니다.",
+  },
+  {
+    icon: <Banknote className="h-6 w-6" />,
+    title: "비용은 시험항목 기준으로 확정됩니다",
+    desc: "대표 수수료는 참고용이며 실제 견적은 검사항목, 긴급 여부, 시료 조건을 확인한 뒤 안내됩니다.",
+  },
+];
+
+const trustMeaningItems = [
+  {
+    title: "공식 제출 목적 상담",
+    desc: "식약처 지정 화장품 시험검사기관으로 성적서 제출 목적에 맞춘 상담이 가능합니다.",
+  },
+  {
+    title: "공인시험 체계",
+    desc: "KOLAS 국제공인시험기관 체계를 기반으로 시험분석과 품질보증 서비스를 제공합니다.",
+  },
+  {
+    title: "연구 기반 분석 역량",
+    desc: "연세대학교 교원창업기업으로 일반 의뢰뿐 아니라 원료, 부자재, R&D 분석까지 상담합니다.",
+  },
+];
+
 const feeRows = [
   ["내용량 / pH", "각 5,000원", "항목별 확인"],
   ["납 비소 안티몬 카드뮴 니켈", "각 30,000원", "항목별 확인"],
@@ -224,6 +289,10 @@ const faqs = [
   [
     "자가품질 위탁검사는 처음인데 진행 가능한가요",
     "가능합니다. 위탁계약, 시험의뢰서, 시료 접수, 성적서 발급까지 필요한 순서대로 안내드립니다.",
+  ],
+  [
+    "일반 화장품 외에도 문의 가능한가요",
+    "가능합니다. 기능성 화장품, 원료, 부자재, R&D 목적 분석도 제품 정보와 제출 목적을 기준으로 검토해드립니다.",
   ],
   [
     "1건만 의뢰해도 상담 가능한가요",
@@ -288,6 +357,9 @@ function Header({ showKakao = false }) {
         </a>
 
         <nav className="hidden items-center gap-4 text-sm font-bold text-[#60767B] xl:flex">
+          <a href="/#scope" className="hover:text-[#285F67]">
+            가능범위
+          </a>
           <a href="/#fees" className="hover:text-[#285F67]">
             수수료
           </a>
@@ -515,7 +587,100 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="fees" className="bg-[#FAFCFC] py-14">
+      <section id="scope" className="bg-white py-12">
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Testing Scope"
+            titleText="어떤 의뢰가 가능한가요"
+            description="일반 화장품, 기능성 화장품, 원료·부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다."
+          />
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {serviceScopes.map((item) => (
+              <Card key={item.title}>
+                <div className="p-6">
+                  <Microscope className="mb-4 h-6 w-6 text-[#4F888B]" />
+                  <h3 className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[#60767B]">{item.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-[24px] border border-[#D8E5E7] bg-[#F5F8F8] p-6">
+            <p className="text-base font-black text-[#263F46]">
+              제출 목적이 달라도 먼저 문의하실 수 있습니다
+            </p>
+            <div className="mt-4 grid gap-3 md:grid-cols-3">
+              {purposeItems.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-bold text-[#4F656A]"
+                >
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-[#4F888B]" />
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why-consult" className="bg-[#F1F7F6] py-12">
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Before Estimate"
+            titleText="왜 먼저 상담이 필요한가요"
+            description="화장품 성적서는 제품 유형, 제출 목적, 시험항목, 희망 납기에 따라 항목과 비용이 달라질 수 있습니다."
+          />
+
+          <div className="grid gap-4 lg:grid-cols-3">
+            {whyConsultItems.map((item) => (
+              <Card key={item.title}>
+                <div className="p-6">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[#60767B]">{item.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="trust" className="bg-[#FAFCFC] py-12">
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Trust Proof"
+            titleText="신뢰근거는 첫 화면에서 끝나지 않습니다"
+            description="지정기관, 공인시험 체계, 연구 기반 분석 역량은 고객이 시험기관을 선택할 때 반드시 확인해야 하는 기준입니다."
+          />
+
+          <div className="grid gap-4 lg:grid-cols-3">
+            {trustMeaningItems.map((item, index) => (
+              <Card key={item.title}>
+                <div className="p-6">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#285F67] text-sm font-black text-white">
+                    {index + 1}
+                  </div>
+                  <h3 className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[#60767B]">{item.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="fees" className="bg-white py-14">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Fee Guide"
