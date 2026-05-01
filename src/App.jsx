@@ -8,15 +8,16 @@ import {
   CalendarClock,
   CheckCircle2,
   ClipboardCheck,
+  FileCheck2,
   FlaskConical,
   HelpCircle,
   Mail,
+  MapPin,
   Microscope,
   Phone,
   ShieldCheck,
   TimerReset,
   Users,
-  Zap,
 } from "lucide-react";
 
 function cn(...classes) {
@@ -31,16 +32,22 @@ function Button({
   ...props
 }) {
   const base =
-    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 disabled:pointer-events-none disabled:opacity-50";
+    "inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 disabled:pointer-events-none disabled:opacity-50";
 
   const variants = {
-    default: "bg-slate-950 text-white hover:bg-slate-800",
-    outline: "border border-slate-300 bg-white text-slate-950 hover:bg-slate-50",
+    default:
+      "bg-[#0B2A4A] text-white shadow-lg shadow-slate-900/10 hover:bg-[#123A63]",
+    light:
+      "bg-white text-[#0B2A4A] shadow-lg shadow-slate-900/10 hover:bg-slate-50",
+    outline:
+      "border border-slate-300 bg-white text-[#0B2A4A] hover:border-[#0B2A4A] hover:bg-slate-50",
+    ghost:
+      "bg-transparent text-[#0B2A4A] hover:bg-slate-100",
   };
 
   const sizes = {
-    default: "h-10 px-4 py-2",
-    lg: "h-11 px-8",
+    default: "h-11 px-5",
+    lg: "h-14 px-8 text-base",
   };
 
   return (
@@ -56,7 +63,10 @@ function Button({
 function Card({ children, className = "", ...props }) {
   return (
     <div
-      className={cn("rounded-xl border bg-white text-slate-950 shadow", className)}
+      className={cn(
+        "rounded-[1.75rem] border border-slate-200 bg-white shadow-sm",
+        className
+      )}
       {...props}
     >
       {children}
@@ -72,8 +82,11 @@ function CardContent({ children, className = "", ...props }) {
   );
 }
 
-const noWrapHeading =
-  "font-black tracking-tight whitespace-nowrap text-[clamp(1.45rem,3.6vw,3.55rem)] leading-tight";
+const sectionTitle =
+  "font-black tracking-[-0.045em] text-[#0B1F33] text-[clamp(2rem,4.2vw,4rem)] leading-[1.06]";
+
+const compactTitle =
+  "font-black tracking-[-0.04em] text-[#0B1F33] text-[clamp(1.75rem,3.3vw,3.25rem)] leading-[1.08]";
 
 const proofBadges = [
   "식약처 지정 화장품 시험·검사기관 제18호",
@@ -85,22 +98,16 @@ const proofBadges = [
 const urgentReasons = [
   "출시·출고 일정은 정해졌는데 시험성적서가 아직 없나요?",
   "자가품질 위탁검사 항목과 준비서류가 헷갈리시나요?",
-  "대형기관은 견적·상담·진행 확인이 느리다고 느끼셨나요?",
-  "브랜드사·제조사·유통사 제출용 성적서가 급하게 필요하신가요?",
+  "견적·상담·진행 확인을 더 빠르게 받고 싶으신가요?",
+  "브랜드사·제조사·유통사 제출용 성적서가 필요하신가요?",
 ];
 
 const comparisonRows = [
   ["기관 설명을 먼저 읽어야 함", "성적서 납기부터 바로 확인"],
-  ["메뉴가 많고 동선이 복잡함", "견적 요청까지 한 화면에서 이동"],
-  ["가격 감이 늦게 잡힘", "대표 수수료를 먼저 공개"],
-  [
-    "처음 의뢰자는 준비서류가 막막함",
-    "자가품질 위탁검사 준비서류를 바로 안내",
-  ],
-  [
-    "상담과 진행 확인이 느릴 수 있음",
-    "1건 의뢰도 전문 카운셀링 지원",
-  ],
+  ["메뉴가 많고 동선이 복잡함", "견적 요청까지 빠르게 이동"],
+  ["가격 감이 늦게 잡힘", "대표 수수료를 먼저 확인"],
+  ["처음 의뢰자는 준비서류가 막막함", "필요 서류를 한눈에 안내"],
+  ["상담과 진행 확인이 느릴 수 있음", "1건 의뢰도 전문 카운셀링 지원"],
 ];
 
 const decidingFactors = [
@@ -162,17 +169,17 @@ const process = [
   {
     step: "01",
     title: "납기 먼저 확인",
-    desc: "제품명, 제형, 제출처, 희망 납기를 먼저 알려주세요. 가능한 진행 일정을 우선 검토합니다.",
+    desc: "제품명, 제형, 제출처, 희망 납기를 먼저 알려주세요.",
   },
   {
     step: "02",
     title: "시험항목·서류 안내",
-    desc: "자가품질, 납품, 수입, 기능성 여부에 따라 필요한 시험항목과 준비서류를 안내합니다.",
+    desc: "자가품질, 납품, 수입, 기능성 여부에 따라 필요한 항목을 안내합니다.",
   },
   {
     step: "03",
     title: "시료 접수·분석 진행",
-    desc: "우편 또는 방문으로 시료를 접수하고, 수수료 납입 시점부터 분석이 진행됩니다.",
+    desc: "우편 또는 방문으로 시료를 접수하고 수수료 납입 후 분석을 진행합니다.",
   },
   {
     step: "04",
@@ -202,15 +209,17 @@ const faqs = [
 
 export default function YSIETCosmeticsLanding() {
   return (
-    <main className="min-h-screen bg-[#fff8f4] text-slate-950">
-      <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur-xl">
+    <main className="min-h-screen bg-[#F7FAFC] text-slate-900 antialiased">
+      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a href="#top" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-sm">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0B2A4A] text-white shadow-sm">
               <FlaskConical className="h-5 w-5" />
             </div>
             <div>
-              <p className="text-base font-black tracking-tight">YSIET</p>
+              <p className="text-base font-black tracking-[-0.02em] text-[#0B1F33]">
+                YSIET
+              </p>
               <p className="text-xs font-bold text-slate-500">
                 화장품 시험·검사 성적서 상담
               </p>
@@ -218,89 +227,82 @@ export default function YSIETCosmeticsLanding() {
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-bold text-slate-600 xl:flex">
-            <a href="#compare" className="hover:text-slate-950">
+            <a href="#compare" className="hover:text-[#0B2A4A]">
               기관 비교
             </a>
-            <a href="#services" className="hover:text-slate-950">
+            <a href="#services" className="hover:text-[#0B2A4A]">
               검사항목
             </a>
-            <a href="#fees" className="hover:text-slate-950">
+            <a href="#fees" className="hover:text-[#0B2A4A]">
               수수료
             </a>
-            <a href="#documents" className="hover:text-slate-950">
+            <a href="#documents" className="hover:text-[#0B2A4A]">
               준비서류
             </a>
-            <a href="#process" className="hover:text-slate-950">
+            <a href="#process" className="hover:text-[#0B2A4A]">
               절차
             </a>
           </nav>
 
           <a href="#contact">
-            <Button className="rounded-full bg-rose-600 px-5 font-black text-white hover:bg-rose-700">
+            <Button className="bg-[#0B2A4A] px-5 text-white hover:bg-[#123A63]">
               납기 확인
             </Button>
           </a>
         </div>
       </header>
 
-      <section id="top" className="relative overflow-hidden bg-slate-950 text-white">
-        <div className="absolute inset-0 opacity-40">
-          <div className="absolute -left-20 top-10 h-96 w-96 rounded-full bg-rose-500 blur-3xl" />
-          <div className="absolute right-0 top-0 h-[28rem] w-[28rem] rounded-full bg-orange-400 blur-3xl" />
+      <section id="top" className="relative overflow-hidden bg-[#EEF5F9]">
+        <div className="absolute inset-0">
+          <div className="absolute -right-32 -top-32 h-[34rem] w-[34rem] rounded-full bg-[#C7E6F4] blur-3xl" />
+          <div className="absolute -left-24 top-40 h-[26rem] w-[26rem] rounded-full bg-[#D9F0E8] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.07fr_0.93fr] lg:items-center lg:py-24">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:py-24">
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-black text-rose-100 shadow-sm backdrop-blur">
-              <Zap className="h-4 w-4" />
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#B9D4E3] bg-white/80 px-4 py-2 text-sm font-black text-[#0B2A4A] shadow-sm">
+              <BadgeCheck className="h-4 w-4 text-[#1F7A8C]" />
               다른 시험기관을 살펴보다 오셨다면, 먼저 성적서 납기부터 확인하세요
             </div>
 
-            <h1 className="max-w-5xl text-5xl font-black leading-[1.02] tracking-tight md:text-7xl">
+            <h1 className="max-w-5xl text-[clamp(3rem,7vw,6.4rem)] font-black leading-[0.98] tracking-[-0.07em] text-[#081C2E]">
               화장품 성적서,
-              <span className="block text-rose-300">더 이상 기다리지 말고</span>
+              <span className="block text-[#1F7A8C]">더 이상 기다리지 말고</span>
               먼저 일정 잡으세요.
             </h1>
 
-            <p className="mt-7 max-w-2xl text-xl leading-9 text-slate-200">
+            <p className="mt-8 max-w-2xl text-xl leading-9 text-slate-700">
               식약처 지정 제18호와 KOLAS 제364호의 신뢰성. 일반 7일·긴급 3일 가능 여부 상담.
               자가품질 위탁검사부터 시험성적서 발급까지 바로 안내합니다.
             </p>
 
-            <div className="mt-7 grid gap-3 sm:grid-cols-2">
-              {proofBadges.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-3 text-sm font-black text-white ring-1 ring-white/15"
-                >
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-rose-300" />
-                  {item}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a href="#contact">
-                <Button
-                  size="lg"
-                  className="h-14 rounded-full bg-rose-500 px-8 text-base font-black text-white hover:bg-rose-400"
-                >
+                <Button size="lg">
                   지금 성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </a>
-              <a href="#compare">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-14 rounded-full border-white/30 bg-white/10 px-8 text-base font-black text-white hover:bg-white/20 hover:text-white"
-                >
-                  왜 YSIET인가
+              <a href="#fees">
+                <Button size="lg" variant="outline">
+                  대표 수수료 보기
                 </Button>
               </a>
+            </div>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              {proofBadges.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/85 px-4 py-3 text-sm font-black text-[#0B1F33] shadow-sm"
+                >
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#1F7A8C]" />
+                  {item}
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -309,14 +311,16 @@ export default function YSIETCosmeticsLanding() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <Card className="rounded-[2rem] border-0 bg-white text-slate-950 shadow-2xl shadow-rose-900/40">
+            <Card className="border-0 bg-white/95 shadow-2xl shadow-slate-900/10">
               <CardContent className="p-7 md:p-9">
-                <div className="mb-7 rounded-3xl bg-gradient-to-br from-rose-600 to-orange-500 p-6 text-white">
-                  <p className="text-sm font-black text-rose-100">FAST CHECK</p>
-                  <h2 className="mt-2 text-3xl font-black">
+                <div className="mb-7 rounded-[1.5rem] bg-[#0B2A4A] p-6 text-white">
+                  <p className="text-sm font-black text-[#9AD7E8]">
+                    FAST CHECK
+                  </p>
+                  <h2 className="mt-2 text-3xl font-black tracking-[-0.04em]">
                     여러 시험기관을 살펴보다 오셨나요?
                   </h2>
-                  <p className="mt-3 leading-7 text-rose-50">
+                  <p className="mt-3 leading-7 text-slate-200">
                     아래 4가지를 먼저 확인해보세요. 납기, 지정기관, KOLAS, 수수료.
                   </p>
                 </div>
@@ -327,7 +331,7 @@ export default function YSIETCosmeticsLanding() {
                       key={item}
                       className="flex gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4"
                     >
-                      <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-rose-600" />
+                      <BadgeCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#1F7A8C]" />
                       <p className="font-bold text-slate-800">{item}</p>
                     </div>
                   ))}
@@ -336,13 +340,13 @@ export default function YSIETCosmeticsLanding() {
                 <div className="mt-7 grid gap-3 sm:grid-cols-2">
                   <a
                     href="tel:02-312-0540"
-                    className="flex items-center justify-center gap-2 rounded-2xl bg-rose-600 px-4 py-4 text-center font-black text-white transition hover:bg-rose-700"
+                    className="flex items-center justify-center gap-2 rounded-2xl bg-[#0B2A4A] px-4 py-4 text-center font-black text-white transition hover:bg-[#123A63]"
                   >
                     <Phone className="h-5 w-5" /> 02-312-0540
                   </a>
                   <a
                     href="mailto:testing@ysiet.com"
-                    className="flex items-center justify-center gap-2 rounded-2xl bg-slate-950 px-4 py-4 text-center font-black text-white transition hover:bg-slate-800"
+                    className="flex items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-4 py-4 text-center font-black text-[#0B2A4A] transition hover:bg-slate-50"
                   >
                     <Mail className="h-5 w-5" /> 이메일 견적
                   </a>
@@ -361,41 +365,41 @@ export default function YSIETCosmeticsLanding() {
             [CalendarClock, "일반 7일 · 긴급 3일"],
             [Banknote, "대표 수수료 공개"],
           ].map(([Icon, text]) => (
-            <div key={text} className="flex items-center gap-3 rounded-2xl bg-[#fff8f4] px-5 py-4">
-              <Icon className="h-5 w-5 text-rose-600" />
-              <p className="font-black">{text}</p>
+            <div
+              key={text}
+              className="flex items-center gap-3 rounded-2xl bg-[#F3F8FB] px-5 py-4"
+            >
+              <Icon className="h-5 w-5 text-[#1F7A8C]" />
+              <p className="font-black text-[#0B1F33]">{text}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section id="compare" className="mx-auto max-w-7xl px-5 py-24">
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div className="grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               Institution Comparison
             </p>
-            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-6xl">
+            <h2 className={sectionTitle}>
               다른 시험기관을 살펴보다가도 YSIET에 문의하게 되는 이유.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-slate-700">
+            <p className="mt-6 text-lg leading-8 text-slate-600">
               의뢰 전에는 “성적서가 언제 나오고, 비용은 어느 정도이며, 무엇을 준비해야 하는지”가 가장 중요합니다.
               YSIET는 필요한 정보를 먼저 확인할 수 있도록 안내합니다.
             </p>
-            <a
-              href="#contact"
-              className="mt-8 inline-flex rounded-full bg-slate-950 px-7 py-4 font-black text-white transition hover:bg-slate-800"
-            >
-              기관 선택 전 납기 확인하기
+            <a href="#contact" className="mt-8 inline-flex">
+              <Button>기관 선택 전 납기 확인하기</Button>
             </a>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] bg-white shadow-xl ring-1 ring-slate-200">
-            <div className="grid grid-cols-2 bg-slate-950 text-white">
-              <div className="p-5 text-sm font-black text-slate-300">
+          <div className="overflow-hidden rounded-[2rem] bg-white shadow-xl shadow-slate-900/5 ring-1 ring-slate-200">
+            <div className="grid grid-cols-2 bg-[#0B2A4A] text-white">
+              <div className="p-5 text-sm font-black text-slate-200">
                 의뢰 전 자주 막히는 부분
               </div>
-              <div className="bg-rose-600 p-5 text-sm font-black">
+              <div className="bg-[#1F7A8C] p-5 text-sm font-black">
                 YSIET가 바로 안내하는 것
               </div>
             </div>
@@ -403,34 +407,39 @@ export default function YSIETCosmeticsLanding() {
             {comparisonRows.map(([before, after]) => (
               <div key={before} className="grid grid-cols-2 border-t border-slate-100">
                 <div className="p-5 font-bold text-slate-500">{before}</div>
-                <div className="p-5 font-black text-slate-950">{after}</div>
+                <div className="p-5 font-black text-[#0B1F33]">{after}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-950 py-24 text-white">
-        <div className="mx-auto max-w-7xl px-5 overflow-x-auto">
-          <div className="mb-12 max-w-none">
-            <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-300">
+      <section className="bg-[#0B2A4A] py-24 text-white">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="mb-12">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-[#9AD7E8]">
               Key Points
             </p>
-            <h2 className={noWrapHeading}>
+            <h2 className="text-[clamp(2rem,4vw,3.8rem)] font-black leading-[1.06] tracking-[-0.05em]">
               성적서 의뢰 전 꼭 확인할 4가지.
             </h2>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {decidingFactors.map((item) => (
-              <Card key={item.title} className="rounded-3xl border-white/10 bg-white/10 text-white shadow-xl">
+              <Card
+                key={item.title}
+                className="border-white/10 bg-white/10 text-white shadow-none backdrop-blur"
+              >
                 <CardContent className="p-7">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-500 text-white">
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#0B2A4A]">
                     <item.icon className="h-7 w-7" />
                   </div>
-                  <p className="text-sm font-black text-rose-200">{item.title}</p>
-                  <h3 className="mt-2 text-2xl font-black">{item.punch}</h3>
-                  <p className="mt-4 leading-7 text-slate-300">{item.desc}</p>
+                  <p className="text-sm font-black text-[#9AD7E8]">{item.title}</p>
+                  <h3 className="mt-2 text-2xl font-black tracking-[-0.03em]">
+                    {item.punch}
+                  </h3>
+                  <p className="mt-4 leading-7 text-slate-200">{item.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -438,17 +447,15 @@ export default function YSIETCosmeticsLanding() {
         </div>
       </section>
 
-      <section id="services" className="mx-auto max-w-7xl px-5 py-24 overflow-x-auto">
+      <section id="services" className="mx-auto max-w-7xl px-5 py-24">
         <div className="mb-12 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               Testing Services
             </p>
-            <h2 className={noWrapHeading}>
-              검사 가능한 서비스를 한눈에.
-            </h2>
+            <h2 className={compactTitle}>검사 가능한 서비스를 한눈에.</h2>
           </div>
-          <p className="text-lg leading-8 text-slate-700">
+          <p className="text-lg leading-8 text-slate-600">
             일반 화장품, 기능성 화장품, 원료·부자재, R&D 지원까지.
             정확한 가능 여부와 세부 항목은 제품 유형과 제출 목적에 따라 상담 후 확정됩니다.
           </p>
@@ -458,29 +465,29 @@ export default function YSIETCosmeticsLanding() {
           {services.map((service) => (
             <div
               key={service}
-              className="flex items-start gap-4 rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200"
+              className="flex items-start gap-4 rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm"
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-50 text-rose-600">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#E6F4F6] text-[#1F7A8C]">
                 <CheckCircle2 className="h-6 w-6" />
               </div>
-              <p className="text-lg font-black">{service}</p>
+              <p className="text-lg font-black leading-7 text-[#0B1F33]">
+                {service}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
       <section id="fees" className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-5 overflow-x-auto">
+        <div className="mx-auto max-w-7xl px-5">
           <div className="mb-12 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
+              <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
                 Fee Guide
               </p>
-              <h2 className={noWrapHeading}>
-                가격 감을 먼저 잡게 해드립니다.
-              </h2>
+              <h2 className={compactTitle}>가격 감을 먼저 잡게 해드립니다.</h2>
             </div>
-            <p className="text-lg leading-8 text-slate-700">
+            <p className="text-lg leading-8 text-slate-600">
               대표 수수료를 먼저 확인하고, 실제 견적은 시험항목·제품유형·긴급 여부에 따라 상담 후 안내받으실 수 있습니다.
               모든 금액은 VAT 별도입니다.
             </p>
@@ -488,37 +495,44 @@ export default function YSIETCosmeticsLanding() {
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {feeHighlights.map(([item, price]) => (
-              <div key={item} className="rounded-3xl bg-[#fff8f4] p-6 ring-1 ring-slate-200">
-                <p className="text-lg font-black text-slate-900">{item}</p>
-                <p className="mt-3 text-3xl font-black text-rose-600">{price}</p>
+              <div
+                key={item}
+                className="rounded-[1.5rem] border border-slate-200 bg-[#F7FAFC] p-6"
+              >
+                <p className="text-lg font-black text-[#0B1F33]">{item}</p>
+                <p className="mt-3 text-3xl font-black tracking-[-0.03em] text-[#1F7A8C]">
+                  {price}
+                </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 rounded-3xl bg-slate-950 p-6 text-white md:flex md:items-center md:justify-between">
+          <div className="mt-6 rounded-[1.75rem] bg-[#0B2A4A] p-6 text-white md:flex md:items-center md:justify-between">
             <div>
-              <p className="text-xl font-black">견적을 기다리기 전에, 먼저 범위를 확인하세요.</p>
-              <p className="mt-2 text-slate-300">
+              <p className="text-xl font-black">
+                견적을 기다리기 전에, 먼저 범위를 확인하세요.
+              </p>
+              <p className="mt-2 text-slate-200">
                 제품명과 필요 항목을 보내주시면 실제 견적 기준으로 안내드립니다.
               </p>
             </div>
-            <a href="#contact" className="mt-5 inline-flex rounded-full bg-rose-600 px-6 py-3 font-black text-white md:mt-0">
-              견적 요청하기
+            <a href="#contact" className="mt-5 inline-flex md:mt-0">
+              <Button variant="light">견적 요청하기</Button>
             </a>
           </div>
         </div>
       </section>
 
-      <section id="self-quality" className="mx-auto max-w-7xl px-5 py-24 overflow-x-auto">
+      <section id="self-quality" className="mx-auto max-w-7xl px-5 py-24">
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               Self Quality Testing
             </p>
-            <h2 className={noWrapHeading}>
+            <h2 className={compactTitle}>
               자가품질 위탁검사, 처음이어도 바로 시작할 수 있게.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-slate-700">
+            <p className="mt-6 text-lg leading-8 text-slate-600">
               화장품 제조업자·책임판매업자는 품질검사 시설이 없는 경우 식약처 지정 시험·검사기관과
               품질검사 위탁계약을 체결하여 품질관리를 진행할 수 있습니다.
               YSIET는 계약, 시험의뢰, 시료 접수, 성적서 발급까지 한 번에 안내합니다.
@@ -532,9 +546,14 @@ export default function YSIETCosmeticsLanding() {
               ["분석 시작", "수수료 납입 시점부터 진행"],
               ["성적서", "시험 완료 후 원본 우편 전달"],
             ].map(([title, desc]) => (
-              <div key={title} className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-                <p className="text-sm font-black text-rose-600">CHECK</p>
-                <h3 className="mt-2 text-2xl font-black">{title}</h3>
+              <div
+                key={title}
+                className="rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm"
+              >
+                <p className="text-sm font-black text-[#1F7A8C]">CHECK</p>
+                <h3 className="mt-2 text-2xl font-black tracking-[-0.03em] text-[#0B1F33]">
+                  {title}
+                </h3>
                 <p className="mt-3 leading-7 text-slate-600">{desc}</p>
               </div>
             ))}
@@ -542,24 +561,27 @@ export default function YSIETCosmeticsLanding() {
         </div>
       </section>
 
-      <section id="documents" className="bg-slate-950 py-24 text-white">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-start overflow-x-auto">
+      <section id="documents" className="bg-[#0B2A4A] py-24 text-white">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-300">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-[#9AD7E8]">
               Before Request
             </p>
-            <h2 className={noWrapHeading}>
+            <h2 className="text-[clamp(2rem,3.7vw,3.4rem)] font-black leading-[1.08] tracking-[-0.05em]">
               문의 전 준비하면 견적이 빨라집니다.
             </h2>
-            <p className="mt-6 text-lg leading-8 text-slate-300">
+            <p className="mt-6 text-lg leading-8 text-slate-200">
               준비서류와 제품 정보를 미리 알려주시면 상담과 접수가 훨씬 빨라집니다.
             </p>
           </div>
 
           <div className="space-y-3">
             {documents.map((item) => (
-              <div key={item} className="flex gap-3 rounded-3xl bg-white/10 p-5 ring-1 ring-white/10">
-                <ClipboardCheck className="mt-0.5 h-5 w-5 shrink-0 text-rose-300" />
+              <div
+                key={item}
+                className="flex gap-3 rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/10"
+              >
+                <ClipboardCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#9AD7E8]" />
                 <p className="font-bold text-white">{item}</p>
               </div>
             ))}
@@ -568,15 +590,13 @@ export default function YSIETCosmeticsLanding() {
       </section>
 
       <section id="trust" className="py-24">
-        <div className="mx-auto max-w-7xl px-5 overflow-x-auto">
-          <div className="mb-12 max-w-none">
-            <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="mb-12 max-w-3xl">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               Trust Proof
             </p>
-            <h2 className={noWrapHeading}>
-              확인된 신뢰근거를 한눈에.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-700">
+            <h2 className={compactTitle}>확인된 신뢰근거를 한눈에.</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
               식약처 지정, KOLAS 인정, 전문 인력, 상담 지원까지 의뢰 전 필요한 신뢰 정보를 확인하실 수 있습니다.
             </p>
           </div>
@@ -608,13 +628,20 @@ export default function YSIETCosmeticsLanding() {
                 "화장품 분석뿐 아니라 제품개발, 관련법령 준수, 준비서류까지 상담합니다.",
               ],
             ].map(([Icon, eyebrow, title, desc]) => (
-              <Card key={title} className="rounded-3xl border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <Card
+                key={title}
+                className="bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+              >
                 <CardContent className="p-7">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-white">
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0B2A4A] text-white">
                     <Icon className="h-7 w-7" />
                   </div>
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-rose-600">{eyebrow}</p>
-                  <h3 className="mt-2 text-xl font-black">{title}</h3>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#1F7A8C]">
+                    {eyebrow}
+                  </p>
+                  <h3 className="mt-2 text-xl font-black tracking-[-0.03em] text-[#0B1F33]">
+                    {title}
+                  </h3>
                   <p className="mt-3 leading-7 text-slate-600">{desc}</p>
                 </CardContent>
               </Card>
@@ -626,23 +653,23 @@ export default function YSIETCosmeticsLanding() {
       <section id="process" className="bg-white py-24">
         <div className="mx-auto max-w-7xl px-5">
           <div className="mb-12 max-w-3xl">
-            <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               Process
             </p>
-            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
-              복잡한 설명 없이, 성적서까지 4단계.
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-700">
+            <h2 className={compactTitle}>복잡한 설명 없이, 성적서까지 4단계.</h2>
+            <p className="mt-5 text-lg leading-8 text-slate-600">
               고객이 중간에 헤매지 않도록 필요한 정보만 빠르게 확인하고 진행합니다.
             </p>
           </div>
 
           <div className="grid gap-5 md:grid-cols-4">
             {process.map((item) => (
-              <Card key={item.step} className="rounded-3xl border-slate-200 shadow-sm">
+              <Card key={item.step} className="shadow-sm">
                 <CardContent className="p-7">
-                  <p className="text-5xl font-black text-rose-100">{item.step}</p>
-                  <h3 className="mt-4 text-xl font-black">{item.title}</h3>
+                  <p className="text-5xl font-black text-[#D7EAF2]">{item.step}</p>
+                  <h3 className="mt-4 text-xl font-black tracking-[-0.03em] text-[#0B1F33]">
+                    {item.title}
+                  </h3>
                   <p className="mt-3 leading-7 text-slate-600">{item.desc}</p>
                 </CardContent>
               </Card>
@@ -652,78 +679,87 @@ export default function YSIETCosmeticsLanding() {
       </section>
 
       <section id="contact" className="mx-auto max-w-7xl px-5 py-24">
-        <div className="overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-rose-600 to-orange-500 p-8 text-white shadow-2xl shadow-rose-200 md:p-12">
+        <div className="overflow-hidden rounded-[2.5rem] bg-[#0B2A4A] p-8 text-white shadow-2xl shadow-slate-900/10 md:p-12">
           <div className="grid gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-center">
             <div>
-              <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-100">
+              <p className="text-sm font-black uppercase tracking-[0.25em] text-[#9AD7E8]">
                 Request Quote
               </p>
-              <h2 className="mt-3 text-4xl font-black tracking-tight md:text-6xl">
+              <h2 className="mt-3 text-[clamp(2.25rem,5vw,5rem)] font-black leading-[1.03] tracking-[-0.06em]">
                 기관 비교는 충분합니다. 이제 YSIET에 납기부터 확인하세요.
               </h2>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-rose-50">
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
                 일반 7일 · 긴급 3일 가능 여부 상담. 제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면
                 우선 검토 후 안내드립니다.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="tel:02-312-0540"
-                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-white px-8 font-black text-slate-950 transition hover:bg-rose-50"
-                >
-                  <Phone className="h-5 w-5" /> 02-312-0540
+                <a href="tel:02-312-0540">
+                  <Button variant="light" size="lg">
+                    <Phone className="mr-2 h-5 w-5" /> 02-312-0540
+                  </Button>
                 </a>
-                <a
-                  href="mailto:testing@ysiet.com"
-                  className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-slate-950 px-8 font-black text-white transition hover:bg-slate-800"
-                >
-                  <Mail className="h-5 w-5" /> testing@ysiet.com
+                <a href="mailto:testing@ysiet.com">
+                  <Button
+                    size="lg"
+                    className="border border-white/20 bg-white/10 text-white hover:bg-white/20"
+                  >
+                    <Mail className="mr-2 h-5 w-5" /> testing@ysiet.com
+                  </Button>
                 </a>
               </div>
             </div>
 
-            <div className="rounded-[2rem] bg-white p-6 text-slate-950 shadow-xl">
-              <p className="text-sm font-black text-rose-600">견적 요청 시 알려주세요</p>
+            <div className="rounded-[2rem] bg-white p-6 text-[#0B1F33] shadow-xl">
+              <p className="text-sm font-black text-[#1F7A8C]">
+                견적 요청 시 알려주세요
+              </p>
               <ul className="mt-4 space-y-3">
                 {["제품명 / 제형", "희망 검사항목", "성적서 제출처", "희망 납기", "시료 준비 가능일"].map((item) => (
                   <li key={item} className="flex items-center gap-3 font-bold">
-                    <CheckCircle2 className="h-5 w-5 text-rose-600" />
+                    <CheckCircle2 className="h-5 w-5 text-[#1F7A8C]" />
                     {item}
                   </li>
                 ))}
               </ul>
               <a href="mailto:testing@ysiet.com">
-                <Button className="mt-6 h-14 w-full rounded-2xl bg-slate-950 text-base font-black text-white hover:bg-slate-800">
+                <Button className="mt-6 h-14 w-full rounded-2xl">
                   빠른 견적 요청하기
                 </Button>
               </a>
-              <div className="mt-5 rounded-2xl bg-rose-50 p-4 text-sm font-bold leading-6 text-rose-800">
-                주소: 서울시 종로구 인사동5길 42 종로빌딩 10층
+              <div className="mt-5 flex gap-3 rounded-2xl bg-[#F3F8FB] p-4 text-sm font-bold leading-6 text-slate-700">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#1F7A8C]" />
+                서울시 종로구 인사동5길 42 종로빌딩 10층
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="faq" className="bg-[#fffaf7] py-24">
+      <section id="faq" className="bg-[#F3F8FB] py-24">
         <div className="mx-auto max-w-5xl px-5">
           <div className="mb-10 text-center">
-            <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
+            <p className="text-sm font-black uppercase tracking-[0.25em] text-[#1F7A8C]">
               FAQ
             </p>
-            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
-              망설이는 고객의 마지막 질문까지 답합니다.
+            <h2 className="mt-3 text-[clamp(2rem,4vw,3.8rem)] font-black leading-[1.08] tracking-[-0.05em] text-[#0B1F33]">
+              자주 묻는 질문
             </h2>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-black">
+              <details
+                key={faq.q}
+                className="group rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-black text-[#0B1F33]">
                   <span className="flex items-center gap-3">
-                    <HelpCircle className="h-5 w-5 text-rose-600" />
+                    <HelpCircle className="h-5 w-5 text-[#1F7A8C]" />
                     {faq.q}
                   </span>
-                  <span className="text-rose-600 transition group-open:rotate-45">+</span>
+                  <span className="text-[#1F7A8C] transition group-open:rotate-45">
+                    +
+                  </span>
                 </summary>
                 <p className="mt-4 leading-8 text-slate-600">{faq.a}</p>
               </details>
@@ -732,10 +768,12 @@ export default function YSIETCosmeticsLanding() {
         </div>
       </section>
 
-      <footer className="bg-slate-950 px-5 py-12 text-white">
+      <footer className="bg-[#071827] px-5 py-12 text-white">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_1fr] md:items-center">
           <div>
-            <p className="text-2xl font-black">와이에스환경기술연구원</p>
+            <p className="text-2xl font-black tracking-[-0.03em]">
+              와이에스환경기술연구원
+            </p>
             <p className="mt-3 max-w-xl leading-7 text-slate-400">
               식약처 지정 화장품 시험·검사기관 제18호 · KOLAS 국제공인시험기관 제364호
             </p>
@@ -751,17 +789,17 @@ export default function YSIETCosmeticsLanding() {
         </div>
       </footer>
 
-      <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 rounded-full bg-slate-950 p-2 shadow-2xl md:hidden">
+      <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 rounded-full bg-[#071827] p-2 shadow-2xl md:hidden">
         <div className="grid grid-cols-2 gap-2">
           <a
             href="tel:02-312-0540"
-            className="rounded-full bg-white px-4 py-3 text-center text-sm font-black text-slate-950"
+            className="rounded-full bg-white px-4 py-3 text-center text-sm font-black text-[#0B2A4A]"
           >
             전화 상담
           </a>
           <a
             href="mailto:testing@ysiet.com"
-            className="rounded-full bg-rose-600 px-4 py-3 text-center text-sm font-black text-white"
+            className="rounded-full bg-[#1F7A8C] px-4 py-3 text-center text-sm font-black text-white"
           >
             이메일 견적
           </a>
