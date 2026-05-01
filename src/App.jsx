@@ -16,10 +16,8 @@ import {
   ShieldCheck,
   TimerReset,
   Users,
-  MessageCircle,
   Building2,
   FileText,
-  BadgeCheck,
 } from "lucide-react";
 
 const KAKAO_URL = "https://pf.kakao.com/_xbUlsn";
@@ -368,14 +366,14 @@ const quickActions = [
     href: "/#process",
   },
   {
-    icon: <MessageCircle className="h-8 w-8" />,
-    title: "카톡문의",
-    desc: "카카오톡 채널로 문의하면 빠르게 상담을 시작할 수 있습니다",
-    href: KAKAO_URL,
+    icon: <Building2 className="h-8 w-8" />,
+    title: "기관소개",
+    desc: "지정기관과 공인시험기관으로서의 신뢰근거를 확인하세요",
+    href: "/about",
   },
 ];
 
-function Header() {
+function Header({ showKakao = false }) {
   return (
     <header className="sticky top-0 z-50 border-b border-[#D8E5E7] bg-[#FCFEFE]/92 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
@@ -416,14 +414,16 @@ function Header() {
           <a href="/about" className="hover:text-[#3E7B7F]">
             기관소개
           </a>
-          <a
-            href={KAKAO_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex h-10 items-center justify-center rounded-full bg-[#FEE500] px-4 text-sm font-black text-[#2D2926] shadow-[0_10px_24px_rgba(254,229,0,0.22)] transition hover:bg-[#F6D600]"
-          >
-            카톡문의
-          </a>
+          {showKakao ? (
+            <a
+              href={KAKAO_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-10 items-center justify-center rounded-full bg-[#FEE500] px-4 text-sm font-black text-[#2D2926] shadow-[0_10px_24px_rgba(254,229,0,0.22)] transition hover:bg-[#F6D600]"
+            >
+              카톡문의
+            </a>
+          ) : null}
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2 md:flex">
@@ -484,7 +484,7 @@ function BrandTrustBar() {
   );
 }
 
-function Footer() {
+function Footer({ showKakao = false }) {
   return (
     <footer className="border-t border-[#D8E5E7] bg-[#F3F6F6]">
       <div className="mx-auto max-w-7xl px-5 py-12">
@@ -522,14 +522,16 @@ function Footer() {
                 <p className="font-black">대표전화 02-312-0540</p>
                 <p className="font-bold text-[#60767B]">이메일 testing@ysiet.com</p>
                 <p className="font-bold text-[#60767B]">팩스 02-312-0560</p>
-                <a
-                  href={KAKAO_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center rounded-full bg-[#FEE500] px-4 py-2 text-sm font-black text-[#2D2926]"
-                >
-                  카톡문의
-                </a>
+                {showKakao ? (
+                  <a
+                    href={KAKAO_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center rounded-full bg-[#FEE500] px-4 py-2 text-sm font-black text-[#2D2926]"
+                  >
+                    카톡문의
+                  </a>
+                ) : null}
               </div>
             </div>
 
@@ -582,12 +584,10 @@ function MobileStickyButtons() {
           전화 상담
         </a>
         <a
-          href={KAKAO_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-full bg-[#FEE500] px-4 py-3 text-center text-sm font-black text-[#2D2926]"
+          href="mailto:testing@ysiet.com"
+          className="rounded-full bg-[#3E7B7F] px-4 py-3 text-center text-sm font-black text-white"
         >
-          카톡문의
+          이메일 견적
         </a>
       </div>
     </div>
@@ -686,7 +686,7 @@ function QuickActionSection() {
 function HomePage() {
   return (
     <>
-      <Header />
+      <Header showKakao />
 
       <section id="top" className="relative overflow-hidden bg-[#EEF5F4]">
         <div className="absolute inset-0">
@@ -772,12 +772,10 @@ function HomePage() {
                 <Phone className="h-5 w-5" /> 전화 상담
               </a>
               <a
-                href={KAKAO_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center gap-2 rounded-2xl bg-[#FEE500] px-4 py-4 text-center font-black text-[#2D2926] transition hover:bg-[#F6D600]"
+                href="mailto:testing@ysiet.com"
+                className="flex items-center justify-center gap-2 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4 text-center font-black text-[#2E525A] transition hover:border-[#98BBC0]"
               >
-                <MessageCircle className="h-5 w-5" /> 카톡문의
+                <Mail className="h-5 w-5" /> 이메일 견적
               </a>
             </div>
           </Card>
@@ -1096,12 +1094,10 @@ function HomePage() {
                   <Phone className="mr-2 h-5 w-5" /> 02-312-0540
                 </a>
                 <a
-                  href={KAKAO_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-14 items-center justify-center rounded-full bg-[#FEE500] px-8 font-black text-[#2D2926]"
+                  href="mailto:testing@ysiet.com"
+                  className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/12 px-8 font-black text-white"
                 >
-                  <MessageCircle className="mr-2 h-5 w-5" /> 카톡문의
+                  <Mail className="mr-2 h-5 w-5" /> 이메일 견적
                 </a>
               </div>
             </div>
@@ -1166,7 +1162,7 @@ function HomePage() {
       </section>
 
       <QuickActionSection />
-      <Footer />
+      <Footer showKakao />
       <MobileStickyButtons />
     </>
   );
@@ -1200,9 +1196,6 @@ function AboutPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <LinkButton href="/#contact" className="h-14 px-8 text-base">
                 성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
-              </LinkButton>
-              <LinkButton href={KAKAO_URL} variant="yellow" className="h-14 px-8 text-base">
-                카톡문의
               </LinkButton>
               <LinkButton href="/" variant="secondary" className="h-14 px-8 text-base">
                 메인으로 돌아가기
@@ -1400,12 +1393,11 @@ function AboutPage() {
                   전화 상담
                 </a>
                 <a
-                  href={KAKAO_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#FEE500] px-6 font-black text-[#2D2926]"
+                  href="mailto:testing@ysiet.com"
+                  className="inline-flex h-14 items-center justify-center rounded-2xl border border-[#D8E5E7] bg-white px-6 font-black text-[#2E525A]"
                 >
-                  카톡문의
+                  <Mail className="mr-2 h-5 w-5" />
+                  이메일 견적
                 </a>
               </div>
             </div>
