@@ -29,8 +29,7 @@ function LinkButton({ href, children, variant = "primary", className = "" }) {
     secondary:
       "bg-white text-[#254E58] border border-[#D7E3E5] hover:border-[#8AB7BC]",
     light: "bg-white text-[#254E58] hover:bg-[#F4FAFA]",
-    ghost:
-      "bg-white/12 text-white border border-white/25 hover:bg-white/18",
+    ghost: "bg-white/12 text-white border border-white/25 hover:bg-white/18",
   };
 
   return (
@@ -60,14 +59,41 @@ function Card({ children, className = "" }) {
   );
 }
 
-const label =
-  "text-[11px] font-black uppercase tracking-[0.24em] text-[#3B8E92]";
+function SectionTitle({ eyebrow, titleText, description, light = false }) {
+  return (
+    <div className="mb-12">
+      <p
+        className={cx(
+          "mb-3 text-[10px] font-black uppercase tracking-[0.2em]",
+          light ? "text-[#D7F0EF]" : "text-[#3B8E92]"
+        )}
+      >
+        {eyebrow}
+      </p>
+      <h2
+        className={cx(
+          "whitespace-nowrap text-[clamp(1.1rem,2.8vw,2.05rem)] font-black leading-[1.08] tracking-[-0.04em]",
+          light ? "text-white" : "text-[#263F46]"
+        )}
+      >
+        {titleText}
+      </h2>
+      {description ? (
+        <p
+          className={cx(
+            "mt-6 whitespace-nowrap text-[clamp(0.82rem,1.35vw,1.125rem)] leading-8",
+            light ? "text-[#EEF8F8]" : "text-[#5B7278]"
+          )}
+        >
+          {description}
+        </p>
+      ) : null}
+    </div>
+  );
+}
 
 const title =
   "whitespace-nowrap text-[clamp(1.1rem,2.8vw,2.05rem)] font-black leading-[1.08] tracking-[-0.04em] text-[#263F46]";
-
-const titleLight =
-  "whitespace-nowrap text-[clamp(1.1rem,2.8vw,2.05rem)] font-black leading-[1.08] tracking-[-0.04em] text-white";
 
 const heroTitle =
   "whitespace-nowrap text-[clamp(1.85rem,4.1vw,3.65rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#263F46]";
@@ -329,11 +355,11 @@ export default function App() {
 
           <Card className="border-0 bg-white/88 p-3 shadow-[0_28px_72px_rgba(37,78,88,0.11)]">
             <div className="rounded-[22px] bg-[#3F7F83] p-7 text-white">
-              <p className="text-xs font-black uppercase tracking-[0.28em] text-[#D7F0EF]">
+              <p className="mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#D7F0EF]">
                 Fast Check
               </p>
               <h2 className={cardTitle}>시험기관 비교 중이신가요</h2>
-              <p className="mt-3 leading-7 text-[#EEF8F8]">
+              <p className="mt-4 leading-7 text-[#EEF8F8]">
                 납기와 수수료를 먼저 확인해보세요
               </p>
             </div>
@@ -397,13 +423,11 @@ export default function App() {
         id="sales"
         className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
       >
-        <div className="mb-12">
-          <p className={label}>Why YSIET</p>
-          <h2 className={title}>비교하다가도 문의하게 되는 이유</h2>
-          <p className={`mt-5 ${oneLineDesc}`}>
-            고객이 홈페이지에서 가장 먼저 알고 싶은 것은 기관의 규모가 아니라 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다
-          </p>
-        </div>
+        <SectionTitle
+          eyebrow="Why YSIET"
+          titleText="비교하다가도 문의하게 되는 이유"
+          description="고객이 홈페이지에서 가장 먼저 알고 싶은 것은 기관의 규모가 아니라 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다"
+        />
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {salesReasons.map((item) => (
@@ -441,14 +465,11 @@ export default function App() {
         className="overflow-hidden bg-[#EEF6F4] px-5 py-20 lg:py-24"
       >
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12">
-            <p className={label}>Start Here</p>
-            <h2 className={title}>어떤 상황이신가요</h2>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-[#5B7278]">
-              시험항목을 정확히 몰라도 괜찮습니다. 제품 상황과 제출 목적을 기준으로
-              필요한 순서를 안내합니다
-            </p>
-          </div>
+          <SectionTitle
+            eyebrow="Start Here"
+            titleText="어떤 상황이신가요"
+            description="시험항목을 정확히 몰라도 괜찮습니다. 제품 상황과 제출 목적을 기준으로 필요한 순서를 안내합니다"
+          />
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {customerPaths.map((item) => (
@@ -472,12 +493,11 @@ export default function App() {
 
       <section className="overflow-hidden bg-[#3F7F83] py-20 text-white lg:py-24">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-12">
-            <p className="text-xs font-black uppercase tracking-[0.28em] text-[#D7F0EF]">
-              Key Points
-            </p>
-            <h2 className={titleLight}>의뢰 전 확인할 4가지</h2>
-          </div>
+          <SectionTitle
+            eyebrow="Key Points"
+            titleText="의뢰 전 확인할 4가지"
+            light
+          />
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {keyStrengths.map((item) => (
@@ -502,13 +522,11 @@ export default function App() {
         id="services"
         className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
       >
-        <div className="mb-12">
-          <p className={label}>Testing Services</p>
-          <h2 className={title}>검사 서비스 한눈에</h2>
-          <p className={`mt-5 ${oneLineDesc}`}>
-            일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다
-          </p>
-        </div>
+        <SectionTitle
+          eyebrow="Testing Services"
+          titleText="검사 서비스 한눈에"
+          description="일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다"
+        />
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
@@ -527,13 +545,11 @@ export default function App() {
 
       <section id="fees" className="overflow-hidden bg-[#FBFDFC] py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-12">
-            <p className={label}>Fee Guide</p>
-            <h2 className={title}>대표 수수료 확인</h2>
-            <p className="mt-5 whitespace-nowrap text-[clamp(0.9rem,1.4vw,1.125rem)] leading-8 text-[#5B7278]">
-              실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수 있습니다
-            </p>
-          </div>
+          <SectionTitle
+            eyebrow="Fee Guide"
+            titleText="대표 수수료 확인"
+            description="실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수 있습니다"
+          />
 
           <div className="hidden overflow-hidden rounded-[24px] border border-[#D9E6E8] bg-white md:block">
             <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr] bg-[#EEF6F4] px-5 py-4 text-sm font-black text-[#263F46]">
@@ -586,9 +602,11 @@ export default function App() {
       <section className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
-            <p className={label}>Self Quality Testing</p>
-            <h2 className={title}>자가품질 위탁검사 안내</h2>
-            <p className="mt-6 text-lg leading-8 text-[#5B7278]">
+            <SectionTitle
+              eyebrow="Self Quality Testing"
+              titleText="자가품질 위탁검사 안내"
+            />
+            <p className="mt-[-1.5rem] text-lg leading-8 text-[#5B7278]">
               품질검사 시설이 없는 경우 식약처 지정 시험검사기관과 품질검사 위탁계약을
               체결하여 품질관리를 진행할 수 있습니다
             </p>
@@ -603,13 +621,13 @@ export default function App() {
             ].map(([name, desc]) => (
               <Card key={name}>
                 <div className="p-6">
-                  <p className="text-xs font-black uppercase tracking-[0.24em] text-[#3B8E92]">
+                  <p className="mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#3B8E92]">
                     Check
                   </p>
-                  <h3 className="mt-2 text-2xl font-black tracking-[-0.035em] text-[#263F46]">
+                  <h3 className="text-2xl font-black tracking-[-0.035em] text-[#263F46]">
                     {name}
                   </h3>
-                  <p className="mt-3 leading-7 text-[#5B7278]">{desc}</p>
+                  <p className="mt-4 leading-7 text-[#5B7278]">{desc}</p>
                 </div>
               </Card>
             ))}
@@ -622,13 +640,11 @@ export default function App() {
         className="overflow-hidden bg-[#EEF6F4] py-20 lg:py-24"
       >
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-12">
-            <p className={label}>Before Request</p>
-            <h2 className={title}>문의 전 준비서류</h2>
-            <p className={`mt-5 ${oneLineDesc}`}>
-              준비서류와 제품 정보를 미리 알려주시면 상담과 접수가 훨씬 빨라집니다
-            </p>
-          </div>
+          <SectionTitle
+            eyebrow="Before Request"
+            titleText="문의 전 준비서류"
+            description="준비서류와 제품 정보를 미리 알려주시면 상담과 접수가 훨씬 빨라집니다"
+          />
 
           <div className="grid gap-3 md:grid-cols-2">
             {documents.map((item) => (
@@ -646,10 +662,7 @@ export default function App() {
 
       <section id="process" className="overflow-hidden bg-white py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-12">
-            <p className={label}>Process</p>
-            <h2 className={title}>성적서 발급 4단계</h2>
-          </div>
+          <SectionTitle eyebrow="Process" titleText="성적서 발급 4단계" />
 
           <div className="grid gap-5 md:grid-cols-4">
             {process.map(([step, name, desc]) => (
@@ -673,10 +686,7 @@ export default function App() {
         id="trust"
         className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
       >
-        <div className="mb-12">
-          <p className={label}>Trust Proof</p>
-          <h2 className={title}>신뢰근거 확인</h2>
-        </div>
+        <SectionTitle eyebrow="Trust Proof" titleText="신뢰근거 확인" />
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {trustItems.map((item) => (
@@ -702,7 +712,7 @@ export default function App() {
         <div className="overflow-hidden rounded-[32px] bg-[#3F7F83] p-8 text-white shadow-[0_32px_90px_rgba(47,111,115,0.18)] md:p-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.28em] text-[#D7F0EF]">
+              <p className="mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#D7F0EF]">
                 Request Quote
               </p>
               <h2 className="whitespace-nowrap text-[clamp(1.2rem,3.4vw,2.8rem)] font-black leading-[1.08] tracking-[-0.05em]">
@@ -762,10 +772,7 @@ export default function App() {
 
       <section id="faq" className="overflow-hidden bg-[#EEF6F4] py-20 lg:py-24">
         <div className="mx-auto max-w-5xl px-5">
-          <div className="mb-10 text-center">
-            <p className={label}>FAQ</p>
-            <h2 className={title}>자주 묻는 질문</h2>
-          </div>
+          <SectionTitle eyebrow="FAQ" titleText="자주 묻는 질문" />
 
           <div className="space-y-4">
             {faqs.map(([q, a]) => (
