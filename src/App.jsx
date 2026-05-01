@@ -186,7 +186,7 @@ const trustProofs = [
 const customerSituations = [
   "자가품질 위탁검사를 처음 맡겨야 하는 경우",
   "거래처 납품용 성적서가 필요한 경우",
-  "제품 출시 일정이 정해져 납기 확인이 먼저 필요한 경우",
+  "제품 출시 일정이 정해져 납기 확인이 필요한 경우",
   "수입화장품 제출용 검토가 필요한 경우",
   "기능성 화장품 품질관리 항목 확인이 필요한 경우",
   "원료·부자재·R&D 분석 상담이 필요한 경우",
@@ -214,7 +214,7 @@ const serviceScopes = [
 const firstCheckItems = [
   {
     title: "성적서 용도",
-    desc: "자가품질, 납품, 출시, 수입, 광고 검증, R&D 중 어떤 목적의 성적서인지 먼저 확인합니다.",
+    desc: "자가품질, 납품, 출시, 수입, 광고 검증, R&D 중 어떤 목적인지 확인합니다.",
   },
   {
     title: "제품 유형과 제형",
@@ -222,11 +222,11 @@ const firstCheckItems = [
   },
   {
     title: "필요 시험항목",
-    desc: "검사항목을 몰라도 괜찮습니다. 제출 목적을 기준으로 먼저 검토해드립니다.",
+    desc: "검사항목을 몰라도 괜찮습니다. 제출 목적을 기준으로 필요한 범위를 좁혀드립니다.",
   },
   {
     title: "희망 납기",
-    desc: "성적서가 필요한 날짜를 기준으로 일반 또는 긴급 진행 가능 여부를 확인합니다.",
+    desc: "성적서가 필요한 날짜를 기준으로 일반 또는 긴급 진행 가능 여부를 살펴봅니다.",
   },
   {
     title: "시료 준비 가능일",
@@ -234,7 +234,7 @@ const firstCheckItems = [
   },
   {
     title: "비용 예상 범위",
-    desc: "대표 수수료를 기준으로 하되, 실제 견적은 항목과 긴급 여부 확인 후 안내합니다.",
+    desc: "대표 수수료를 기준으로 하되, 실제 비용은 항목과 긴급 여부를 확인한 뒤 안내합니다.",
   },
 ];
 
@@ -251,7 +251,7 @@ const whyConsultItems = [
   {
     icon: <TimerReset className="h-6 w-6" />,
     title: "납기는 항목별로 달라집니다",
-    desc: "일반 7일, 긴급 3일 상담이 가능하지만 제품 유형과 시험항목에 따라 가능 여부를 먼저 확인해야 합니다.",
+    desc: "일반 7일, 긴급 3일 상담이 가능하지만 제품 유형과 시험항목에 따라 가능 여부가 달라질 수 있습니다.",
   },
   {
     icon: <FileCheck2 className="h-6 w-6" />,
@@ -260,7 +260,7 @@ const whyConsultItems = [
   },
   {
     icon: <Banknote className="h-6 w-6" />,
-    title: "비용은 시험항목 기준으로 확정됩니다",
+    title: "비용은 시험항목 기준으로 안내됩니다",
     desc: "대표 수수료는 참고용이며 실제 견적은 검사항목, 긴급 여부, 시료 조건을 확인한 뒤 안내됩니다.",
   },
 ];
@@ -576,7 +576,7 @@ function HomePage() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <LinkButton href="#contact" className="h-14 px-8 text-base">
-                납기 가능 여부 먼저 확인 <ArrowRight className="ml-2 h-5 w-5" />
+                납기 가능 여부 확인 <ArrowRight className="ml-2 h-5 w-5" />
               </LinkButton>
               <LinkButton
                 href="mailto:testing@ysiet.com"
@@ -611,7 +611,7 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Start Here"
-            titleText="이런 경우 와이에스에 먼저 문의하세요"
+            titleText="내 상황에 맞는 성적서 가능 여부를 확인하세요"
             description="자가품질, 납품, 출시, 수입, 기능성, 원료·부자재, R&D까지 제품 상황과 제출 목적에 따라 상담해드립니다."
           />
 
@@ -647,8 +647,8 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="First Check"
-            titleText="와이에스가 먼저 확인하는 것"
-            description="문의하시면 바로 견적만 던지는 것이 아니라, 성적서 목적·필요 항목·납기 가능 여부를 먼저 실무적으로 확인합니다."
+            titleText="제품 정보만으로 필요한 항목을 좁혀드립니다"
+            description="문의하시면 바로 견적만 안내하는 것이 아니라, 성적서 목적·필요 항목·납기 가능 여부를 실무적으로 확인합니다."
           />
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -707,7 +707,7 @@ function HomePage() {
           <SectionTitle
             eyebrow="Fee Guide"
             titleText="대표 수수료 확인"
-            description="자주 문의하시는 대표 항목을 먼저 확인하실 수 있습니다. 실제 견적은 제품 유형, 시험항목, 긴급 여부에 따라 상담 후 확정됩니다."
+            description="자주 문의하시는 대표 항목을 먼저 확인하실 수 있습니다. 최종 견적은 제품 유형, 시험항목, 긴급 여부에 따라 안내드립니다."
           />
 
           <div className="hidden rounded-[24px] border border-[#D8E5E7] bg-white md:block">
@@ -750,7 +750,7 @@ function HomePage() {
               </p>
             </div>
             <LinkButton href="#contact" variant="light" className="mt-5 h-11 px-5 md:mt-0">
-              납기 가능 여부 먼저 확인
+              납기 가능 여부 확인
             </LinkButton>
           </div>
         </div>
@@ -823,10 +823,10 @@ function HomePage() {
             <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
               <div>
                 <h2 className="text-[clamp(1.45rem,2.9vw,2.42rem)] font-black leading-[1.12] tracking-[-0.05em]">
-                  제품명과 희망 납기만 보내도 먼저 검토합니다
+                  성적서가 필요한 날짜가 있다면 지금 확인하세요
                 </h2>
                 <p className="mt-7 text-[clamp(0.92rem,1.18vw,1.02rem)] leading-8 text-[#EFFAFA]">
-                  성적서가 필요한 날짜가 정해져 있다면 먼저 알려주세요. 가능한 일정과 필요한 항목을 우선 확인해드립니다.
+                  제품명과 희망 납기만 보내주셔도 가능한 일정과 필요한 항목을 먼저 검토해드립니다.
                 </p>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -866,7 +866,7 @@ function HomePage() {
                   href="mailto:testing@ysiet.com"
                   className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#285F67] font-black text-white"
                 >
-                  납기 가능 여부 먼저 확인
+                  납기 가능 여부 확인
                 </a>
 
                 <div className="mt-5 flex gap-3 rounded-2xl border border-[#D8E5E7] bg-white p-4 text-sm font-bold leading-6 text-[#4F656A]">
