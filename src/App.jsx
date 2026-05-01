@@ -184,6 +184,42 @@ const trustProofs = [
   },
 ];
 
+const customerSituations = [
+  "자가품질 위탁검사를 처음 맡겨야 하는 경우",
+  "거래처 납품용 성적서가 필요한 경우",
+  "제품 출시 일정이 정해져 납기 확인이 먼저 필요한 경우",
+  "수입화장품 제출용 검토가 필요한 경우",
+  "기능성 화장품 품질관리 항목 확인이 필요한 경우",
+  "원료·부자재·R&D 분석 상담이 필요한 경우",
+];
+
+const firstCheckItems = [
+  {
+    title: "성적서 용도",
+    desc: "자가품질, 납품, 출시, 수입, 광고 검증, R&D 중 어떤 목적의 성적서인지 먼저 확인합니다.",
+  },
+  {
+    title: "제품 유형과 제형",
+    desc: "일반 화장품, 기능성 화장품, 원료, 부자재, 크림, 앰플, 토너 등 제품 정보를 확인합니다.",
+  },
+  {
+    title: "필요 시험항목",
+    desc: "검사항목을 몰라도 괜찮습니다. 제출 목적을 기준으로 먼저 검토해드립니다.",
+  },
+  {
+    title: "희망 납기",
+    desc: "성적서가 필요한 날짜를 기준으로 일반 또는 긴급 진행 가능 여부를 확인합니다.",
+  },
+  {
+    title: "시료 준비 가능일",
+    desc: "시료 접수 가능일을 확인해 실제 분석 일정과 발급 가능 시점을 안내합니다.",
+  },
+  {
+    title: "비용 예상 범위",
+    desc: "대표 수수료를 기준으로 하되, 실제 견적은 항목과 긴급 여부 확인 후 안내합니다.",
+  },
+];
+
 const serviceScopes = [
   {
     title: "일반 화장품",
@@ -203,13 +239,31 @@ const serviceScopes = [
   },
 ];
 
-const purposeItems = [
-  "자가품질 위탁검사",
-  "거래처 납품용 성적서",
-  "제품 출시 전 품질 확인",
-  "수입화장품 제출 목적",
-  "광고·표시 검증 목적",
-  "신제품 R&D 분석 지원",
+const officialCriteria = [
+  {
+    title: "식약처 지정 여부",
+    desc: "공식 제출 목적의 화장품 시험검사를 맡길 때 가장 먼저 확인해야 하는 기준입니다.",
+  },
+  {
+    title: "KOLAS 공인시험 체계",
+    desc: "시험분석의 공신력과 품질관리 체계를 확인할 수 있는 중요한 근거입니다.",
+  },
+  {
+    title: "성적서 용도 이해도",
+    desc: "납품, 출시, 수입, 자가품질 등 제출 목적에 맞는 항목 안내가 가능한지 확인해야 합니다.",
+  },
+  {
+    title: "납기 상담 가능 여부",
+    desc: "성적서가 필요한 날짜가 정해져 있다면 가능 여부를 먼저 확인해주는 기관이 유리합니다.",
+  },
+  {
+    title: "처음 의뢰 고객 안내",
+    desc: "검사항목을 모르는 고객도 제품 정보만으로 상담을 시작할 수 있어야 합니다.",
+  },
+  {
+    title: "대응 가능 범위",
+    desc: "일반 화장품뿐 아니라 기능성, 원료, 부자재, R&D 목적까지 상담 가능한지 확인해야 합니다.",
+  },
 ];
 
 const whyConsultItems = [
@@ -227,21 +281,6 @@ const whyConsultItems = [
     icon: <Banknote className="h-6 w-6" />,
     title: "비용은 시험항목 기준으로 확정됩니다",
     desc: "대표 수수료는 참고용이며 실제 견적은 검사항목, 긴급 여부, 시료 조건을 확인한 뒤 안내됩니다.",
-  },
-];
-
-const trustMeaningItems = [
-  {
-    title: "공식 제출 목적 상담",
-    desc: "식약처 지정 화장품 시험검사기관으로 성적서 제출 목적에 맞춘 상담이 가능합니다.",
-  },
-  {
-    title: "공인시험 체계",
-    desc: "KOLAS 국제공인시험기관 체계를 기반으로 시험분석과 품질보증 서비스를 제공합니다.",
-  },
-  {
-    title: "연구 기반 분석 역량",
-    desc: "연세대학교 교원창업기업으로 일반 의뢰뿐 아니라 원료, 부자재, R&D 분석까지 상담합니다.",
   },
 ];
 
@@ -357,6 +396,9 @@ function Header({ showKakao = false }) {
         </a>
 
         <nav className="hidden items-center gap-4 text-sm font-bold text-[#60767B] xl:flex">
+          <a href="/#situations" className="hover:text-[#285F67]">
+            의뢰상황
+          </a>
           <a href="/#scope" className="hover:text-[#285F67]">
             가능범위
           </a>
@@ -365,9 +407,6 @@ function Header({ showKakao = false }) {
           </a>
           <a href="/#documents" className="hover:text-[#285F67]">
             준비서류
-          </a>
-          <a href="/#process" className="hover:text-[#285F67]">
-            절차
           </a>
           <a href="/#contact" className="hover:text-[#285F67]">
             문의
@@ -547,11 +586,11 @@ function HomePage() {
             </p>
 
             <h1 className="max-w-3xl text-[clamp(1.75rem,2.85vw,2.55rem)] font-black leading-[1.14] tracking-[-0.055em] text-[#243F46]">
-              성적서 납기부터 먼저 확인하세요
+              검사항목을 몰라도 먼저 문의하세요
             </h1>
 
             <p className="mt-5 max-w-2xl text-[clamp(0.95rem,1.22vw,1.08rem)] leading-8 text-[#4F656A]">
-              제품명·제형·성적서 용도·희망 납기만 알려주시면 필요한 시험항목과 진행 가능 여부를 빠르게 안내드립니다.
+              제품명·제형·성적서 용도·희망 납기만 알려주시면 와이에스가 필요한 항목과 가능 일정을 먼저 검토합니다.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -587,6 +626,51 @@ function HomePage() {
         </div>
       </section>
 
+      <section id="situations" className="bg-white py-12">
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Start Here"
+            titleText="이런 경우 와이에스에 먼저 문의하세요"
+            description="고객이 가장 먼저 알고 싶은 것은 기관의 규모가 아니라, 내 제품의 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다."
+          />
+
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {customerSituations.map((item) => (
+              <div
+                key={item}
+                className="flex gap-3 rounded-[20px] border border-[#D8E5E7] bg-[#FAFCFC] px-5 py-4"
+              >
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
+                <p className="font-bold leading-7 text-[#4F656A]">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="first-check" className="bg-[#F1F7F6] py-12">
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="First Check"
+            titleText="와이에스가 먼저 확인하는 것"
+            description="문의하시면 바로 견적만 던지는 것이 아니라, 성적서 목적과 납기 가능 여부부터 실무적으로 확인합니다."
+          />
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {firstCheckItems.map((item) => (
+              <Card key={item.title}>
+                <div className="p-6">
+                  <h3 className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[#60767B]">{item.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="scope" className="bg-white py-12">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
@@ -608,40 +692,23 @@ function HomePage() {
               </Card>
             ))}
           </div>
-
-          <div className="mt-6 rounded-[24px] border border-[#D8E5E7] bg-[#F5F8F8] p-6">
-            <p className="text-base font-black text-[#263F46]">
-              제출 목적이 달라도 먼저 문의하실 수 있습니다
-            </p>
-            <div className="mt-4 grid gap-3 md:grid-cols-3">
-              {purposeItems.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-bold text-[#4F656A]"
-                >
-                  <CheckCircle2 className="h-5 w-5 shrink-0 text-[#4F888B]" />
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      <section id="why-consult" className="bg-[#F1F7F6] py-12">
+      <section id="criteria" className="bg-[#FAFCFC] py-12">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
-            eyebrow="Before Estimate"
-            titleText="왜 먼저 상담이 필요한가요"
-            description="화장품 성적서는 제품 유형, 제출 목적, 시험항목, 희망 납기에 따라 항목과 비용이 달라질 수 있습니다."
+            eyebrow="Selection Criteria"
+            titleText="공식기관 선택 시 확인해야 할 기준"
+            description="화장품 품질검사를 맡길 때는 가격만이 아니라 지정 여부, 공인시험 체계, 제출 목적 이해도, 납기 상담 능력을 함께 확인해야 합니다."
           />
 
-          <div className="grid gap-4 lg:grid-cols-3">
-            {whyConsultItems.map((item) => (
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+            {officialCriteria.map((item, index) => (
               <Card key={item.title}>
                 <div className="p-6">
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
-                    {item.icon}
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#285F67] text-sm font-black text-white">
+                    {index + 1}
                   </div>
                   <h3 className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
                     {item.title}
@@ -654,20 +721,20 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="trust" className="bg-[#FAFCFC] py-12">
+      <section id="why-consult" className="bg-[#F1F7F6] py-12">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
-            eyebrow="Trust Proof"
-            titleText="신뢰근거는 첫 화면에서 끝나지 않습니다"
-            description="지정기관, 공인시험 체계, 연구 기반 분석 역량은 고객이 시험기관을 선택할 때 반드시 확인해야 하는 기준입니다."
+            eyebrow="Before Estimate"
+            titleText="가격과 납기는 왜 상담 후 확정되나요"
+            description="같은 화장품이라도 제품 유형, 제출 목적, 시험항목, 긴급 여부에 따라 항목·비용·일정이 달라질 수 있습니다."
           />
 
           <div className="grid gap-4 lg:grid-cols-3">
-            {trustMeaningItems.map((item, index) => (
+            {whyConsultItems.map((item) => (
               <Card key={item.title}>
                 <div className="p-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#285F67] text-sm font-black text-white">
-                    {index + 1}
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
+                    {item.icon}
                   </div>
                   <h3 className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
                     {item.title}
