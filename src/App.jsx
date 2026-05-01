@@ -551,7 +551,7 @@ function Footer() {
   return (
     <footer className="border-t border-[#D8DCDD] bg-[#ECEEEE]">
       <div className="mx-auto max-w-7xl px-5 py-4">
-        <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-start">
           <div className="flex min-w-0 items-start gap-3">
             <div className="flex shrink-0 items-start pt-[1px]">
               <img
@@ -585,12 +585,12 @@ function Footer() {
                     <span className="ml-3 text-[#A1AAAD]">›</span>
                   </a>
                 ))}
+
+                <div className="w-[148px]">
+                  <FamilySiteSelect />
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="w-full pt-[2px] lg:w-[148px] lg:shrink-0">
-            <FamilySiteSelect />
           </div>
         </div>
       </div>
