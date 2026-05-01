@@ -5,6 +5,7 @@ import {
   Banknote,
   Building2,
   CheckCircle2,
+  ChevronDown,
   ClipboardCheck,
   FileCheck2,
   FileText,
@@ -412,6 +413,12 @@ const quickActions = [
   },
 ];
 
+const footerPolicyLinks = [
+  { label: "개인정보처리방침", href: "#" },
+  { label: "이메일수집거부", href: "#" },
+  { label: "공평성보장선언", href: "#" },
+];
+
 function Header({ showKakao = false }) {
   return (
     <header className="sticky top-0 z-50 border-b border-[#D8E5E7] bg-[#FCFEFE]/92 backdrop-blur-xl">
@@ -518,65 +525,99 @@ function BrandTrustBar() {
 function Footer({ showKakao = false }) {
   return (
     <footer className="border-t border-[#D8E5E7] bg-[#F3F6F6]">
-      <div className="mx-auto max-w-7xl px-5 py-10">
-        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="rounded-[28px] border border-[#D8E5E7] bg-white p-7">
-            <div className="flex items-start gap-4">
-              <img
-                src={YS_LOGO}
-                alt="와이에스환경기술연구원 로고"
-                className="h-16 w-16 rounded-2xl border border-[#E1ECEE] bg-white p-1 object-contain"
-              />
-              <div>
-                <p className="text-2xl font-black tracking-[-0.03em] text-[#27434A]">
+      <div className="mx-auto max-w-7xl px-5 py-8 lg:py-10">
+        <div className="rounded-[24px] border border-[#DCE7E8] bg-white px-5 py-5 shadow-[0_14px_34px_rgba(36,72,82,0.045)] lg:px-7 lg:py-6">
+          <div className="grid gap-6 lg:grid-cols-[0.95fr_1.45fr_0.85fr] lg:items-start">
+            <div className="flex items-center gap-4">
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-[#E2EDEF] bg-[#FAFCFC]">
+                <img
+                  src={YS_LOGO}
+                  alt="와이에스환경기술연구원 로고"
+                  className="h-12 w-12 object-contain"
+                />
+              </div>
+
+              <div className="min-w-0">
+                <p className="whitespace-nowrap text-[1.05rem] font-black tracking-[-0.03em] text-[#27434A]">
                   와이에스환경기술연구원
                 </p>
                 <p className="mt-1 text-sm font-bold text-[#73878C]">
                   YS Institute of Environmental Technology
                 </p>
-                <p className="mt-5 leading-7 text-[#5F747A]">
+                <p className="mt-3 text-sm leading-7 text-[#60767B]">
                   대표이사 엄유진 박사
                 </p>
-                <p className="mt-2 leading-7 text-[#5F747A]">
-                  식약처 지정 화장품 시험검사기관 제18호 · KOLAS 국제공인시험기관 제364호
-                </p>
               </div>
             </div>
-          </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-[24px] border border-[#D8E5E7] bg-white p-6">
-              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
-                Contact
-              </p>
-              <div className="space-y-3 text-[#27434A]">
-                <p className="font-black">대표전화 02-312-0540</p>
-                <p className="font-bold text-[#60767B]">이메일 testing@ysiet.com</p>
-                <p className="font-bold text-[#60767B]">팩스 02-312-0560</p>
-                {showKakao ? (
+            <div className="lg:px-2">
+              <div className="space-y-2 text-[14px] leading-7 text-[#60767B]">
+                <p className="font-bold">
+                  (주)와이에스환경기술연구원 | 서울특별시 종로구 인사동5길 42 종로빌딩 10층
+                </p>
+                <p className="font-bold">
+                  대표전화 02-312-0540 | 팩스 02-312-0560 | 이메일 testing@ysiet.com
+                </p>
+                <p className="font-bold">
+                  사업자등록번호 211-87-79879
+                </p>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-2.5">
+                {footerPolicyLinks.map((item) => (
                   <a
-                    href={KAKAO_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center rounded-full bg-[#FEE500] px-4 py-2 text-sm font-black text-[#2D2926]"
+                    key={item.label}
+                    href={item.href}
+                    className="inline-flex h-10 items-center justify-center rounded-xl border border-[#DDE7E8] bg-[#F8FBFB] px-4 text-sm font-black text-[#5F747A] transition hover:border-[#BFD4D7] hover:bg-white hover:text-[#3E7B7F]"
                   >
-                    카톡문의
+                    {item.label}
                   </a>
-                ) : null}
+                ))}
               </div>
+
+              <p className="mt-4 text-sm font-bold text-[#8A9CA0]">
+                COPYRIGHT © YS INSTITUTE OF ENVIRONMENTAL TECHNOLOGY. ALL RIGHTS RESERVED.
+              </p>
             </div>
 
-            <div className="rounded-[24px] border border-[#D8E5E7] bg-white p-6">
-              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
-                Address
-              </p>
-              <div className="space-y-3 text-[#27434A]">
-                <p className="font-black">서울시 종로구 인사동5길 42 종로빌딩 10층</p>
-                <p className="font-bold text-[#60767B]">평일 09:00 ~ 18:00</p>
-                <p className="font-bold text-[#60767B]">
-                  문의 전 제품명과 희망 납기를 알려주세요
+            <div className="grid gap-3">
+              <div className="rounded-[18px] border border-[#E1EAEB] bg-[#F8FBFB] px-4 py-4">
+                <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
+                  Contact
                 </p>
+                <div className="mt-3 space-y-2 text-sm font-black text-[#27434A]">
+                  <p className="flex items-center gap-2">
+                    <Phone className="h-4 w-4 text-[#4F888B]" />
+                    02-312-0540
+                  </p>
+                  <p className="flex items-center gap-2 text-[#60767B]">
+                    <Mail className="h-4 w-4 text-[#4F888B]" />
+                    testing@ysiet.com
+                  </p>
+                </div>
               </div>
+
+              <div className="flex gap-2">
+                <div className="flex h-11 flex-1 items-center justify-between rounded-xl border border-[#E1EAEB] bg-[#F8FBFB] px-4 text-sm font-black text-[#708387]">
+                  패밀리사이트
+                  <ChevronDown className="h-4 w-4" />
+                </div>
+                <div className="flex h-11 flex-1 items-center justify-between rounded-xl border border-[#E1EAEB] bg-[#F8FBFB] px-4 text-sm font-black text-[#708387]">
+                  관련기관
+                  <ChevronDown className="h-4 w-4" />
+                </div>
+              </div>
+
+              {showKakao ? (
+                <a
+                  href={KAKAO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-11 items-center justify-center rounded-xl bg-[#FEE500] text-sm font-black text-[#2D2926] transition hover:bg-[#F6D600]"
+                >
+                  카톡문의
+                </a>
+              ) : null}
             </div>
           </div>
         </div>
@@ -1019,7 +1060,11 @@ function HomePage() {
                       <img
                         src={item.logo}
                         alt={item.logoAlt}
-                        className={item.logoType === "wide" ? "h-11 w-16 object-contain" : "h-11 w-11 object-contain"}
+                        className={
+                          item.logoType === "wide"
+                            ? "h-11 w-16 object-contain"
+                            : "h-11 w-11 object-contain"
+                        }
                       />
                     ) : (
                       item.icon
