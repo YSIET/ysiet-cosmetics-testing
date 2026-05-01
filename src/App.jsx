@@ -197,7 +197,7 @@ const documents = [
   "수입화장품은 표준통관예정보고서 EDI",
 ];
 
-const process = [
+const processSteps = [
   ["01", "납기 확인", "필요한 날짜와 제출처를 먼저 확인합니다"],
   ["02", "항목 안내", "제품 유형과 목적에 맞는 시험항목을 안내합니다"],
   ["03", "시료 접수", "시료와 의뢰 정보를 확인한 뒤 일정을 잡습니다"],
@@ -601,7 +601,7 @@ function HomePage() {
 
           <div className="rounded-[24px] border border-[#D8E5E7] bg-white shadow-[0_18px_44px_rgba(36,72,82,0.055)]">
             <div className="grid md:grid-cols-4">
-              {process.map(([step, name, desc], index) => (
+              {processSteps.map(([step, name, desc], index) => (
                 <div
                   key={step}
                   className={cx(
