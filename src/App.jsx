@@ -561,14 +561,14 @@ function Footer() {
           </div>
 
           <div className="min-w-0">
-            <div className="space-y-1 text-[13px] leading-6 text-[#707B7E]">
-              <p className="font-semibold">
+            <div className="space-y-1 text-[13px] font-semibold leading-[1.85] text-[#707B7E]">
+              <p>
                 (주)와이에스환경기술연구원 | (03149) 서울특별시 종로구 인사동5길 42 종로빌딩 10층
               </p>
-              <p className="font-semibold">
+              <p>
                 대표이사 엄유진 | 사업자등록번호 211-87-79879 | 대표전화 02-312-0540 | 팩스 02-312-0560
               </p>
-              <p className="pt-1 text-[13px] font-semibold uppercase tracking-[0.01em] text-[#7B8588]">
+              <p>
                 COPYRIGHT © YS INSTITUTE OF ENVIRONMENTAL TECHNOLOGY. ALL RIGHTS RESERVED.
               </p>
             </div>
@@ -723,7 +723,7 @@ function HomePage() {
               <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
                 <p className="text-sm font-bold text-[#73878C]">일반 의뢰</p>
                 <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
-                  7일 소요일
+                  7일 소요
                 </p>
               </div>
               <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
