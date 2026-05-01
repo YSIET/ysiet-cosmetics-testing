@@ -92,17 +92,11 @@ function SectionTitle({ eyebrow, titleText, description, light = false }) {
   );
 }
 
-const title =
-  "whitespace-nowrap text-[clamp(1.1rem,2.8vw,2.05rem)] font-black leading-[1.08] tracking-[-0.04em] text-[#263F46]";
-
 const heroTitle =
   "whitespace-nowrap text-[clamp(1.85rem,4.1vw,3.65rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#263F46]";
 
 const cardTitle =
   "whitespace-nowrap text-[clamp(1.25rem,2.1vw,1.75rem)] font-black tracking-[-0.04em]";
-
-const oneLineDesc =
-  "whitespace-nowrap text-[clamp(0.82rem,1.35vw,1.125rem)] leading-8 text-[#5B7278]";
 
 const oneLineLight =
   "whitespace-nowrap text-[clamp(0.82rem,1.35vw,1.125rem)] leading-8 text-[#EEF8F8]";
@@ -245,6 +239,51 @@ const trustItems = [
   },
 ];
 
+const aboutCards = [
+  {
+    title: "기관명",
+    desc: "(주)와이에스환경기술연구원",
+  },
+  {
+    title: "영문명",
+    desc: "YS Institute of Environmental Technology",
+  },
+  {
+    title: "지정 현황",
+    desc: "식약처 지정 화장품 시험검사기관 제18호",
+  },
+  {
+    title: "공인 현황",
+    desc: "KOLAS 국제공인시험기관 제364호",
+  },
+  {
+    title: "기관 성격",
+    desc: "연세대학교 교원창업기업",
+  },
+  {
+    title: "대표이사",
+    desc: "엄유진 박사",
+  },
+];
+
+const aboutStrengths = [
+  {
+    icon: <ShieldCheck className="h-6 w-6" />,
+    title: "지정기관 기반 신뢰",
+    desc: "화장품 품질검사와 자가품질 위탁검사 상담을 공식 지정 근거에 기반해 안내합니다",
+  },
+  {
+    icon: <Award className="h-6 w-6" />,
+    title: "공인시험기관 체계",
+    desc: "KOLAS 공인기관의 품질 체계와 분석 절차를 바탕으로 시험 서비스를 제공합니다",
+  },
+  {
+    icon: <Microscope className="h-6 w-6" />,
+    title: "연구 기반 전문성",
+    desc: "연세대학교 교원창업기업으로 연구 기반의 분석 전문성과 현장형 시험분석 서비스를 함께 제공합니다",
+  },
+];
+
 const faqs = [
   [
     "검사항목을 몰라도 문의할 수 있나요",
@@ -264,48 +303,106 @@ const faqs = [
   ],
 ];
 
-export default function App() {
+function Header() {
   return (
-    <main className="min-h-screen w-full overflow-x-hidden bg-[#F7FAF9] text-[#263F46] antialiased">
-      <header className="sticky top-0 z-50 border-b border-[#D9E6E8] bg-[#FBFDFC]/92 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
-          <a href="#top" className="flex min-w-0 items-center gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#3F7F83] text-white">
-              <FlaskConical className="h-5 w-5" />
-            </div>
-            <div className="min-w-0">
-              <p className="whitespace-nowrap text-[13px] font-black tracking-[-0.02em] text-[#263F46] sm:text-base">
-                (주)와이에스환경기술연구원
-              </p>
-              <p className="truncate text-xs font-bold text-[#6B8288]">
-                YS Institute of Environmental Technology
-              </p>
-            </div>
+    <header className="sticky top-0 z-50 border-b border-[#D9E6E8] bg-[#FBFDFC]/92 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
+        <a href="/" className="flex min-w-0 items-center gap-3">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#3F7F83] text-white">
+            <FlaskConical className="h-5 w-5" />
+          </div>
+          <div className="min-w-0">
+            <p className="whitespace-nowrap text-[13px] font-black tracking-[-0.02em] text-[#263F46] sm:text-base">
+              (주)와이에스환경기술연구원
+            </p>
+            <p className="truncate text-xs font-bold text-[#6B8288]">
+              YS Institute of Environmental Technology
+            </p>
+          </div>
+        </a>
+
+        <nav className="hidden items-center gap-5 text-sm font-bold text-[#5B7278] xl:flex">
+          <a href="/about" className="hover:text-[#2F6F73]">
+            기관소개
           </a>
+          <a href="/#sales" className="hover:text-[#2F6F73]">
+            선택이유
+          </a>
+          <a href="/#paths" className="hover:text-[#2F6F73]">
+            의뢰상황
+          </a>
+          <a href="/#services" className="hover:text-[#2F6F73]">
+            검사항목
+          </a>
+          <a href="/#fees" className="hover:text-[#2F6F73]">
+            수수료
+          </a>
+          <a href="/#contact" className="hover:text-[#2F6F73]">
+            문의
+          </a>
+        </nav>
 
-          <nav className="hidden items-center gap-7 text-sm font-bold text-[#5B7278] xl:flex">
-            <a href="#paths" className="hover:text-[#2F6F73]">
-              의뢰상황
-            </a>
-            <a href="#sales" className="hover:text-[#2F6F73]">
-              선택이유
-            </a>
-            <a href="#services" className="hover:text-[#2F6F73]">
-              검사항목
-            </a>
-            <a href="#fees" className="hover:text-[#2F6F73]">
-              수수료
-            </a>
-            <a href="#contact" className="hover:text-[#2F6F73]">
-              문의
-            </a>
-          </nav>
+        <LinkButton href="/#contact" className="h-10 shrink-0 px-5">
+          납기 확인
+        </LinkButton>
+      </div>
+    </header>
+  );
+}
 
-          <LinkButton href="#contact" className="h-10 shrink-0 px-5">
-            납기 확인
-          </LinkButton>
+function Footer() {
+  return (
+    <footer className="overflow-hidden bg-[#2D5056] px-5 py-12 text-white">
+      <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_1fr] md:items-center">
+        <div>
+          <p className="text-2xl font-black tracking-[-0.03em]">
+            와이에스환경기술연구원
+          </p>
+          <p className="mt-3 max-w-xl leading-7 text-[#DDEDEE]">
+            대표이사 엄유진 박사
+          </p>
+          <p className="mt-2 max-w-xl leading-7 text-[#DDEDEE]">
+            식약처 지정 화장품 시험검사기관 제18호 · KOLAS 국제공인시험기관 제364호
+          </p>
         </div>
-      </header>
+        <div className="flex flex-col gap-3 md:items-end">
+          <p className="font-bold text-[#DDEDEE]">대표 전화: 02-312-0540</p>
+          <p className="font-bold text-[#DDEDEE]">이메일: testing@ysiet.com</p>
+          <p className="font-bold text-[#DDEDEE]">팩스: 02-312-0560</p>
+        </div>
+      </div>
+      <div className="mx-auto mt-10 max-w-7xl border-t border-white/15 pt-6 text-sm text-[#C4D8DB]">
+        © YS Institute of Environmental Technology. All rights reserved.
+      </div>
+    </footer>
+  );
+}
+
+function MobileStickyButtons() {
+  return (
+    <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 rounded-full bg-[#2D5056] p-2 shadow-2xl md:hidden">
+      <div className="grid grid-cols-2 gap-2">
+        <a
+          href="tel:02-312-0540"
+          className="rounded-full bg-white px-4 py-3 text-center text-sm font-black text-[#254E58]"
+        >
+          전화 상담
+        </a>
+        <a
+          href="mailto:testing@ysiet.com"
+          className="rounded-full bg-[#3B8E92] px-4 py-3 text-center text-sm font-black text-white"
+        >
+          이메일 견적
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function HomePage() {
+  return (
+    <>
+      <Header />
 
       <section id="top" className="relative overflow-hidden bg-[#EEF6F4]">
         <div className="absolute inset-0">
@@ -796,46 +893,136 @@ export default function App() {
         </div>
       </section>
 
-      <footer className="overflow-hidden bg-[#2D5056] px-5 py-12 text-white">
-        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_1fr] md:items-center">
-          <div>
-            <p className="text-2xl font-black tracking-[-0.03em]">
-              와이에스환경기술연구원
-            </p>
-            <p className="mt-3 max-w-xl leading-7 text-[#DDEDEE]">
-              대표이사 엄유진 박사
-            </p>
-            <p className="mt-2 max-w-xl leading-7 text-[#DDEDEE]">
-              식약처 지정 화장품 시험검사기관 제18호 · KOLAS 국제공인시험기관 제364호
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 md:items-end">
-            <p className="font-bold text-[#DDEDEE]">대표 전화: 02-312-0540</p>
-            <p className="font-bold text-[#DDEDEE]">이메일: testing@ysiet.com</p>
-            <p className="font-bold text-[#DDEDEE]">팩스: 02-312-0560</p>
-          </div>
-        </div>
-        <div className="mx-auto mt-10 max-w-7xl border-t border-white/15 pt-6 text-sm text-[#C4D8DB]">
-          © YS Institute of Environmental Technology. All rights reserved.
-        </div>
-      </footer>
+      <Footer />
+      <MobileStickyButtons />
+    </>
+  );
+}
 
-      <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 rounded-full bg-[#2D5056] p-2 shadow-2xl md:hidden">
-        <div className="grid grid-cols-2 gap-2">
-          <a
-            href="tel:02-312-0540"
-            className="rounded-full bg-white px-4 py-3 text-center text-sm font-black text-[#254E58]"
-          >
-            전화 상담
-          </a>
-          <a
-            href="mailto:testing@ysiet.com"
-            className="rounded-full bg-[#3B8E92] px-4 py-3 text-center text-sm font-black text-white"
-          >
-            이메일 견적
-          </a>
+function AboutPage() {
+  return (
+    <>
+      <Header />
+
+      <section className="relative overflow-hidden bg-[#EEF6F4]">
+        <div className="absolute inset-0">
+          <div className="absolute -left-36 top-32 h-[30rem] w-[30rem] rounded-full bg-[#DDEFE9] blur-3xl" />
+          <div className="absolute -right-32 -top-36 h-[38rem] w-[38rem] rounded-full bg-[#D9EAF0] blur-3xl" />
         </div>
-      </div>
+
+        <div className="relative mx-auto max-w-7xl px-5 py-20 lg:py-24">
+          <p className="mb-4 text-[clamp(0.95rem,2vw,1.2rem)] font-black tracking-[0.03em] text-[#3B8E92]">
+            About YSIET
+          </p>
+          <h1 className="whitespace-nowrap text-[clamp(1.85rem,4.1vw,3.65rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#263F46]">
+            와이에스환경기술연구원 기관소개
+          </h1>
+          <p className="mt-6 max-w-4xl text-lg leading-8 text-[#4E666D]">
+            화장품 품질검사와 자가품질 위탁검사를 위한 시험분석 서비스를 제공합니다
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <LinkButton href="/#contact" className="h-14 px-8 text-base">
+              성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
+            </LinkButton>
+            <LinkButton href="/" variant="secondary" className="h-14 px-8 text-base">
+              메인으로 돌아가기
+            </LinkButton>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[#D9E6E8] bg-[#FBFDFC]">
+        <div className="mx-auto grid max-w-7xl divide-y divide-[#D9E6E8] px-5 md:grid-cols-4 md:divide-x md:divide-y-0">
+          {[
+            [ShieldCheck, "식약처 지정 제18호"],
+            [Award, "KOLAS 제364호"],
+            [Microscope, "연세대학교 교원창업기업"],
+            [Users, "대표이사 엄유진 박사"],
+          ].map(([Icon, text]) => (
+            <div key={text} className="flex items-center gap-3 py-5 md:px-5">
+              <Icon className="h-5 w-5 shrink-0 text-[#3B8E92]" />
+              <p className="font-black text-[#263F46]">{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-20 lg:py-24">
+        <SectionTitle
+          eyebrow="Institution Profile"
+          titleText="기관 기본정보"
+          description="방문자가 신뢰근거를 확인할 수 있도록 기관 정보를 별도 페이지에 정리했습니다"
+        />
+
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {aboutCards.map((item) => (
+            <Card key={item.title}>
+              <div className="p-7">
+                <p className="mb-3 text-[10px] font-black uppercase tracking-[0.2em] text-[#3B8E92]">
+                  {item.title}
+                </p>
+                <p className="text-lg font-black leading-8 tracking-[-0.02em] text-[#263F46]">
+                  {item.desc}
+                </p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="overflow-hidden bg-[#EEF6F4] px-5 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl">
+          <SectionTitle
+            eyebrow="Trust Point"
+            titleText="시험기관으로서의 신뢰"
+            description="기관 규모보다 고객이 실제로 확인하고 싶은 지정, 공인, 전문성을 중심으로 안내합니다"
+          />
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {aboutStrengths.map((item) => (
+              <Card key={item.title}>
+                <div className="p-7">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#E6F4F2] text-[#3B8E92]">
+                    {item.icon}
+                  </div>
+                  <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 leading-7 text-[#5B7278]">{item.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-[28px] border border-[#D9E6E8] bg-white/88 p-6 md:flex md:items-center md:justify-between">
+            <div>
+              <p className="text-xl font-black tracking-[-0.03em] text-[#263F46]">
+                기관 정보를 확인하셨다면
+              </p>
+              <p className="mt-2 leading-7 text-[#5B7278]">
+                필요한 성적서의 항목, 납기, 준비서류를 바로 상담받으실 수 있습니다
+              </p>
+            </div>
+            <LinkButton href="/#contact" className="mt-5 md:mt-0">
+              성적서 문의하기
+            </LinkButton>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+      <MobileStickyButtons />
+    </>
+  );
+}
+
+export default function App() {
+  const path = window.location.pathname;
+
+  return (
+    <main className="min-h-screen w-full overflow-x-hidden bg-[#F7FAF9] text-[#263F46] antialiased">
+      {path === "/about" ? <AboutPage /> : <HomePage />}
     </main>
   );
 }
