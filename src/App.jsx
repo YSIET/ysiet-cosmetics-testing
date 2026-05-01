@@ -384,7 +384,7 @@ function Footer() {
             rel="noreferrer"
             className="font-bold text-[#FEE500] underline-offset-4 hover:underline"
           >
-            카카오톡 채널: @와이에스환경기술연구원
+            카톡문의
           </a>
         </div>
       </div>
