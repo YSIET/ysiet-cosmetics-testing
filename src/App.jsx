@@ -137,6 +137,32 @@ function TrustLogo({ src, alt, type = "square" }) {
   );
 }
 
+function FamilySiteSelect() {
+  function handleChange(event) {
+    const url = event.target.value;
+    if (!url) return;
+    window.open(url, "_blank", "noopener,noreferrer");
+    event.target.value = "";
+  }
+
+  return (
+    <div className="relative w-full lg:w-[138px]">
+      <select
+        defaultValue=""
+        onChange={handleChange}
+        className="h-10 w-full appearance-none border border-[#D6DADB] bg-white px-4 pr-9 text-[13px] font-semibold text-[#747F82] outline-none transition hover:bg-[#FAFAFA]"
+      >
+        <option value="" disabled>
+          패밀리사이트
+        </option>
+        <option value="https://ysiet.com/">YSIET 공식 홈페이지</option>
+        <option value="https://qha.co.kr/">QHA</option>
+      </select>
+      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8A9497]" />
+    </div>
+  );
+}
+
 const heroTitle =
   "whitespace-nowrap text-[clamp(1.65rem,3.6vw,3.35rem)] font-black leading-[1.06] tracking-[-0.055em] text-[#27434A]";
 
@@ -521,16 +547,16 @@ function BrandTrustBar() {
   );
 }
 
-function Footer({ showKakao = false }) {
+function Footer() {
   return (
-    <footer className="border-t border-[#D9E2E3] bg-[#ECEEEE]">
+    <footer className="border-t border-[#D8DCDD] bg-[#ECEEEE]">
       <div className="mx-auto max-w-7xl px-5 py-5">
-        <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)_160px] lg:items-start">
+        <div className="grid gap-5 lg:grid-cols-[220px_minmax(0,1fr)_150px] lg:items-start">
           <div className="flex items-center lg:pt-2">
             <img
               src={YS_LOGO}
               alt="와이에스환경기술연구원 로고"
-              className="h-[54px] w-auto object-contain opacity-90"
+              className="h-[54px] w-auto object-contain opacity-85"
             />
           </div>
 
@@ -552,26 +578,17 @@ function Footer({ showKakao = false }) {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="inline-flex h-10 items-center justify-center rounded-none border border-[#D8DCDD] bg-white px-5 text-[13px] font-semibold text-[#747F82] transition hover:bg-[#F8F9F9]"
+                  className="inline-flex h-10 items-center justify-center border border-[#D8DCDD] bg-white px-5 text-[13px] font-semibold text-[#747F82] transition hover:bg-[#F8F9F9]"
                 >
                   {item.label}
+                  <span className="ml-3 text-[#A1AAAD]">›</span>
                 </a>
               ))}
             </div>
           </div>
 
           <div className="lg:justify-self-end">
-            <div className="relative w-full lg:w-[130px]">
-              <select
-                defaultValue=""
-                className="h-10 w-full appearance-none border border-[#D8DCDD] bg-white px-4 pr-9 text-[13px] font-semibold text-[#747F82] outline-none"
-              >
-                <option value="" disabled>
-                  패밀리사이트
-                </option>
-              </select>
-              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8A9497]" />
-            </div>
+            <FamilySiteSelect />
           </div>
         </div>
       </div>
@@ -1125,7 +1142,7 @@ function HomePage() {
       </section>
 
       <QuickActionSection />
-      <Footer showKakao />
+      <Footer />
       <MobileStickyButtons />
     </>
   );
