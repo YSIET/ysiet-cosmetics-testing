@@ -39,13 +39,15 @@ function cx(...classes) {
 function LinkButton({ href, children, variant = "primary", className = "" }) {
   const variants = {
     primary:
-      "bg-[#3E7B7F] text-white hover:bg-[#346A6E] shadow-[0_14px_32px_rgba(62,123,127,0.16)]",
+      "bg-[#3E7B7F] text-white hover:bg-[#346A6E] shadow-[0_14px_32px_rgba(62,123,127,0.18)]",
     secondary:
       "bg-white text-[#2E525A] border border-[#D8E5E7] hover:border-[#98BBC0]",
     light:
       "bg-white text-[#2E525A] border border-white/30 hover:bg-[#F7FBFB]",
     yellow:
       "bg-[#FEE500] text-[#2D2926] hover:bg-[#F6D600] shadow-[0_12px_28px_rgba(254,229,0,0.22)]",
+    dark:
+      "bg-[#2F5F66] text-white hover:bg-[#294F55] shadow-[0_14px_32px_rgba(47,95,102,0.16)]",
   };
 
   return (
@@ -82,7 +84,7 @@ function SectionTitle({ eyebrow, titleText, description, light = false }) {
     <div className="mb-9">
       <p
         className={cx(
-          "mb-4 text-[11px] font-black uppercase tracking-[0.22em]",
+          "mb-4 text-[11px] font-black uppercase tracking-[0.24em]",
           light ? "text-[#DDF4F1]" : "text-[#5E8E90]"
         )}
       >
@@ -164,13 +166,13 @@ function FamilySiteSelect() {
 }
 
 const heroTitle =
-  "whitespace-nowrap text-[clamp(1.65rem,3.6vw,3.35rem)] font-black leading-[1.06] tracking-[-0.055em] text-[#27434A]";
+  "whitespace-nowrap text-[clamp(1.52rem,3.35vw,3.05rem)] font-black leading-[1.08] tracking-[-0.058em] text-[#243F46]";
 
 const heroServiceTitle =
-  "mb-5 whitespace-nowrap text-[clamp(1.15rem,2.3vw,1.95rem)] font-black leading-[1.1] tracking-[-0.04em] text-[#4F888B]";
+  "mb-5 whitespace-nowrap text-[clamp(1.1rem,2.25vw,1.92rem)] font-black leading-[1.1] tracking-[-0.04em] text-[#4F888B]";
 
 const cardTitle =
-  "whitespace-nowrap text-[clamp(1.1rem,2vw,1.65rem)] font-black tracking-[-0.04em]";
+  "whitespace-nowrap text-[clamp(1.08rem,2vw,1.62rem)] font-black tracking-[-0.04em]";
 
 const oneLineLight =
   "whitespace-nowrap text-[clamp(0.8rem,1.25vw,1.06rem)] leading-8 text-[#EFFAFA]";
@@ -180,6 +182,77 @@ const proofItems = [
   "KOLAS 제364호",
   "연세대학교 교원창업기업",
   "대표 수수료 공개",
+];
+
+const conversionChecklist = [
+  "제품명",
+  "제형",
+  "성적서 용도",
+  "희망 납기",
+];
+
+const customerQuestions = [
+  {
+    title: "언제 가능한가요",
+    desc: "성적서가 필요한 날짜를 기준으로 일반 7일, 긴급 3일 가능 여부를 먼저 확인합니다",
+    point: "납기 우선",
+  },
+  {
+    title: "어떤 항목이 필요한가요",
+    desc: "제품 유형, 제출처, 자가품질·납품·기능성 목적에 맞춰 필요한 시험항목을 안내합니다",
+    point: "항목 검토",
+  },
+  {
+    title: "비용은 어느 정도인가요",
+    desc: "대표 수수료를 먼저 공개하고 실제 견적은 항목과 긴급 여부에 따라 상담 후 확정합니다",
+    point: "비용 가늠",
+  },
+];
+
+const salesReasons = [
+  {
+    icon: <TimerReset className="h-6 w-6" />,
+    title: "성적서 납기부터 확인",
+    desc: "출시일과 납품일이 정해진 고객에게 가장 중요한 것은 가능 여부입니다. YSIET는 날짜부터 확인합니다",
+  },
+  {
+    icon: <Banknote className="h-6 w-6" />,
+    title: "문의 전 비용 감 확보",
+    desc: "대표 시험항목 수수료를 공개해 처음 문의하는 고객도 견적 범위를 먼저 이해할 수 있습니다",
+  },
+  {
+    icon: <ClipboardCheck className="h-6 w-6" />,
+    title: "제품 정보 기준 상담",
+    desc: "검사항목을 몰라도 제품명, 제형, 성적서 용도, 희망 납기를 기준으로 필요한 순서를 안내합니다",
+  },
+  {
+    icon: <FileCheck2 className="h-6 w-6" />,
+    title: "성적서 발급 중심 동선",
+    desc: "기관 소개보다 고객이 실제로 필요한 시험성적서 발급과 제출 준비에 초점을 맞춥니다",
+  },
+];
+
+const keyStrengths = [
+  {
+    icon: <ShieldCheck className="h-6 w-6" />,
+    title: "식약처 지정 제18호",
+    desc: "화장품 시험검사기관 지정 근거를 바탕으로 자가품질 위탁검사 상담을 진행합니다",
+  },
+  {
+    icon: <Award className="h-6 w-6" />,
+    title: "KOLAS 제364호",
+    desc: "국제공인시험기관의 품질 체계와 신뢰성을 기반으로 시험분석을 제공합니다",
+  },
+  {
+    icon: <TimerReset className="h-6 w-6" />,
+    title: "일반 7일 긴급 3일",
+    desc: "성적서 제출 일정이 정해진 경우 가능 여부와 진행 순서를 먼저 확인합니다",
+  },
+  {
+    icon: <Users className="h-6 w-6" />,
+    title: "1건 의뢰도 상담",
+    desc: "처음 진행하는 브랜드, 소량 의뢰, 단일 항목 분석도 필요한 단계부터 안내합니다",
+  },
 ];
 
 const customerPaths = [
@@ -206,52 +279,6 @@ const customerPaths = [
   {
     title: "광고 검증 분석",
     desc: "무첨가 표시와 성분 검증 목적의 분석을 안내합니다",
-  },
-];
-
-const salesReasons = [
-  {
-    icon: <TimerReset className="h-6 w-6" />,
-    title: "납기부터 확인",
-    desc: "성적서가 필요한 날짜가 있다면 시험 가능 여부를 먼저 안내합니다",
-  },
-  {
-    icon: <Banknote className="h-6 w-6" />,
-    title: "수수료 먼저 확인",
-    desc: "대표 시험항목 수수료를 공개해 문의 전 비용 감을 잡을 수 있습니다",
-  },
-  {
-    icon: <ClipboardCheck className="h-6 w-6" />,
-    title: "처음 의뢰도 안내",
-    desc: "검사항목을 몰라도 제품 정보와 제출 목적부터 상담할 수 있습니다",
-  },
-  {
-    icon: <FileCheck2 className="h-6 w-6" />,
-    title: "성적서 중심 진행",
-    desc: "기관 소개보다 고객이 필요한 시험성적서 발급 동선에 집중합니다",
-  },
-];
-
-const keyStrengths = [
-  {
-    icon: <ShieldCheck className="h-6 w-6" />,
-    title: "식약처 지정 제18호",
-    desc: "화장품 시험검사기관 지정 근거를 바탕으로 시험 상담을 진행합니다",
-  },
-  {
-    icon: <Award className="h-6 w-6" />,
-    title: "KOLAS 제364호",
-    desc: "국제공인시험기관의 품질 체계와 신뢰성을 기반으로 분석합니다",
-  },
-  {
-    icon: <TimerReset className="h-6 w-6" />,
-    title: "일반 7일 긴급 3일",
-    desc: "성적서가 필요한 날짜가 있다면 가능 여부를 먼저 확인합니다",
-  },
-  {
-    icon: <Users className="h-6 w-6" />,
-    title: "1건 의뢰 상담",
-    desc: "처음 진행하는 브랜드와 소량 의뢰도 필요한 순서대로 안내합니다",
   },
 ];
 
@@ -470,8 +497,8 @@ function Header({ showKakao = false }) {
           <a href="/#sales" className="hover:text-[#3E7B7F]">
             선택이유
           </a>
-          <a href="/#paths" className="hover:text-[#3E7B7F]">
-            의뢰상황
+          <a href="/#decision" className="hover:text-[#3E7B7F]">
+            상담기준
           </a>
           <a href="/#services" className="hover:text-[#3E7B7F]">
             검사항목
@@ -621,7 +648,7 @@ function MobileStickyButtons() {
 
 function QuickActionSection() {
   return (
-    <section className={cx("overflow-hidden border-t border-[#D8E5E7]", SECTION, BG_SOFT)}>
+    <section className={cx("overflow-hidden border-t border-[#D8E5E7]", SECTION_TIGHT, BG_SOFT)}>
       <div className="mx-auto max-w-7xl px-5">
         <SectionTitle
           eyebrow="Quick Access"
@@ -661,118 +688,196 @@ function QuickActionSection() {
   );
 }
 
+function HeroConversionPanel() {
+  return (
+    <Card className="border-0 bg-white/92 p-3 shadow-[0_28px_72px_rgba(36,72,82,0.13)]">
+      <div className="rounded-[22px] bg-[#3E6F76] p-7 text-white">
+        <p className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[#DDF4F1]">
+          Fast Check
+        </p>
+        <h2 className={cardTitle}>성적서 일정부터 확인하세요</h2>
+        <p className="mt-4 leading-7 text-[#EFFAFA]">
+          제품명과 희망 납기를 알려주시면 가능 여부를 먼저 검토합니다
+        </p>
+      </div>
+
+      <div className="grid gap-3 p-5">
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
+            <p className="text-sm font-bold text-[#73878C]">일반 의뢰</p>
+            <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
+              7일 소요
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
+            <p className="text-sm font-bold text-[#73878C]">긴급 의뢰</p>
+            <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
+              3일 상담
+            </p>
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
+          <p className="text-sm font-black text-[#4F888B]">
+            먼저 알려주시면 빠릅니다
+          </p>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            {conversionChecklist.map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-black text-[#27434A]"
+              >
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4F888B]" />
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
+          <p className="text-sm font-bold text-[#73878C]">대표 전화</p>
+          <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
+            02-312-0540
+          </p>
+        </div>
+      </div>
+
+      <div className="grid gap-3 px-5 pb-5 sm:grid-cols-2">
+        <a
+          href="tel:02-312-0540"
+          className="flex items-center justify-center gap-2 rounded-2xl bg-[#3E7B7F] px-4 py-4 text-center font-black text-white transition hover:bg-[#346A6E]"
+        >
+          <Phone className="h-5 w-5" /> 전화 상담
+        </a>
+        <a
+          href="mailto:testing@ysiet.com"
+          className="flex items-center justify-center gap-2 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4 text-center font-black text-[#2E525A] transition hover:border-[#98BBC0]"
+        >
+          <Mail className="h-5 w-5" /> 이메일 견적
+        </a>
+      </div>
+    </Card>
+  );
+}
+
 function HomePage() {
   return (
     <>
       <Header showKakao />
 
-      <section id="top" className="relative overflow-hidden bg-[#EEF5F4]">
+      <section id="top" className="relative overflow-hidden bg-[#EDF5F4]">
         <div className="absolute inset-0">
-          <div className="absolute -left-36 top-28 h-[30rem] w-[30rem] rounded-full bg-[#DCEDE9] blur-3xl" />
+          <div className="absolute -left-36 top-24 h-[30rem] w-[30rem] rounded-full bg-[#DCEDE9] blur-3xl" />
           <div className="absolute -right-32 -top-36 h-[36rem] w-[36rem] rounded-full bg-[#DDEBF0] blur-3xl" />
           <div className="absolute bottom-[-14rem] left-[35%] h-[28rem] w-[28rem] rounded-full bg-[#F7F3E8] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.04fr_0.96fr] lg:items-start lg:py-20">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:py-20">
           <div className="min-w-0 pt-2">
             <p className={heroServiceTitle}>화장품 품질검사 위탁 서비스</p>
 
-            <h1 className={heroTitle}>출시·납품 성적서 먼저 확인</h1>
+            <h1 className={heroTitle}>
+              성적서가 필요한 날짜가 정해졌다면 먼저 가능 여부부터 확인하세요
+            </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-8 text-[#4F656A]">
-              자가품질 위탁검사, 유통화장품 안전관리, 기능성화장품 품질검사까지
-              필요한 항목과 납기를 먼저 안내합니다
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-[#4F656A]">
+              출시·납품 일정에 맞춰 자가품질 위탁검사, 납품용 성적서,
+              기능성화장품 품질검사까지 제품명·제형·희망 납기를 기준으로 빠르게 안내드립니다
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <LinkButton href="#contact" className="h-14 px-8 text-base">
-                성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
+                납기 가능 여부 확인 <ArrowRight className="ml-2 h-5 w-5" />
               </LinkButton>
               <LinkButton
                 href="#fees"
                 variant="secondary"
                 className="h-14 px-8 text-base"
               >
-                대표 수수료 보기
+                대표 수수료 먼저 보기
               </LinkButton>
             </div>
 
-            <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-2">
-              {proofItems.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white/75 px-4 py-3 text-sm font-black text-[#27434A] shadow-sm"
-                >
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4F888B]" />
-                  <span>{item}</span>
-                </div>
-              ))}
+            <div className="mt-8 rounded-[28px] border border-[#D8E5E7] bg-white/72 p-5 shadow-[0_16px_36px_rgba(36,72,82,0.05)]">
+              <p className="text-sm font-black text-[#3E7B7F]">
+                출시와 납품 일정에 맞춰 성적서 가능 여부부터 빠르게 확인해주는 화장품 품질검사 위탁기관
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {proofItems.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-3 text-sm font-black text-[#27434A] shadow-sm"
+                  >
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#4F888B]" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          <Card className="border-0 bg-white/90 p-3 shadow-[0_28px_72px_rgba(36,72,82,0.11)]">
-            <div className="rounded-[22px] bg-[#3E6F76] p-7 text-white">
-              <p className="mb-3 text-[11px] font-black uppercase tracking-[0.2em] text-[#DDF4F1]">
-                Fast Check
-              </p>
-              <h2 className={cardTitle}>시험기관 비교 중이신가요</h2>
-              <p className="mt-4 leading-7 text-[#EFFAFA]">
-                납기와 수수료를 먼저 확인해보세요
-              </p>
-            </div>
-
-            <div className="grid gap-3 p-5">
-              <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
-                <p className="text-sm font-bold text-[#73878C]">일반 의뢰</p>
-                <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
-                  7일 소요
-                </p>
-              </div>
-              <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
-                <p className="text-sm font-bold text-[#73878C]">긴급 의뢰</p>
-                <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
-                  3일 상담 가능
-                </p>
-              </div>
-              <div className="rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
-                <p className="text-sm font-bold text-[#73878C]">대표 전화</p>
-                <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-[#27434A]">
-                  02-312-0540
-                </p>
-              </div>
-            </div>
-
-            <div className="grid gap-3 px-5 pb-5 sm:grid-cols-2">
-              <a
-                href="tel:02-312-0540"
-                className="flex items-center justify-center gap-2 rounded-2xl bg-[#3E7B7F] px-4 py-4 text-center font-black text-white transition hover:bg-[#346A6E]"
-              >
-                <Phone className="h-5 w-5" /> 전화 상담
-              </a>
-              <a
-                href="mailto:testing@ysiet.com"
-                className="flex items-center justify-center gap-2 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4 text-center font-black text-[#2E525A] transition hover:border-[#98BBC0]"
-              >
-                <Mail className="h-5 w-5" /> 이메일 견적
-              </a>
-            </div>
-          </Card>
+          <HeroConversionPanel />
         </div>
       </section>
 
       <BrandTrustBar />
 
-      <section id="sales" className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+      <section id="decision" className={cx("overflow-hidden", SECTION_TIGHT, BG_WHITE)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Customer First"
+            titleText="고객이 가장 먼저 알고 싶은 것부터 답합니다"
+            description="기관 규모보다 먼저 확인해야 하는 것은 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다"
+          />
+
+          <div className="grid gap-5 lg:grid-cols-3">
+            {customerQuestions.map((item) => (
+              <Card
+                key={item.title}
+                className="overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(36,72,82,0.08)]"
+              >
+                <div className="border-b border-[#D8E5E7] bg-[#F4F9F8] px-7 py-5">
+                  <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
+                    {item.point}
+                  </p>
+                  <h3 className="mt-3 whitespace-nowrap text-2xl font-black tracking-[-0.04em] text-[#27434A]">
+                    {item.title}
+                  </h3>
+                </div>
+                <div className="p-7">
+                  <p className="leading-8 text-[#60767B]">{item.desc}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-7 rounded-[28px] border border-[#D8E5E7] bg-[#3E6F76] p-7 text-white md:flex md:items-center md:justify-between">
+            <div>
+              <p className="whitespace-nowrap text-[clamp(1rem,2.2vw,1.35rem)] font-black tracking-[-0.035em]">
+                검사항목을 몰라도 괜찮습니다
+              </p>
+              <p className="mt-3 leading-7 text-[#EFFAFA]">
+                제품명, 제형, 성적서 용도, 희망 납기만 알려주시면 먼저 검토 후 안내드립니다
+              </p>
+            </div>
+            <LinkButton href="#contact" variant="light" className="mt-5 md:mt-0">
+              우선 검토 요청
+            </LinkButton>
+          </div>
+        </div>
+      </section>
+
+      <section id="sales" className={cx("overflow-hidden", SECTION, BG_SOFT)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Why YSIET"
             titleText="비교하다가도 문의하게 되는 이유"
-            description="고객이 홈페이지에서 가장 먼저 알고 싶은 것은 기관의 규모가 아니라 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다"
+            description="정리형 안내가 아니라 실제 문의 전환을 위해 납기, 항목, 비용, 성적서 발급 동선에 집중했습니다"
           />
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {salesReasons.map((item) => (
-              <Card key={item.title}>
+              <Card key={item.title} className="h-full">
                 <div className="p-7">
                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
                     {item.icon}
@@ -785,56 +890,15 @@ function HomePage() {
               </Card>
             ))}
           </div>
-
-          <div className="mt-7 rounded-[28px] border border-[#D8E5E7] bg-[#F7FAFA] p-6 md:flex md:items-center md:justify-between">
-            <div>
-              <p className="text-xl font-black tracking-[-0.03em] text-[#27434A]">
-                이미 여러 시험기관을 보고 오셨다면
-              </p>
-              <p className="mt-2 leading-7 text-[#60767B]">
-                YSIET에서는 먼저 필요한 성적서의 항목, 납기, 준비서류부터 확인하실 수 있습니다
-              </p>
-            </div>
-            <LinkButton href="#contact" className="mt-5 md:mt-0">
-              바로 문의하기
-            </LinkButton>
-          </div>
-        </div>
-      </section>
-
-      <section id="paths" className={cx("overflow-hidden", SECTION, BG_SOFT)}>
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle
-            eyebrow="Start Here"
-            titleText="어떤 상황이신가요"
-            description="시험항목을 정확히 몰라도 괜찮습니다. 제품 상황과 제출 목적을 기준으로 필요한 순서를 안내합니다"
-          />
-
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {customerPaths.map((item) => (
-              <a key={item.title} href="#contact" className="group">
-                <Card className="h-full transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_24px_65px_rgba(36,72,82,0.08)]">
-                  <div className="p-7">
-                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
-                      <ArrowRight className="h-5 w-5" />
-                    </div>
-                    <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#27434A]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 leading-7 text-[#60767B]">{item.desc}</p>
-                  </div>
-                </Card>
-              </a>
-            ))}
-          </div>
         </div>
       </section>
 
       <section className={cx("overflow-hidden bg-[#4B7D82] text-white", SECTION_TIGHT)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
-            eyebrow="Key Points"
-            titleText="의뢰 전 확인할 4가지"
+            eyebrow="Trust Position"
+            titleText="공식 지정·국제공인·연구 기반을 한 번에 확인하세요"
+            description="식약처 지정기관, KOLAS 공인기관, 연세대학교 교원창업기업이라는 신뢰근거를 시험상담 동선 안에서 바로 보여드립니다"
             light
           />
 
@@ -857,7 +921,35 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="services" className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+      <section id="paths" className={cx("overflow-hidden", SECTION, BG_WHITE)}>
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Start Here"
+            titleText="어떤 성적서가 필요하신가요"
+            description="제품 상황과 제출 목적에 따라 필요한 항목, 준비서류, 가능 납기를 순서대로 안내합니다"
+          />
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {customerPaths.map((item) => (
+              <a key={item.title} href="#contact" className="group">
+                <Card className="h-full transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_24px_65px_rgba(36,72,82,0.08)]">
+                  <div className="p-7">
+                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
+                      <ArrowRight className="h-5 w-5" />
+                    </div>
+                    <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em] text-[#27434A]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 leading-7 text-[#60767B]">{item.desc}</p>
+                  </div>
+                </Card>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className={cx("overflow-hidden", SECTION, BG_SOFT)}>
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Testing Services"
@@ -921,7 +1013,7 @@ function HomePage() {
             ))}
           </div>
 
-          <div className="mt-6 rounded-[24px] bg-[#4B7D82] p-6 text-white md:flex md:items-center md:justify-between">
+          <div className="mt-6 rounded-[24px] bg-[#3E6F76] p-6 text-white md:flex md:items-center md:justify-between">
             <div>
               <p className="text-[clamp(1rem,2.4vw,1.2rem)] font-black">
                 견적 전 비용 범위를 먼저 확인하세요
