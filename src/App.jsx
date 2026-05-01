@@ -18,8 +18,60 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+
+function cn(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+function Button({
+  children,
+  className = "",
+  variant = "default",
+  size = "default",
+  ...props
+}) {
+  const base =
+    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 disabled:pointer-events-none disabled:opacity-50";
+
+  const variants = {
+    default: "bg-slate-950 text-white hover:bg-slate-800",
+    outline:
+      "border border-slate-300 bg-white text-slate-950 hover:bg-slate-50",
+  };
+
+  const sizes = {
+    default: "h-10 px-4 py-2",
+    lg: "h-11 px-8",
+  };
+
+  return (
+    <button
+      className={cn(base, variants[variant], sizes[size], className)}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+
+function Card({ children, className = "", ...props }) {
+  return (
+    <div
+      className={cn("rounded-xl border bg-white text-slate-950 shadow", className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+function CardContent({ children, className = "", ...props }) {
+  return (
+    <div className={cn("p-6", className)} {...props}>
+      {children}
+    </div>
+  );
+}
 
 const proofBadges = [
   "식약처 지정 화장품 시험·검사기관 제18호",
@@ -39,8 +91,14 @@ const comparisonRows = [
   ["기관 설명을 먼저 읽어야 함", "성적서 납기부터 바로 확인"],
   ["메뉴가 많고 동선이 복잡함", "견적 요청까지 한 화면에서 이동"],
   ["가격 감이 늦게 잡힘", "대표 수수료를 먼저 공개"],
-  ["처음 의뢰자는 준비서류가 막막함", "자가품질 위탁검사 준비서류를 바로 안내"],
-  ["대형기관 신뢰도는 있으나 상담 체감이 느릴 수 있음", "1건 의뢰도 전문 카운셀링 강조"],
+  [
+    "처음 의뢰자는 준비서류가 막막함",
+    "자가품질 위탁검사 준비서류를 바로 안내",
+  ],
+  [
+    "대형기관 신뢰도는 있으나 상담 체감이 느릴 수 있음",
+    "1건 의뢰도 전문 카운셀링 강조",
+  ],
 ];
 
 const decidingFactors = [
@@ -151,16 +209,28 @@ export default function YSIETCosmeticsLanding() {
             </div>
             <div>
               <p className="text-base font-black tracking-tight">YSIET</p>
-              <p className="text-xs font-bold text-slate-500">화장품 시험·검사 성적서 상담</p>
+              <p className="text-xs font-bold text-slate-500">
+                화장품 시험·검사 성적서 상담
+              </p>
             </div>
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-bold text-slate-600 xl:flex">
-            <a href="#compare" className="hover:text-slate-950">기관 비교</a>
-            <a href="#services" className="hover:text-slate-950">검사항목</a>
-            <a href="#fees" className="hover:text-slate-950">수수료</a>
-            <a href="#documents" className="hover:text-slate-950">준비서류</a>
-            <a href="#process" className="hover:text-slate-950">절차</a>
+            <a href="#compare" className="hover:text-slate-950">
+              기관 비교
+            </a>
+            <a href="#services" className="hover:text-slate-950">
+              검사항목
+            </a>
+            <a href="#fees" className="hover:text-slate-950">
+              수수료
+            </a>
+            <a href="#documents" className="hover:text-slate-950">
+              준비서류
+            </a>
+            <a href="#process" className="hover:text-slate-950">
+              절차
+            </a>
           </nav>
 
           <a href="#contact">
@@ -241,7 +311,9 @@ export default function YSIETCosmeticsLanding() {
               <CardContent className="p-7 md:p-9">
                 <div className="mb-7 rounded-3xl bg-gradient-to-br from-rose-600 to-orange-500 p-6 text-white">
                   <p className="text-sm font-black text-rose-100">FAST DECISION</p>
-                  <h2 className="mt-2 text-3xl font-black">KC* 등 시험기관을 살펴보다 오셨나요?</h2>
+                  <h2 className="mt-2 text-3xl font-black">
+                    KC* 등 시험기관을 살펴보다 오셨나요?
+                  </h2>
                   <p className="mt-3 leading-7 text-rose-50">
                     그럼 아래 4가지만 먼저 확인하세요. 납기, 지정기관, KOLAS, 수수료.
                   </p>
