@@ -13,6 +13,8 @@ import {
   Phone,
   ShieldCheck,
   TimerReset,
+  FileBadge2,
+  ExternalLink,
 } from "lucide-react";
 
 const KAKAO_URL = "https://pf.kakao.com/_xbUlsn";
@@ -21,6 +23,7 @@ const YS_LOGO = "/ysiet-symbol.png";
 const YONSEI_LOGO = "/yonsei-symbol.jpg";
 const KOLAS_LOGO = "/kolas-symbol.jpg";
 const MFDS_LOGO = "/mfds-symbol.jpg";
+const CERTIFICATE_PDF = "/ysiet-cosmetics-certificate.pdf";
 
 function cx(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -40,8 +43,8 @@ function LinkButton({ href, children, variant = "primary", className = "" }) {
   return (
     <a
       href={href}
-      target={href?.startsWith("http") ? "_blank" : undefined}
-      rel={href?.startsWith("http") ? "noreferrer" : undefined}
+      target={href?.startsWith("http") || href?.endsWith(".pdf") ? "_blank" : undefined}
+      rel={href?.startsWith("http") || href?.endsWith(".pdf") ? "noreferrer" : undefined}
       className={cx(
         "inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-black transition",
         variants[variant],
@@ -197,8 +200,8 @@ const strongestReasons = [
     desc: "자가품질, 납품, 출시, 수입, 광고 검증 등 용도에 맞춰 상담합니다.",
   },
   {
-    title: "공식기관 신뢰근거",
-    desc: "식약처 지정, KOLAS 공인, 연세대학교 교원창업기업 기반의 시험분석 서비스입니다.",
+    title: "공식 인정서로 확인 가능",
+    desc: "화장품 시험·검사기관 지정서 제18호 인정서를 직접 확인하실 수 있습니다.",
   },
 ];
 
@@ -228,6 +231,15 @@ const serviceScopes = [
     title: "R&D 지원",
     desc: "신제품 개발, 시험방법 검토, 원재료 연구, 광고 검증 목적의 분석을 지원합니다.",
   },
+];
+
+const certificateFacts = [
+  ["지정번호", "제18호"],
+  ["기관명칭", "(주)와이에스환경기술연구원"],
+  ["업무범위", "검사명령검사, 품질검사"],
+  ["분야", "화장품"],
+  ["품목", "일반화장품, 기능성화장품"],
+  ["유효기간", "2024. 7. 19. ~ 2028. 7. 18."],
 ];
 
 const firstCheckItems = [
@@ -379,11 +391,7 @@ function Header({ showKakao = false }) {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
         <a href="/" className="flex min-w-0 items-center gap-3">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#DCE8EA] bg-white">
-            <img
-              src={YS_LOGO}
-              alt="와이에스환경기술연구원 로고"
-              className="h-10 w-10 object-contain"
-            />
+            <img src={YS_LOGO} alt="와이에스환경기술연구원 로고" className="h-10 w-10 object-contain" />
           </div>
           <div className="min-w-0">
             <p className="whitespace-nowrap text-[13px] font-black tracking-[-0.02em] text-[#263F46] sm:text-base">
@@ -396,24 +404,13 @@ function Header({ showKakao = false }) {
         </a>
 
         <nav className="hidden items-center gap-4 text-sm font-bold text-[#60767B] xl:flex">
-          <a href="/#why-ysiet" className="hover:text-[#285F67]">
-            선택이유
-          </a>
-          <a href="/#situations" className="hover:text-[#285F67]">
-            의뢰상황
-          </a>
-          <a href="/#check" className="hover:text-[#285F67]">
-            확인사항
-          </a>
-          <a href="/#fees" className="hover:text-[#285F67]">
-            수수료
-          </a>
-          <a href="/#contact" className="hover:text-[#285F67]">
-            문의
-          </a>
-          <a href="/about" className="hover:text-[#285F67]">
-            기관소개
-          </a>
+          <a href="/#why-ysiet" className="hover:text-[#285F67]">선택이유</a>
+          <a href="/#certificate" className="hover:text-[#285F67]">인정서</a>
+          <a href="/#situations" className="hover:text-[#285F67]">의뢰상황</a>
+          <a href="/#check" className="hover:text-[#285F67]">확인사항</a>
+          <a href="/#fees" className="hover:text-[#285F67]">수수료</a>
+          <a href="/#contact" className="hover:text-[#285F67]">문의</a>
+          <a href="/about" className="hover:text-[#285F67]">기관소개</a>
           {showKakao ? (
             <a
               href={KAKAO_URL}
@@ -427,9 +424,7 @@ function Header({ showKakao = false }) {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2 md:flex">
-          <LinkButton href="/#contact" className="h-10 px-5">
-            납기 확인
-          </LinkButton>
+          <LinkButton href="/#contact" className="h-10 px-5">납기 확인</LinkButton>
         </div>
       </div>
     </header>
@@ -442,23 +437,13 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-4">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-start">
           <div className="flex min-w-0 items-start gap-3">
-            <img
-              src={YS_LOGO}
-              alt="와이에스환경기술연구원 로고"
-              className="h-[60px] w-auto shrink-0 object-contain opacity-90"
-            />
+            <img src={YS_LOGO} alt="와이에스환경기술연구원 로고" className="h-[60px] w-auto shrink-0 object-contain opacity-90" />
 
             <div className="min-w-0 pt-[1px]">
               <div className="space-y-0 text-[15.5px] font-semibold leading-[1.24] text-[#687477]">
-                <p>
-                  (주)와이에스환경기술연구원 | (03149) 서울특별시 종로구 인사동5길 42 종로빌딩 10층
-                </p>
-                <p>
-                  대표이사 엄유진 | 사업자등록번호 211-87-79879 | 대표전화 02-312-0540 | 팩스 02-312-0560
-                </p>
-                <p>
-                  COPYRIGHT © YS INSTITUTE OF ENVIRONMENTAL TECHNOLOGY. ALL RIGHTS RESERVED.
-                </p>
+                <p>(주)와이에스환경기술연구원 | (03149) 서울특별시 종로구 인사동5길 42 종로빌딩 10층</p>
+                <p>대표이사 엄유진 | 사업자등록번호 211-87-79879 | 대표전화 02-312-0540 | 팩스 02-312-0560</p>
+                <p>COPYRIGHT © YS INSTITUTE OF ENVIRONMENTAL TECHNOLOGY. ALL RIGHTS RESERVED.</p>
               </div>
 
               <div className="mt-2 flex flex-wrap gap-2">
@@ -489,16 +474,10 @@ function MobileStickyButtons() {
   return (
     <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 rounded-full bg-[#263F46] p-2 shadow-2xl md:hidden">
       <div className="grid grid-cols-2 gap-2">
-        <a
-          href="tel:02-312-0540"
-          className="rounded-full bg-white px-4 py-3 text-center text-sm font-black text-[#28474E]"
-        >
+        <a href="tel:02-312-0540" className="rounded-full bg-white px-4 py-3 text-center text-sm font-black text-[#28474E]">
           전화 상담
         </a>
-        <a
-          href="mailto:testing@ysiet.com"
-          className="rounded-full bg-[#285F67] px-4 py-3 text-center text-sm font-black text-white"
-        >
+        <a href="mailto:testing@ysiet.com" className="rounded-full bg-[#285F67] px-4 py-3 text-center text-sm font-black text-white">
           이메일 견적
         </a>
       </div>
@@ -519,10 +498,7 @@ function HeroConversionPanel() {
 
         <div className="mt-6 grid gap-3">
           {conversionChecklist.map(([title, desc], index) => (
-            <div
-              key={title}
-              className="flex items-center gap-4 rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4"
-            >
+            <div key={title} className="flex items-center gap-4 rounded-2xl border border-[#DCE8EA] bg-[#F8FBFB] p-4">
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#285F67] text-sm font-black text-white">
                 {index + 1}
               </div>
@@ -550,21 +526,77 @@ function HeroConversionPanel() {
         </div>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          <a
-            href="tel:02-312-0540"
-            className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-[#285F67] px-4 text-center font-black text-white transition hover:bg-[#214F56]"
-          >
+          <a href="tel:02-312-0540" className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-[#285F67] px-4 text-center font-black text-white transition hover:bg-[#214F56]">
             <Phone className="h-5 w-5" /> 전화 상담
           </a>
-          <a
-            href="mailto:testing@ysiet.com"
-            className="flex h-14 items-center justify-center gap-2 rounded-2xl border border-[#D8E5E7] bg-white px-4 text-center font-black text-[#28474E] transition hover:border-[#98BBC0]"
-          >
+          <a href="mailto:testing@ysiet.com" className="flex h-14 items-center justify-center gap-2 rounded-2xl border border-[#D8E5E7] bg-white px-4 text-center font-black text-[#28474E] transition hover:border-[#98BBC0]">
             <Mail className="h-5 w-5" /> 이메일 견적
           </a>
         </div>
       </div>
     </Card>
+  );
+}
+
+function CertificateSection() {
+  return (
+    <section id="certificate" className="bg-white py-12">
+      <div className="mx-auto max-w-7xl px-5">
+        <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <div>
+            <SectionTitle
+              eyebrow="Official Certificate"
+              titleText="화장품 시험·검사기관 지정서를 직접 확인하세요"
+              description="와이에스환경기술연구원은 식품의약품안전처 화장품 시험·검사기관 지정서 제18호에 명시된 기관입니다. 공식 인정서에는 업무범위, 품목, 유효기간이 함께 기재되어 있습니다."
+            />
+
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <LinkButton href={CERTIFICATE_PDF} className="h-12">
+                인정서 PDF 보기 <ExternalLink className="ml-2 h-4 w-4" />
+              </LinkButton>
+              <LinkButton href="#contact" variant="secondary" className="h-12">
+                성적서 상담하기
+              </LinkButton>
+            </div>
+          </div>
+
+          <Card>
+            <div className="p-6">
+              <div className="mb-5 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF5F4] text-[#285F67]">
+                  <FileBadge2 className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
+                    인정서 핵심 정보
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-[#73878C]">
+                    화장품 시험·검사기관 지정서 기준
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {certificateFacts.map(([label, value]) => (
+                  <div key={label} className="rounded-2xl bg-[#F5F8F8] px-4 py-4">
+                    <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5E8E90]">
+                      {label}
+                    </p>
+                    <p className="mt-2 text-base font-black leading-7 text-[#263F46]">
+                      {value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-5 rounded-2xl border border-[#D8E5E7] bg-white p-4 text-sm font-bold leading-7 text-[#60767B]">
+                식약처 지정서에는 일반화장품과 기능성화장품 품목, 이화학 시험·검사 항목, 2024. 7. 19.부터 2028. 7. 18.까지의 유효기간이 기재되어 있습니다.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -597,21 +629,14 @@ function HomePage() {
               <LinkButton href="#contact" className="h-14 px-8 text-base">
                 납기 가능 여부 확인 <ArrowRight className="ml-2 h-5 w-5" />
               </LinkButton>
-              <LinkButton
-                href="mailto:testing@ysiet.com"
-                variant="secondary"
-                className="h-14 px-8 text-base"
-              >
+              <LinkButton href="mailto:testing@ysiet.com" variant="secondary" className="h-14 px-8 text-base">
                 제품명·희망납기 보내기
               </LinkButton>
             </div>
 
             <div className="mt-8 grid gap-3 md:grid-cols-3">
               {trustProofs.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex items-center gap-3 rounded-2xl border border-[#CFE1E2] bg-white px-4 py-4 shadow-[0_12px_32px_rgba(36,72,82,0.045)]"
-                >
+                <div key={item.title} className="flex items-center gap-3 rounded-2xl border border-[#CFE1E2] bg-white px-4 py-4 shadow-[0_12px_32px_rgba(36,72,82,0.045)]">
                   <TrustLogo src={item.logo} alt={item.alt} type={item.type} />
                   <div>
                     <p className="text-sm font-black text-[#263F46]">{item.title}</p>
@@ -619,6 +644,18 @@ function HomePage() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-4">
+              <a
+                href={CERTIFICATE_PDF}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center text-sm font-black text-[#285F67] underline-offset-4 hover:underline"
+              >
+                화장품 시험·검사기관 지정서 제18호 보기
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </a>
             </div>
           </div>
 
@@ -637,10 +674,7 @@ function HomePage() {
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {strongestReasons.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[22px] border border-white/15 bg-white/8 p-6"
-              >
+              <div key={item.title} className="rounded-[22px] border border-white/15 bg-white/8 p-6">
                 <CheckCircle2 className="mb-5 h-6 w-6 text-[#BFE6E2]" />
                 <h3 className="text-lg font-black tracking-[-0.03em] text-white">
                   {item.title}
@@ -652,7 +686,9 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="situations" className="bg-white py-12">
+      <CertificateSection />
+
+      <section id="situations" className="bg-[#F1F7F6] py-12">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Start Here"
@@ -662,10 +698,7 @@ function HomePage() {
 
           <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             {customerSituations.map((item) => (
-              <div
-                key={item}
-                className="flex gap-3 rounded-[20px] border border-[#D8E5E7] bg-[#FAFCFC] px-5 py-4"
-              >
+              <div key={item} className="flex gap-3 rounded-[20px] border border-[#D8E5E7] bg-white px-5 py-4">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
                 <p className="font-bold leading-7 text-[#4F656A]">{item}</p>
               </div>
@@ -688,7 +721,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="check" className="bg-[#F1F7F6] py-12">
+      <section id="check" className="bg-white py-12">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="First Check"
@@ -709,7 +742,7 @@ function HomePage() {
             ))}
           </div>
 
-          <div className="mt-6 rounded-[24px] border border-[#D8E5E7] bg-white p-6">
+          <div className="mt-6 rounded-[24px] border border-[#D8E5E7] bg-[#F5F8F8] p-6">
             <p className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
               공식기관 선택 시 함께 확인해야 할 기준
             </p>
@@ -718,10 +751,7 @@ function HomePage() {
             </p>
             <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
               {officialCriteria.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-2xl bg-[#F3F8F8] px-4 py-3 text-sm font-bold text-[#4F656A]"
-                >
+                <div key={item} className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 text-sm font-bold text-[#4F656A]">
                   <ShieldCheck className="h-5 w-5 shrink-0 text-[#4F888B]" />
                   {item}
                 </div>
@@ -747,7 +777,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="fees" className="bg-white py-14">
+      <section id="fees" className="bg-[#F1F7F6] py-14">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Fee Guide"
@@ -762,10 +792,7 @@ function HomePage() {
               <div>비고</div>
             </div>
             {feeRows.map(([name, price, note]) => (
-              <div
-                key={name}
-                className="grid grid-cols-[1.2fr_0.8fr_0.8fr] border-t border-[#D8E5E7] px-5 py-3"
-              >
+              <div key={name} className="grid grid-cols-[1.2fr_0.8fr_0.8fr] border-t border-[#D8E5E7] px-5 py-3">
                 <div className="font-bold text-[#4F656A]">{name}</div>
                 <div className="font-black text-[#285F67]">{price}</div>
                 <div className="font-bold text-[#73878C]">{note}</div>
@@ -801,7 +828,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="documents" className="bg-[#F1F7F6] py-12">
+      <section id="documents" className="bg-white py-12">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Before Request"
@@ -811,13 +838,7 @@ function HomePage() {
 
           <div className="grid gap-3 md:grid-cols-2">
             {documents.map((item, index) => (
-              <div
-                key={item}
-                className={cx(
-                  "flex gap-3 rounded-[18px] border border-[#D8E5E7] bg-white px-5 py-3 shadow-sm",
-                  index === documents.length - 1 && "md:col-span-2"
-                )}
-              >
+              <div key={item} className={cx("flex gap-3 rounded-[18px] border border-[#D8E5E7] bg-white px-5 py-3 shadow-sm", index === documents.length - 1 && "md:col-span-2")}>
                 <ClipboardCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#4F888B]" />
                 <p className="font-bold text-[#4F656A]">{item}</p>
               </div>
@@ -837,19 +858,9 @@ function HomePage() {
           <div className="rounded-[24px] border border-[#D8E5E7] bg-white shadow-[0_18px_44px_rgba(36,72,82,0.055)]">
             <div className="grid md:grid-cols-4">
               {processSteps.map(([step, name, desc], index) => (
-                <div
-                  key={step}
-                  className={cx(
-                    "p-6",
-                    index !== 0 && "border-t border-[#D8E5E7] md:border-l md:border-t-0"
-                  )}
-                >
-                  <p className="text-3xl font-black tracking-[-0.05em] text-[#BFD9DC]">
-                    {step}
-                  </p>
-                  <h3 className="mt-2 text-lg font-black tracking-[-0.03em] text-[#263F46]">
-                    {name}
-                  </h3>
+                <div key={step} className={cx("p-6", index !== 0 && "border-t border-[#D8E5E7] md:border-l md:border-t-0")}>
+                  <p className="text-3xl font-black tracking-[-0.05em] text-[#BFD9DC]">{step}</p>
+                  <h3 className="mt-2 text-lg font-black tracking-[-0.03em] text-[#263F46]">{name}</h3>
                   <p className="mt-2 text-sm leading-6 text-[#60767B]">{desc}</p>
                 </div>
               ))}
@@ -875,42 +886,28 @@ function HomePage() {
                 </p>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                  <a
-                    href="tel:02-312-0540"
-                    className="inline-flex h-14 items-center justify-center rounded-full bg-white px-8 font-black text-[#28474E]"
-                  >
+                  <a href="tel:02-312-0540" className="inline-flex h-14 items-center justify-center rounded-full bg-white px-8 font-black text-[#28474E]">
                     <Phone className="mr-2 h-5 w-5" /> 02-312-0540
                   </a>
-                  <a
-                    href="mailto:testing@ysiet.com"
-                    className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/12 px-8 font-black text-white"
-                  >
+                  <a href="mailto:testing@ysiet.com" className="inline-flex h-14 items-center justify-center rounded-full border border-white/25 bg-white/12 px-8 font-black text-white">
                     <Mail className="mr-2 h-5 w-5" /> 제품명·희망납기 보내기
                   </a>
                 </div>
               </div>
 
               <div className="rounded-[24px] bg-white p-6 text-[#263F46]">
-                <p className="text-sm font-black text-[#4F888B]">
-                  빠른 검토를 위한 5가지
-                </p>
+                <p className="text-sm font-black text-[#4F888B]">빠른 검토를 위한 5가지</p>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
                   {contactItems.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-3 rounded-2xl bg-[#F3F7F7] px-4 py-3 font-bold"
-                    >
+                    <div key={item} className="flex items-center gap-3 rounded-2xl bg-[#F3F7F7] px-4 py-3 font-bold">
                       <CheckCircle2 className="h-5 w-5 shrink-0 text-[#4F888B]" />
                       {item}
                     </div>
                   ))}
                 </div>
 
-                <a
-                  href="mailto:testing@ysiet.com"
-                  className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#285F67] font-black text-white"
-                >
+                <a href="mailto:testing@ysiet.com" className="mt-6 flex h-14 items-center justify-center rounded-2xl bg-[#285F67] font-black text-white">
                   납기 가능 여부 확인
                 </a>
 
@@ -934,10 +931,7 @@ function HomePage() {
 
           <div className="space-y-3">
             {faqs.map(([q, a]) => (
-              <details
-                key={q}
-                className="group rounded-[20px] border border-[#D8E5E7] bg-white px-6 py-4 shadow-sm"
-              >
+              <details key={q} className="group rounded-[20px] border border-[#D8E5E7] bg-white px-6 py-4 shadow-sm">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-black text-[#263F46]">
                   <span className="flex items-center gap-3">
                     <HelpCircle className="h-5 w-5 shrink-0 text-[#4F888B]" />
@@ -981,8 +975,8 @@ function AboutPage() {
               <LinkButton href="/#contact" className="h-14 px-8 text-base">
                 성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
               </LinkButton>
-              <LinkButton href="/" variant="secondary" className="h-14 px-8 text-base">
-                메인으로 돌아가기
+              <LinkButton href={CERTIFICATE_PDF} variant="secondary" className="h-14 px-8 text-base">
+                인정서 PDF 보기
               </LinkButton>
             </div>
           </div>
@@ -990,31 +984,19 @@ function AboutPage() {
           <Card className="border-0 bg-white p-4 shadow-[0_28px_72px_rgba(36,72,82,0.1)]">
             <div className="grid gap-4 rounded-[22px] bg-[#F8FBFB] p-6">
               <div className="flex items-center gap-4 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-                <img
-                  src={YS_LOGO}
-                  alt="YS 로고"
-                  className="h-14 w-14 rounded-2xl border border-[#E2EDEF] bg-white p-1 object-contain"
-                />
+                <img src={YS_LOGO} alt="YS 로고" className="h-14 w-14 rounded-2xl border border-[#E2EDEF] bg-white p-1 object-contain" />
                 <div>
                   <p className="font-black text-[#263F46]">(주)와이에스환경기술연구원</p>
-                  <p className="text-sm font-bold text-[#73878C]">
-                    YS Institute of Environmental Technology
-                  </p>
+                  <p className="text-sm font-bold text-[#73878C]">YS Institute of Environmental Technology</p>
                 </div>
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="flex items-center gap-4 rounded-2xl border border-[#D8E5E7] bg-white p-4">
-                  <img
-                    src={MFDS_LOGO}
-                    alt="식품의약품안전처 심볼"
-                    className="h-12 w-12 object-contain"
-                  />
+                  <img src={MFDS_LOGO} alt="식품의약품안전처 심볼" className="h-12 w-12 object-contain" />
                   <div>
                     <p className="text-sm font-bold text-[#73878C]">화장품 시험검사기관</p>
-                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#263F46]">
-                      식약처 지정 제18호
-                    </p>
+                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#263F46]">식약처 지정 제18호</p>
                   </div>
                 </div>
 
@@ -1022,30 +1004,24 @@ function AboutPage() {
                   <img src={KOLAS_LOGO} alt="KOLAS 심볼" className="h-12 w-16 object-contain" />
                   <div>
                     <p className="text-sm font-bold text-[#73878C]">국제공인시험기관</p>
-                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#263F46]">
-                      KOLAS 제364호
-                    </p>
+                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#263F46]">KOLAS 제364호</p>
                   </div>
                 </div>
               </div>
 
               <div className="flex items-center gap-4 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-                <img
-                  src={YONSEI_LOGO}
-                  alt="연세대학교 심볼"
-                  className="h-14 w-14 rounded-full object-cover"
-                />
+                <img src={YONSEI_LOGO} alt="연세대학교 심볼" className="h-14 w-14 rounded-full object-cover" />
                 <div>
                   <p className="font-black text-[#263F46]">연세대학교 교원창업기업</p>
-                  <p className="text-sm font-bold text-[#73878C]">
-                    연구 기반 전문 시험분석 서비스
-                  </p>
+                  <p className="text-sm font-bold text-[#73878C]">연구 기반 전문 시험분석 서비스</p>
                 </div>
               </div>
             </div>
           </Card>
         </div>
       </section>
+
+      <CertificateSection />
 
       <section className="bg-[#FAFCFC] py-14">
         <div className="mx-auto max-w-7xl px-5">
@@ -1059,12 +1035,8 @@ function AboutPage() {
             {aboutCards.map(([title, desc]) => (
               <Card key={title}>
                 <div className="p-7">
-                  <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">
-                    {title}
-                  </p>
-                  <p className="text-lg font-black leading-8 tracking-[-0.02em] text-[#263F46]">
-                    {desc}
-                  </p>
+                  <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-[#5E8E90]">{title}</p>
+                  <p className="text-lg font-black leading-8 tracking-[-0.02em] text-[#263F46]">{desc}</p>
                 </div>
               </Card>
             ))}
@@ -1085,9 +1057,7 @@ function AboutPage() {
               <Card key={item.title}>
                 <div className="p-7">
                   <Microscope className="mb-5 h-6 w-6 text-[#4F888B]" />
-                  <h3 className="text-xl font-black tracking-[-0.03em] text-[#263F46]">
-                    {item.title}
-                  </h3>
+                  <h3 className="text-xl font-black tracking-[-0.03em] text-[#263F46]">{item.title}</h3>
                   <p className="mt-4 leading-7 text-[#60767B]">{item.desc}</p>
                 </div>
               </Card>
@@ -1100,9 +1070,7 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-5">
           <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
             <div>
-              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#BFE6E2]">
-                Contact
-              </p>
+              <p className="mb-4 text-[11px] font-black uppercase tracking-[0.24em] text-[#BFE6E2]">Contact</p>
               <h2 className="text-[clamp(1.35rem,2.8vw,2.35rem)] font-black leading-[1.12] tracking-[-0.05em]">
                 기관 정보를 확인하셨다면 바로 상담하세요
               </h2>
@@ -1112,17 +1080,11 @@ function AboutPage() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <a
-                href="tel:02-312-0540"
-                className="inline-flex h-14 items-center justify-center rounded-2xl bg-white px-6 font-black text-[#28474E]"
-              >
+              <a href="tel:02-312-0540" className="inline-flex h-14 items-center justify-center rounded-2xl bg-white px-6 font-black text-[#28474E]">
                 <Phone className="mr-2 h-5 w-5" />
                 전화 상담
               </a>
-              <a
-                href="mailto:testing@ysiet.com"
-                className="inline-flex h-14 items-center justify-center rounded-2xl border border-white/25 bg-white/12 px-6 font-black text-white"
-              >
+              <a href="mailto:testing@ysiet.com" className="inline-flex h-14 items-center justify-center rounded-2xl border border-white/25 bg-white/12 px-6 font-black text-white">
                 <Mail className="mr-2 h-5 w-5" />
                 이메일 견적
               </a>
