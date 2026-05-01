@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Award,
   Banknote,
-  Building2,
   CheckCircle2,
   ChevronDown,
   ClipboardCheck,
@@ -41,8 +40,6 @@ function LinkButton({ href, children, variant = "primary", className = "" }) {
       "bg-white text-[#28474E] border border-white/30 hover:bg-[#F7FBFB]",
     yellow:
       "bg-[#FEE500] text-[#2D2926] hover:bg-[#F6D600] shadow-[0_12px_28px_rgba(254,229,0,0.22)]",
-    ghost:
-      "bg-transparent text-[#285F67] border border-[#B8D3D6] hover:bg-white",
   };
 
   return (
@@ -282,9 +279,9 @@ const documents = [
 
 const process = [
   ["01", "납기 확인", "성적서가 필요한 날짜와 제출처를 먼저 확인합니다"],
-  ["02", "항목 안내", "제품 유형과 제출 목적에 따라 필요한 시험항목을 안내합니다"],
+  ["02", "항목 안내", "제품 유형과 제출 목적에 맞는 시험항목을 안내합니다"],
   ["03", "시료 접수", "시료와 의뢰 정보를 확인한 뒤 분석 일정을 잡습니다"],
-  ["04", "성적서 발급", "시험 완료 후 시험성적서 발급 절차를 안내합니다"],
+  ["04", "성적서 발급", "시험 완료 후 성적서 발급 절차를 안내합니다"],
 ];
 
 const faqs = [
@@ -686,7 +683,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="services" className={cx("overflow-hidden bg-[#F1F7F6]", SECTION_TIGHT)}>
+      <section id="services" className="overflow-hidden bg-[#F1F7F6] py-8 lg:py-10">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Testing Scope"
@@ -697,7 +694,7 @@ function HomePage() {
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {serviceGroups.map((item) => (
-              <Card key={item.title}>
+              <Card key={item.title} className="h-full">
                 <div className="p-6">
                   <CheckCircle2 className="mb-4 h-6 w-6 text-[#4F888B]" />
                   <h3 className="whitespace-nowrap text-lg font-black tracking-[-0.03em] text-[#263F46]">
@@ -711,7 +708,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="fees" className={cx("overflow-hidden bg-[#FAFCFC]", SECTION_TIGHT)}>
+      <section id="fees" className="overflow-hidden bg-[#FAFCFC] py-8 lg:py-10">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
             eyebrow="Fee Guide"
@@ -735,18 +732,6 @@ function HomePage() {
                 <div className="font-black text-[#285F67]">{price}</div>
                 <div className="font-bold text-[#73878C]">{note}</div>
               </div>
-            ))}
-          </div>
-
-          <div className="grid gap-3 md:hidden">
-            {feeRows.map(([name, price, note]) => (
-              <Card key={name}>
-                <div className="p-5">
-                  <p className="font-black text-[#263F46]">{name}</p>
-                  <p className="mt-2 text-2xl font-black text-[#285F67]">{price}</p>
-                  <p className="mt-1 text-sm font-bold text-[#73878C]">{note}</p>
-                </div>
-              </Card>
             ))}
           </div>
 
@@ -789,29 +774,35 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="process" className="overflow-visible bg-[#FAFCFC] pt-8 pb-16 lg:pt-9 lg:pb-20">
+      <section id="process" className="overflow-hidden bg-[#FAFCFC] py-8 lg:py-9">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle eyebrow="Process" titleText="성적서 발급 4단계" compact />
 
-          <div className="grid gap-4 md:grid-cols-4">
-            {process.map(([step, name, desc]) => (
-              <Card key={step} className="relative z-10">
-                <div className="p-5">
-                  <p className="text-4xl font-black tracking-[-0.05em] text-[#D6E7E9]">
+          <div className="overflow-hidden rounded-[24px] border border-[#D8E5E7] bg-white shadow-[0_18px_44px_rgba(36,72,82,0.055)]">
+            <div className="grid md:grid-cols-4">
+              {process.map(([step, name, desc], index) => (
+                <div
+                  key={step}
+                  className={cx(
+                    "p-5",
+                    index !== 0 && "border-t border-[#D8E5E7] md:border-l md:border-t-0"
+                  )}
+                >
+                  <p className="text-3xl font-black tracking-[-0.05em] text-[#BFD9DC]">
                     {step}
                   </p>
-                  <h3 className="mt-3 text-lg font-black tracking-[-0.03em] text-[#263F46]">
+                  <h3 className="mt-2 text-lg font-black tracking-[-0.03em] text-[#263F46]">
                     {name}
                   </h3>
-                  <p className="mt-2 leading-6 text-[#60767B]">{desc}</p>
+                  <p className="mt-2 text-sm leading-6 text-[#60767B]">{desc}</p>
                 </div>
-              </Card>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="overflow-hidden bg-[#FAFCFC] pt-0 pb-12 lg:pb-14">
+      <section id="contact" className="overflow-hidden bg-[#FAFCFC] py-10 lg:py-12">
         <div className="mx-auto max-w-7xl px-5">
           <div className="overflow-hidden rounded-[34px] bg-[#263F46] text-white shadow-[0_34px_90px_rgba(38,63,70,0.20)]">
             <div className="grid gap-0 lg:grid-cols-[1.08fr_0.92fr]">
