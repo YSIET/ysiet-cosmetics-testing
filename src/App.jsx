@@ -69,7 +69,7 @@ const titleLight =
   "whitespace-nowrap text-[clamp(1.1rem,2.8vw,2.05rem)] font-black leading-[1.08] tracking-[-0.04em] text-white";
 
 const heroTitle =
-  "whitespace-nowrap text-[clamp(1.45rem,3.55vw,3.35rem)] font-black leading-[1.06] tracking-[-0.06em] text-[#071A2D]";
+  "whitespace-nowrap text-[clamp(1.85rem,4.1vw,3.65rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#071A2D]";
 
 const cardTitle =
   "whitespace-nowrap text-[clamp(1.25rem,2.1vw,1.75rem)] font-black tracking-[-0.04em]";
@@ -271,9 +271,7 @@ export default function App() {
               화장품 품질검사 위탁 서비스
             </p>
 
-            <h1 className={heroTitle}>
-              출시와 납품에 필요한 성적서 먼저 확인하세요
-            </h1>
+            <h1 className={heroTitle}>출시·납품 성적서 먼저 확인</h1>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-700">
               자가품질 위탁검사, 유통화장품 안전관리, 기능성화장품 품질검사까지
