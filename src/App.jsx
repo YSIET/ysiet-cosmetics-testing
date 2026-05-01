@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ArrowRight,
-  Award,
   Banknote,
   CheckCircle2,
   ChevronDown,
@@ -193,6 +192,25 @@ const customerSituations = [
   "원료·부자재·R&D 분석 상담이 필요한 경우",
 ];
 
+const serviceScopes = [
+  {
+    title: "일반 화장품",
+    desc: "완제품, 유통화장품, 화장비누 등 품질검사와 제출용 성적서 상담을 지원합니다.",
+  },
+  {
+    title: "기능성 화장품",
+    desc: "미백, 주름개선, 자외선차단 등 기능성 관련 품질관리 항목을 검토합니다.",
+  },
+  {
+    title: "원료·부자재",
+    desc: "원료, 부자재, 납품용 위해성 분석, 성분 확인 등 목적별 분석을 상담합니다.",
+  },
+  {
+    title: "R&D 지원",
+    desc: "신제품 개발, 시험방법 검토, 원재료 연구, 광고 검증 목적의 분석을 지원합니다.",
+  },
+];
+
 const firstCheckItems = [
   {
     title: "성적서 용도",
@@ -220,50 +238,13 @@ const firstCheckItems = [
   },
 ];
 
-const serviceScopes = [
-  {
-    title: "일반 화장품",
-    desc: "완제품, 유통화장품, 화장비누 등 품질검사와 제출용 성적서 상담을 지원합니다.",
-  },
-  {
-    title: "기능성 화장품",
-    desc: "미백, 주름개선, 자외선차단 등 기능성 관련 품질관리 항목을 검토합니다.",
-  },
-  {
-    title: "원료·부자재",
-    desc: "원료, 부자재, 납품용 위해성 분석, 성분 확인 등 목적별 분석을 상담합니다.",
-  },
-  {
-    title: "R&D 지원",
-    desc: "신제품 개발, 시험방법 검토, 원재료 연구, 광고 검증 목적의 분석을 지원합니다.",
-  },
-];
-
 const officialCriteria = [
-  {
-    title: "식약처 지정 여부",
-    desc: "공식 제출 목적의 화장품 시험검사를 맡길 때 가장 먼저 확인해야 하는 기준입니다.",
-  },
-  {
-    title: "KOLAS 공인시험 체계",
-    desc: "시험분석의 공신력과 품질관리 체계를 확인할 수 있는 중요한 근거입니다.",
-  },
-  {
-    title: "성적서 용도 이해도",
-    desc: "납품, 출시, 수입, 자가품질 등 제출 목적에 맞는 항목 안내가 가능한지 확인해야 합니다.",
-  },
-  {
-    title: "납기 상담 가능 여부",
-    desc: "성적서가 필요한 날짜가 정해져 있다면 가능 여부를 먼저 확인해주는 기관이 유리합니다.",
-  },
-  {
-    title: "처음 의뢰 고객 안내",
-    desc: "검사항목을 모르는 고객도 제품 정보만으로 상담을 시작할 수 있어야 합니다.",
-  },
-  {
-    title: "대응 가능 범위",
-    desc: "일반 화장품뿐 아니라 기능성, 원료, 부자재, R&D 목적까지 상담 가능한지 확인해야 합니다.",
-  },
+  "식약처 지정 여부",
+  "KOLAS 공인시험 체계",
+  "성적서 제출 목적 이해도",
+  "납기 상담 가능 여부",
+  "처음 의뢰 고객 안내",
+  "일반·기능성·원료·R&D 대응 범위",
 ];
 
 const whyConsultItems = [
@@ -399,8 +380,8 @@ function Header({ showKakao = false }) {
           <a href="/#situations" className="hover:text-[#285F67]">
             의뢰상황
           </a>
-          <a href="/#scope" className="hover:text-[#285F67]">
-            가능범위
+          <a href="/#check" className="hover:text-[#285F67]">
+            확인사항
           </a>
           <a href="/#fees" className="hover:text-[#285F67]">
             수수료
@@ -631,7 +612,7 @@ function HomePage() {
           <SectionTitle
             eyebrow="Start Here"
             titleText="이런 경우 와이에스에 먼저 문의하세요"
-            description="고객이 가장 먼저 알고 싶은 것은 기관의 규모가 아니라, 내 제품의 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다."
+            description="자가품질, 납품, 출시, 수입, 기능성, 원료·부자재, R&D까지 제품 상황과 제출 목적에 따라 상담해드립니다."
           />
 
           <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -645,41 +626,8 @@ function HomePage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section id="first-check" className="bg-[#F1F7F6] py-12">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle
-            eyebrow="First Check"
-            titleText="와이에스가 먼저 확인하는 것"
-            description="문의하시면 바로 견적만 던지는 것이 아니라, 성적서 목적과 납기 가능 여부부터 실무적으로 확인합니다."
-          />
-
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {firstCheckItems.map((item) => (
-              <Card key={item.title}>
-                <div className="p-6">
-                  <h3 className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-[#60767B]">{item.desc}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="scope" className="bg-white py-12">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle
-            eyebrow="Testing Scope"
-            titleText="어떤 의뢰가 가능한가요"
-            description="일반 화장품, 기능성 화장품, 원료·부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다."
-          />
-
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {serviceScopes.map((item) => (
               <Card key={item.title}>
                 <div className="p-6">
@@ -695,21 +643,18 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="criteria" className="bg-[#FAFCFC] py-12">
+      <section id="check" className="bg-[#F1F7F6] py-12">
         <div className="mx-auto max-w-7xl px-5">
           <SectionTitle
-            eyebrow="Selection Criteria"
-            titleText="공식기관 선택 시 확인해야 할 기준"
-            description="화장품 품질검사를 맡길 때는 가격만이 아니라 지정 여부, 공인시험 체계, 제출 목적 이해도, 납기 상담 능력을 함께 확인해야 합니다."
+            eyebrow="First Check"
+            titleText="와이에스가 먼저 확인하는 것"
+            description="문의하시면 바로 견적만 던지는 것이 아니라, 성적서 목적·필요 항목·납기 가능 여부를 먼저 실무적으로 확인합니다."
           />
 
-          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-            {officialCriteria.map((item, index) => (
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {firstCheckItems.map((item) => (
               <Card key={item.title}>
                 <div className="p-6">
-                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#285F67] text-sm font-black text-white">
-                    {index + 1}
-                  </div>
                   <h3 className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
                     {item.title}
                   </h3>
@@ -718,18 +663,28 @@ function HomePage() {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section id="why-consult" className="bg-[#F1F7F6] py-12">
-        <div className="mx-auto max-w-7xl px-5">
-          <SectionTitle
-            eyebrow="Before Estimate"
-            titleText="가격과 납기는 왜 상담 후 확정되나요"
-            description="같은 화장품이라도 제품 유형, 제출 목적, 시험항목, 긴급 여부에 따라 항목·비용·일정이 달라질 수 있습니다."
-          />
+          <div className="mt-6 rounded-[24px] border border-[#D8E5E7] bg-white p-6">
+            <p className="text-lg font-black tracking-[-0.03em] text-[#263F46]">
+              공식기관 선택 시 함께 확인해야 할 기준
+            </p>
+            <p className="mt-3 leading-7 text-[#60767B]">
+              화장품 품질검사는 가격만 비교하기보다 지정 여부, 공인시험 체계, 제출 목적 이해도, 납기 상담 능력을 함께 확인해야 합니다.
+            </p>
+            <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+              {officialCriteria.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 rounded-2xl bg-[#F3F8F8] px-4 py-3 text-sm font-bold text-[#4F656A]"
+                >
+                  <ShieldCheck className="h-5 w-5 shrink-0 text-[#4F888B]" />
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 lg:grid-cols-3">
             {whyConsultItems.map((item) => (
               <Card key={item.title}>
                 <div className="p-6">
