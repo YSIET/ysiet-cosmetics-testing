@@ -95,6 +95,9 @@ function SectionTitle({ eyebrow, titleText, description, light = false }) {
 const heroTitle =
   "whitespace-nowrap text-[clamp(1.85rem,4.1vw,3.65rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#263F46]";
 
+const heroServiceTitle =
+  "mb-5 whitespace-nowrap text-[clamp(1.3rem,2.8vw,2.15rem)] font-black leading-[1.08] tracking-[-0.04em] text-[#3B8E92]";
+
 const cardTitle =
   "whitespace-nowrap text-[clamp(1.25rem,2.1vw,1.75rem)] font-black tracking-[-0.04em]";
 
@@ -413,7 +416,7 @@ function HomePage() {
 
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-start lg:py-24">
           <div className="min-w-0 pt-2">
-            <p className="mb-4 text-[clamp(0.95rem,2vw,1.2rem)] font-black tracking-[0.03em] text-[#3B8E92]">
+            <p className={heroServiceTitle}>
               화장품 품질검사 위탁 서비스
             </p>
 
