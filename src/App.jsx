@@ -183,6 +183,25 @@ const trustProofs = [
   },
 ];
 
+const strongestReasons = [
+  {
+    title: "검사항목을 몰라도 상담 가능",
+    desc: "제품명, 제형, 성적서 용도만 알려주셔도 필요한 항목을 좁혀드립니다.",
+  },
+  {
+    title: "납기 기준으로 먼저 검토",
+    desc: "성적서가 필요한 날짜를 기준으로 진행 가능 여부를 먼저 확인합니다.",
+  },
+  {
+    title: "제출 목적별 안내",
+    desc: "자가품질, 납품, 출시, 수입, 광고 검증 등 용도에 맞춰 상담합니다.",
+  },
+  {
+    title: "공식기관 신뢰근거",
+    desc: "식약처 지정, KOLAS 공인, 연세대학교 교원창업기업 기반의 시험분석 서비스입니다.",
+  },
+];
+
 const customerSituations = [
   "자가품질 위탁검사를 처음 맡겨야 하는 경우",
   "거래처 납품용 성적서가 필요한 경우",
@@ -377,6 +396,9 @@ function Header({ showKakao = false }) {
         </a>
 
         <nav className="hidden items-center gap-4 text-sm font-bold text-[#60767B] xl:flex">
+          <a href="/#why-ysiet" className="hover:text-[#285F67]">
+            선택이유
+          </a>
           <a href="/#situations" className="hover:text-[#285F67]">
             의뢰상황
           </a>
@@ -385,9 +407,6 @@ function Header({ showKakao = false }) {
           </a>
           <a href="/#fees" className="hover:text-[#285F67]">
             수수료
-          </a>
-          <a href="/#documents" className="hover:text-[#285F67]">
-            준비서류
           </a>
           <a href="/#contact" className="hover:text-[#285F67]">
             문의
@@ -567,11 +586,11 @@ function HomePage() {
             </p>
 
             <h1 className="max-w-3xl text-[clamp(1.75rem,2.85vw,2.55rem)] font-black leading-[1.14] tracking-[-0.055em] text-[#243F46]">
-              검사항목을 몰라도 먼저 문의하세요
+              검사항목을 몰라도 성적서 가능 여부부터 확인하세요
             </h1>
 
             <p className="mt-5 max-w-2xl text-[clamp(0.95rem,1.22vw,1.08rem)] leading-8 text-[#4F656A]">
-              제품명·제형·성적서 용도·희망 납기만 알려주시면 와이에스가 필요한 항목과 가능 일정을 먼저 검토합니다.
+              제품명·제형·성적서 용도·희망 납기만 알려주시면 와이에스가 필요한 항목, 가능 일정, 준비사항을 먼저 정리해드립니다.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -604,6 +623,32 @@ function HomePage() {
           </div>
 
           <HeroConversionPanel />
+        </div>
+      </section>
+
+      <section id="why-ysiet" className="bg-[#263F46] py-12 text-white">
+        <div className="mx-auto max-w-7xl px-5">
+          <SectionTitle
+            eyebrow="Why YSIET"
+            titleText="와이에스를 먼저 비교해야 하는 이유"
+            description="화장품 품질검사는 단순히 가격만 비교하기보다, 공식기관 신뢰근거와 제출 목적별 상담 능력, 납기 검토 능력을 함께 확인해야 합니다."
+            light
+          />
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {strongestReasons.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-[22px] border border-white/15 bg-white/8 p-6"
+              >
+                <CheckCircle2 className="mb-5 h-6 w-6 text-[#BFE6E2]" />
+                <h3 className="text-lg font-black tracking-[-0.03em] text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[#E8F6F5]">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
