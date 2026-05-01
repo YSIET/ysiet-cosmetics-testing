@@ -3,9 +3,11 @@ import {
   ArrowRight,
   Award,
   Banknote,
+  Building2,
   CheckCircle2,
   ClipboardCheck,
   FileCheck2,
+  FileText,
   HelpCircle,
   Mail,
   MapPin,
@@ -14,11 +16,10 @@ import {
   ShieldCheck,
   TimerReset,
   Users,
-  Building2,
-  FileText,
 } from "lucide-react";
 
 const KAKAO_URL = "https://pf.kakao.com/_xbUlsn";
+
 const YS_LOGO = "/ysiet-symbol.png";
 const YONSEI_LOGO = "/yonsei-symbol.jpg";
 const KOLAS_LOGO = "/kolas-symbol.jpg";
@@ -38,8 +39,6 @@ function LinkButton({ href, children, variant = "primary", className = "" }) {
       "bg-white text-[#2E525A] border border-white/30 hover:bg-[#F7FBFB]",
     yellow:
       "bg-[#FEE500] text-[#2D2926] hover:bg-[#F6D600] shadow-[0_12px_28px_rgba(254,229,0,0.22)]",
-    ghost:
-      "bg-white/12 text-white border border-white/20 hover:bg-white/16",
   };
 
   return (
@@ -104,15 +103,29 @@ function SectionTitle({ eyebrow, titleText, description, light = false }) {
   );
 }
 
-function TrustLogo({ src, alt, className = "" }) {
+function TrustLogo({ src, alt, type = "square" }) {
+  const boxClass =
+    type === "wide"
+      ? "h-12 w-20 rounded-xl"
+      : type === "circle"
+      ? "h-12 w-12 rounded-full"
+      : "h-12 w-12 rounded-xl";
+
+  const imgClass =
+    type === "wide"
+      ? "h-10 w-16 object-contain"
+      : type === "circle"
+      ? "h-11 w-11 rounded-full object-cover"
+      : "h-10 w-10 object-contain";
+
   return (
     <div
       className={cx(
-        "flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#E1ECEE] bg-white",
-        className
+        "flex shrink-0 items-center justify-center overflow-hidden border border-[#E1ECEE] bg-white",
+        boxClass
       )}
     >
-      <img src={src} alt={alt} className="h-10 w-10 object-contain" />
+      <img src={src} alt={alt} className={imgClass} />
     </div>
   );
 }
@@ -250,18 +263,21 @@ const trustItems = [
     desc: "제18호 지정기관으로 자가품질 위탁검사 상담이 가능합니다",
     logo: MFDS_LOGO,
     logoAlt: "식품의약품안전처 심볼",
+    logoType: "square",
   },
   {
     title: "KOLAS 공인기관",
     desc: "KOLAS 제364호 국제공인시험기관으로 분석 서비스를 제공합니다",
     logo: KOLAS_LOGO,
     logoAlt: "KOLAS 심볼",
+    logoType: "wide",
   },
   {
     title: "연세대학교 교원창업기업",
     desc: "연구 기반 전문성과 현장형 시험분석 서비스를 함께 제공합니다",
     logo: YONSEI_LOGO,
     logoAlt: "연세대학교 심볼",
+    logoType: "circle",
   },
   {
     title: "대표이사 엄유진 박사",
@@ -465,7 +481,7 @@ function BrandTrustBar() {
         </div>
 
         <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <TrustLogo src={YONSEI_LOGO} alt="연세대학교 심볼" className="rounded-full" />
+          <TrustLogo src={YONSEI_LOGO} alt="연세대학교 심볼" type="circle" />
           <div>
             <p className="text-sm font-black text-[#27434A]">연세대학교 교원창업기업</p>
             <p className="text-xs font-bold text-[#73878C]">연구 기반 시험분석 서비스</p>
@@ -481,7 +497,7 @@ function BrandTrustBar() {
         </div>
 
         <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <TrustLogo src={KOLAS_LOGO} alt="KOLAS 심볼" />
+          <TrustLogo src={KOLAS_LOGO} alt="KOLAS 심볼" type="wide" />
           <div>
             <p className="text-sm font-black text-[#27434A]">KOLAS 제364호</p>
             <p className="text-xs font-bold text-[#73878C]">국제공인시험기관</p>
@@ -999,12 +1015,12 @@ function HomePage() {
           {trustItems.map((item) => (
             <Card key={item.title}>
               <div className="p-7">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B] overflow-hidden">
+                <div className="mb-6 flex h-14 w-20 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
                   {item.logo ? (
                     <img
                       src={item.logo}
                       alt={item.logoAlt}
-                      className="h-10 w-10 object-contain"
+                      className={item.logoType === "wide" ? "h-11 w-16 object-contain" : "h-11 w-11 object-contain"}
                     />
                   ) : (
                     item.icon
@@ -1202,7 +1218,7 @@ function AboutPage() {
                   <img
                     src={KOLAS_LOGO}
                     alt="KOLAS 심볼"
-                    className="h-12 w-12 object-contain"
+                    className="h-12 w-16 object-contain"
                   />
                   <div>
                     <p className="text-sm font-bold text-[#73878C]">국제공인시험기관</p>
