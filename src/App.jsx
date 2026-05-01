@@ -7,7 +7,6 @@ import {
   CalendarClock,
   CheckCircle2,
   ClipboardCheck,
-  FileCheck2,
   FlaskConical,
   HelpCircle,
   Mail,
@@ -53,7 +52,7 @@ function Card({ children, className = "" }) {
   return (
     <div
       className={cx(
-        "rounded-[28px] border border-[#DCE8EE] bg-white shadow-[0_18px_55px_rgba(7,26,45,0.055)]",
+        "rounded-[26px] border border-[#DCE8EE] bg-white shadow-[0_18px_55px_rgba(7,26,45,0.055)]",
         className
       )}
     >
@@ -63,19 +62,19 @@ function Card({ children, className = "" }) {
 }
 
 const label =
-  "text-xs font-black uppercase tracking-[0.28em] text-[#1F7F91]";
+  "text-[11px] font-black uppercase tracking-[0.24em] text-[#1F7F91]";
 
 const title =
-  "whitespace-nowrap text-[clamp(1.02rem,3.9vw,2.25rem)] font-black leading-[1.08] tracking-[-0.045em] text-[#071A2D]";
+  "max-w-full whitespace-nowrap text-[clamp(0.92rem,4.7vw,2.2rem)] font-black leading-[1.08] tracking-[-0.04em] text-[#071A2D]";
 
 const titleLight =
-  "whitespace-nowrap text-[clamp(1.02rem,3.9vw,2.25rem)] font-black leading-[1.08] tracking-[-0.045em] text-white";
+  "max-w-full whitespace-nowrap text-[clamp(0.92rem,4.7vw,2.2rem)] font-black leading-[1.08] tracking-[-0.04em] text-white";
 
 const heroTitle =
-  "whitespace-nowrap text-[clamp(1.25rem,6.2vw,4.2rem)] font-black leading-[1.04] tracking-[-0.065em] text-[#071A2D]";
+  "max-w-full whitespace-nowrap text-[clamp(1.12rem,7.4vw,4.05rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#071A2D]";
 
-const heroSubTitle =
-  "whitespace-nowrap text-[clamp(1.05rem,4.8vw,2.75rem)] font-black leading-[1.08] tracking-[-0.055em] text-[#1F7F91]";
+const cardTitle =
+  "max-w-full whitespace-nowrap text-[clamp(1rem,4.2vw,1.72rem)] font-black tracking-[-0.04em]";
 
 const proofItems = [
   "식약처 지정 화장품 시험·검사기관 제18호",
@@ -213,16 +212,16 @@ const faqs = [
 
 export default function App() {
   return (
-    <main className="min-h-screen bg-[#F6FAFC] text-[#071A2D] antialiased">
+    <main className="min-h-screen w-full overflow-x-hidden bg-[#F6FAFC] text-[#071A2D] antialiased">
       <header className="sticky top-0 z-50 border-b border-[#DCE8EE] bg-white/88 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-          <a href="#top" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#071A2D] text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-5">
+          <a href="#top" className="flex min-w-0 items-center gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#071A2D] text-white">
               <FlaskConical className="h-5 w-5" />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-base font-black tracking-[-0.02em]">YSIET</p>
-              <p className="text-xs font-bold text-slate-500">
+              <p className="truncate text-xs font-bold text-slate-500">
                 Cosmetic Testing Center
               </p>
             </div>
@@ -246,7 +245,7 @@ export default function App() {
             </a>
           </nav>
 
-          <LinkButton href="#contact" className="h-10 px-5">
+          <LinkButton href="#contact" className="h-10 shrink-0 px-5">
             납기 확인
           </LinkButton>
         </div>
@@ -258,27 +257,29 @@ export default function App() {
           <div className="absolute -right-32 -top-40 h-[40rem] w-[40rem] rounded-full bg-[#CFE5F2] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-16 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:py-24">
-          <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#BED7E4] bg-white/80 px-4 py-2 text-sm font-black text-[#071A2D] shadow-sm">
-              <BadgeCheck className="h-4 w-4 text-[#1F7F91]" />
-              성적서가 필요한 날짜가 있다면 먼저 알려주세요
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-5 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:py-24">
+          <div className="min-w-0">
+            <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-[#BED7E4] bg-white/80 px-4 py-2 text-xs font-black text-[#071A2D] shadow-sm sm:text-sm">
+              <BadgeCheck className="h-4 w-4 shrink-0 text-[#1F7F91]" />
+              <span className="truncate">
+                성적서가 필요한 날짜가 있다면 먼저 알려주세요
+              </span>
             </div>
 
             <h1 className={heroTitle}>화장품 시험성적서 납기부터 확인하세요</h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700 md:text-xl md:leading-9">
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-700 md:text-xl md:leading-9">
               식약처 지정 제18호와 KOLAS 제364호의 신뢰성으로 자가품질 위탁검사부터 시험성적서 발급까지 안내합니다
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <LinkButton href="#contact" className="h-14 px-8 text-base">
+              <LinkButton href="#contact" className="h-14 px-7 text-base">
                 지금 성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
               </LinkButton>
               <LinkButton
                 href="#fees"
                 variant="secondary"
-                className="h-14 px-8 text-base"
+                className="h-14 px-7 text-base"
               >
                 대표 수수료 보기
               </LinkButton>
@@ -288,23 +289,21 @@ export default function App() {
               {proofItems.map((item) => (
                 <div
                   key={item}
-                  className="flex items-center gap-3 rounded-2xl border border-[#DCE8EE] bg-white/85 px-4 py-3 text-sm font-black shadow-sm"
+                  className="flex min-w-0 items-center gap-3 rounded-2xl border border-[#DCE8EE] bg-white/85 px-4 py-3 text-sm font-black shadow-sm"
                 >
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#1F7F91]" />
-                  {item}
+                  <span className="min-w-0 break-keep">{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <Card className="border-0 bg-white/96 p-3 shadow-[0_30px_90px_rgba(7,26,45,0.12)]">
-            <div className="rounded-[24px] bg-[#071A2D] p-7 text-white">
+          <Card className="min-w-0 border-0 bg-white/96 p-3 shadow-[0_30px_90px_rgba(7,26,45,0.12)]">
+            <div className="rounded-[24px] bg-[#071A2D] p-6 text-white sm:p-7">
               <p className="text-xs font-black uppercase tracking-[0.28em] text-[#A8DDE8]">
                 Fast Check
               </p>
-              <h2 className="mt-3 whitespace-nowrap text-[clamp(1.18rem,3.5vw,1.72rem)] font-black tracking-[-0.04em]">
-                여러 시험기관을 살펴보다 오셨나요
-              </h2>
+              <h2 className={cardTitle}>여러 시험기관을 살펴보다 오셨나요</h2>
               <p className="mt-3 leading-7 text-slate-200">
                 납기 지정기관 KOLAS 수수료를 먼저 확인해보세요
               </p>
@@ -319,7 +318,7 @@ export default function App() {
               </div>
               <div className="rounded-2xl border border-[#E6EEF2] bg-[#F7FAFC] p-4">
                 <p className="text-sm font-bold text-slate-500">긴급 의뢰</p>
-                <p className="mt-1 text-2xl font-black tracking-[-0.04em]">
+                <p className="mt-1 text-[clamp(1.15rem,5vw,1.5rem)] font-black tracking-[-0.04em]">
                   3일 가능 여부 상담
                 </p>
               </div>
@@ -350,7 +349,7 @@ export default function App() {
       </section>
 
       <section className="border-y border-[#DCE8EE] bg-white">
-        <div className="mx-auto grid max-w-7xl divide-y divide-[#DCE8EE] px-5 md:grid-cols-4 md:divide-x md:divide-y-0">
+        <div className="mx-auto grid max-w-7xl divide-y divide-[#DCE8EE] px-4 sm:px-5 md:grid-cols-4 md:divide-x md:divide-y-0">
           {[
             [ShieldCheck, "식약처 지정 제18호"],
             [Award, "KOLAS 제364호"],
@@ -358,24 +357,24 @@ export default function App() {
             [Banknote, "대표 수수료 공개"],
           ].map(([Icon, text]) => (
             <div key={text} className="flex items-center gap-3 py-5 md:px-5">
-              <Icon className="h-5 w-5 text-[#1F7F91]" />
+              <Icon className="h-5 w-5 shrink-0 text-[#1F7F91]" />
               <p className="font-black">{text}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section id="paths" className="mx-auto max-w-7xl px-5 py-24">
-        <div className="mb-12">
+      <section id="paths" className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
+        <div className="mb-12 min-w-0">
           <p className={label}>Start Here</p>
           <h2 className={title}>어떤 상황이신가요</h2>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {customerPaths.map((item) => (
-            <a key={item.title} href="#contact" className="group">
+            <a key={item.title} href="#contact" className="group min-w-0">
               <Card className="h-full transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_26px_75px_rgba(7,26,45,0.1)]">
-                <div className="p-7">
+                <div className="p-6 sm:p-7">
                   <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E8F5F7] text-[#1F7F91]">
                     <ArrowRight className="h-5 w-5" />
                   </div>
@@ -390,8 +389,8 @@ export default function App() {
         </div>
       </section>
 
-      <section className="bg-[#071A2D] py-24 text-white">
-        <div className="mx-auto max-w-7xl px-5">
+      <section className="overflow-hidden bg-[#071A2D] py-20 text-white lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <div className="mb-12">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-[#A8DDE8]">
               Key Points
@@ -403,7 +402,7 @@ export default function App() {
             {keyStrengths.map((item) => (
               <div
                 key={item.title}
-                className="rounded-[28px] border border-white/10 bg-white/8 p-7"
+                className="rounded-[26px] border border-white/10 bg-white/8 p-6 sm:p-7"
               >
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#071A2D]">
                   {item.icon}
@@ -418,9 +417,9 @@ export default function App() {
         </div>
       </section>
 
-      <section id="services" className="mx-auto max-w-7xl px-5 py-24">
+      <section id="services" className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
         <div className="mb-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-          <div>
+          <div className="min-w-0">
             <p className={label}>Testing Services</p>
             <h2 className={title}>검사 가능한 서비스를 한눈에</h2>
           </div>
@@ -444,10 +443,10 @@ export default function App() {
         </div>
       </section>
 
-      <section id="fees" className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-5">
+      <section id="fees" className="overflow-hidden bg-white py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <div className="mb-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-            <div>
+            <div className="min-w-0">
               <p className={label}>Fee Guide</p>
               <h2 className={title}>대표 수수료를 먼저 확인하세요</h2>
             </div>
@@ -456,7 +455,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-[28px] border border-[#DCE8EE] bg-white">
+          <div className="hidden overflow-hidden rounded-[28px] border border-[#DCE8EE] bg-white md:block">
             <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr] bg-[#EEF7FA] px-5 py-4 text-sm font-black text-[#071A2D]">
               <div>대표 시험항목</div>
               <div>수수료</div>
@@ -474,9 +473,23 @@ export default function App() {
             ))}
           </div>
 
+          <div className="grid gap-3 md:hidden">
+            {feeRows.map(([name, price, note]) => (
+              <Card key={name}>
+                <div className="p-5">
+                  <p className="font-black text-[#071A2D]">{name}</p>
+                  <p className="mt-2 text-2xl font-black text-[#1F7F91]">
+                    {price}
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-slate-500">{note}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+
           <div className="mt-6 rounded-[28px] bg-[#071A2D] p-6 text-white md:flex md:items-center md:justify-between">
-            <div>
-              <p className="whitespace-nowrap text-xl font-black">
+            <div className="min-w-0">
+              <p className="text-[clamp(1rem,4.8vw,1.25rem)] font-black">
                 견적을 기다리기 전에 먼저 범위를 확인하세요
               </p>
               <p className="mt-2 text-slate-300">
@@ -490,9 +503,9 @@ export default function App() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-24">
+      <section className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div>
+          <div className="min-w-0">
             <p className={label}>Self Quality Testing</p>
             <h2 className={title}>자가품질 위탁검사 처음이어도 바로 시작</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
@@ -523,9 +536,9 @@ export default function App() {
         </div>
       </section>
 
-      <section id="documents" className="bg-[#EEF7FA] py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
+      <section id="documents" className="overflow-hidden bg-[#EEF7FA] py-20 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div className="min-w-0">
             <p className={label}>Before Request</p>
             <h2 className={title}>문의 전 준비하면 견적이 빨라집니다</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
@@ -547,8 +560,8 @@ export default function App() {
         </div>
       </section>
 
-      <section id="process" className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-5">
+      <section id="process" className="overflow-hidden bg-white py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <div className="mb-12">
             <p className={label}>Process</p>
             <h2 className={title}>복잡한 설명 없이 성적서까지 4단계</h2>
@@ -572,7 +585,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="trust" className="mx-auto max-w-7xl px-5 py-24">
+      <section id="trust" className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
         <div className="mb-12">
           <p className={label}>Trust Proof</p>
           <h2 className={title}>확인된 신뢰근거를 한눈에</h2>
@@ -595,14 +608,14 @@ export default function App() {
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-7xl px-5 py-24">
-        <div className="overflow-hidden rounded-[36px] bg-[#071A2D] p-8 text-white shadow-[0_32px_90px_rgba(7,26,45,0.18)] md:p-12">
+      <section id="contact" className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
+        <div className="overflow-hidden rounded-[32px] bg-[#071A2D] p-6 text-white shadow-[0_32px_90px_rgba(7,26,45,0.18)] sm:p-8 md:p-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
-            <div>
+            <div className="min-w-0">
               <p className="text-xs font-black uppercase tracking-[0.28em] text-[#A8DDE8]">
                 Request Quote
               </p>
-              <h2 className="whitespace-nowrap text-[clamp(1.2rem,3.8vw,3rem)] font-black leading-[1.08] tracking-[-0.05em]">
+              <h2 className="max-w-full whitespace-nowrap text-[clamp(1rem,5.6vw,3rem)] font-black leading-[1.08] tracking-[-0.05em]">
                 성적서가 필요한 날짜를 먼저 알려주세요
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
@@ -637,7 +650,7 @@ export default function App() {
                   "시료 준비 가능일",
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 font-bold">
-                    <CheckCircle2 className="h-5 w-5 text-[#1F7F91]" />
+                    <CheckCircle2 className="h-5 w-5 shrink-0 text-[#1F7F91]" />
                     {item}
                   </li>
                 ))}
@@ -657,8 +670,8 @@ export default function App() {
         </div>
       </section>
 
-      <section id="faq" className="bg-[#F2F8FB] py-24">
-        <div className="mx-auto max-w-5xl px-5">
+      <section id="faq" className="overflow-hidden bg-[#F2F8FB] py-20 lg:py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-5">
           <div className="mb-10 text-center">
             <p className={label}>FAQ</p>
             <h2 className={title}>자주 묻는 질문</h2>
@@ -672,7 +685,7 @@ export default function App() {
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-black">
                   <span className="flex items-center gap-3">
-                    <HelpCircle className="h-5 w-5 text-[#1F7F91]" />
+                    <HelpCircle className="h-5 w-5 shrink-0 text-[#1F7F91]" />
                     {q}
                   </span>
                   <span className="text-[#1F7F91] transition group-open:rotate-45">
@@ -686,7 +699,7 @@ export default function App() {
         </div>
       </section>
 
-      <footer className="bg-[#061421] px-5 py-12 text-white">
+      <footer className="overflow-hidden bg-[#061421] px-4 py-12 text-white sm:px-5">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_1fr] md:items-center">
           <div>
             <p className="text-2xl font-black tracking-[-0.03em]">
