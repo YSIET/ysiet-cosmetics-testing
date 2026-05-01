@@ -3,11 +3,9 @@ import {
   ArrowRight,
   Award,
   Banknote,
-  CalendarClock,
   CheckCircle2,
   ClipboardCheck,
   FileCheck2,
-  FlaskConical,
   HelpCircle,
   Mail,
   MapPin,
@@ -378,7 +376,7 @@ function Header({ showKakao = false }) {
     <header className="sticky top-0 z-50 border-b border-[#D8E5E7] bg-[#FCFEFE]/92 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
         <a href="/" className="flex min-w-0 items-center gap-3">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white border border-[#DCE8EA]">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[#DCE8EA] bg-white">
             <img
               src={YS_LOGO}
               alt="와이에스환경기술연구원 로고"
@@ -440,7 +438,7 @@ function BrandTrustBar() {
   return (
     <section className="border-y border-[#D8E5E7] bg-[#F4F7F7]">
       <div className="mx-auto grid max-w-7xl gap-4 px-5 py-6 md:grid-cols-4">
-        <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-4 border border-[#D8E5E7]">
+        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
           <img
             src={YS_LOGO}
             alt="YSIET 로고"
@@ -452,7 +450,7 @@ function BrandTrustBar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-4 border border-[#D8E5E7]">
+        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
           <img
             src={YONSEI_LOGO}
             alt="연세대학교 심볼"
@@ -464,7 +462,7 @@ function BrandTrustBar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-4 border border-[#D8E5E7]">
+        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
           <ShieldCheck className="h-6 w-6 text-[#4F888B]" />
           <div>
             <p className="text-sm font-black text-[#27434A]">식약처 지정 제18호</p>
@@ -472,7 +470,7 @@ function BrandTrustBar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-4 border border-[#D8E5E7]">
+        <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
           <Award className="h-6 w-6 text-[#4F888B]" />
           <div>
             <p className="text-sm font-black text-[#27434A]">KOLAS 제364호</p>
@@ -494,7 +492,7 @@ function Footer({ showKakao = false }) {
               <img
                 src={YS_LOGO}
                 alt="와이에스환경기술연구원 로고"
-                className="h-16 w-16 rounded-2xl object-contain border border-[#E1ECEE] bg-white p-1"
+                className="h-16 w-16 rounded-2xl border border-[#E1ECEE] bg-white p-1 object-contain"
               />
               <div>
                 <p className="text-2xl font-black tracking-[-0.03em] text-[#27434A]">
@@ -542,31 +540,12 @@ function Footer({ showKakao = false }) {
               <div className="space-y-3 text-[#27434A]">
                 <p className="font-black">서울시 종로구 인사동5길 42 종로빌딩 10층</p>
                 <p className="font-bold text-[#60767B]">평일 09:00 ~ 18:00</p>
-                <p className="font-bold text-[#60767B]">문의 전 제품명과 희망 납기를 알려주세요</p>
+                <p className="font-bold text-[#60767B]">
+                  문의 전 제품명과 희망 납기를 알려주세요
+                </p>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-[24px] border border-[#D8E5E7] bg-white px-5 py-4">
-          <div className="flex flex-wrap items-center gap-4">
-            <img
-              src={YS_LOGO}
-              alt="YS 로고"
-              className="h-9 w-9 rounded-xl border border-[#E1ECEE] bg-white p-1 object-contain"
-            />
-            <img
-              src={YONSEI_LOGO}
-              alt="연세대학교 심볼"
-              className="h-9 w-9 rounded-full object-cover"
-            />
-            <span className="text-sm font-black text-[#27434A]">
-              연세대학교 교원창업기업
-            </span>
-          </div>
-          <p className="text-sm font-bold text-[#73878C]">
-            © YS Institute of Environmental Technology. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>
@@ -630,53 +609,6 @@ function QuickActionSection() {
               </Card>
             </a>
           ))}
-        </div>
-
-        <div className="mt-8 grid gap-4 rounded-[28px] border border-[#D8E5E7] bg-white p-6 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div className="flex flex-wrap items-center gap-5">
-            <div className="flex items-center gap-4 rounded-2xl bg-[#F5F8F8] px-4 py-3 border border-[#E0EBED]">
-              <img
-                src={YS_LOGO}
-                alt="YS 심볼"
-                className="h-12 w-12 rounded-xl object-contain bg-white p-1 border border-[#E3EDEE]"
-              />
-              <div>
-                <p className="font-black text-[#27434A]">와이에스환경기술연구원</p>
-                <p className="text-sm font-bold text-[#73878C]">
-                  화장품 시험검사 서비스
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 rounded-2xl bg-[#F5F8F8] px-4 py-3 border border-[#E0EBED]">
-              <img
-                src={YONSEI_LOGO}
-                alt="연세대학교 심볼"
-                className="h-12 w-12 rounded-full object-cover"
-              />
-              <div>
-                <p className="font-black text-[#27434A]">연세대학교 교원창업기업</p>
-                <p className="text-sm font-bold text-[#73878C]">
-                  연구 기반 전문성
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl bg-[#F7FAFA] px-4 py-4 border border-[#E0EBED]">
-              <p className="text-sm font-black text-[#27434A]">식약처 지정 제18호</p>
-              <p className="mt-1 text-xs font-bold text-[#73878C]">
-                화장품 시험검사기관
-              </p>
-            </div>
-            <div className="rounded-2xl bg-[#F7FAFA] px-4 py-4 border border-[#E0EBED]">
-              <p className="text-sm font-black text-[#27434A]">KOLAS 제364호</p>
-              <p className="mt-1 text-xs font-bold text-[#73878C]">
-                국제공인시험기관
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -1209,7 +1141,7 @@ function AboutPage() {
                 <img
                   src={YS_LOGO}
                   alt="YS 로고"
-                  className="h-14 w-14 rounded-2xl object-contain bg-white p-1 border border-[#E2EDEF]"
+                  className="h-14 w-14 rounded-2xl border border-[#E2EDEF] bg-white p-1 object-contain"
                 />
                 <div>
                   <p className="font-black text-[#27434A]">(주)와이에스환경기술연구원</p>
