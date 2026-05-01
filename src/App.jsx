@@ -474,8 +474,8 @@ function HomePage() {
               화장품 품질검사 위탁 서비스
             </p>
 
-            <h1 className="max-w-3xl text-[clamp(1.85rem,3.1vw,2.85rem)] font-black leading-[1.12] tracking-[-0.06em] text-[#243F46]">
-              성적서 납기 가능 여부를 먼저 확인하세요
+            <h1 className="max-w-3xl text-[clamp(1.75rem,2.85vw,2.55rem)] font-black leading-[1.14] tracking-[-0.055em] text-[#243F46]">
+              성적서 납기부터 먼저 확인하세요
             </h1>
 
             <p className="mt-5 max-w-2xl text-[clamp(0.95rem,1.22vw,1.08rem)] leading-8 text-[#4F656A]">
