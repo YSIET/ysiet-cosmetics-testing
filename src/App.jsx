@@ -23,11 +23,11 @@ function cx(...classes) {
 }
 
 function LinkButton({ href, children, variant = "primary", className = "" }) {
-  const styles = {
+  const variants = {
     primary:
-      "bg-[#071A2D] text-white hover:bg-[#0E2F4C] shadow-[0_12px_32px_rgba(7,26,45,0.16)]",
+      "bg-[#071A2D] text-white hover:bg-[#0E2F4C] shadow-[0_12px_30px_rgba(7,26,45,0.16)]",
     secondary:
-      "bg-white text-[#071A2D] border border-[#CFDDE5] hover:border-[#071A2D]",
+      "bg-white text-[#071A2D] border border-[#D4E1E8] hover:border-[#071A2D]",
     light:
       "bg-white text-[#071A2D] hover:bg-[#F3F8FB]",
     ghost:
@@ -39,7 +39,7 @@ function LinkButton({ href, children, variant = "primary", className = "" }) {
       href={href}
       className={cx(
         "inline-flex h-12 items-center justify-center rounded-full px-6 text-sm font-black transition",
-        styles[variant],
+        variants[variant],
         className
       )}
     >
@@ -52,7 +52,7 @@ function Card({ children, className = "" }) {
   return (
     <div
       className={cx(
-        "rounded-[26px] border border-[#DCE8EE] bg-white shadow-[0_18px_55px_rgba(7,26,45,0.055)]",
+        "rounded-[24px] border border-[#DCE8EE] bg-white shadow-[0_16px_42px_rgba(7,26,45,0.055)]",
         className
       )}
     >
@@ -65,22 +65,22 @@ const label =
   "text-[11px] font-black uppercase tracking-[0.24em] text-[#1F7F91]";
 
 const title =
-  "max-w-full whitespace-nowrap text-[clamp(0.92rem,4.7vw,2.2rem)] font-black leading-[1.08] tracking-[-0.04em] text-[#071A2D]";
+  "whitespace-nowrap text-[clamp(1.1rem,2.8vw,2.05rem)] font-black leading-[1.08] tracking-[-0.04em] text-[#071A2D]";
 
 const titleLight =
-  "max-w-full whitespace-nowrap text-[clamp(0.92rem,4.7vw,2.2rem)] font-black leading-[1.08] tracking-[-0.04em] text-white";
+  "whitespace-nowrap text-[clamp(1.1rem,2.8vw,2.05rem)] font-black leading-[1.08] tracking-[-0.04em] text-white";
 
 const heroTitle =
-  "max-w-full whitespace-nowrap text-[clamp(1.12rem,7.4vw,4.05rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#071A2D]";
+  "whitespace-nowrap text-[clamp(1.9rem,4.4vw,3.9rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#071A2D]";
 
 const cardTitle =
-  "max-w-full whitespace-nowrap text-[clamp(1rem,4.2vw,1.72rem)] font-black tracking-[-0.04em]";
+  "whitespace-nowrap text-[clamp(1.25rem,2.1vw,1.75rem)] font-black tracking-[-0.04em]";
 
 const proofItems = [
-  "식약처 지정 화장품 시험·검사기관 제18호",
-  "KOLAS 국제공인시험기관 제364호",
-  "일반 7일 긴급 3일 가능 여부 상담",
-  "1건 의뢰도 전문 카운셀링 지원",
+  "식약처 지정 제18호",
+  "KOLAS 제364호",
+  "일반 7일 긴급 3일 상담",
+  "1건 의뢰 상담 가능",
 ];
 
 const customerPaths = [
@@ -112,22 +112,22 @@ const customerPaths = [
 
 const keyStrengths = [
   {
-    icon: <ShieldCheck className="h-7 w-7" />,
+    icon: <ShieldCheck className="h-6 w-6" />,
     title: "식약처 지정 제18호",
-    desc: "화장품 시험·검사기관 지정 근거를 바탕으로 시험 상담을 진행합니다",
+    desc: "화장품 시험검사기관 지정 근거를 바탕으로 시험 상담을 진행합니다",
   },
   {
-    icon: <Award className="h-7 w-7" />,
+    icon: <Award className="h-6 w-6" />,
     title: "KOLAS 제364호",
     desc: "국제공인시험기관의 품질 체계와 신뢰성을 기반으로 분석합니다",
   },
   {
-    icon: <TimerReset className="h-7 w-7" />,
+    icon: <TimerReset className="h-6 w-6" />,
     title: "일반 7일 긴급 3일",
     desc: "성적서가 필요한 날짜가 있다면 가능 여부를 먼저 확인합니다",
   },
   {
-    icon: <Banknote className="h-7 w-7" />,
+    icon: <Banknote className="h-6 w-6" />,
     title: "대표 수수료 공개",
     desc: "문의 전 주요 항목의 비용 범위를 먼저 확인할 수 있습니다",
   },
@@ -170,23 +170,23 @@ const process = [
 
 const trustItems = [
   {
-    icon: <ShieldCheck className="h-7 w-7" />,
-    title: "식약처 지정 화장품 시험검사기관",
+    icon: <ShieldCheck className="h-6 w-6" />,
+    title: "식약처 지정기관",
     desc: "제18호 지정기관으로 자가품질 위탁검사 상담이 가능합니다",
   },
   {
-    icon: <Award className="h-7 w-7" />,
-    title: "KOLAS 국제공인시험기관",
-    desc: "KOLAS 제364호 국제공인시험기관으로 신뢰도 높은 분석 서비스를 제공합니다",
+    icon: <Award className="h-6 w-6" />,
+    title: "KOLAS 공인기관",
+    desc: "KOLAS 제364호 국제공인시험기관으로 분석 서비스를 제공합니다",
   },
   {
-    icon: <Microscope className="h-7 w-7" />,
-    title: "전문 분석 인력과 장비",
-    desc: "숙련된 연구진과 분석 장비를 기반으로 분석 결과를 제공합니다",
+    icon: <Microscope className="h-6 w-6" />,
+    title: "전문 분석 인력",
+    desc: "숙련된 연구진과 분석 장비를 기반으로 결과를 제공합니다",
   },
   {
-    icon: <Users className="h-7 w-7" />,
-    title: "처음 의뢰도 상담 지원",
+    icon: <Users className="h-6 w-6" />,
+    title: "처음 의뢰 상담",
     desc: "검사항목을 몰라도 제품 정보와 제출 목적부터 안내합니다",
   },
 ];
@@ -213,8 +213,8 @@ const faqs = [
 export default function App() {
   return (
     <main className="min-h-screen w-full overflow-x-hidden bg-[#F6FAFC] text-[#071A2D] antialiased">
-      <header className="sticky top-0 z-50 border-b border-[#DCE8EE] bg-white/88 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-5">
+      <header className="sticky top-0 z-50 border-b border-[#DCE8EE] bg-white/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
           <a href="#top" className="flex min-w-0 items-center gap-3">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#071A2D] text-white">
               <FlaskConical className="h-5 w-5" />
@@ -228,21 +228,11 @@ export default function App() {
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-bold text-slate-600 xl:flex">
-            <a href="#paths" className="hover:text-[#071A2D]">
-              의뢰상황
-            </a>
-            <a href="#services" className="hover:text-[#071A2D]">
-              검사항목
-            </a>
-            <a href="#fees" className="hover:text-[#071A2D]">
-              수수료
-            </a>
-            <a href="#documents" className="hover:text-[#071A2D]">
-              준비서류
-            </a>
-            <a href="#contact" className="hover:text-[#071A2D]">
-              문의
-            </a>
+            <a href="#paths" className="hover:text-[#071A2D]">의뢰상황</a>
+            <a href="#services" className="hover:text-[#071A2D]">검사항목</a>
+            <a href="#fees" className="hover:text-[#071A2D]">수수료</a>
+            <a href="#documents" className="hover:text-[#071A2D]">준비서류</a>
+            <a href="#contact" className="hover:text-[#071A2D]">문의</a>
           </nav>
 
           <LinkButton href="#contact" className="h-10 shrink-0 px-5">
@@ -253,77 +243,73 @@ export default function App() {
 
       <section id="top" className="relative overflow-hidden bg-[#EFF7FA]">
         <div className="absolute inset-0">
-          <div className="absolute -left-40 top-28 h-[32rem] w-[32rem] rounded-full bg-[#DDF2F0] blur-3xl" />
-          <div className="absolute -right-32 -top-40 h-[40rem] w-[40rem] rounded-full bg-[#CFE5F2] blur-3xl" />
+          <div className="absolute -left-36 top-32 h-[30rem] w-[30rem] rounded-full bg-[#DDF2F0] blur-3xl" />
+          <div className="absolute -right-32 -top-36 h-[38rem] w-[38rem] rounded-full bg-[#CFE5F2] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-5 lg:grid-cols-[1.06fr_0.94fr] lg:items-center lg:py-24">
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-28">
           <div className="min-w-0">
-            <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-[#BED7E4] bg-white/80 px-4 py-2 text-xs font-black text-[#071A2D] shadow-sm sm:text-sm">
+            <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-[#BED7E4] bg-white/85 px-4 py-2 text-sm font-black text-[#071A2D] shadow-sm">
               <BadgeCheck className="h-4 w-4 shrink-0 text-[#1F7F91]" />
-              <span className="truncate">
-                성적서가 필요한 날짜가 있다면 먼저 알려주세요
-              </span>
+              <span className="truncate">필요한 날짜가 있다면 먼저 알려주세요</span>
             </div>
 
-            <h1 className={heroTitle}>화장품 시험성적서 납기부터 확인하세요</h1>
+            <h1 className={heroTitle}>화장품 성적서 납기 확인</h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-700 md:text-xl md:leading-9">
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-700">
               식약처 지정 제18호와 KOLAS 제364호의 신뢰성으로 자가품질 위탁검사부터 시험성적서 발급까지 안내합니다
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <LinkButton href="#contact" className="h-14 px-7 text-base">
-                지금 성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
+              <LinkButton href="#contact" className="h-14 px-8 text-base">
+                성적서 납기 확인 <ArrowRight className="ml-2 h-5 w-5" />
               </LinkButton>
               <LinkButton
                 href="#fees"
                 variant="secondary"
-                className="h-14 px-7 text-base"
+                className="h-14 px-8 text-base"
               >
                 대표 수수료 보기
               </LinkButton>
             </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-2">
               {proofItems.map((item) => (
                 <div
                   key={item}
-                  className="flex min-w-0 items-center gap-3 rounded-2xl border border-[#DCE8EE] bg-white/85 px-4 py-3 text-sm font-black shadow-sm"
+                  className="flex items-center gap-3 rounded-2xl border border-[#DCE8EE] bg-white/88 px-4 py-3 text-sm font-black shadow-sm"
                 >
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-[#1F7F91]" />
-                  <span className="min-w-0 break-keep">{item}</span>
+                  <span>{item}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <Card className="min-w-0 border-0 bg-white/96 p-3 shadow-[0_30px_90px_rgba(7,26,45,0.12)]">
-            <div className="rounded-[24px] bg-[#071A2D] p-6 text-white sm:p-7">
+          <Card className="border-0 bg-white p-3 shadow-[0_30px_90px_rgba(7,26,45,0.12)]">
+            <div className="rounded-[22px] bg-[#071A2D] p-7 text-white">
               <p className="text-xs font-black uppercase tracking-[0.28em] text-[#A8DDE8]">
                 Fast Check
               </p>
-              <h2 className={cardTitle}>여러 시험기관을 살펴보다 오셨나요</h2>
+              <h2 className={cardTitle}>시험기관 비교 중이신가요</h2>
               <p className="mt-3 leading-7 text-slate-200">
-                납기 지정기관 KOLAS 수수료를 먼저 확인해보세요
+                납기와 수수료를 먼저 확인해보세요
               </p>
             </div>
 
             <div className="grid gap-3 p-5">
               <div className="rounded-2xl border border-[#E6EEF2] bg-[#F7FAFC] p-4">
                 <p className="text-sm font-bold text-slate-500">일반 의뢰</p>
-                <p className="mt-1 text-2xl font-black tracking-[-0.04em]">
-                  7일 소요일
-                </p>
+                <p className="mt-1 text-2xl font-black tracking-[-0.04em]">7일 소요일</p>
               </div>
               <div className="rounded-2xl border border-[#E6EEF2] bg-[#F7FAFC] p-4">
                 <p className="text-sm font-bold text-slate-500">긴급 의뢰</p>
-                <p className="mt-1 text-[clamp(1.15rem,5vw,1.5rem)] font-black tracking-[-0.04em]">
-                  3일 가능 여부 상담
+                <p className="mt-1 text-2xl font-black tracking-[-0.04em]">
+                  3일 상담 가능
                 </p>
               </div>
               <div className="rounded-2xl border border-[#E6EEF2] bg-[#F7FAFC] p-4">
-                <p className="text-sm font-bold text-slate-500">문의</p>
+                <p className="text-sm font-bold text-slate-500">대표 전화</p>
                 <p className="mt-1 text-2xl font-black tracking-[-0.04em]">
                   02-312-0540
                 </p>
@@ -349,7 +335,7 @@ export default function App() {
       </section>
 
       <section className="border-y border-[#DCE8EE] bg-white">
-        <div className="mx-auto grid max-w-7xl divide-y divide-[#DCE8EE] px-4 sm:px-5 md:grid-cols-4 md:divide-x md:divide-y-0">
+        <div className="mx-auto grid max-w-7xl divide-y divide-[#DCE8EE] px-5 md:grid-cols-4 md:divide-x md:divide-y-0">
           {[
             [ShieldCheck, "식약처 지정 제18호"],
             [Award, "KOLAS 제364호"],
@@ -364,17 +350,17 @@ export default function App() {
         </div>
       </section>
 
-      <section id="paths" className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
-        <div className="mb-12 min-w-0">
+      <section id="paths" className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
+        <div className="mb-12">
           <p className={label}>Start Here</p>
           <h2 className={title}>어떤 상황이신가요</h2>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {customerPaths.map((item) => (
-            <a key={item.title} href="#contact" className="group min-w-0">
+            <a key={item.title} href="#contact" className="group">
               <Card className="h-full transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_26px_75px_rgba(7,26,45,0.1)]">
-                <div className="p-6 sm:p-7">
+                <div className="p-7">
                   <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E8F5F7] text-[#1F7F91]">
                     <ArrowRight className="h-5 w-5" />
                   </div>
@@ -390,21 +376,21 @@ export default function App() {
       </section>
 
       <section className="overflow-hidden bg-[#071A2D] py-20 text-white lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5">
+        <div className="mx-auto max-w-7xl px-5">
           <div className="mb-12">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-[#A8DDE8]">
               Key Points
             </p>
-            <h2 className={titleLight}>성적서 의뢰 전 꼭 확인할 4가지</h2>
+            <h2 className={titleLight}>의뢰 전 확인할 4가지</h2>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {keyStrengths.map((item) => (
               <div
                 key={item.title}
-                className="rounded-[26px] border border-white/10 bg-white/8 p-6 sm:p-7"
+                className="rounded-[24px] border border-white/10 bg-white/[0.08] p-7"
               >
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#071A2D]">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#071A2D]">
                   {item.icon}
                 </div>
                 <h3 className="whitespace-nowrap text-xl font-black tracking-[-0.03em]">
@@ -417,11 +403,11 @@ export default function App() {
         </div>
       </section>
 
-      <section id="services" className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
+      <section id="services" className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
         <div className="mb-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-          <div className="min-w-0">
+          <div>
             <p className={label}>Testing Services</p>
-            <h2 className={title}>검사 가능한 서비스를 한눈에</h2>
+            <h2 className={title}>검사 서비스 한눈에</h2>
           </div>
           <p className="text-lg leading-8 text-slate-600">
             일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다
@@ -432,7 +418,7 @@ export default function App() {
           {services.map((service) => (
             <div
               key={service}
-              className="rounded-[24px] border border-[#DCE8EE] bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(7,26,45,0.08)]"
+              className="rounded-[22px] border border-[#DCE8EE] bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(7,26,45,0.08)]"
             >
               <CheckCircle2 className="mb-5 h-6 w-6 text-[#1F7F91]" />
               <p className="text-lg font-black leading-7 tracking-[-0.025em]">
@@ -444,18 +430,18 @@ export default function App() {
       </section>
 
       <section id="fees" className="overflow-hidden bg-white py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5">
+        <div className="mx-auto max-w-7xl px-5">
           <div className="mb-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-            <div className="min-w-0">
+            <div>
               <p className={label}>Fee Guide</p>
-              <h2 className={title}>대표 수수료를 먼저 확인하세요</h2>
+              <h2 className={title}>대표 수수료 확인</h2>
             </div>
             <p className="text-lg leading-8 text-slate-600">
               실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수 있습니다
             </p>
           </div>
 
-          <div className="hidden overflow-hidden rounded-[28px] border border-[#DCE8EE] bg-white md:block">
+          <div className="hidden overflow-hidden rounded-[24px] border border-[#DCE8EE] bg-white md:block">
             <div className="grid grid-cols-[1.2fr_0.8fr_0.8fr] bg-[#EEF7FA] px-5 py-4 text-sm font-black text-[#071A2D]">
               <div>대표 시험항목</div>
               <div>수수료</div>
@@ -487,10 +473,10 @@ export default function App() {
             ))}
           </div>
 
-          <div className="mt-6 rounded-[28px] bg-[#071A2D] p-6 text-white md:flex md:items-center md:justify-between">
-            <div className="min-w-0">
-              <p className="text-[clamp(1rem,4.8vw,1.25rem)] font-black">
-                견적을 기다리기 전에 먼저 범위를 확인하세요
+          <div className="mt-6 rounded-[24px] bg-[#071A2D] p-6 text-white md:flex md:items-center md:justify-between">
+            <div>
+              <p className="text-[clamp(1rem,2.6vw,1.25rem)] font-black">
+                견적 전 비용 범위를 먼저 확인하세요
               </p>
               <p className="mt-2 text-slate-300">
                 제품명과 필요 항목을 보내주시면 실제 견적 기준으로 안내드립니다
@@ -503,11 +489,11 @@ export default function App() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
+      <section className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="min-w-0">
+          <div>
             <p className={label}>Self Quality Testing</p>
-            <h2 className={title}>자가품질 위탁검사 처음이어도 바로 시작</h2>
+            <h2 className={title}>자가품질 위탁검사 안내</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               품질검사 시설이 없는 경우 식약처 지정 시험검사기관과 품질검사 위탁계약을 체결하여 품질관리를 진행할 수 있습니다
             </p>
@@ -537,10 +523,10 @@ export default function App() {
       </section>
 
       <section id="documents" className="overflow-hidden bg-[#EEF7FA] py-20 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div className="min-w-0">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
             <p className={label}>Before Request</p>
-            <h2 className={title}>문의 전 준비하면 견적이 빨라집니다</h2>
+            <h2 className={title}>문의 전 준비서류</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
               준비서류와 제품 정보를 미리 알려주시면 상담과 접수가 훨씬 빨라집니다
             </p>
@@ -550,7 +536,7 @@ export default function App() {
             {documents.map((item) => (
               <div
                 key={item}
-                className="flex gap-3 rounded-[22px] border border-[#DCE8EE] bg-white p-5 shadow-sm"
+                className="flex gap-3 rounded-[20px] border border-[#DCE8EE] bg-white p-5 shadow-sm"
               >
                 <ClipboardCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#1F7F91]" />
                 <p className="font-bold text-slate-800">{item}</p>
@@ -561,10 +547,10 @@ export default function App() {
       </section>
 
       <section id="process" className="overflow-hidden bg-white py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5">
+        <div className="mx-auto max-w-7xl px-5">
           <div className="mb-12">
             <p className={label}>Process</p>
-            <h2 className={title}>복잡한 설명 없이 성적서까지 4단계</h2>
+            <h2 className={title}>성적서 발급 4단계</h2>
           </div>
 
           <div className="grid gap-5 md:grid-cols-4">
@@ -585,17 +571,17 @@ export default function App() {
         </div>
       </section>
 
-      <section id="trust" className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
+      <section id="trust" className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
         <div className="mb-12">
           <p className={label}>Trust Proof</p>
-          <h2 className={title}>확인된 신뢰근거를 한눈에</h2>
+          <h2 className={title}>신뢰근거 확인</h2>
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {trustItems.map((item) => (
             <Card key={item.title}>
               <div className="p-7">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E8F5F7] text-[#1F7F91]">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#E8F5F7] text-[#1F7F91]">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-black tracking-[-0.03em]">
@@ -608,15 +594,15 @@ export default function App() {
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-7xl overflow-hidden px-4 py-20 sm:px-5 lg:py-24">
-        <div className="overflow-hidden rounded-[32px] bg-[#071A2D] p-6 text-white shadow-[0_32px_90px_rgba(7,26,45,0.18)] sm:p-8 md:p-12">
+      <section id="contact" className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
+        <div className="overflow-hidden rounded-[32px] bg-[#071A2D] p-8 text-white shadow-[0_32px_90px_rgba(7,26,45,0.18)] md:p-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
-            <div className="min-w-0">
+            <div>
               <p className="text-xs font-black uppercase tracking-[0.28em] text-[#A8DDE8]">
                 Request Quote
               </p>
-              <h2 className="max-w-full whitespace-nowrap text-[clamp(1rem,5.6vw,3rem)] font-black leading-[1.08] tracking-[-0.05em]">
-                성적서가 필요한 날짜를 먼저 알려주세요
+              <h2 className="whitespace-nowrap text-[clamp(1.2rem,3.4vw,2.8rem)] font-black leading-[1.08] tracking-[-0.05em]">
+                성적서 납기를 먼저 알려주세요
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
                 제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면 우선 검토 후 안내드립니다
@@ -637,7 +623,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="rounded-[28px] bg-white p-6 text-[#071A2D]">
+            <div className="rounded-[26px] bg-white p-6 text-[#071A2D]">
               <p className="text-sm font-black text-[#1F7F91]">
                 견적 요청 시 알려주세요
               </p>
@@ -671,7 +657,7 @@ export default function App() {
       </section>
 
       <section id="faq" className="overflow-hidden bg-[#F2F8FB] py-20 lg:py-24">
-        <div className="mx-auto max-w-5xl px-4 sm:px-5">
+        <div className="mx-auto max-w-5xl px-5">
           <div className="mb-10 text-center">
             <p className={label}>FAQ</p>
             <h2 className={title}>자주 묻는 질문</h2>
@@ -681,7 +667,7 @@ export default function App() {
             {faqs.map(([q, a]) => (
               <details
                 key={q}
-                className="group rounded-[24px] border border-[#DCE8EE] bg-white p-6 shadow-sm"
+                className="group rounded-[22px] border border-[#DCE8EE] bg-white p-6 shadow-sm"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-black">
                   <span className="flex items-center gap-3">
@@ -699,14 +685,14 @@ export default function App() {
         </div>
       </section>
 
-      <footer className="overflow-hidden bg-[#061421] px-4 py-12 text-white sm:px-5">
+      <footer className="overflow-hidden bg-[#061421] px-5 py-12 text-white">
         <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_1fr] md:items-center">
           <div>
             <p className="text-2xl font-black tracking-[-0.03em]">
               와이에스환경기술연구원
             </p>
             <p className="mt-3 max-w-xl leading-7 text-slate-400">
-              식약처 지정 화장품 시험·검사기관 제18호 · KOLAS 국제공인시험기관 제364호
+              식약처 지정 화장품 시험검사기관 제18호 · KOLAS 국제공인시험기관 제364호
             </p>
           </div>
           <div className="flex flex-col gap-3 md:items-end">
