@@ -2,7 +2,6 @@ import React from "react";
 import {
   ArrowRight,
   Award,
-  BadgeCheck,
   Banknote,
   CalendarClock,
   CheckCircle2,
@@ -28,8 +27,7 @@ function LinkButton({ href, children, variant = "primary", className = "" }) {
       "bg-[#071A2D] text-white hover:bg-[#0E2F4C] shadow-[0_12px_30px_rgba(7,26,45,0.16)]",
     secondary:
       "bg-white text-[#071A2D] border border-[#D4E1E8] hover:border-[#071A2D]",
-    light:
-      "bg-white text-[#071A2D] hover:bg-[#F3F8FB]",
+    light: "bg-white text-[#071A2D] hover:bg-[#F3F8FB]",
     ghost:
       "bg-white/10 text-white border border-white/20 hover:bg-white/15",
   };
@@ -71,7 +69,7 @@ const titleLight =
   "whitespace-nowrap text-[clamp(1.1rem,2.8vw,2.05rem)] font-black leading-[1.08] tracking-[-0.04em] text-white";
 
 const heroTitle =
-  "whitespace-nowrap text-[clamp(1.9rem,4.4vw,3.9rem)] font-black leading-[1.04] tracking-[-0.06em] text-[#071A2D]";
+  "whitespace-nowrap text-[clamp(1.45rem,3.55vw,3.35rem)] font-black leading-[1.06] tracking-[-0.06em] text-[#071A2D]";
 
 const cardTitle =
   "whitespace-nowrap text-[clamp(1.25rem,2.1vw,1.75rem)] font-black tracking-[-0.04em]";
@@ -163,8 +161,16 @@ const documents = [
 
 const process = [
   ["01", "납기 확인", "제품명, 제형, 제출처, 희망 납기를 먼저 알려주세요"],
-  ["02", "항목 안내", "자가품질, 납품, 수입, 기능성 여부에 따라 필요한 항목을 안내합니다"],
-  ["03", "시료 접수", "우편 또는 방문 접수 후 수수료 납입 시점부터 분석을 진행합니다"],
+  [
+    "02",
+    "항목 안내",
+    "자가품질, 납품, 수입, 기능성 여부에 따라 필요한 항목을 안내합니다",
+  ],
+  [
+    "03",
+    "시료 접수",
+    "우편 또는 방문 접수 후 수수료 납입 시점부터 분석을 진행합니다",
+  ],
   ["04", "성적서 발급", "시험 완료 후 시험성적서 원본을 우편으로 전달합니다"],
 ];
 
@@ -230,11 +236,21 @@ export default function App() {
           </a>
 
           <nav className="hidden items-center gap-7 text-sm font-bold text-slate-600 xl:flex">
-            <a href="#paths" className="hover:text-[#071A2D]">의뢰상황</a>
-            <a href="#services" className="hover:text-[#071A2D]">검사항목</a>
-            <a href="#fees" className="hover:text-[#071A2D]">수수료</a>
-            <a href="#documents" className="hover:text-[#071A2D]">준비서류</a>
-            <a href="#contact" className="hover:text-[#071A2D]">문의</a>
+            <a href="#paths" className="hover:text-[#071A2D]">
+              의뢰상황
+            </a>
+            <a href="#services" className="hover:text-[#071A2D]">
+              검사항목
+            </a>
+            <a href="#fees" className="hover:text-[#071A2D]">
+              수수료
+            </a>
+            <a href="#documents" className="hover:text-[#071A2D]">
+              준비서류
+            </a>
+            <a href="#contact" className="hover:text-[#071A2D]">
+              문의
+            </a>
           </nav>
 
           <LinkButton href="#contact" className="h-10 shrink-0 px-5">
@@ -249,17 +265,19 @@ export default function App() {
           <div className="absolute -right-32 -top-36 h-[38rem] w-[38rem] rounded-full bg-[#CFE5F2] blur-3xl" />
         </div>
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:py-28">
-          <div className="min-w-0">
-            <div className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-[#BED7E4] bg-white/85 px-4 py-2 text-sm font-black text-[#071A2D] shadow-sm">
-              <BadgeCheck className="h-4 w-4 shrink-0 text-[#1F7F91]" />
-              <span className="truncate">연세대학교 교원창업기업</span>
-            </div>
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-start lg:py-24">
+          <div className="min-w-0 pt-2">
+            <p className="mb-4 text-[clamp(0.95rem,2vw,1.2rem)] font-black tracking-[0.03em] text-[#1F7F91]">
+              화장품 품질검사 위탁 서비스
+            </p>
 
-            <h1 className={heroTitle}>화장품 성적서 납기 확인</h1>
+            <h1 className={heroTitle}>
+              출시와 납품에 필요한 성적서 먼저 확인하세요
+            </h1>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-700">
-              식약처 지정 제18호와 KOLAS 제364호의 신뢰성으로 자가품질 위탁검사부터 시험성적서 발급까지 안내합니다
+              자가품질 위탁검사, 유통화장품 안전관리, 기능성화장품 품질검사까지
+              필요한 항목과 납기를 먼저 안내합니다
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -302,7 +320,9 @@ export default function App() {
             <div className="grid gap-3 p-5">
               <div className="rounded-2xl border border-[#E6EEF2] bg-[#F7FAFC] p-4">
                 <p className="text-sm font-bold text-slate-500">일반 의뢰</p>
-                <p className="mt-1 text-2xl font-black tracking-[-0.04em]">7일 소요일</p>
+                <p className="mt-1 text-2xl font-black tracking-[-0.04em]">
+                  7일 소요일
+                </p>
               </div>
               <div className="rounded-2xl border border-[#E6EEF2] bg-[#F7FAFC] p-4">
                 <p className="text-sm font-bold text-slate-500">긴급 의뢰</p>
@@ -352,7 +372,10 @@ export default function App() {
         </div>
       </section>
 
-      <section id="paths" className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
+      <section
+        id="paths"
+        className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
+      >
         <div className="mb-12">
           <p className={label}>Start Here</p>
           <h2 className={title}>어떤 상황이신가요</h2>
@@ -405,14 +428,18 @@ export default function App() {
         </div>
       </section>
 
-      <section id="services" className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
+      <section
+        id="services"
+        className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
+      >
         <div className="mb-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
           <div>
             <p className={label}>Testing Services</p>
             <h2 className={title}>검사 서비스 한눈에</h2>
           </div>
           <p className="text-lg leading-8 text-slate-600">
-            일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다
+            일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에
+            따라 상담 후 확정됩니다
           </p>
         </div>
 
@@ -439,7 +466,8 @@ export default function App() {
               <h2 className={title}>대표 수수료 확인</h2>
             </div>
             <p className="text-lg leading-8 text-slate-600">
-              실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수 있습니다
+              실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수
+              있습니다
             </p>
           </div>
 
@@ -497,7 +525,8 @@ export default function App() {
             <p className={label}>Self Quality Testing</p>
             <h2 className={title}>자가품질 위탁검사 안내</h2>
             <p className="mt-6 text-lg leading-8 text-slate-600">
-              품질검사 시설이 없는 경우 식약처 지정 시험검사기관과 품질검사 위탁계약을 체결하여 품질관리를 진행할 수 있습니다
+              품질검사 시설이 없는 경우 식약처 지정 시험검사기관과 품질검사 위탁계약을
+              체결하여 품질관리를 진행할 수 있습니다
             </p>
           </div>
 
@@ -524,7 +553,10 @@ export default function App() {
         </div>
       </section>
 
-      <section id="documents" className="overflow-hidden bg-[#EEF7FA] py-20 lg:py-24">
+      <section
+        id="documents"
+        className="overflow-hidden bg-[#EEF7FA] py-20 lg:py-24"
+      >
         <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <p className={label}>Before Request</p>
@@ -573,7 +605,10 @@ export default function App() {
         </div>
       </section>
 
-      <section id="trust" className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
+      <section
+        id="trust"
+        className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
+      >
         <div className="mb-12">
           <p className={label}>Trust Proof</p>
           <h2 className={title}>신뢰근거 확인</h2>
@@ -596,7 +631,10 @@ export default function App() {
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24">
+      <section
+        id="contact"
+        className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
+      >
         <div className="overflow-hidden rounded-[32px] bg-[#071A2D] p-8 text-white shadow-[0_32px_90px_rgba(7,26,45,0.18)] md:p-12">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
             <div>
@@ -607,7 +645,8 @@ export default function App() {
                 성적서 납기를 먼저 알려주세요
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-                제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면 우선 검토 후 안내드립니다
+                제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면 우선 검토 후
+                안내드립니다
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
