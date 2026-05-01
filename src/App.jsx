@@ -220,9 +220,11 @@ export default function App() {
               <FlaskConical className="h-5 w-5" />
             </div>
             <div className="min-w-0">
-              <p className="text-base font-black tracking-[-0.02em]">YSIET</p>
+              <p className="whitespace-nowrap text-[13px] font-black tracking-[-0.02em] sm:text-base">
+                (주)와이에스환경기술연구원
+              </p>
               <p className="truncate text-xs font-bold text-slate-500">
-                Cosmetic Testing Center
+                YS Institute of Environmental Technology
               </p>
             </div>
           </a>
