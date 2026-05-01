@@ -155,8 +155,8 @@ function FamilySiteSelect() {
         <option value="" disabled>
           패밀리사이트
         </option>
-        <option value="https://ysiet.com/">YSIET 공식 홈페이지</option>
-        <option value="https://qha.co.kr/">QHA</option>
+        <option value="https://ysiet.com/">와이에스환경기술연구원</option>
+        <option value="https://qha.co.kr/">밸런스랩 큐모발검사</option>
       </select>
       <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8A9497]" />
     </div>
