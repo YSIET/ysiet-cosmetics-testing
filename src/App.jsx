@@ -14,7 +14,6 @@ import {
   Microscope,
   Phone,
   ShieldCheck,
-  Sparkles,
   TimerReset,
   Users,
 } from "lucide-react";
@@ -75,6 +74,12 @@ const heroTitle =
 
 const cardTitle =
   "whitespace-nowrap text-[clamp(1.25rem,2.1vw,1.75rem)] font-black tracking-[-0.04em]";
+
+const oneLineDesc =
+  "whitespace-nowrap text-[clamp(0.82rem,1.35vw,1.125rem)] leading-8 text-[#5B7278]";
+
+const oneLineLight =
+  "whitespace-nowrap text-[clamp(0.82rem,1.35vw,1.125rem)] leading-8 text-[#EEF8F8]";
 
 const proofItems = [
   "식약처 지정 제18호",
@@ -395,9 +400,8 @@ export default function App() {
         <div className="mb-12">
           <p className={label}>Why YSIET</p>
           <h2 className={title}>비교하다가도 문의하게 되는 이유</h2>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-[#5B7278]">
-            고객이 홈페이지에서 가장 먼저 알고 싶은 것은 기관의 규모가 아니라
-            성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다
+          <p className={`mt-5 ${oneLineDesc}`}>
+            고객이 홈페이지에서 가장 먼저 알고 싶은 것은 기관의 규모가 아니라 성적서가 언제, 어떤 항목으로, 어느 정도 비용으로 가능한지입니다
           </p>
         </div>
 
@@ -498,14 +502,11 @@ export default function App() {
         id="services"
         className="mx-auto max-w-7xl overflow-hidden px-5 py-20 lg:py-24"
       >
-        <div className="mb-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-          <div>
-            <p className={label}>Testing Services</p>
-            <h2 className={title}>검사 서비스 한눈에</h2>
-          </div>
-          <p className="text-lg leading-8 text-[#5B7278]">
-            일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에
-            따라 상담 후 확정됩니다
+        <div className="mb-12">
+          <p className={label}>Testing Services</p>
+          <h2 className={title}>검사 서비스 한눈에</h2>
+          <p className={`mt-5 ${oneLineDesc}`}>
+            일반 화장품, 기능성 화장품, 원료 부자재, R&D 지원까지 제품 유형과 제출 목적에 따라 상담 후 확정됩니다
           </p>
         </div>
 
@@ -526,14 +527,11 @@ export default function App() {
 
       <section id="fees" className="overflow-hidden bg-[#FBFDFC] py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-12 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
-            <div>
-              <p className={label}>Fee Guide</p>
-              <h2 className={title}>대표 수수료 확인</h2>
-            </div>
-            <p className="text-lg leading-8 text-[#5B7278]">
-              실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수
-              있습니다
+          <div className="mb-12">
+            <p className={label}>Fee Guide</p>
+            <h2 className={title}>대표 수수료 확인</h2>
+            <p className="mt-5 whitespace-nowrap text-[clamp(0.9rem,1.4vw,1.125rem)] leading-8 text-[#5B7278]">
+              실제 견적은 시험항목, 제품유형, 긴급 여부에 따라 상담 후 안내받으실 수 있습니다
             </p>
           </div>
 
@@ -623,16 +621,16 @@ export default function App() {
         id="documents"
         className="overflow-hidden bg-[#EEF6F4] py-20 lg:py-24"
       >
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="mb-12">
             <p className={label}>Before Request</p>
             <h2 className={title}>문의 전 준비서류</h2>
-            <p className="mt-6 text-lg leading-8 text-[#5B7278]">
+            <p className={`mt-5 ${oneLineDesc}`}>
               준비서류와 제품 정보를 미리 알려주시면 상담과 접수가 훨씬 빨라집니다
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="grid gap-3 md:grid-cols-2">
             {documents.map((item) => (
               <div
                 key={item}
@@ -710,9 +708,8 @@ export default function App() {
               <h2 className="whitespace-nowrap text-[clamp(1.2rem,3.4vw,2.8rem)] font-black leading-[1.08] tracking-[-0.05em]">
                 성적서 납기를 먼저 알려주세요
               </h2>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-[#EEF8F8]">
-                제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면 우선 검토 후
-                안내드립니다
+              <p className={`mt-6 ${oneLineLight}`}>
+                제품명, 제형, 필요한 성적서 용도, 희망 납기를 알려주시면 우선 검토 후 안내드립니다
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
