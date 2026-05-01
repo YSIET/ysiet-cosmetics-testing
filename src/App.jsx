@@ -322,9 +322,6 @@ function Header() {
         </a>
 
         <nav className="hidden items-center gap-5 text-sm font-bold text-[#5B7278] xl:flex">
-          <a href="/about" className="hover:text-[#2F6F73]">
-            기관소개
-          </a>
           <a href="/#sales" className="hover:text-[#2F6F73]">
             선택이유
           </a>
@@ -339,6 +336,9 @@ function Header() {
           </a>
           <a href="/#contact" className="hover:text-[#2F6F73]">
             문의
+          </a>
+          <a href="/about" className="hover:text-[#2F6F73]">
+            기관소개
           </a>
         </nav>
 
