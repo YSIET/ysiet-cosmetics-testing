@@ -21,6 +21,8 @@ import {
 const KAKAO_URL = "https://pf.kakao.com/_xbUlsn";
 const YS_LOGO = "/ysiet-symbol.png";
 const YONSEI_LOGO = "/yonsei-symbol.jpg";
+const KOLAS_LOGO = "/kolas-symbol.jpg";
+const MFDS_LOGO = "/mfds-symbol.jpg";
 
 function cx(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -98,6 +100,19 @@ function SectionTitle({ eyebrow, titleText, description, light = false }) {
           {description}
         </p>
       ) : null}
+    </div>
+  );
+}
+
+function TrustLogo({ src, alt, className = "" }) {
+  return (
+    <div
+      className={cx(
+        "flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#E1ECEE] bg-white",
+        className
+      )}
+    >
+      <img src={src} alt={alt} className="h-10 w-10 object-contain" />
     </div>
   );
 }
@@ -231,24 +246,27 @@ const process = [
 
 const trustItems = [
   {
-    icon: <ShieldCheck className="h-6 w-6" />,
     title: "식약처 지정기관",
     desc: "제18호 지정기관으로 자가품질 위탁검사 상담이 가능합니다",
+    logo: MFDS_LOGO,
+    logoAlt: "식품의약품안전처 심볼",
   },
   {
-    icon: <Award className="h-6 w-6" />,
     title: "KOLAS 공인기관",
     desc: "KOLAS 제364호 국제공인시험기관으로 분석 서비스를 제공합니다",
+    logo: KOLAS_LOGO,
+    logoAlt: "KOLAS 심볼",
   },
   {
-    icon: <Microscope className="h-6 w-6" />,
     title: "연세대학교 교원창업기업",
     desc: "연구 기반 전문성과 현장형 시험분석 서비스를 함께 제공합니다",
+    logo: YONSEI_LOGO,
+    logoAlt: "연세대학교 심볼",
   },
   {
-    icon: <Users className="h-6 w-6" />,
     title: "대표이사 엄유진 박사",
     desc: "전문 연구 인력을 중심으로 처음 의뢰도 차근차근 안내합니다",
+    icon: <Users className="h-6 w-6" />,
   },
 ];
 
@@ -439,11 +457,7 @@ function BrandTrustBar() {
     <section className="border-y border-[#D8E5E7] bg-[#F4F7F7]">
       <div className="mx-auto grid max-w-7xl gap-4 px-5 py-6 md:grid-cols-4">
         <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <img
-            src={YS_LOGO}
-            alt="YSIET 로고"
-            className="h-10 w-10 rounded-xl object-contain"
-          />
+          <TrustLogo src={YS_LOGO} alt="와이에스환경기술연구원 로고" />
           <div>
             <p className="text-sm font-black text-[#27434A]">와이에스환경기술연구원</p>
             <p className="text-xs font-bold text-[#73878C]">시험분석 전문기관</p>
@@ -451,11 +465,7 @@ function BrandTrustBar() {
         </div>
 
         <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <img
-            src={YONSEI_LOGO}
-            alt="연세대학교 심볼"
-            className="h-10 w-10 rounded-full object-cover"
-          />
+          <TrustLogo src={YONSEI_LOGO} alt="연세대학교 심볼" className="rounded-full" />
           <div>
             <p className="text-sm font-black text-[#27434A]">연세대학교 교원창업기업</p>
             <p className="text-xs font-bold text-[#73878C]">연구 기반 시험분석 서비스</p>
@@ -463,7 +473,7 @@ function BrandTrustBar() {
         </div>
 
         <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <ShieldCheck className="h-6 w-6 text-[#4F888B]" />
+          <TrustLogo src={MFDS_LOGO} alt="식품의약품안전처 심볼" />
           <div>
             <p className="text-sm font-black text-[#27434A]">식약처 지정 제18호</p>
             <p className="text-xs font-bold text-[#73878C]">화장품 시험검사기관</p>
@@ -471,7 +481,7 @@ function BrandTrustBar() {
         </div>
 
         <div className="flex items-center gap-3 rounded-2xl border border-[#D8E5E7] bg-white px-4 py-4">
-          <Award className="h-6 w-6 text-[#4F888B]" />
+          <TrustLogo src={KOLAS_LOGO} alt="KOLAS 심볼" />
           <div>
             <p className="text-sm font-black text-[#27434A]">KOLAS 제364호</p>
             <p className="text-xs font-bold text-[#73878C]">국제공인시험기관</p>
@@ -989,8 +999,16 @@ function HomePage() {
           {trustItems.map((item) => (
             <Card key={item.title}>
               <div className="p-7">
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B]">
-                  {item.icon}
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EDF5F5] text-[#4F888B] overflow-hidden">
+                  {item.logo ? (
+                    <img
+                      src={item.logo}
+                      alt={item.logoAlt}
+                      className="h-10 w-10 object-contain"
+                    />
+                  ) : (
+                    item.icon
+                  )}
                 </div>
                 <h3 className="text-xl font-black tracking-[-0.03em] text-[#27434A]">
                   {item.title}
@@ -1166,17 +1184,32 @@ function AboutPage() {
               </div>
 
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-[#D8E5E7] bg-white p-4">
-                  <p className="text-sm font-bold text-[#73878C]">화장품 시험검사기관</p>
-                  <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#27434A]">
-                    식약처 지정 제18호
-                  </p>
+                <div className="flex items-center gap-4 rounded-2xl border border-[#D8E5E7] bg-white p-4">
+                  <img
+                    src={MFDS_LOGO}
+                    alt="식품의약품안전처 심볼"
+                    className="h-12 w-12 object-contain"
+                  />
+                  <div>
+                    <p className="text-sm font-bold text-[#73878C]">화장품 시험검사기관</p>
+                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#27434A]">
+                      식약처 지정 제18호
+                    </p>
+                  </div>
                 </div>
-                <div className="rounded-2xl border border-[#D8E5E7] bg-white p-4">
-                  <p className="text-sm font-bold text-[#73878C]">국제공인시험기관</p>
-                  <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#27434A]">
-                    KOLAS 제364호
-                  </p>
+
+                <div className="flex items-center gap-4 rounded-2xl border border-[#D8E5E7] bg-white p-4">
+                  <img
+                    src={KOLAS_LOGO}
+                    alt="KOLAS 심볼"
+                    className="h-12 w-12 object-contain"
+                  />
+                  <div>
+                    <p className="text-sm font-bold text-[#73878C]">국제공인시험기관</p>
+                    <p className="mt-1 text-lg font-black tracking-[-0.04em] text-[#27434A]">
+                      KOLAS 제364호
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
