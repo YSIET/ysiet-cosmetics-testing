@@ -72,6 +72,9 @@ function CardContent({ children, className = "", ...props }) {
   );
 }
 
+const noWrapHeading =
+  "font-black tracking-tight whitespace-nowrap text-[clamp(1.45rem,3.6vw,3.55rem)] leading-tight";
+
 const proofBadges = [
   "식약처 지정 화장품 시험·검사기관 제18호",
   "KOLAS 국제공인시험기관 제364호",
@@ -95,8 +98,8 @@ const comparisonRows = [
     "자가품질 위탁검사 준비서류를 바로 안내",
   ],
   [
-    "대형기관 신뢰도는 있으나 상담 체감이 느릴 수 있음",
-    "1건 의뢰도 전문 카운셀링 강조",
+    "상담과 진행 확인이 느릴 수 있음",
+    "1건 의뢰도 전문 카운셀링 지원",
   ],
 ];
 
@@ -105,25 +108,25 @@ const decidingFactors = [
     icon: TimerReset,
     title: "납기",
     punch: "일반 7일 · 긴급 3일",
-    desc: "고객이 가장 먼저 알고 싶은 것은 ‘언제 받을 수 있나’입니다. 가능 여부를 먼저 상담합니다.",
+    desc: "시험성적서가 필요한 날짜가 있다면 가능 여부를 먼저 확인해드립니다.",
   },
   {
     icon: ShieldCheck,
     title: "공식성",
     punch: "식약처 지정 제18호",
-    desc: "화장품 시험·검사기관 지정 근거를 첫 화면에서 바로 보여줍니다.",
+    desc: "식품의약품안전처 지정 화장품 시험·검사기관입니다.",
   },
   {
     icon: Award,
     title: "공신력",
     punch: "KOLAS 제364호",
-    desc: "국제공인시험기관이라는 신뢰근거를 숨기지 않고 전면에 배치합니다.",
+    desc: "국제공인시험기관으로서 신뢰도 높은 시험분석 서비스를 제공합니다.",
   },
   {
     icon: Banknote,
-    title: "가격 감각",
+    title: "비용 확인",
     punch: "대표 수수료 공개",
-    desc: "문의 전 고객이 비용 감을 잡을 수 있게 핵심 수수료를 먼저 보여줍니다.",
+    desc: "문의 전에도 주요 시험항목의 대략적인 비용을 확인할 수 있습니다.",
   },
 ];
 
@@ -181,7 +184,7 @@ const process = [
 const faqs = [
   {
     q: "다른 시험기관 대신 YSIET에 문의해야 하는 이유가 뭔가요?",
-    a: "YSIET는 식약처 지정 화장품 시험·검사기관 제18호이자 KOLAS 국제공인시험기관 제364호입니다. 여기에 일반 7일·긴급 3일 가능 여부 상담, 대표 수수료 공개, 1건 의뢰 상담까지 고객이 바로 결정할 수 있는 정보를 앞에 둡니다.",
+    a: "YSIET는 식약처 지정 화장품 시험·검사기관 제18호이자 KOLAS 국제공인시험기관 제364호입니다. 일반 7일·긴급 3일 가능 여부 상담, 대표 수수료 공개, 1건 의뢰 상담까지 한 번에 안내받을 수 있습니다.",
   },
   {
     q: "성적서 발급까지 얼마나 걸리나요?",
@@ -309,12 +312,12 @@ export default function YSIETCosmeticsLanding() {
             <Card className="rounded-[2rem] border-0 bg-white text-slate-950 shadow-2xl shadow-rose-900/40">
               <CardContent className="p-7 md:p-9">
                 <div className="mb-7 rounded-3xl bg-gradient-to-br from-rose-600 to-orange-500 p-6 text-white">
-                  <p className="text-sm font-black text-rose-100">FAST DECISION</p>
+                  <p className="text-sm font-black text-rose-100">FAST CHECK</p>
                   <h2 className="mt-2 text-3xl font-black">
                     여러 시험기관을 살펴보다 오셨나요?
                   </h2>
                   <p className="mt-3 leading-7 text-rose-50">
-                    그럼 아래 4가지만 먼저 확인하세요. 납기, 지정기관, KOLAS, 수수료.
+                    아래 4가지를 먼저 확인해보세요. 납기, 지정기관, KOLAS, 수수료.
                   </p>
                 </div>
 
@@ -376,8 +379,8 @@ export default function YSIETCosmeticsLanding() {
               다른 시험기관을 살펴보다가도 YSIET에 문의하게 되는 이유.
             </h2>
             <p className="mt-6 text-lg leading-8 text-slate-700">
-              고객은 긴 기관 소개보다 “내 성적서가 언제 나오고, 얼마쯤 들고, 무엇을 준비해야 하는지”를 먼저 알고 싶어 합니다.
-              그래서 YSIET는 결정에 필요한 정보를 앞에 둡니다.
+              의뢰 전에는 “성적서가 언제 나오고, 비용은 어느 정도이며, 무엇을 준비해야 하는지”가 가장 중요합니다.
+              YSIET는 필요한 정보를 먼저 확인할 수 있도록 안내합니다.
             </p>
             <a
               href="#contact"
@@ -390,18 +393,16 @@ export default function YSIETCosmeticsLanding() {
           <div className="overflow-hidden rounded-[2rem] bg-white shadow-xl ring-1 ring-slate-200">
             <div className="grid grid-cols-2 bg-slate-950 text-white">
               <div className="p-5 text-sm font-black text-slate-300">
-                대형기관식 페이지에서 고객이 느끼는 점
+                의뢰 전 자주 막히는 부분
               </div>
               <div className="bg-rose-600 p-5 text-sm font-black">
-                YSIET 랜딩페이지가 바로 답하는 것
+                YSIET가 바로 안내하는 것
               </div>
             </div>
 
             {comparisonRows.map(([before, after]) => (
               <div key={before} className="grid grid-cols-2 border-t border-slate-100">
-                <div className="p-5 font-bold text-slate-500 line-through decoration-rose-400/70">
-                  {before}
-                </div>
+                <div className="p-5 font-bold text-slate-500">{before}</div>
                 <div className="p-5 font-black text-slate-950">{after}</div>
               </div>
             ))}
@@ -410,13 +411,13 @@ export default function YSIETCosmeticsLanding() {
       </section>
 
       <section className="bg-slate-950 py-24 text-white">
-        <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-12 max-w-3xl">
+        <div className="mx-auto max-w-7xl px-5 overflow-x-auto">
+          <div className="mb-12 max-w-none">
             <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-300">
-              Decision Factors
+              Key Points
             </p>
-            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-6xl">
-              고객의 결정 버튼은 이 4개에서 눌립니다.
+            <h2 className={noWrapHeading}>
+              성적서 의뢰 전 꼭 확인할 4가지.
             </h2>
           </div>
 
@@ -437,13 +438,13 @@ export default function YSIETCosmeticsLanding() {
         </div>
       </section>
 
-      <section id="services" className="mx-auto max-w-7xl px-5 py-24">
+      <section id="services" className="mx-auto max-w-7xl px-5 py-24 overflow-x-auto">
         <div className="mb-12 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
               Testing Services
             </p>
-            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
+            <h2 className={noWrapHeading}>
               검사 가능한 서비스를 한눈에.
             </h2>
           </div>
@@ -469,19 +470,18 @@ export default function YSIETCosmeticsLanding() {
       </section>
 
       <section id="fees" className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-5">
+        <div className="mx-auto max-w-7xl px-5 overflow-x-auto">
           <div className="mb-12 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
                 Fee Guide
               </p>
-              <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
+              <h2 className={noWrapHeading}>
                 가격 감을 먼저 잡게 해드립니다.
               </h2>
             </div>
             <p className="text-lg leading-8 text-slate-700">
-              고객이 문의를 미루는 가장 큰 이유 중 하나는 비용 불확실성입니다.
-              대표 수수료를 먼저 보여주고, 실제 견적은 시험항목·제품유형·긴급 여부에 따라 상담 후 안내합니다.
+              대표 수수료를 먼저 확인하고, 실제 견적은 시험항목·제품유형·긴급 여부에 따라 상담 후 안내받으실 수 있습니다.
               모든 금액은 VAT 별도입니다.
             </p>
           </div>
@@ -509,13 +509,13 @@ export default function YSIETCosmeticsLanding() {
         </div>
       </section>
 
-      <section id="self-quality" className="mx-auto max-w-7xl px-5 py-24">
+      <section id="self-quality" className="mx-auto max-w-7xl px-5 py-24 overflow-x-auto">
         <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
               Self Quality Testing
             </p>
-            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
+            <h2 className={noWrapHeading}>
               자가품질 위탁검사, 처음이어도 바로 시작할 수 있게.
             </h2>
             <p className="mt-6 text-lg leading-8 text-slate-700">
@@ -543,12 +543,12 @@ export default function YSIETCosmeticsLanding() {
       </section>
 
       <section id="documents" className="bg-slate-950 py-24 text-white">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-start overflow-x-auto">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-300">
               Before Request
             </p>
-            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
+            <h2 className={noWrapHeading}>
               문의 전 준비하면 견적이 빨라집니다.
             </h2>
             <p className="mt-6 text-lg leading-8 text-slate-300">
@@ -568,16 +568,16 @@ export default function YSIETCosmeticsLanding() {
       </section>
 
       <section id="trust" className="py-24">
-        <div className="mx-auto max-w-7xl px-5">
-          <div className="mb-12 max-w-3xl">
+        <div className="mx-auto max-w-7xl px-5 overflow-x-auto">
+          <div className="mb-12 max-w-none">
             <p className="text-sm font-black uppercase tracking-[0.25em] text-rose-600">
               Trust Proof
             </p>
-            <h2 className="mt-3 text-4xl font-black tracking-tight md:text-5xl">
-              신뢰근거는 숨기지 않고, 반복해서 설득합니다.
+            <h2 className={noWrapHeading}>
+              확인된 신뢰근거를 한눈에.
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-700">
-              고객이 기관을 비교할 때 보는 것은 단순한 규모가 아니라 지정 여부, 공인 여부, 납기, 상담 대응입니다.
+              식약처 지정, KOLAS 인정, 전문 인력, 상담 지원까지 의뢰 전 필요한 신뢰 정보를 확인하실 수 있습니다.
             </p>
           </div>
 
