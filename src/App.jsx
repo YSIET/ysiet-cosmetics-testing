@@ -1363,6 +1363,10 @@ function AboutPage() {
 
       {/* Contact CTA */}
       <section className="bg-[#0A1E24] py-14">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="grid gap-8 lg:grid-cols-[1fr_200px] lg:items-center">
+            <div>
+              <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5DC8BE]">Contact</p>
               <h2 className="text-[clamp(1.35rem,2.8vw,2.35rem)] font-black leading-[1.12] tracking-[-0.05em] text-white">기관 정보를 확인하셨다면 바로 상담하세요</h2>
               <p className="mt-4 text-[15px] leading-8 text-[#7FC8CC]">성적서 용도, 제품명, 제형, 희망 납기를 알려주시면 담당자가 우선 검토 후 안내드립니다.</p>
             </div>
