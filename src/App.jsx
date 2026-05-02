@@ -358,23 +358,7 @@ function HomePage() {
                 ))}
               </div>
 
-              {/* 사회적 증거 플레이스홀더 — 숫자 나중에 채울 자리 */}
-              {/* TODO: 실적 데이터 확보 후 아래 주석 해제
-              <div className="mt-6 flex flex-wrap gap-4 rounded-2xl border border-white/10 bg-white/6 px-5 py-4">
-                <div className="text-center">
-                  <p className="text-2xl font-black text-white">X,XXX<span className="text-base">건+</span></p>
-                  <p className="mt-1 text-[11px] font-bold text-[#7FC8CC]">누적 의뢰건수</p>
-                </div>
-                <div className="border-l border-white/15 pl-4 text-center">
-                  <p className="text-2xl font-black text-white">XXX<span className="text-base">개사+</span></p>
-                  <p className="mt-1 text-[11px] font-bold text-[#7FC8CC]">거래 브랜드</p>
-                </div>
-                <div className="border-l border-white/15 pl-4 text-center">
-                  <p className="text-2xl font-black text-white">XX<span className="text-base">년</span></p>
-                  <p className="mt-1 text-[11px] font-bold text-[#7FC8CC]">분석 경력</p>
-                </div>
-              </div>
-              -->
+              {/* 사회적 증거 — 실적 데이터 확보 후 활성화 예정 */}
 
               <div className="mt-6 flex flex-wrap gap-4">
                 <a href={CERTIFICATE_PDF} target="_blank" rel="noreferrer"
