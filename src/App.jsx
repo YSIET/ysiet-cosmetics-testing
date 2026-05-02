@@ -358,7 +358,19 @@ function HomePage() {
                 ))}
               </div>
 
-              {/* 사회적 증거 — 실적 데이터 확보 후 활성화 예정 */}
+              {/* 사회적 증거 숫자 */}
+              <div className="mt-6 grid grid-cols-3 gap-2 rounded-2xl border border-white/12 bg-white/8 px-4 py-4 backdrop-blur-sm">
+                {[
+                  { val: "17년",  label: "KOLAS 공인 유지" },
+                  { val: "7년차", label: "식약처 지정 운영" },
+                  { val: "AA등급", label: "기보 기술신용평가" },
+                ].map((s, i) => (
+                  <div key={s.val} className={cx("text-center", i !== 0 && "border-l border-white/15")}>
+                    <p className="text-lg font-black text-white">{s.val}</p>
+                    <p className="mt-0.5 text-[10px] font-bold text-[#7FC8CC]">{s.label}</p>
+                  </div>
+                ))}
+              </div>
 
               <div className="mt-6 flex flex-wrap gap-4">
                 <a href={CERTIFICATE_PDF} target="_blank" rel="noreferrer"
@@ -508,6 +520,97 @@ function HomePage() {
                 <p className="mt-2 text-[13px] leading-[1.8] text-[#60767B]">{desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 고객 후기 */}
+      <section className="bg-[#F5F8F8] py-16">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="mb-10">
+            <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Client Reviews</p>
+            <h2 className="text-[clamp(1.4rem,2.4vw,2rem)] font-black leading-[1.1] tracking-[-0.045em] text-[#0A1E24]">
+              실제 의뢰 고객의 이야기
+            </h2>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {[
+              {
+                text: "처음 의뢰해보는 거라 걱정했는데 생각보다 진행이 잘 됐습니다. 문의드렸을 때 설명도 친절했고, 필요한 내용도 정리해서 알려주셔서 준비하는 데 도움이 됐습니다. 결과 안내도 그냥 형식적인 느낌이 아니라 실제로 참고할 수 있게 설명해주셔서 괜찮았습니다.",
+                label: "화장품 브랜드 담당자",
+              },
+              {
+                text: "출시 전에 품질검사 때문에 신경 쓸 게 많았는데, 와이에스 쪽에서 응대가 빨라서 도움이 됐습니다. 중간에 확인할 부분도 잘 안내해주셨고, 전체적으로 소통이 괜찮았습니다. 너무 과장해서 좋다고 하기보다는, 실무적으로 맡기기에 무난하고 믿을 만한 곳이라는 느낌이었습니다.",
+                label: "화장품 제조사 담당자",
+              },
+            ].map((r) => (
+              <div key={r.label}
+                className="rounded-2xl border border-[#D8E5E7] bg-white p-7 shadow-[0_8px_24px_rgba(36,72,82,0.055)]">
+                <div className="mb-4 text-3xl font-black leading-none text-[#BFD9DC]">"</div>
+                <p className="text-[15px] leading-8 text-[#4F656A]">{r.text}</p>
+                <div className="mt-5 flex items-center gap-2">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="h-4 w-4 fill-[#FEE500]" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-[13px] font-black text-[#5E8E90]">{r.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 대표 소개 */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="overflow-hidden rounded-[28px] border border-[#D8E5E7] shadow-[0_16px_44px_rgba(36,72,82,0.07)]">
+            <div className="grid lg:grid-cols-[280px_1fr]">
+              <div className="flex items-center justify-center bg-[#EEF5F4] p-8">
+                <div className="overflow-hidden rounded-2xl border-4 border-white shadow-[0_12px_32px_rgba(36,72,82,0.12)]">
+                  <img src="/eom-yujin.png" alt="엄유진 대표"
+                    className="h-48 w-40 object-cover object-top" />
+                </div>
+              </div>
+              <div className="p-8 lg:p-10">
+                <p className="mb-2 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Director</p>
+                <h3 className="text-2xl font-black tracking-[-0.04em] text-[#0A1E24]">
+                  엄유진 <span className="text-lg font-bold text-[#5E8E90]">대표이사 · Ph.D.</span>
+                </h3>
+                <p className="mt-1 text-[14px] font-bold text-[#285F67]">
+                  연세대학교 화공생명공학 박사 · ICP-MS / LC-MS/MS 극미량 분석 전문가
+                </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {[
+                    { val: "17년",  label: "KOLAS 공인 유지" },
+                    { val: "7년차", label: "식약처 지정 운영" },
+                    { val: "AA등급", label: "기보 기술신용평가" },
+                    { val: "2개",   label: "식약처·KOLAS 동시 인증" },
+                  ].map((s) => (
+                    <div key={s.label} className="flex items-center gap-3 rounded-xl bg-[#F5F8F8] px-4 py-3">
+                      <p className="text-lg font-black text-[#285F67]">{s.val}</p>
+                      <p className="text-[13px] font-bold text-[#60767B]">{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-5 text-[14px] leading-7 text-[#60767B]">
+                  모발 미네랄·중금속 분석 원천기술 보유. 12년간 직접 서비스를 운영하며 쌓은 실전 분석 경험을 바탕으로 화장품 위탁검사 전 과정을 책임집니다.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <a href={KAKAO_URL} target="_blank" rel="noreferrer"
+                    className="inline-flex h-11 items-center gap-2 rounded-xl bg-[#FEE500] px-5 text-sm font-black text-[#2D2926] transition hover:bg-[#F6D600]">
+                    <MessageCircle className="h-4 w-4" /> 담당자에게 직접 문의
+                  </a>
+                  <a href="tel:02-312-0540"
+                    className="inline-flex h-11 items-center gap-2 rounded-xl border border-[#D8E5E7] px-5 text-sm font-black text-[#28474E] transition hover:border-[#9DBFC4]">
+                    <Phone className="h-4 w-4" /> 02-312-0540
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
