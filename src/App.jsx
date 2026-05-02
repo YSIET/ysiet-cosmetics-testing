@@ -295,7 +295,10 @@ function HomePage() {
               {/* 메인 헤드라인 */}
               <h1 className="max-w-[640px] text-[clamp(2rem,3.8vw,3.2rem)] font-black leading-[1.08] tracking-[-0.055em] text-white">
                 성적서 납기,<br />
-                <span className="text-[#5DC8BE]">놓치면 납품이 밀립니다.</span><br />
+                <span className="relative inline-block text-[#5DC8BE]">
+                  놓치면 납품이 밀립니다.
+                  <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-[#5DC8BE]/40" />
+                </span><br />
                 <span className="text-white/90">먼저 확인하세요.</span>
               </h1>
 
@@ -305,6 +308,12 @@ function HomePage() {
                 식약처 지정·KOLAS 공인 기관에서
                 필요한 항목과 가능 일정을 전담 안내합니다.
               </p>
+
+              {/* 핵심 숫자 하이라이트 */}
+              <div className="mt-7 inline-flex items-center gap-3 rounded-xl border border-[#5DC8BE]/25 bg-[#5DC8BE]/8 px-5 py-3">
+                <span className="text-2xl font-black text-[#5DC8BE]">19</span>
+                <span className="text-[13px] leading-5 font-medium text-[#8BBFC4]">개 식약처 지정기관 중<br /><span className="font-bold text-white">와이에스를 선택해야 하는 이유 ↓</span></span>
+              </div>
 
               {/* 연세대 차별점 강조 블록 */}
               <div className="mt-7 flex items-start gap-4 rounded-2xl border border-[#FEE500]/20 bg-[#FEE500]/8 p-4">
@@ -473,37 +482,69 @@ function HomePage() {
             </p>
           </div>
 
-          <div className="mb-12 overflow-hidden rounded-2xl border border-[#D8E5E7] shadow-[0_8px_30px_rgba(36,72,82,0.07)]">
-            <div className="grid grid-cols-[1fr_130px_170px] bg-[#0A1E24] px-6 py-5">
-              <p className="text-sm font-black text-white/60">비교 항목</p>
-              <p className="text-center text-sm font-black text-[#5DC8BE]">와이에스 ✓</p>
-              <p className="text-center text-sm font-black text-white/35">타 기관 일반</p>
-            </div>
-            {compareRows.map((row, i) => (
-              <div key={row.label}
-                className={cx(
-                  "grid grid-cols-[1fr_130px_170px] items-center border-t px-6 py-4",
-                  row.highlight
-                    ? "border-[#FEE500]/30 bg-[#FFFBEA]"
-                    : i % 2 === 0 ? "border-[#EEF3F3] bg-white" : "border-[#EEF3F3] bg-[#FAFCFC]"
-                )}>
-                <p className={cx("font-bold", row.highlight ? "text-[#7A6000]" : "text-[#4F656A]")}>
-                  {row.highlight && <span className="mr-2 inline-block rounded-full bg-[#FEE500] px-2 py-0.5 text-[10px] font-black text-[#7A6000]">유일</span>}
-                  {row.label}
-                </p>
-                <div className="flex justify-center">
-                  <span className={cx(
-                    "inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-black",
-                    row.highlight ? "bg-[#FEE500] text-[#7A6000]" : "bg-[#E8F5F4] text-[#285F67]"
-                  )}>
-                    <CheckCircle2 className="h-3.5 w-3.5" /> 보유
-                  </span>
-                </div>
-                <p className={cx("text-center text-sm font-bold", row.highlight ? "text-[#B89000]" : "text-[#A0B0B4]")}>
-                  {row.other}
-                </p>
+          <div className="mb-12">
+            {/* 데스크탑 테이블 */}
+            <div className="hidden overflow-hidden rounded-2xl border border-[#D8E5E7] shadow-[0_8px_30px_rgba(36,72,82,0.07)] md:block">
+              <div className="grid grid-cols-[1fr_120px_160px] bg-[#0A1E24] px-6 py-5">
+                <p className="text-sm font-semibold text-white/60">비교 항목</p>
+                <p className="text-center text-sm font-bold text-[#5DC8BE]">와이에스 ✓</p>
+                <p className="text-center text-sm font-semibold text-white/35">타 기관 일반</p>
               </div>
-            ))}
+              {compareRows.map((row, i) => (
+                <div key={row.label}
+                  className={cx(
+                    "grid grid-cols-[1fr_120px_160px] items-center border-t px-6 py-4",
+                    row.highlight
+                      ? "border-[#FEE500]/30 bg-[#FFFBEA]"
+                      : i % 2 === 0 ? "border-[#EEF3F3] bg-white" : "border-[#EEF3F3] bg-[#FAFCFC]"
+                  )}>
+                  <p className={cx("font-semibold", row.highlight ? "text-[#7A6000]" : "text-[#4F656A]")}>
+                    {row.highlight && <span className="mr-2 inline-block rounded-full bg-[#FEE500] px-2 py-0.5 text-[10px] font-black text-[#7A6000]">유일</span>}
+                    {row.label}
+                  </p>
+                  <div className="flex justify-center">
+                    <span className={cx(
+                      "inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold",
+                      row.highlight ? "bg-[#FEE500] text-[#7A6000]" : "bg-[#E8F5F4] text-[#285F67]"
+                    )}>
+                      <CheckCircle2 className="h-3.5 w-3.5" /> 보유
+                    </span>
+                  </div>
+                  <p className={cx("text-center text-sm font-medium", row.highlight ? "text-[#B89000]" : "text-[#A0B0B4]")}>
+                    {row.other}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* 모바일 카드뷰 */}
+            <div className="space-y-3 md:hidden">
+              {compareRows.map((row) => (
+                <div key={row.label}
+                  className={cx(
+                    "rounded-xl border p-4",
+                    row.highlight
+                      ? "border-[#FEE500]/40 bg-[#FFFBEA]"
+                      : "border-[#D8E5E7] bg-white"
+                  )}>
+                  <div className="flex items-start justify-between gap-3">
+                    <p className={cx("text-[14px] font-semibold leading-6", row.highlight ? "text-[#7A6000]" : "text-[#4F656A]")}>
+                      {row.highlight && <span className="mr-1.5 inline-block rounded-full bg-[#FEE500] px-2 py-0.5 text-[10px] font-black text-[#7A6000]">유일</span>}
+                      {row.label}
+                    </p>
+                    <span className={cx(
+                      "inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold",
+                      row.highlight ? "bg-[#FEE500] text-[#7A6000]" : "bg-[#E8F5F4] text-[#285F67]"
+                    )}>
+                      <CheckCircle2 className="h-3 w-3" /> YS 보유
+                    </span>
+                  </div>
+                  <p className={cx("mt-2 text-[12px] font-medium", row.highlight ? "text-[#B89000]" : "text-[#A0B0B4]")}>
+                    타 기관: {row.other}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="mb-12 flex items-center gap-3 rounded-xl border border-[#D8E5E7] bg-[#F8FBFB] px-5 py-4">
@@ -519,18 +560,18 @@ function HomePage() {
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { Icon: Zap,        title: "검사항목 몰라도 OK",     desc: "제품명·제형·납기만 알려주시면 필요한 항목과 준비사항을 전담 안내해드립니다." },
-              { Icon: FileCheck2, title: "법정 자가품질 위탁 대응", desc: "자체 시설 없는 책임판매업자도 식약처 지정기관 위탁으로 법적 요건을 충족합니다." },
-              { Icon: TimerReset, title: "납품 일정 기준 검토",     desc: "납품·입점·유통 일정에 맞춰 성적서 가능 일정을 먼저 확인해드립니다." },
-              { Icon: UserCheck,  title: "전담 담당자 1:1 안내",    desc: "처음 의뢰하거나 기관을 전환하는 경우에도 항목과 절차를 함께 정리합니다." },
-            ].map(({ Icon, title, desc }) => (
+              { Icon: Zap,        title: "검사항목 몰라도 OK",     desc: "제품명·제형·납기만 알려주시면 필요한 항목과 준비사항을 전담 안내해드립니다.",   accent: "border-l-[#5DC8BE]" },
+              { Icon: FileCheck2, title: "법정 자가품질 위탁 대응", desc: "자체 시설 없는 책임판매업자도 식약처 지정기관 위탁으로 법적 요건을 충족합니다.", accent: "border-l-[#285F67]" },
+              { Icon: TimerReset, title: "납품 일정 기준 검토",     desc: "납품·입점·유통 일정에 맞춰 성적서 가능 일정을 먼저 확인해드립니다.",         accent: "border-l-[#FEE500]" },
+              { Icon: UserCheck,  title: "전담 담당자 1:1 안내",    desc: "처음 의뢰하거나 기관을 전환하는 경우에도 항목과 절차를 함께 정리합니다.",     accent: "border-l-[#F87171]" },
+            ].map(({ Icon, title, desc, accent }) => (
               <div key={title}
-                className="group rounded-2xl border border-[#D8E5E7] bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#9DBFC4] hover:shadow-[0_16px_40px_rgba(40,95,103,0.12)]">
+                className={cx("group rounded-2xl border border-[#D8E5E7] border-l-4 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(40,95,103,0.12)]", accent)}>
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[#EEF5F4] text-[#285F67] transition group-hover:bg-[#285F67] group-hover:text-white">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="text-[15px] font-black tracking-[-0.02em] text-[#1C3038]">{title}</h3>
-                <p className="mt-2 text-[13px] leading-[1.8] text-[#60767B]">{desc}</p>
+                <h3 className="text-[15px] font-bold tracking-[-0.02em] text-[#1C3038]">{title}</h3>
+                <p className="mt-2 text-[13px] leading-[1.8] text-[#7A8E93]">{desc}</p>
               </div>
             ))}
           </div>
@@ -706,8 +747,8 @@ function HomePage() {
                   <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-xl bg-[#EEF5F4] text-[#285F67]">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="text-[14px] font-black text-[#263F46]">{title}</h3>
-                  <p className="mt-2 text-[13px] leading-6 text-[#60767B]">{desc}</p>
+                  <h3 className="text-[14px] font-bold text-[#263F46]">{title}</h3>
+                  <p className="mt-2 text-[13px] leading-6 text-[#7A8E93]">{desc}</p>
                 </div>
               ))}
             </div>
@@ -780,24 +821,27 @@ function HomePage() {
                 },
               ].map((pkg) => (
                 <div key={pkg.type}
-                  className="rounded-2xl border border-[#D8E5E7] bg-white p-5 shadow-[0_6px_18px_rgba(36,72,82,0.05)]">
-                  <p className="text-[15px] font-black text-[#0A1E24]">{pkg.type}</p>
-                  <p className="mt-1 text-[12px] font-bold text-[#5E8E90]">{pkg.use}</p>
+                  className="overflow-hidden rounded-2xl border border-[#D8E5E7] bg-white shadow-[0_6px_18px_rgba(36,72,82,0.05)]">
+                  <div className="h-1.5 bg-gradient-to-r from-[#285F67] to-[#5DC8BE]" />
+                  <div className="p-5">
+                  <p className="text-[15px] font-bold text-[#0A1E24]">{pkg.type}</p>
+                  <p className="mt-1 text-[12px] font-medium text-[#5E8E90]">{pkg.use}</p>
                   <div className="mt-4 space-y-2 text-[13px]">
                     <div className="flex gap-2">
-                      <span className="shrink-0 font-black text-[#8A9EA2]">항목</span>
+                      <span className="shrink-0 font-semibold text-[#8A9EA2]">항목</span>
                       <span className="text-[#4F656A]">{pkg.items}</span>
                     </div>
                     <div className="flex gap-2">
-                      <span className="shrink-0 font-black text-[#8A9EA2]">납기</span>
-                      <span className="font-bold text-[#285F67]">{pkg.days}</span>
+                      <span className="shrink-0 font-semibold text-[#8A9EA2]">납기</span>
+                      <span className="font-semibold text-[#285F67]">{pkg.days}</span>
                     </div>
                     <div className="flex gap-2">
-                      <span className="shrink-0 font-black text-[#8A9EA2]">시료</span>
+                      <span className="shrink-0 font-semibold text-[#8A9EA2]">시료</span>
                       <span className="text-[#4F656A]">{pkg.sample}</span>
                     </div>
                   </div>
-                  <p className="mt-4 text-xl font-black text-[#285F67]">{pkg.price} <span className="text-xs font-bold text-[#8A9EA2]">+ VAT</span></p>
+                  <p className="mt-4 text-xl font-black text-[#285F67]">{pkg.price} <span className="text-xs font-medium text-[#8A9EA2]">+ VAT</span></p>
+                  </div>
                 </div>
               ))}
             </div>
