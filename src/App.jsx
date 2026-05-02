@@ -615,6 +615,38 @@ function HomePage() {
         </div>
       </section>
 
+      {/* 실험실 사진 갤러리 */}
+      <section className="bg-[#0A1E24] py-14">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="mb-8">
+            <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5DC8BE]">Our Laboratory</p>
+            <h2 className="text-[clamp(1.4rem,2.4vw,2rem)] font-black leading-[1.1] tracking-[-0.045em] text-white">
+              첨단 분석장비를 직접 확인하세요
+            </h2>
+            <p className="mt-3 text-[14px] leading-7 text-[#7FC8CC]">
+              ICP-MS, LC-MS/MS, GC-MS, HPLC 등 정밀 분석 장비와 숙련된 연구인력이 검사 전 과정을 직접 수행합니다.
+            </p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { src: "/lab-01.jpg", alt: "와이에스 분석실 전경", label: "분석실 전경" },
+              { src: "/lab-04.jpg", alt: "정밀 분석장비",        label: "정밀 분석장비" },
+              { src: "/lab-02.jpg", alt: "연구원 시료 분석",     label: "시료 분석 작업" },
+              { src: "/lab-03.jpg", alt: "연구원 시료 전처리",   label: "시료 전처리" },
+            ].map((item) => (
+              <div key={item.src} className="group overflow-hidden rounded-2xl">
+                <div className="relative overflow-hidden">
+                  <img src={item.src} alt={item.alt}
+                    className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <p className="absolute bottom-3 left-4 text-[13px] font-black text-white">{item.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 인정서 + 품질근거 */}
       <section id="proof" className="bg-[#F5F8F8] py-20">
         <div className="mx-auto max-w-7xl px-5">
