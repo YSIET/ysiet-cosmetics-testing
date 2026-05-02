@@ -74,12 +74,12 @@ const certificateFacts = [
 ];
 
 const compareRows = [
-  { label: "식약처 지정 위탁검사기관",           other: "일부만 해당" },
-  { label: "KOLAS 국제공인 (ISO/IEC 17025)",   other: "대부분 미보유" },
-  { label: "연세대 연구 기반 분석 인력",          other: "해당 없음" },
-  { label: "납기 일정 사전 상담 (7일/긴급 3일)", other: "일정 협의 불투명" },
-  { label: "검사항목 전담 안내 (항목 몰라도 OK)", other: "셀프 확인 필요" },
-  { label: "법정 자가품질 위탁 요건 대응",        other: "기관에 따라 상이" },
+  { label: "식약처 지정 위탁검사기관",                        other: "일부만 해당",      highlight: false },
+  { label: "KOLAS 국제공인 (ISO/IEC 17025)",              other: "대부분 미보유",    highlight: false },
+  { label: "연세대 교원창업 — 석·박사 연구인력 직접 분석",      other: "19개 중 유일",    highlight: true  },
+  { label: "납기 일정 사전 상담 (일반 7일 / 긴급 3일 상담)", other: "일정 협의 불투명", highlight: false },
+  { label: "검사항목 전담 안내 (항목 몰라도 OK)",             other: "셀프 확인 필요",  highlight: false },
+  { label: "법정 자가품질 위탁 요건 대응",                    other: "기관에 따라 상이", highlight: false },
 ];
 
 const qualityProofs = [
@@ -284,6 +284,7 @@ function HomePage() {
 
             {/* 좌: 헤드라인 */}
             <div>
+              {/* 상단 배지 */}
               <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#5DC8BE]/30 bg-[#5DC8BE]/10 px-4 py-2">
                 <ShieldCheck className="h-4 w-4 text-[#5DC8BE]" />
                 <span className="text-[13px] font-black text-[#5DC8BE]">
@@ -291,6 +292,7 @@ function HomePage() {
                 </span>
               </div>
 
+              {/* 메인 헤드라인 */}
               <h1 className="max-w-[640px] text-[clamp(2rem,3.8vw,3.2rem)] font-black leading-[1.08] tracking-[-0.055em] text-white">
                 성적서 납기,<br />
                 <span className="text-[#5DC8BE]">놓치면 납품이 밀립니다.</span><br />
@@ -304,10 +306,25 @@ function HomePage() {
                 필요한 항목과 가능 일정을 전담 안내합니다.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              {/* 연세대 차별점 강조 블록 */}
+              <div className="mt-7 flex items-start gap-4 rounded-2xl border border-[#FEE500]/20 bg-[#FEE500]/8 p-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-[#FEE500]/40 bg-white">
+                  <img src={YONSEI_LOGO} alt="연세대학교" className="h-12 w-12 rounded-full object-cover" />
+                </div>
+                <div>
+                  <p className="text-[13px] font-black text-[#FEE500]">연세대학교 교원창업기업 — 19개 기관 중 유일</p>
+                  <p className="mt-1 text-[12px] leading-5 font-bold text-[#C8A800]">
+                    대학 연구 기반 분석 인력이 직접 검사합니다.
+                    단순 접수·외주가 아닌, 석·박사 연구자가 결과를 책임집니다.
+                  </p>
+                </div>
+              </div>
+
+              {/* 핵심 수치 */}
+              <div className="mt-6 flex flex-wrap gap-3">
                 {[
-                  { val: "7일",          label: "일반 의뢰 기준 납기" },
-                  { val: "3일",          label: "긴급 의뢰 상담 가능" },
+                  { val: "7일",           label: "일반 의뢰 기준 납기" },
+                  { val: "3일",           label: "긴급 의뢰 상담 가능" },
                   { val: "19개 중 제18호", label: "식약처 지정기관" },
                 ].map((s) => (
                   <div key={s.val}
@@ -318,20 +335,20 @@ function HomePage() {
                 ))}
               </div>
 
-              <div className="mt-7 flex flex-wrap gap-3">
+              {/* 신뢰 로고 — 식약처 + KOLAS (연세대는 위에서 강조했으므로 제외) */}
+              <div className="mt-6 flex flex-wrap gap-3">
                 {[
-                  { logo: MFDS_LOGO,   label: "식약처 지정 제18호",  sub: "화장품 시험검사기관",      type: "sq" },
-                  { logo: KOLAS_LOGO,  label: "KOLAS 제364호",      sub: "ISO/IEC 17025 국제공인", type: "wide" },
-                  { logo: YONSEI_LOGO, label: "연세대 교원창업",      sub: "연구 기반 분석 서비스",   type: "circle" },
+                  { logo: MFDS_LOGO,  label: "식약처 지정 제18호", sub: "화장품 시험검사기관",      type: "sq" },
+                  { logo: KOLAS_LOGO, label: "KOLAS 제364호",     sub: "ISO/IEC 17025 국제공인", type: "wide" },
                 ].map((item) => (
                   <div key={item.label}
                     className="flex items-center gap-3 rounded-xl border border-white/12 bg-white/8 px-4 py-3 backdrop-blur-sm">
                     <div className={cx(
                       "flex shrink-0 items-center justify-center border border-white/20 bg-white",
-                      item.type === "circle" ? "h-9 w-9 rounded-full" : item.type === "wide" ? "h-9 w-14 rounded-lg" : "h-9 w-9 rounded-lg"
+                      item.type === "wide" ? "h-9 w-14 rounded-lg" : "h-9 w-9 rounded-lg"
                     )}>
                       <img src={item.logo} alt={item.label}
-                        className={cx("object-contain", item.type === "circle" ? "h-9 w-9 rounded-full object-cover" : item.type === "wide" ? "h-7 w-12" : "h-7 w-7")} />
+                        className={cx("object-contain", item.type === "wide" ? "h-7 w-12" : "h-7 w-7")} />
                     </div>
                     <div>
                       <p className="text-[13px] font-black text-white">{item.label}</p>
@@ -340,6 +357,24 @@ function HomePage() {
                   </div>
                 ))}
               </div>
+
+              {/* 사회적 증거 플레이스홀더 — 숫자 나중에 채울 자리 */}
+              {/* TODO: 실적 데이터 확보 후 아래 주석 해제
+              <div className="mt-6 flex flex-wrap gap-4 rounded-2xl border border-white/10 bg-white/6 px-5 py-4">
+                <div className="text-center">
+                  <p className="text-2xl font-black text-white">X,XXX<span className="text-base">건+</span></p>
+                  <p className="mt-1 text-[11px] font-bold text-[#7FC8CC]">누적 의뢰건수</p>
+                </div>
+                <div className="border-l border-white/15 pl-4 text-center">
+                  <p className="text-2xl font-black text-white">XXX<span className="text-base">개사+</span></p>
+                  <p className="mt-1 text-[11px] font-bold text-[#7FC8CC]">거래 브랜드</p>
+                </div>
+                <div className="border-l border-white/15 pl-4 text-center">
+                  <p className="text-2xl font-black text-white">XX<span className="text-base">년</span></p>
+                  <p className="mt-1 text-[11px] font-bold text-[#7FC8CC]">분석 경력</p>
+                </div>
+              </div>
+              -->
 
               <div className="mt-6 flex flex-wrap gap-4">
                 <a href={CERTIFICATE_PDF} target="_blank" rel="noreferrer"
@@ -448,15 +483,27 @@ function HomePage() {
             </div>
             {compareRows.map((row, i) => (
               <div key={row.label}
-                className={cx("grid grid-cols-[1fr_130px_170px] items-center border-t border-[#EEF3F3] px-6 py-4",
-                  i % 2 === 0 ? "bg-white" : "bg-[#FAFCFC]")}>
-                <p className="font-bold text-[#4F656A]">{row.label}</p>
+                className={cx(
+                  "grid grid-cols-[1fr_130px_170px] items-center border-t px-6 py-4",
+                  row.highlight
+                    ? "border-[#FEE500]/30 bg-[#FFFBEA]"
+                    : i % 2 === 0 ? "border-[#EEF3F3] bg-white" : "border-[#EEF3F3] bg-[#FAFCFC]"
+                )}>
+                <p className={cx("font-bold", row.highlight ? "text-[#7A6000]" : "text-[#4F656A]")}>
+                  {row.highlight && <span className="mr-2 inline-block rounded-full bg-[#FEE500] px-2 py-0.5 text-[10px] font-black text-[#7A6000]">유일</span>}
+                  {row.label}
+                </p>
                 <div className="flex justify-center">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-[#E8F5F4] px-3 py-1.5 text-xs font-black text-[#285F67]">
+                  <span className={cx(
+                    "inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-black",
+                    row.highlight ? "bg-[#FEE500] text-[#7A6000]" : "bg-[#E8F5F4] text-[#285F67]"
+                  )}>
                     <CheckCircle2 className="h-3.5 w-3.5" /> 보유
                   </span>
                 </div>
-                <p className="text-center text-sm font-bold text-[#A0B0B4]">{row.other}</p>
+                <p className={cx("text-center text-sm font-bold", row.highlight ? "text-[#B89000]" : "text-[#A0B0B4]")}>
+                  {row.other}
+                </p>
               </div>
             ))}
           </div>
