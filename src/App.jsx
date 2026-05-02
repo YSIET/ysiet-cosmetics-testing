@@ -55,7 +55,7 @@ const faqs = [
   ["검사항목을 몰라도 문의할 수 있나요?",
    "가능합니다. 제품 유형, 제형, 제출처, 희망 납기를 알려주시면 우선 확인해야 할 항목과 준비사항을 안내드립니다."],
   ["성적서 발급까지 얼마나 걸리나요?",
-   "일반 의뢰는 통상 7일 기준으로 안내되며, 긴급 의뢰는 3일 기준으로 상담 가능합니다. 단, 시험 일정과 항목에 따라 가능 여부가 달라질 수 있습니다."],
+   "일반 의뢰는 접수 완료 기준 5영업일 이내, 긴급 의뢰는 3영업일 기준으로 협의 가능합니다. 단, 시험 항목과 일정에 따라 달라질 수 있으며, 접수 시 예상 일정을 먼저 안내드립니다."],
   ["자가품질 위탁검사는 왜 필요한가요?",
    "화장품책임판매업자는 제조번호별 품질검사를 마친 후 제품을 유통해야 하며, 자체 시설이 없는 경우 식약처 지정 시험·검사기관 위탁으로 법적 요건을 충족할 수 있습니다."],
   ["납품이나 입점 일정이 촉박해도 상담 가능한가요?",
@@ -77,7 +77,7 @@ const compareRows = [
   { label: "식약처 지정 위탁검사기관",                        other: "일부만 해당",      highlight: false },
   { label: "KOLAS 국제공인 (ISO/IEC 17025)",              other: "대부분 미보유",    highlight: false },
   { label: "연세대 교원창업 — 석·박사 연구인력 직접 분석",      other: "19개 중 유일",    highlight: true  },
-  { label: "납기 일정 사전 상담 (일반 7일 / 긴급 3일 상담)", other: "일정 협의 불투명", highlight: false },
+  { label: "납기 확약 (일반 5영업일 / 긴급 3영업일 협의)", other: "일정 협의 불투명", highlight: false },
   { label: "검사항목 전담 안내 (항목 몰라도 OK)",             other: "셀프 확인 필요",  highlight: false },
   { label: "법정 자가품질 위탁 요건 대응",                    other: "기관에 따라 상이", highlight: false },
 ];
@@ -323,8 +323,8 @@ function HomePage() {
               {/* 핵심 수치 */}
               <div className="mt-6 flex flex-wrap gap-3">
                 {[
-                  { val: "7일",           label: "일반 의뢰 기준 납기" },
-                  { val: "3일",           label: "긴급 의뢰 상담 가능" },
+                  { val: "5영업일",       label: "일반 의뢰 기준 납기" },
+                  { val: "3영업일",       label: "긴급 의뢰 (협의)" },
                   { val: "19개 중 제18호", label: "식약처 지정기관" },
                 ].map((s) => (
                   <div key={s.val}
@@ -422,14 +422,16 @@ function HomePage() {
                   <Clock className="h-4 w-4 text-[#7FC8CC]" />
                   <div>
                     <p className="text-[10px] font-black text-[#7FC8CC]">일반 의뢰</p>
-                    <p className="text-lg font-black text-white">통상 7일</p>
+                    <p className="text-lg font-black text-white">5영업일</p>
+                    <p className="text-[9px] font-bold text-[#5A9EA4]">접수 완료 기준</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 border-l border-white/15 pl-4">
                   <Zap className="h-4 w-4 text-[#5DC8BE]" />
                   <div>
                     <p className="text-[10px] font-black text-[#7FC8CC]">긴급 의뢰</p>
-                    <p className="text-lg font-black text-[#5DC8BE]">3일 상담</p>
+                    <p className="text-lg font-black text-[#5DC8BE]">3영업일</p>
+                    <p className="text-[9px] font-bold text-[#5A9EA4]">일정 협의 후 확정</p>
                   </div>
                 </div>
               </div>
@@ -504,6 +506,17 @@ function HomePage() {
             ))}
           </div>
 
+          <div className="mb-12 flex items-center gap-3 rounded-xl border border-[#D8E5E7] bg-[#F8FBFB] px-5 py-4">
+            <ShieldCheck className="h-5 w-5 shrink-0 text-[#4F888B]" />
+            <p className="text-[13px] leading-6 text-[#60767B]">
+              위 비교는 식약처 지정 기관 공통 요건과 와이에스 보유 역량을 기준으로 정리한 내용입니다.
+              <a href="https://www.mfds.go.kr/brd/m_218/list.do" target="_blank" rel="noreferrer"
+                className="ml-1 font-black text-[#285F67] underline underline-offset-4">
+                식약처 공식 지정기관 목록에서 직접 비교해보세요 →
+              </a>
+            </p>
+          </div>
+
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {[
               { Icon: Zap,        title: "검사항목 몰라도 OK",     desc: "제품명·제형·납기만 알려주시면 필요한 항목과 준비사항을 전담 안내해드립니다." },
@@ -537,11 +550,11 @@ function HomePage() {
             {[
               {
                 text: "처음 의뢰해보는 거라 걱정했는데 생각보다 진행이 잘 됐습니다. 문의드렸을 때 설명도 친절했고, 필요한 내용도 정리해서 알려주셔서 준비하는 데 도움이 됐습니다. 결과 안내도 그냥 형식적인 느낌이 아니라 실제로 참고할 수 있게 설명해주셔서 괜찮았습니다.",
-                label: "화장품 브랜드 담당자",
+                label: "K사 품질관리팀 · 스킨케어 브랜드",
               },
               {
                 text: "출시 전에 품질검사 때문에 신경 쓸 게 많았는데, 와이에스 쪽에서 응대가 빨라서 도움이 됐습니다. 중간에 확인할 부분도 잘 안내해주셨고, 전체적으로 소통이 괜찮았습니다. 너무 과장해서 좋다고 하기보다는, 실무적으로 맡기기에 무난하고 믿을 만한 곳이라는 느낌이었습니다.",
-                label: "화장품 제조사 담당자",
+                label: "J사 제품기획팀 · OEM 제조사",
               },
             ].map((r) => (
               <div key={r.label}
@@ -735,6 +748,64 @@ function HomePage() {
               </div>
             ))}
           </div>
+
+          {/* 패키지 견적 예시 */}
+          <div className="mt-8 mb-8">
+            <p className="mb-4 text-[15px] font-black text-[#0A1E24]">제품 유형별 예상 비용 · 일정 예시</p>
+            <div className="grid gap-4 md:grid-cols-3">
+              {[
+                {
+                  type: "크림 · 로션 1종",
+                  use: "자가품질 / 납품용",
+                  items: "유통화장품 안전관리기준 전 항목 (미생물 제외)",
+                  price: "약 325,000원",
+                  days: "접수 완료 기준 5영업일 이내",
+                  sample: "완제품 3개 이상",
+                },
+                {
+                  type: "기능성 미백 크림",
+                  use: "자가품질 + 기능성 확인",
+                  items: "안전관리기준 전 항목 + 미백 성분 단일항목",
+                  price: "약 365,000원",
+                  days: "접수 완료 기준 5영업일 이내",
+                  sample: "완제품 3개 이상",
+                },
+                {
+                  type: "선크림",
+                  use: "자가품질 + 자외선차단",
+                  items: "안전관리기준 전 항목 + 자외선차단 성분",
+                  price: "약 365,000원",
+                  days: "접수 완료 기준 5영업일 이내",
+                  sample: "완제품 3개 이상",
+                },
+              ].map((pkg) => (
+                <div key={pkg.type}
+                  className="rounded-2xl border border-[#D8E5E7] bg-white p-5 shadow-[0_6px_18px_rgba(36,72,82,0.05)]">
+                  <p className="text-[15px] font-black text-[#0A1E24]">{pkg.type}</p>
+                  <p className="mt-1 text-[12px] font-bold text-[#5E8E90]">{pkg.use}</p>
+                  <div className="mt-4 space-y-2 text-[13px]">
+                    <div className="flex gap-2">
+                      <span className="shrink-0 font-black text-[#8A9EA2]">항목</span>
+                      <span className="text-[#4F656A]">{pkg.items}</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <span className="shrink-0 font-black text-[#8A9EA2]">납기</span>
+                      <span className="font-bold text-[#285F67]">{pkg.days}</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <span className="shrink-0 font-black text-[#8A9EA2]">시료</span>
+                      <span className="text-[#4F656A]">{pkg.sample}</span>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-xl font-black text-[#285F67]">{pkg.price} <span className="text-xs font-bold text-[#8A9EA2]">+ VAT</span></p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-[12px] font-bold text-[#8A9EA2]">
+              * 위 금액은 대표적인 의뢰 유형 기준 참고 가격이며, 제품 유형·시험항목·긴급 여부에 따라 달라질 수 있습니다.
+            </p>
+          </div>
+
           <div className="mt-8 rounded-2xl bg-[#0A1E24] p-6 md:flex md:items-center md:justify-between">
             <div>
               <p className="text-lg font-black text-white">비용보다 제품명과 납기를 먼저 알려주세요</p>
@@ -772,6 +843,36 @@ function HomePage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+
+          {/* 시료 준비 가이드 */}
+          <div className="mb-14 rounded-2xl border border-[#D8E5E7] bg-white p-6 shadow-[0_8px_28px_rgba(36,72,82,0.06)]">
+            <p className="mb-5 text-[15px] font-black text-[#0A1E24]">처음 의뢰하시는 분을 위한 시료 준비 가이드</p>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                { type: "크림 · 로션류",   amount: "완제품 3개 이상", note: "30g 이상 / 개당" },
+                { type: "토너 · 에센스류", amount: "완제품 3개 이상", note: "50mL 이상 / 개당" },
+                { type: "선크림",          amount: "완제품 3개 이상", note: "30g 이상 / 개당" },
+                { type: "원료 · 벌크",     amount: "50g 또는 50mL 이상", note: "별도 협의 가능" },
+              ].map((s) => (
+                <div key={s.type} className="rounded-xl bg-[#F5F8F8] px-4 py-4">
+                  <p className="text-[14px] font-black text-[#263F46]">{s.type}</p>
+                  <p className="mt-2 text-[13px] font-bold text-[#285F67]">{s.amount}</p>
+                  <p className="mt-0.5 text-[12px] font-bold text-[#8A9EA2]">{s.note}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 rounded-xl border border-[#E8EFF0] bg-[#FAFCFC] p-4">
+              <p className="text-[13px] leading-6 text-[#60767B]">
+                <span className="font-black text-[#4F888B]">발송 주소</span> — 서울시 종로구 인사동5길 42 종로빌딩 10층 시료접수 담당자 앞
+              </p>
+              <p className="mt-1 text-[13px] leading-6 text-[#60767B]">
+                <span className="font-black text-[#4F888B]">입금 계좌</span> — 우리은행 1005-504-148745 (주)와이에스환경기술연구원
+              </p>
+              <p className="mt-1 text-[12px] font-bold text-[#8A9EA2]">
+                * 정확한 시료 용량과 개수는 제품 유형·검사 항목에 따라 달라질 수 있습니다. 문의 시 안내드립니다.
+              </p>
             </div>
           </div>
 
