@@ -74,12 +74,12 @@ const certificateFacts = [
 ];
 
 const compareRows = [
-  { label: "식약처 지정 위탁검사기관",                        other: "일부만 해당",      highlight: false },
-  { label: "KOLAS 국제공인 (ISO/IEC 17025)",              other: "대부분 미보유",    highlight: false },
-  { label: "연세대 교원창업 — 석·박사 연구인력 직접 분석",      other: "19개 중 유일",    highlight: true  },
-  { label: "납기 확약 (일반 5영업일 / 긴급 3영업일 협의)", other: "일정 협의 불투명", highlight: false },
-  { label: "검사항목 전담 안내 (항목 몰라도 OK)",             other: "셀프 확인 필요",  highlight: false },
-  { label: "법정 자가품질 위탁 요건 대응",                    other: "기관에 따라 상이", highlight: false },
+  { label: "식약처 지정 위탁검사기관",                        other: "기관에 따라 상이",  highlight: false },
+  { label: "KOLAS 국제공인 (ISO/IEC 17025)",              other: "기관에 따라 상이",  highlight: false },
+  { label: "연세대 교원창업 — 석·박사 연구인력 직접 분석",      other: "해당 기관 없음",   highlight: true  },
+  { label: "납기 확약 (일반 5영업일 / 긴급 3영업일 협의)", other: "기관에 따라 상이",  highlight: false },
+  { label: "검사항목 전담 안내 (항목 몰라도 OK)",             other: "기관에 따라 상이",  highlight: false },
+  { label: "법정 자가품질 위탁 요건 대응",                    other: "기관에 따라 상이",  highlight: false },
 ];
 
 const qualityProofs = [
@@ -614,6 +614,113 @@ function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 기존 기관 전환 고객 섹션 */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-5">
+
+          <div className="mb-10">
+            <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#B8860B]">Switching?</p>
+            <h2 className="text-[clamp(1.5rem,2.6vw,2.2rem)] font-black leading-[1.1] tracking-[-0.048em] text-[#0A1E24]">
+              기존 검사기관에서 전환을 고려 중이신가요?
+            </h2>
+            <p className="mt-4 max-w-2xl text-[15px] leading-8 text-[#60767B]">
+              거래 중인 기관이 있어도 이런 불편을 느꼈다면, 비교해볼 가치가 있습니다.
+            </p>
+          </div>
+
+          {/* Pain Point → YS 대비 */}
+          <div className="mb-10 grid gap-4 md:grid-cols-2">
+            {[
+              {
+                pain: "진행 상황을 매번 물어봐야 안다",
+                ys: "접수·분석·발급 단계별 이메일 안내",
+                icon: "📞",
+              },
+              {
+                pain: "담당자가 자주 바뀌어 매번 처음부터 설명한다",
+                ys: "전담 담당자 고정 배정, 이력 기반 응대",
+                icon: "🔄",
+              },
+              {
+                pain: "긴급 요청 시 추가 비용이 불투명하다",
+                ys: "긴급 수수료 사전 고지, 접수 전 확정",
+                icon: "💰",
+              },
+              {
+                pain: "성적서 재발행·수정 요청 시 응대가 느리다",
+                ys: "성적서 관련 요청은 담당자 직통으로 당일 확인",
+                icon: "📄",
+              },
+            ].map((item) => (
+              <div key={item.pain}
+                className="overflow-hidden rounded-2xl border border-[#D8E5E7]">
+                <div className="flex items-start gap-3 bg-[#FFF8F8] px-5 py-4">
+                  <span className="mt-0.5 text-lg">{item.icon}</span>
+                  <div>
+                    <p className="text-[12px] font-semibold text-[#C0392B]">기존 기관에서 흔한 불편</p>
+                    <p className="mt-1 text-[14px] font-semibold leading-6 text-[#7A3B3B]">{item.pain}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 bg-[#F5FBF9] px-5 py-4">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#285F67]" />
+                  <div>
+                    <p className="text-[12px] font-semibold text-[#285F67]">와이에스는 이렇게 합니다</p>
+                    <p className="mt-1 text-[14px] font-semibold leading-6 text-[#1C3038]">{item.ys}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* 전환 고객 후기 */}
+          <div className="mb-10 rounded-2xl border-2 border-[#FEE500]/40 bg-[#FFFDF5] p-7">
+            <div className="mb-4 flex items-center gap-2">
+              <span className="rounded-full bg-[#FEE500] px-3 py-1 text-[11px] font-black text-[#7A6000]">전환 고객</span>
+              <span className="text-[13px] font-semibold text-[#B89000]">기존 기관에서 옮겨온 고객의 이야기</span>
+            </div>
+            <p className="text-[15px] leading-8 text-[#4F656A]">
+              "이전 기관은 성적서가 나오기 전까지 중간 진행 상황을 알 수가 없어서, 납품 일정이 빠듯할 때마다 불안했습니다.
+              와이에스로 옮기고 나서는 접수 후 단계별로 안내가 와서 따로 확인 전화를 하지 않아도 됩니다.
+              담당자가 바뀌지 않아서 매번 설명을 반복할 필요도 없어졌고요.
+              전환 과정 자체도 위탁계약 체결부터 항목 매칭까지 같이 정리해줘서 부담이 적었습니다."
+            </p>
+            <p className="mt-4 text-[13px] font-bold text-[#5E8E90]">M사 품질관리팀 · 기능성 화장품 제조사 · 전환 6개월차</p>
+          </div>
+
+          {/* 전환 혜택 */}
+          <div className="rounded-2xl bg-[#0A1E24] p-7 md:p-10">
+            <p className="mb-2 text-[11px] font-black uppercase tracking-[0.24em] text-[#5DC8BE]">Switching Benefits</p>
+            <h3 className="text-xl font-black tracking-[-0.04em] text-white">
+              전환 시 지원하는 것들
+            </h3>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { title: "위탁계약 체결 지원", desc: "기존 계약 종료 후 신규 위탁계약 체결까지 실무 절차를 안내합니다." },
+                { title: "기존 항목 매칭 확인", desc: "기존 기관에서 의뢰하던 항목을 확인하고 동일 범위로 매칭합니다." },
+                { title: "시범 검사 1회 제공", desc: "전환 전 실제 검사 결과를 비교할 수 있도록 시범 검사 1회를 지원합니다." },
+                { title: "전담 담당자 즉시 배정", desc: "전환 첫 의뢰부터 전담 담당자가 배정되어 이전 기관과의 차이를 최소화합니다." },
+              ].map((b) => (
+                <div key={b.title}
+                  className="rounded-xl border border-white/12 bg-white/8 p-5">
+                  <p className="text-[14px] font-bold text-white">{b.title}</p>
+                  <p className="mt-2 text-[13px] leading-6 text-[#8BBFC4]">{b.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a href={KAKAO_URL} target="_blank" rel="noreferrer"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-[#FEE500] px-6 font-bold text-[#2D2926] transition hover:bg-[#F6D600]">
+                <MessageCircle className="h-4 w-4" /> 전환 상담 문의하기
+              </a>
+              <a href="tel:02-312-0540"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 font-bold text-white transition hover:bg-white/15">
+                <Phone className="h-4 w-4" /> 02-312-0540
+              </a>
+            </div>
           </div>
         </div>
       </section>
