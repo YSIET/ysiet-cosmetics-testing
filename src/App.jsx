@@ -9,6 +9,7 @@ import {
   HelpCircle,
   Mail,
   MapPin,
+  Menu,
   MessageCircle,
   Microscope,
   Phone,
@@ -17,6 +18,7 @@ import {
   UserCheck,
   Award,
   Star,
+  X,
   Zap,
   AlertTriangle,
   Clock,
@@ -138,11 +140,20 @@ function FamilySiteSelect() {
 
 function Header({ showKakao = false }) {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  const navLinks = [
+    ["/#why", "선택이유"],
+    ["/#proof", "품질근거"],
+    ["/#fees", "수수료"],
+    ["/#contact", "문의"],
+    ["/about", "기관소개"],
+  ];
 
   return (
     <header className={cx(
@@ -167,7 +178,7 @@ function Header({ showKakao = false }) {
         </a>
 
         <nav className="hidden items-center gap-6 text-sm font-bold xl:flex">
-          {[["/#why","선택이유"],["/#proof","품질근거"],["/#fees","수수료"],["/#contact","문의"],["/about","기관소개"]].map(([href,label]) => (
+          {navLinks.map(([href, label]) => (
             <a key={label} href={href}
               className={cx("transition hover:text-[#285F67]", scrolled ? "text-[#60767B]" : "text-white/80 hover:text-white")}>
               {label}
@@ -183,11 +194,54 @@ function Header({ showKakao = false }) {
             </a>
           )}
           <a href="/#contact"
-            className="inline-flex h-10 items-center justify-center rounded-full bg-[#285F67] px-5 text-sm font-black text-white shadow-[0_4px_14px_rgba(40,95,103,0.30)] transition hover:bg-[#1C4D54]">
+            className="hidden sm:inline-flex h-10 items-center justify-center rounded-full bg-[#285F67] px-5 text-sm font-black text-white shadow-[0_4px_14px_rgba(40,95,103,0.30)] transition hover:bg-[#1C4D54]">
             납기 확인
           </a>
+          {/* 모바일 햄버거 */}
+          <button onClick={() => setMobileOpen(!mobileOpen)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl xl:hidden"
+            aria-label="메뉴">
+            {mobileOpen
+              ? <X className={cx("h-6 w-6 transition-colors", scrolled ? "text-[#263F46]" : "text-white")} />
+              : <Menu className={cx("h-6 w-6 transition-colors", scrolled ? "text-[#263F46]" : "text-white")} />
+            }
+          </button>
         </div>
       </div>
+
+      {/* 모바일 내비게이션 드롭다운 */}
+      {mobileOpen && (
+        <div className={cx(
+          "border-t px-5 pb-5 pt-3 xl:hidden",
+          scrolled ? "border-[#D8E5E7] bg-white" : "border-white/10 bg-[#0A1E24]"
+        )}>
+          <div className="flex flex-col gap-1">
+            {navLinks.map(([href, label]) => (
+              <a key={label} href={href}
+                onClick={() => setMobileOpen(false)}
+                className={cx(
+                  "rounded-xl px-4 py-3 text-[15px] font-bold transition",
+                  scrolled
+                    ? "text-[#4F656A] hover:bg-[#F5F8F8]"
+                    : "text-white/80 hover:bg-white/10"
+                )}>
+                {label}
+              </a>
+            ))}
+          </div>
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            <a href={KAKAO_URL} target="_blank" rel="noreferrer"
+              className="flex h-11 items-center justify-center gap-1.5 rounded-xl bg-[#FEE500] text-sm font-bold text-[#2D2926]">
+              <MessageCircle className="h-4 w-4" /> 카카오
+            </a>
+            <a href="/#contact"
+              onClick={() => setMobileOpen(false)}
+              className="flex h-11 items-center justify-center gap-1.5 rounded-xl bg-[#285F67] text-sm font-bold text-white">
+              납기 확인
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
@@ -1245,11 +1299,70 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* 실험실 갤러리 */}
       <section className="bg-[#0A1E24] py-14">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="grid gap-8 lg:grid-cols-[1fr_200px] lg:items-center">
-            <div>
-              <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5DC8BE]">Contact</p>
+          <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5DC8BE]">Our Laboratory</p>
+          <h2 className="mb-8 text-[clamp(1.35rem,2.4vw,2rem)] font-black leading-[1.1] tracking-[-0.045em] text-white">분석 시설 전경</h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { src: "/lab-01.jpg", label: "분석실 전경" },
+              { src: "/lab-04.jpg", label: "정밀 분석장비" },
+              { src: "/lab-02.jpg", label: "시료 분석 작업" },
+              { src: "/lab-03.jpg", label: "시료 전처리" },
+            ].map((item) => (
+              <div key={item.src} className="group overflow-hidden rounded-2xl">
+                <div className="relative overflow-hidden">
+                  <img src={item.src} alt={item.label}
+                    className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <p className="absolute bottom-3 left-4 text-[13px] font-bold text-white">{item.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 대표 소개 */}
+      <section className="bg-[#F5F8F8] py-14">
+        <div className="mx-auto max-w-7xl px-5">
+          <div className="overflow-hidden rounded-[28px] border border-[#D8E5E7] bg-white shadow-[0_16px_44px_rgba(36,72,82,0.07)]">
+            <div className="grid lg:grid-cols-[280px_1fr]">
+              <div className="flex items-center justify-center bg-[#EEF5F4] p-8">
+                <div className="overflow-hidden rounded-2xl border-4 border-white shadow-[0_12px_32px_rgba(36,72,82,0.12)]">
+                  <img src="/eom-yujin.png" alt="엄유진 대표" className="h-48 w-40 object-cover object-top" />
+                </div>
+              </div>
+              <div className="p-8 lg:p-10">
+                <p className="mb-2 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Director</p>
+                <h3 className="text-2xl font-black tracking-[-0.04em] text-[#0A1E24]">
+                  엄유진 <span className="text-lg font-bold text-[#5E8E90]">대표이사 · Ph.D.</span>
+                </h3>
+                <p className="mt-1 text-[14px] font-bold text-[#285F67]">
+                  연세대학교 화공생명공학 박사 · ICP-MS / LC-MS/MS 극미량 분석 전문가
+                </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  {[
+                    { val: "17년",  label: "KOLAS 공인 유지" },
+                    { val: "7년차", label: "식약처 지정 운영" },
+                    { val: "AA등급", label: "기보 기술신용평가" },
+                    { val: "2개",   label: "식약처·KOLAS 동시 인증" },
+                  ].map((s) => (
+                    <div key={s.label} className="flex items-center gap-3 rounded-xl bg-[#F5F8F8] px-4 py-3">
+                      <p className="text-lg font-black text-[#285F67]">{s.val}</p>
+                      <p className="text-[13px] font-bold text-[#60767B]">{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="bg-[#0A1E24] py-14">
               <h2 className="text-[clamp(1.35rem,2.8vw,2.35rem)] font-black leading-[1.12] tracking-[-0.05em] text-white">기관 정보를 확인하셨다면 바로 상담하세요</h2>
               <p className="mt-4 text-[15px] leading-8 text-[#7FC8CC]">성적서 용도, 제품명, 제형, 희망 납기를 알려주시면 담당자가 우선 검토 후 안내드립니다.</p>
             </div>
