@@ -73,6 +73,7 @@ const certificateFacts = [
   ["분야",     "화장품"],
   ["품목",     "일반화장품, 기능성화장품"],
   ["유효기간",  "2024. 7. 19. ~ 2028. 7. 18."],
+  ["법적 근거", "화장품법 시행규칙 제12조 5항", "화장품책임판매업자의 자가품질 위탁검사 수행"],
 ];
 
 const compareRows = [
@@ -883,12 +884,18 @@ function HomePage() {
                 </div>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
-                {certificateFacts.map(([label, value]) => (
+                {certificateFacts.map(([label, value, sub]) => (
                   <div key={label} className="rounded-xl bg-[#F5F8F8] px-4 py-4">
                     <p className="text-[10px] font-black uppercase tracking-[0.15em] text-[#5E8E90]">{label}</p>
                     <p className="mt-1.5 text-[13px] font-black leading-6 text-[#263F46]">{value}</p>
+                    {sub ? <p className="mt-1 text-[11px] font-bold leading-[1.65] text-[#60767B]">{sub}</p> : null}
                   </div>
                 ))}
+              </div>
+              <div className="mt-4 rounded-xl border border-[#5DC8BE]/30 bg-[#EAF6F6] px-5 py-4">
+                <p className="text-[13px] font-bold leading-7 text-[#28474E]">
+                  본 기관 발행 시험성적서는 화장품법 시행규칙 제12조 5항에 따른 법정 자가품질 위탁검사 결과서입니다.
+                </p>
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a href={CERTIFICATE_PDF} target="_blank" rel="noreferrer"
@@ -926,6 +933,13 @@ function HomePage() {
             <p className="mt-3 max-w-xl text-[15px] leading-8 text-[#60767B]">
               자주 문의하시는 항목입니다. 최종 견적은 제품 유형·항목·긴급 여부에 따라 안내드립니다.
             </p>
+            <div className="mt-6 flex flex-wrap items-center gap-2 rounded-xl border border-[#D8E5E7] bg-[#F8FBFB] px-5 py-4">
+              <CheckCircle2 className="h-5 w-5 shrink-0 text-[#4F888B]" aria-hidden />
+              <p className="text-[13px] font-bold leading-6 text-[#4F656A]">
+                <span className="font-black text-[#285F67]">✓</span> 품질검사 위탁계약 체결은 무료입니다{" "}
+                <span className="font-semibold text-[#60767B]">(우편 비용 발생 시 실비만 청구)</span>
+              </p>
+            </div>
           </div>
           <div className="hidden overflow-hidden rounded-2xl border border-[#D8E5E7] shadow-[0_8px_28px_rgba(36,72,82,0.06)] md:block">
             <div className="grid grid-cols-[1.5fr_0.65fr_0.65fr] bg-[#EEF5F4] px-6 py-4 text-sm font-black text-[#263F46]">
@@ -1078,6 +1092,51 @@ function HomePage() {
               <p className="mt-1 text-[12px] font-bold text-[#8A9EA2]">
                 * 정확한 시료 용량과 개수는 제품 유형·검사 항목에 따라 달라질 수 있습니다. 문의 시 안내드립니다.
               </p>
+            </div>
+          </div>
+
+          {/* 검사항목별 전담 담당자 */}
+          <div className="mb-14">
+            <div className="mb-8">
+              <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Direct Dial</p>
+              <h3 className="text-[clamp(1.35rem,2.5vw,1.95rem)] font-black leading-[1.15] tracking-[-0.04em] text-[#0A1E24]">
+                검사항목별 전담 담당자 직통
+              </h3>
+              <p className="mt-3 max-w-2xl text-[15px] leading-8 text-[#60767B]">
+                대표번호를 거치지 않고, 분야 담당 연구원과 바로 상담하세요.
+              </p>
+            </div>
+            <div className="grid gap-5 md:grid-cols-2">
+              <div className="group rounded-2xl border border-[#D8E5E7] bg-white p-7 shadow-[0_8px_24px_rgba(36,72,82,0.055)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(40,95,103,0.12)]">
+                <p className="mb-3 inline-block rounded-full bg-[#EEF5F4] px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#285F67]">무기분석</p>
+                <p className="text-lg font-black text-[#263F46]">전석호 수석연구원</p>
+                <p className="mt-3 text-[13px] leading-[1.8] font-semibold text-[#60767B]">
+                  중금속 5종 (납·비소·수은·안티몬·카드뮴·니켈), 디옥산, 메탄올, 포름알데하이드
+                </p>
+                <a href="tel:07043374869"
+                  className="mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#285F67] text-sm font-black text-white shadow-[0_4px_14px_rgba(40,95,103,0.25)] transition hover:bg-[#1C4D54]">
+                  <Phone className="h-4 w-4 shrink-0" /> 070-4337-4869
+                </a>
+                <p className="mt-4 border-t border-[#EEF3F3] pt-4 text-center text-[12px] font-bold leading-6 text-[#8A9EA2]">
+                  어느 담당자인지 모르겠다면 →{" "}
+                  <a href="tel:02-312-0540" className="font-black text-[#285F67] underline-offset-4 hover:underline">대표번호 02-312-0540</a>
+                </p>
+              </div>
+              <div className="group rounded-2xl border border-[#D8E5E7] bg-white p-7 shadow-[0_8px_24px_rgba(36,72,82,0.055)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(40,95,103,0.12)]">
+                <p className="mb-3 inline-block rounded-full bg-[#EEF5F4] px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#285F67]">유기분석</p>
+                <p className="text-lg font-black text-[#263F46]">박미희 책임연구원</p>
+                <p className="mt-3 text-[13px] leading-[1.8] font-semibold text-[#60767B]">
+                  살균·보존제(파라벤 등), 자외선차단 성분, 기능성 주성분(미백/주름개선), 프탈레이트류, 배합금지 성분
+                </p>
+                <a href="tel:07043374830"
+                  className="mt-6 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#285F67] text-sm font-black text-white shadow-[0_4px_14px_rgba(40,95,103,0.25)] transition hover:bg-[#1C4D54]">
+                  <Phone className="h-4 w-4 shrink-0" /> 070-4337-4830
+                </a>
+                <p className="mt-4 border-t border-[#EEF3F3] pt-4 text-center text-[12px] font-bold leading-6 text-[#8A9EA2]">
+                  어느 담당자인지 모르겠다면 →{" "}
+                  <a href="tel:02-312-0540" className="font-black text-[#285F67] underline-offset-4 hover:underline">대표번호 02-312-0540</a>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -1256,12 +1315,18 @@ function AboutPage() {
             </div>
             <div className="rounded-[24px] border border-[#D8E5E7] bg-white p-6 shadow-[0_16px_36px_rgba(36,72,82,0.055)]">
               <div className="grid gap-3 sm:grid-cols-2">
-                {certificateFacts.map(([label, value]) => (
+                {certificateFacts.map(([label, value, sub]) => (
                   <div key={label} className="rounded-xl bg-[#F5F8F8] px-4 py-4">
                     <p className="text-[10px] font-black uppercase tracking-[0.15em] text-[#5E8E90]">{label}</p>
                     <p className="mt-1.5 text-[13px] font-black leading-6 text-[#263F46]">{value}</p>
+                    {sub ? <p className="mt-1 text-[11px] font-bold leading-[1.65] text-[#60767B]">{sub}</p> : null}
                   </div>
                 ))}
+              </div>
+              <div className="mt-4 rounded-xl border border-[#5DC8BE]/30 bg-[#EAF6F6] px-5 py-4">
+                <p className="text-[13px] font-bold leading-7 text-[#28474E]">
+                  본 기관 발행 시험성적서는 화장품법 시행규칙 제12조 5항에 따른 법정 자가품질 위탁검사 결과서입니다.
+                </p>
               </div>
             </div>
           </div>
