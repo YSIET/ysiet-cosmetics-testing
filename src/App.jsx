@@ -299,61 +299,66 @@ function Footer() {
 
 function HomeHeroNew() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#0F2A33] via-[#13353F] to-[#1A4047]">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#F8FCFB] via-[#EAF6F4] to-[#FFFFFF]">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[#1A4E5A] opacity-50 blur-[130px]" />
-        <div className="absolute -right-32 bottom-0 h-[400px] w-[500px] rounded-full bg-[#0E3A42] opacity-60 blur-[100px]" />
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage:"linear-gradient(#5DC8BE 1px,transparent 1px),linear-gradient(90deg,#5DC8BE 1px,transparent 1px)",backgroundSize:"48px 48px"}} />
+        <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[#5DC8BE]/14 blur-[130px]" />
+        <div className="absolute -right-32 bottom-0 h-[400px] w-[500px] rounded-full bg-white/70 blur-[100px]" />
+        <div className="absolute inset-0 opacity-[0.38]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(216,229,231,0.55) 1px,transparent 1px),linear-gradient(90deg,rgba(216,229,231,0.55) 1px,transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
       </div>
       <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-14 lg:pb-18 lg:pt-16">
         <div className="grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-12">
           <div>
-            <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#5DC8BE]/30 bg-[#5DC8BE]/10 px-4 py-2">
-              <ShieldCheck className="h-4 w-4 text-[#5DC8BE]" />
-              <span className="text-[13px] font-black text-[#5DC8BE]">
+            <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#5DC8BE]/40 bg-[#EAF6F4] px-4 py-2">
+              <ShieldCheck className="h-4 w-4 text-[#285F67]" />
+              <span className="text-[13px] font-black text-[#285F67]">
                 식약처 지정 화장품 위탁검사기관 — 전국 19개 중 제18호
               </span>
             </div>
             <h1 className="max-w-[560px] text-[clamp(1.95rem,3.8vw,3rem)] font-black leading-[1.18] tracking-[-0.055em]">
-              <span className="block text-[#5DC8BE]" style={{ wordBreak: "keep-all" }}>검사 항목 몰라도 괜찮습니다.</span>
-              <span className="mt-2 block text-white" style={{ wordBreak: "keep-all" }}>제품명과 납기만 알려주세요.</span>
+              <span className="block text-[#1C4D54]" style={{ wordBreak: "keep-all" }}>검사 항목 몰라도 괜찮습니다.</span>
+              <span className="mt-2 block text-[#0A1E24]" style={{ wordBreak: "keep-all" }}>제품명과 납기만 알려주세요.</span>
             </h1>
-            <p className="mt-6 max-w-lg text-[clamp(0.95rem,1.2vw,1.06rem)] leading-[1.85] text-[#8BBFC4]">
+            <p className="mt-6 max-w-lg text-[clamp(0.95rem,1.2vw,1.06rem)] leading-[1.85] text-[#60767B]">
               전담 연구원이 필요한 시험항목과 가능 일정을 먼저 검토해 안내드립니다.
             </p>
             <div className="mt-8 flex flex-wrap gap-2.5">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/8 px-3 py-2 pr-4 backdrop-blur-sm">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#D8E5E7] bg-white px-3 py-2 pr-4 shadow-sm transition hover:shadow-md">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#D8E5E7] bg-white">
                   <img src={MFDS_LOGO} alt="" className="h-7 w-7 object-contain" /></span>
-                <span className="text-[12px] font-black text-white sm:text-[13px]">식약처 지정 제18호</span>
+                <span className="text-[12px] font-black text-[#263F46] sm:text-[13px]">식약처 지정 제18호</span>
               </span>
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/8 px-3 py-2 pr-4 backdrop-blur-sm">
-                <span className="flex h-8 w-[52px] shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#D8E5E7] bg-white px-3 py-2 pr-4 shadow-sm transition hover:shadow-md">
+                <span className="flex h-8 w-[52px] shrink-0 items-center justify-center rounded-lg border border-[#D8E5E7] bg-white">
                   <img src={KOLAS_LOGO} alt="" className="h-6 w-[44px] object-contain" /></span>
-                <span className="text-[12px] font-black text-white sm:text-[13px]">KOLAS 제364호</span>
+                <span className="text-[12px] font-black text-[#263F46] sm:text-[13px]">KOLAS 제364호</span>
               </span>
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/8 px-3 py-2 pr-4 backdrop-blur-sm">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#FEE500]/35 bg-white">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#D8E5E7] bg-white px-3 py-2 pr-4 shadow-sm transition hover:shadow-md">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#D8E5E7] bg-white">
                   <img src={YONSEI_LOGO} alt="" className="h-full w-full object-cover" /></span>
-                <span className="text-[12px] font-black text-white sm:text-[13px]">연세대 교원창업기업</span>
+                <span className="text-[12px] font-black text-[#263F46] sm:text-[13px]">연세대 교원창업기업</span>
               </span>
             </div>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a href={KAKAO_URL} target="_blank" rel="noreferrer"
-                className="inline-flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-2xl bg-[#FEE500] px-6 py-4 text-[15px] font-black text-[#2D2926] shadow-[0_8px_28px_rgba(254,229,0,0.38)] transition hover:bg-[#F6D600]">
+                className="inline-flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-2xl bg-[#FEE500] px-6 py-4 text-[15px] font-black text-[#2D2926] shadow-lg transition hover:bg-[#F6D600]">
                 💬 카카오 1:1 상담
               </a>
               <a href="tel:02-312-0540"
-                className="inline-flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-2xl border border-white/30 bg-transparent px-6 py-4 text-[15px] font-black text-white shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition hover:bg-white/10">
+                className="inline-flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-2xl border border-[#285F67] bg-white px-6 py-4 text-[15px] font-black text-[#285F67] shadow-sm transition hover:border-[#1C4D54] hover:bg-[#EAF6F4] hover:text-[#1C4D54]">
                 📞 02-312-0540
               </a>
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-white/12 bg-[#0F2630]/45 p-7 shadow-[0_40px_80px_rgba(0,0,0,0.32)] backdrop-blur-md lg:sticky lg:top-28">
-            <p className="mb-2 text-[10px] font-black uppercase tracking-[0.22em] text-[#7FD4CC]">Quick Check</p>
-            <h2 className="text-lg font-black leading-snug tracking-[-0.04em] text-white">문의 시 먼저 확인하는 4가지</h2>
+          <div className="rounded-[28px] border border-[#D8E5E7] bg-white p-7 shadow-xl lg:sticky lg:top-28">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#285F67]">Quick Check</p>
+            <h2 className="text-lg font-bold leading-snug tracking-[-0.04em] text-[#263F46]">문의 시 먼저 확인하는 4가지</h2>
             <div className="mt-4 space-y-2.5">
               {[
                 ["제품명", "정식 제품명 또는 임시 제품명"],
@@ -362,45 +367,45 @@ function HomeHeroNew() {
                 ["희망 납기", "성적서가 필요한 날짜"],
               ].map(([title, desc], i) => (
                 <div key={title}
-                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/8 px-4 py-3">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#285F67] text-xs font-black text-white">{i + 1}</span>
+                  className="flex items-center gap-3 rounded-xl border border-[#D8E5E7] bg-[#F5F8F8] px-4 py-3">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1C4D54] text-xs font-black text-white">{i + 1}</span>
                   <div className="min-w-0">
-                    <span className="block text-sm font-black text-white">{title}</span>
-                    <span className="block text-xs font-bold text-[#7FC8CC] sm:inline sm:font-bold">{desc}</span>
+                    <span className="block text-sm font-semibold text-[#263F46]">{title}</span>
+                    <span className="block text-xs font-semibold leading-relaxed text-[#60767B] sm:inline sm:font-semibold">{desc}</span>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="mt-5 grid grid-cols-2 gap-2 rounded-2xl border border-white/10 bg-white/8 p-4">
+            <div className="mt-5 grid grid-cols-2 gap-2 rounded-2xl border border-[#D8E5E7] bg-white p-4">
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 shrink-0 text-[#7FC8CC]" />
+                <Clock className="h-4 w-4 shrink-0 text-[#5DC8BE]" />
                 <div>
-                  <p className="text-[10px] font-black text-[#7FC8CC]">일반 의뢰</p>
-                  <p className="text-lg font-black text-white">5영업일</p>
-                  <p className="text-[9px] font-bold text-[#5A9EA4]">접수 완료 기준</p>
+                  <p className="text-xs font-semibold text-[#60767B]">일반 의뢰</p>
+                  <p className="text-lg font-bold text-[#1C4D54]">5영업일</p>
+                  <p className="text-[9px] font-semibold leading-tight text-[#60767B]">접수 완료 기준</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 border-l border-white/15 pl-3">
+              <div className="flex items-center gap-2 border-l border-[#D8E5E7] pl-3">
                 <Zap className="h-4 w-4 shrink-0 text-[#5DC8BE]" />
                 <div>
-                  <p className="text-[10px] font-black text-[#7FC8CC]">긴급 의뢰</p>
-                  <p className="text-lg font-black text-[#5DC8BE]">3영업일</p>
-                  <p className="text-[9px] font-bold text-[#5A9EA4]">일정 협의 후 확정</p>
+                  <p className="text-xs font-semibold text-[#60767B]">긴급 의뢰</p>
+                  <p className="text-lg font-bold text-[#1C4D54]">3영업일</p>
+                  <p className="text-[9px] font-semibold leading-tight text-[#60767B]">일정 협의 후 확정</p>
                 </div>
               </div>
             </div>
             <div className="mt-5 space-y-2.5">
               <a href={KAKAO_URL} target="_blank" rel="noreferrer"
-                className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-[#FEE500] font-black text-[#2D2926] shadow-[0_8px_24px_rgba(254,229,0,0.35)] transition hover:bg-[#F6D600]">
+                className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-[#FEE500] font-black text-[#2D2926] shadow-lg transition hover:bg-[#F6D600]">
                 <MessageCircle className="h-5 w-5" />💬 카카오톡으로 납기 확인하기 <ArrowRight className="h-4 w-4 shrink-0" />
               </a>
               <div className="grid grid-cols-2 gap-2">
                 <a href="tel:02-312-0540"
-                  className="flex h-11 items-center justify-center gap-1 rounded-xl border border-white/22 bg-white/12 text-[13px] font-black text-white transition hover:bg-white/18">
+                  className="flex h-11 items-center justify-center gap-1 rounded-xl border border-[#D8E5E7] bg-[#F5F8F8] text-[13px] font-semibold text-[#263F46] transition hover:bg-[#EAF6F4] hover:text-[#1C4D54]">
                   📞 전화 상담
                 </a>
                 <a href="mailto:testing@ysiet.com"
-                  className="flex h-11 items-center justify-center gap-1 rounded-xl border border-white/22 bg-white/12 text-[13px] font-black text-white transition hover:bg-white/18">
+                  className="flex h-11 items-center justify-center gap-1 rounded-xl border border-[#D8E5E7] bg-[#F5F8F8] text-[13px] font-semibold text-[#263F46] transition hover:bg-[#EAF6F4] hover:text-[#1C4D54]">
                   ✉ 이메일 견적
                 </a>
               </div>
@@ -408,8 +413,8 @@ function HomeHeroNew() {
           </div>
         </div>
         <div className="mt-14 flex justify-center pb-6">
-          <a href="#home-usp" className="group inline-flex flex-col items-center gap-1 text-[13px] font-bold text-[#7FC8CC] transition hover:text-[#5DC8BE]">
-            <span className="animate-bounce text-xl leading-none text-[#5DC8BE]">↓</span>
+          <a href="#home-usp" className="group inline-flex flex-col items-center gap-1 text-[13px] font-bold text-[#60767B] transition hover:text-[#285F67]">
+            <span className="animate-bounce text-xl leading-none text-[#60767B]">↓</span>
             <span>왜 와이에스인가</span>
           </a>
         </div>
