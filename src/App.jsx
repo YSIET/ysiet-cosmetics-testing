@@ -299,7 +299,7 @@ function Footer() {
 
 function HomeHeroNew() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#F8FCFB] via-[#EAF6F4] to-[#FFFFFF]">
+    <section className="relative min-h-0 overflow-hidden bg-gradient-to-b from-[#F8FCFB] via-[#EAF6F4] to-[#FFFFFF]">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[#5DC8BE]/14 blur-[130px]" />
         <div className="absolute -right-32 bottom-0 h-[400px] w-[500px] rounded-full bg-white/70 blur-[100px]" />
@@ -311,23 +311,23 @@ function HomeHeroNew() {
           }}
         />
       </div>
-      <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-14 lg:pb-18 lg:pt-16">
-        <div className="grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-12">
+      <div className="relative mx-auto max-w-7xl px-5 pt-10 pb-10 sm:pt-14 sm:pb-14 lg:pt-16 lg:pb-[4.5rem]">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-12">
           <div>
-            <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#5DC8BE]/40 bg-[#EAF6F4] px-4 py-2">
+            <div className="mb-5 inline-flex items-center gap-2.5 rounded-full border border-[#5DC8BE]/40 bg-[#EAF6F4] px-4 py-2 sm:mb-6 lg:mb-7">
               <ShieldCheck className="h-4 w-4 text-[#285F67]" />
               <span className="text-[13px] font-black text-[#285F67]">
                 식약처 지정 화장품 위탁검사기관 — 전국 19개 중 제18호
               </span>
             </div>
-            <h1 className="max-w-[560px] text-[clamp(1.95rem,3.8vw,3rem)] font-black leading-[1.18] tracking-[-0.055em]">
+            <h1 className="max-w-[560px] text-[clamp(1.7rem,5vw,2.95rem)] font-black leading-[1.18] tracking-[-0.055em] sm:text-[clamp(1.85rem,4.2vw,3rem)] lg:text-[clamp(1.95rem,3.8vw,3rem)]">
               <span className="block text-[#1C4D54]" style={{ wordBreak: "keep-all" }}>검사 항목 몰라도 괜찮습니다.</span>
-              <span className="mt-2 block text-[#0A1E24]" style={{ wordBreak: "keep-all" }}>제품명과 납기만 알려주세요.</span>
+              <span className="mt-1.5 block text-[#0A1E24] sm:mt-2" style={{ wordBreak: "keep-all" }}>제품명과 납기만 알려주세요.</span>
             </h1>
-            <p className="mt-6 max-w-lg text-[clamp(0.95rem,1.2vw,1.06rem)] leading-[1.85] text-[#60767B]">
+            <p className="mt-4 max-w-lg text-[clamp(0.95rem,1.2vw,1.06rem)] leading-[1.85] text-[#60767B] sm:mt-5 lg:mt-6">
               전담 연구원이 필요한 시험항목과 가능 일정을 먼저 검토해 안내드립니다.
             </p>
-            <div className="mt-8 flex flex-wrap gap-2.5">
+            <div className="mt-5 flex flex-wrap gap-2 sm:mt-7 sm:gap-2.5 lg:mt-8">
               <span className="inline-flex items-center gap-2.5 rounded-full border border-[#D8E5E7] bg-white px-3 py-2 pr-4 shadow-sm transition hover:shadow-md">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#D8E5E7] bg-white">
                   <img src={MFDS_LOGO} alt="" className="h-7 w-7 object-contain" /></span>
@@ -344,7 +344,7 @@ function HomeHeroNew() {
                 <span className="text-[12px] font-black text-[#263F46] sm:text-[13px]">연세대 교원창업기업</span>
               </span>
             </div>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-6 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3 lg:mt-10">
               <a href={KAKAO_URL} target="_blank" rel="noreferrer"
                 className="inline-flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-2xl bg-[#FEE500] px-6 py-4 text-[15px] font-black text-[#2D2926] shadow-lg transition hover:bg-[#F6D600]">
                 💬 카카오 1:1 상담
@@ -356,10 +356,10 @@ function HomeHeroNew() {
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-[#D8E5E7] bg-white p-7 shadow-xl lg:sticky lg:top-28">
+          <div className="rounded-[28px] border border-[#D8E5E7] bg-white p-5 shadow-xl sm:p-6 lg:sticky lg:top-28 lg:p-7">
             <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#285F67]">Quick Check</p>
             <h2 className="text-lg font-bold leading-snug tracking-[-0.04em] text-[#263F46]">문의 시 먼저 확인하는 4가지</h2>
-            <div className="mt-4 space-y-2.5">
+            <div className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5 lg:space-y-2.5">
               {[
                 ["제품명", "정식 제품명 또는 임시 제품명"],
                 ["제형", "크림, 앰플, 토너, 선크림 등"],
@@ -367,7 +367,7 @@ function HomeHeroNew() {
                 ["희망 납기", "성적서가 필요한 날짜"],
               ].map(([title, desc], i) => (
                 <div key={title}
-                  className="flex items-center gap-3 rounded-xl border border-[#D8E5E7] bg-[#F5F8F8] px-4 py-3">
+                  className="flex items-center gap-3 rounded-xl border border-[#D8E5E7] bg-[#F5F8F8] px-3 py-2.5 sm:px-4 sm:py-3 lg:px-4 lg:py-3">
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#1C4D54] text-xs font-black text-white">{i + 1}</span>
                   <div className="min-w-0">
                     <span className="block text-sm font-semibold text-[#263F46]">{title}</span>
@@ -376,7 +376,7 @@ function HomeHeroNew() {
                 </div>
               ))}
             </div>
-            <div className="mt-5 grid grid-cols-2 gap-2 rounded-2xl border border-[#D8E5E7] bg-white p-4">
+            <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-[#D8E5E7] bg-white p-3 sm:mt-5 sm:p-4 lg:mt-5">
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4 shrink-0 text-[#5DC8BE]" />
                 <div>
@@ -394,7 +394,7 @@ function HomeHeroNew() {
                 </div>
               </div>
             </div>
-            <div className="mt-5 space-y-2.5">
+            <div className="mt-4 space-y-2 sm:mt-5 sm:space-y-2.5 lg:space-y-2.5">
               <a href={KAKAO_URL} target="_blank" rel="noreferrer"
                 className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-[#FEE500] font-black text-[#2D2926] shadow-lg transition hover:bg-[#F6D600]">
                 <MessageCircle className="h-5 w-5" />💬 카카오톡으로 납기 확인하기 <ArrowRight className="h-4 w-4 shrink-0" />
@@ -412,9 +412,9 @@ function HomeHeroNew() {
             </div>
           </div>
         </div>
-        <div className="mt-14 flex justify-center pb-6">
-          <a href="#home-usp" className="group inline-flex flex-col items-center gap-1 text-[13px] font-bold text-[#60767B] transition hover:text-[#285F67]">
-            <span className="animate-bounce text-xl leading-none text-[#60767B]">↓</span>
+        <div className="mt-8 flex justify-center pb-5 sm:mt-12 sm:pb-5 lg:mt-14 lg:pb-6">
+          <a href="#home-usp" className="group inline-flex flex-col items-center gap-0.5 text-[13px] font-bold text-[#60767B] transition hover:text-[#285F67] sm:gap-1">
+            <span className="animate-bounce text-lg leading-none text-[#60767B] sm:text-xl">↓</span>
             <span>왜 와이에스인가</span>
           </a>
         </div>
