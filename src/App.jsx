@@ -429,11 +429,13 @@ function HomeUSP3() {
       <div className="mx-auto max-w-7xl px-5">
         <div className="mb-8 text-center sm:mb-10 lg:mb-14">
           <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Why us</p>
-          <h2 className="text-[clamp(1.5rem,2.8vw,2.25rem)] font-black leading-[1.12] tracking-[-0.045em] text-[#0A1E24]">
-            19개 식약처 지정기관 중, 와이에스만의 3가지
+          <h2 className="text-[clamp(1.5rem,2.8vw,2.25rem)] font-black leading-[1.12] tracking-[-0.045em] text-[#0A1E24]" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
+            <span className="block">19개 식약처 지정기관 중,</span>
+            <span className="block">와이에스만의 3가지</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-8 text-[#60767B]">
-            법적 지정·국제공인을 넘어, 학술 기반 + 직통 상담
+            <span className="block">법적 지정·국제공인을 넘어,</span>
+            <span className="block">학술 기반 + 직통 상담</span>
           </p>
         </div>
         <div className="grid gap-4 sm:gap-5 lg:gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -476,11 +478,13 @@ function HomeOrderSituations() {
       <div className="mx-auto max-w-7xl px-5">
         <div className="mb-8 text-center sm:mb-10 lg:mb-12">
           <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">When to ask</p>
-          <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black leading-[1.15] tracking-[-0.045em] text-[#0A1E24]">
-            이 중 한 상황이라면, 지금 문의하세요
+          <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black leading-[1.15] tracking-[-0.045em] text-[#0A1E24]" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
+            <span className="block">이 중 한 상황이라면,</span>
+            <span className="block">지금 문의하세요</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-8 text-[#60767B]">
-            처음이든, 다른 기관과 거래 중이든 — 모두 환영합니다
+            <span className="block">처음이든, 다른 기관과 거래 중이든 —</span>
+            <span className="block">모두 환영합니다</span>
           </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-5">
@@ -508,7 +512,10 @@ function HomeFeesQuickView() {
       <div className="mx-auto max-w-7xl px-5">
         <div className="mb-8 text-center sm:mb-10 lg:mb-12">
           <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Pricing</p>
-          <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black tracking-[-0.045em] text-[#0A1E24]">일정과 비용, 명확하게</h2>
+          <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black tracking-[-0.045em] text-[#0A1E24]" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
+            <span className="block">일정과 비용,</span>
+            <span className="block">명확하게</span>
+          </h2>
         </div>
         <div className="mx-auto mb-8 grid max-w-4xl gap-3 sm:mb-10 sm:grid-cols-3 sm:gap-4 lg:mb-12 lg:gap-4">
           {[
@@ -587,9 +594,13 @@ function HomeContactCenter() {
       <div className="mx-auto max-w-7xl px-5 py-8 sm:py-11 lg:py-14">
         <div className="mb-8 text-center sm:mb-10 lg:mb-12">
           <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Direct</p>
-          <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black tracking-[-0.045em] text-[#0A1E24]">지금 바로, 분야 담당 연구원에게</h2>
+          <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black tracking-[-0.045em] text-[#0A1E24]" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
+            <span className="block">지금 바로,</span>
+            <span className="block">분야 담당 연구원에게</span>
+          </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-8 text-[#60767B]">
-            대표번호를 거치지 않고, 분야 담당 연구원과 직접 상담하세요
+            <span className="block">대표번호를 거치지 않고,</span>
+            <span className="block">분야 담당 연구원과 직접 상담하세요</span>
           </p>
         </div>
         <div className="grid gap-4 sm:gap-5 md:grid-cols-2 lg:gap-5">
