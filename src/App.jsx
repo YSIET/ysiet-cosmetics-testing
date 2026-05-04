@@ -299,7 +299,7 @@ function Footer() {
 
 function HomeHeroNew() {
   return (
-    <section className="relative min-h-0 overflow-hidden bg-gradient-to-b from-[#F8FCFB] via-[#EAF6F4] to-[#FFFFFF]">
+    <section className="relative min-h-0 overflow-hidden bg-gradient-to-b from-[#F8FCFB] via-[#EAF6F4] to-[#FFFFFF]" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[#5DC8BE]/14 blur-[130px]" />
         <div className="absolute -right-32 bottom-0 h-[400px] w-[500px] rounded-full bg-white/70 blur-[100px]" />
@@ -425,9 +425,9 @@ function HomeHeroNew() {
 
 function HomeUSP3() {
   return (
-    <section id="home-usp" className="border-t border-[#EEF3F3] bg-white py-16 lg:py-[5.25rem]">
+    <section id="home-usp" className="border-t border-[#EEF3F3] bg-white py-10 sm:py-14 lg:py-[5.25rem]" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
       <div className="mx-auto max-w-7xl px-5">
-        <div className="mb-12 text-center lg:mb-14">
+        <div className="mb-8 text-center sm:mb-10 lg:mb-14">
           <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Why us</p>
           <h2 className="text-[clamp(1.5rem,2.8vw,2.25rem)] font-black leading-[1.12] tracking-[-0.045em] text-[#0A1E24]">
             19개 식약처 지정기관 중, 와이에스만의 3가지
@@ -436,7 +436,7 @@ function HomeUSP3() {
             법적 지정·국제공인을 넘어, 학술 기반 + 직통 상담
           </p>
         </div>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-5 lg:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {([
             ["border-t-[#FEE500]", "/why", "19개 기관 중 유일", "대학 연구 기반 분석 인력이 직접 검사. 단순 접수·외주가 아닌, 석·박사 연구자가 결과를 책임집니다.", "자세히"],
             ["border-t-[#285F67]", "/proof", "법정 지정 + 국제공인", "식약처 지정 제18호 + KOLAS 제364호(ISO/IEC 17025). 법적 효력과 국제 신뢰를 동시에 갖춘 시험성적서를 발행합니다.", "품질근거 보기"],
@@ -444,7 +444,7 @@ function HomeUSP3() {
           ]).map(([top, href, headline, desc, lbl]) => (
             <div key={href}
               className={cx(
-                "group rounded-2xl border border-[#D8E5E7] border-t-4 bg-white p-7 shadow-[0_10px_32px_rgba(36,72,82,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(40,95,103,0.13)]",
+                "group rounded-2xl border border-[#D8E5E7] border-t-4 bg-white p-5 shadow-[0_10px_32px_rgba(36,72,82,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(40,95,103,0.13)] sm:p-6 lg:p-7",
                 top
               )}
             >
@@ -472,9 +472,9 @@ function HomeOrderSituations() {
     { Icon: Layers,       title: "원료·부자재·R&D 분석 상담", desc: "원료 분석부터 개발 과정 컨설팅까지 협업합니다." },
   ];
   return (
-    <section className="bg-[#F5F8F8] py-16 lg:py-20">
+    <section className="bg-[#F5F8F8] py-10 sm:py-14 lg:py-20" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
       <div className="mx-auto max-w-7xl px-5">
-        <div className="mb-10 text-center lg:mb-12">
+        <div className="mb-8 text-center sm:mb-10 lg:mb-12">
           <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">When to ask</p>
           <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black leading-[1.15] tracking-[-0.045em] text-[#0A1E24]">
             이 중 한 상황이라면, 지금 문의하세요
@@ -483,10 +483,10 @@ function HomeOrderSituations() {
             처음이든, 다른 기관과 거래 중이든 — 모두 환영합니다
           </p>
         </div>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-5">
           {items.map(({ Icon, title, desc }) => (
             <div key={title}
-              className="group rounded-2xl border border-[#D8E5E7] bg-white p-6 shadow-[0_10px_28px_rgba(36,72,82,0.055)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)]">
+              className="group rounded-2xl border border-[#D8E5E7] bg-white p-5 shadow-[0_10px_28px_rgba(36,72,82,0.055)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)] sm:p-6 lg:p-6">
               <Icon className="mb-4 h-8 w-8 text-[#4F888B]" strokeWidth={1.75} />
               <p className="text-[15px] font-black text-[#263F46]">{title}</p>
               <p className="mt-2 text-[13px] leading-[1.75] font-semibold text-[#60767B]">{desc}</p>
@@ -504,13 +504,13 @@ function HomeOrderSituations() {
 
 function HomeFeesQuickView() {
   return (
-    <section className="bg-white py-16 lg:py-20">
+    <section className="bg-white py-10 sm:py-14 lg:py-20" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
       <div className="mx-auto max-w-7xl px-5">
-        <div className="mb-12 text-center">
+        <div className="mb-8 text-center sm:mb-10 lg:mb-12">
           <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Pricing</p>
           <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black tracking-[-0.045em] text-[#0A1E24]">일정과 비용, 명확하게</h2>
         </div>
-        <div className="mx-auto mb-12 grid max-w-4xl gap-4 sm:grid-cols-3">
+        <div className="mx-auto mb-8 grid max-w-4xl gap-3 sm:mb-10 sm:grid-cols-3 sm:gap-4 lg:mb-12 lg:gap-4">
           {[
             { big: "5영업일", sub: "일반 의뢰 기준" },
             { big: "3영업일", sub: "긴급 의뢰 (협의)" },
@@ -519,7 +519,7 @@ function HomeFeesQuickView() {
             <div key={s.big}
               className="overflow-hidden rounded-2xl border border-[#D8E5E7] bg-[#FAFCFC] text-center shadow-[0_10px_28px_rgba(36,72,82,0.05)]">
               <div className="h-1.5 bg-gradient-to-r from-[#285F67] to-[#5DC8BE]" />
-              <div className="px-4 py-6">
+              <div className="px-3 py-4 sm:px-4 sm:py-5 lg:px-4 lg:py-6">
                 <p className="text-2xl font-black text-[#285F67]">{s.big}</p>
                 <p className="mt-2 text-[12px] font-bold leading-5 text-[#60767B]">{s.sub}</p>
               </div>
@@ -542,7 +542,7 @@ function HomeFeesQuickView() {
           ].map(([name, amt, note], i) => (
             <div key={name}
               className={cx(
-                "flex flex-wrap items-start justify-between gap-3 border-t border-[#F0F3F3] px-6 py-4 md:grid md:grid-cols-[1.65fr_0.85fr_0.95fr]",
+                "flex flex-wrap items-start justify-between gap-3 border-t border-[#F0F3F3] px-4 py-3 sm:px-6 sm:py-4 md:grid md:grid-cols-[1.65fr_0.85fr_0.95fr]",
                 i % 2 === 0 ? "bg-white" : "bg-[#FAFCFC]"
               )}
             >
@@ -552,21 +552,21 @@ function HomeFeesQuickView() {
             </div>
           ))}
         </div>
-        <div className="mx-auto mt-8 grid max-w-4xl gap-4 lg:grid-cols-2">
-          <div className="rounded-2xl border border-[#D8E5E7] bg-[#F8FBFB] p-6">
+        <div className="mx-auto mt-6 grid max-w-4xl gap-3 sm:mt-8 sm:gap-4 lg:mt-8 lg:grid-cols-2 lg:gap-4">
+          <div className="rounded-2xl border border-[#D8E5E7] bg-[#F8FBFB] p-5 sm:p-6 lg:p-6">
             <p className="text-[13px] font-bold leading-7 text-[#4F656A]">
               <span className="mr-2 font-black text-[#285F67]">✓</span>
               Raw Data는 사전 요청 시 제공 가능 (의뢰항목 수수료의 10% 추가)
             </p>
           </div>
-          <div className="rounded-2xl border border-[#D8E5E7] bg-[#F8FBFB] p-6">
+          <div className="rounded-2xl border border-[#D8E5E7] bg-[#F8FBFB] p-5 sm:p-6 lg:p-6">
             <p className="text-[13px] font-bold leading-7 text-[#4F656A]">
               <span className="mr-2 font-black text-[#285F67]">✓</span>
               일반 7일 / 긴급 3일 기준 (시험일정에 따라 협의)
             </p>
           </div>
         </div>
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row lg:mt-10">
           <a href="/fees"
             className="inline-flex h-12 min-w-[200px] items-center justify-center gap-2 rounded-2xl border border-[#D8E5E7] bg-white px-7 text-[14px] font-black text-[#28474E] shadow-sm transition hover:border-[#9DBFC4]">
             전체 수수료 보기 <ArrowRight className="h-4 w-4 shrink-0" />
@@ -583,17 +583,17 @@ function HomeFeesQuickView() {
 
 function HomeContactCenter() {
   return (
-    <section className="bg-[#FAFCFC] pb-20 pt-4 lg:pb-24 lg:pt-6">
-      <div className="mx-auto max-w-7xl px-5 py-14">
-        <div className="mb-12 text-center">
+    <section className="bg-[#FAFCFC] pb-14 pt-4 sm:pb-16 lg:pb-24 lg:pt-6" style={{ wordBreak: "keep-all", overflowWrap: "break-word" }}>
+      <div className="mx-auto max-w-7xl px-5 py-8 sm:py-11 lg:py-14">
+        <div className="mb-8 text-center sm:mb-10 lg:mb-12">
           <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Direct</p>
           <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black tracking-[-0.045em] text-[#0A1E24]">지금 바로, 분야 담당 연구원에게</h2>
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-8 text-[#60767B]">
             대표번호를 거치지 않고, 분야 담당 연구원과 직접 상담하세요
           </p>
         </div>
-        <div className="grid gap-5 md:grid-cols-2">
-          <div className="group rounded-2xl border border-[#D8E5E7] bg-white p-7 shadow-[0_10px_28px_rgba(36,72,82,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)]">
+        <div className="grid gap-4 sm:gap-5 md:grid-cols-2 lg:gap-5">
+          <div className="group rounded-2xl border border-[#D8E5E7] bg-white p-5 shadow-[0_10px_28px_rgba(36,72,82,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)] sm:p-6 lg:p-7">
             <p className="mb-3 inline-block rounded-full bg-[#EEF5F4] px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#285F67]">무기분석</p>
             <p className="text-lg font-black text-[#263F46]">전석호 수석연구원</p>
             <p className="mt-3 text-[13px] font-semibold leading-[1.8] text-[#60767B]">
@@ -604,7 +604,7 @@ function HomeContactCenter() {
               <Phone className="h-4 w-4 shrink-0" /> 070-4337-4869
             </a>
           </div>
-          <div className="group rounded-2xl border border-[#D8E5E7] bg-white p-7 shadow-[0_10px_28px_rgba(36,72,82,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)]">
+          <div className="group rounded-2xl border border-[#D8E5E7] bg-white p-5 shadow-[0_10px_28px_rgba(36,72,82,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)] sm:p-6 lg:p-7">
             <p className="mb-3 inline-block rounded-full bg-[#EEF5F4] px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#285F67]">유기분석</p>
             <p className="text-lg font-black text-[#263F46]">박미희 책임연구원</p>
             <p className="mt-3 text-[13px] font-semibold leading-[1.8] text-[#60767B]">
@@ -617,8 +617,8 @@ function HomeContactCenter() {
           </div>
         </div>
       </div>
-      <div className="rounded-t-[32px] bg-[#0A1E24] px-5 py-14">
-        <div className="mx-auto max-w-3xl space-y-5">
+      <div className="rounded-t-[32px] bg-[#0A1E24] px-5 py-10 sm:py-12 lg:py-14">
+        <div className="mx-auto max-w-3xl space-y-4 sm:space-y-5">
           <a href={KAKAO_URL} target="_blank" rel="noreferrer"
             className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-[#FEE500] text-[16px] font-black text-[#2D2926] shadow-[0_10px_32px_rgba(254,229,0,0.38)] transition hover:bg-[#F6D600]">
             <MessageCircle className="h-5 w-5" /> 💬 카카오톡 1:1 상담
