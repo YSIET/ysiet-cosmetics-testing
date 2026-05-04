@@ -299,7 +299,7 @@ function Footer() {
 
 function HomeHeroNew() {
   return (
-    <section className="relative overflow-hidden bg-[#0A1E24]">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#0F2A33] via-[#13353F] to-[#1A4047]">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[#1A4E5A] opacity-50 blur-[130px]" />
         <div className="absolute -right-32 bottom-0 h-[400px] w-[500px] rounded-full bg-[#0E3A42] opacity-60 blur-[100px]" />
@@ -315,12 +315,12 @@ function HomeHeroNew() {
                 식약처 지정 화장품 위탁검사기관 — 전국 19개 중 제18호
               </span>
             </div>
-            <h1 className="max-w-[560px] text-[clamp(1.95rem,3.8vw,3rem)] font-black leading-[1.12] tracking-[-0.055em] text-white">
-              <span className="block">납기는 다가오는데,</span>
-              <span className="block" style={{ wordBreak: "keep-all" }}>검사 어디 맡겨야 할지 막막하신가요?</span>
+            <h1 className="max-w-[560px] text-[clamp(1.95rem,3.8vw,3rem)] font-black leading-[1.18] tracking-[-0.055em]">
+              <span className="block text-[#5DC8BE]" style={{ wordBreak: "keep-all" }}>검사 항목 몰라도 괜찮습니다.</span>
+              <span className="mt-2 block text-white" style={{ wordBreak: "keep-all" }}>제품명과 납기만 알려주세요.</span>
             </h1>
             <p className="mt-6 max-w-lg text-[clamp(0.95rem,1.2vw,1.06rem)] leading-[1.85] text-[#8BBFC4]">
-              제품명과 희망 납기만 보내주시면, 필요한 시험항목과 가능 일정을 전담 연구원이 먼저 검토해드립니다.
+              전담 연구원이 필요한 시험항목과 가능 일정을 먼저 검토해 안내드립니다.
             </p>
             <div className="mt-8 flex flex-wrap gap-2.5">
               <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/8 px-3 py-2 pr-4 backdrop-blur-sm">
