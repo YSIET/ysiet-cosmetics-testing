@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # 사이트맵 위치 명시
-Sitemap: https://ysiet.com/sitemap.xml
+Sitemap: https://cosmetics.ysiet.com/sitemap.xml
