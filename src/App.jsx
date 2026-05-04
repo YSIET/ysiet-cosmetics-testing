@@ -738,6 +738,29 @@ function SubpageFooterCta({ eyebrow }) {
   );
 }
 
+function HomePage() {
+  return (
+    <div className="min-h-screen bg-white">
+      <Header showKakao={true} />
+
+      <main>
+        <HomeHeroNew />
+
+        <HomeUSP3 />
+
+        <HomeOrderSituations />
+
+        <HomeFeesQuickView />
+
+        <HomeContactCenter />
+      </main>
+
+      <Footer />
+      <MobileStickyBar />
+    </div>
+  );
+}
+
 /* ══════════════════════════
    홈 페이지
 ══════════════════════════ */
@@ -2401,7 +2424,7 @@ function AboutPage() {
 
 export default function App() {
   const path = window.location.pathname;
-  let Page = LegacyHomePage;
+  let Page = HomePage;
   if (path === "/about") Page = AboutPage;
   else if (path === "/why") Page = WhyPage;
   else if (path === "/proof") Page = ProofPage;
