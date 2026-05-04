@@ -316,9 +316,8 @@ function HomeHeroNew() {
               </span>
             </div>
             <h1 className="max-w-[560px] text-[clamp(1.95rem,3.8vw,3rem)] font-black leading-[1.12] tracking-[-0.055em] text-white">
-              납기는 다가오는데,
-              <br />
-              검사 어디 맡겨야 할지 막막하신가요?
+              <span className="block">납기는 다가오는데,</span>
+              <span className="block" style={{ wordBreak: "keep-all" }}>검사 어디 맡겨야 할지 막막하신가요?</span>
             </h1>
             <p className="mt-6 max-w-lg text-[clamp(0.95rem,1.2vw,1.06rem)] leading-[1.85] text-[#8BBFC4]">
               제품명과 희망 납기만 보내주시면, 필요한 시험항목과 가능 일정을 전담 연구원이 먼저 검토해드립니다.
@@ -352,7 +351,7 @@ function HomeHeroNew() {
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-white/15 bg-white/10 p-7 shadow-[0_40px_80px_rgba(0,0,0,0.28)] backdrop-blur-md lg:sticky lg:top-28">
+          <div className="rounded-[28px] border border-white/12 bg-[#0F2630]/45 p-7 shadow-[0_40px_80px_rgba(0,0,0,0.32)] backdrop-blur-md lg:sticky lg:top-28">
             <p className="mb-2 text-[10px] font-black uppercase tracking-[0.22em] text-[#7FD4CC]">Quick Check</p>
             <h2 className="text-lg font-black leading-snug tracking-[-0.04em] text-white">문의 시 먼저 확인하는 4가지</h2>
             <div className="mt-4 space-y-2.5">
@@ -482,13 +481,13 @@ function HomeOrderSituations() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map(({ Icon, title, desc }) => (
             <div key={title}
-              className="rounded-2xl border border-[#D8E5E7] bg-white p-6 shadow-[0_10px_28px_rgba(36,72,82,0.055)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)]">
+              className="group rounded-2xl border border-[#D8E5E7] bg-white p-6 shadow-[0_10px_28px_rgba(36,72,82,0.055)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)]">
               <Icon className="mb-4 h-8 w-8 text-[#4F888B]" strokeWidth={1.75} />
               <p className="text-[15px] font-black text-[#263F46]">{title}</p>
               <p className="mt-2 text-[13px] leading-[1.75] font-semibold text-[#60767B]">{desc}</p>
               <a href={KAKAO_URL} target="_blank" rel="noreferrer"
-                className="mt-5 inline-flex w-full items-center justify-center gap-1 rounded-xl bg-[#FEE500] py-3 text-[13px] font-black text-[#2D2926] shadow-[0_6px_20px_rgba(254,229,0,0.28)] transition hover:bg-[#F6D600]">
-                💬 이 경우 문의하기 <ArrowRight className="h-4 w-4 shrink-0" />
+                className="mt-5 inline-flex w-full items-center justify-center gap-1 rounded-xl border border-[#285F67] bg-white py-3 text-[13px] font-black text-[#285F67] transition-all duration-200 hover:border-[#FEE500] hover:bg-[#FEE500] hover:text-[#2D2926] hover:shadow-[0_6px_20px_rgba(254,229,0,0.25)]">
+                💬 이 경우 문의하기 <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
               </a>
             </div>
           ))}
@@ -522,6 +521,7 @@ function HomeFeesQuickView() {
             </div>
           ))}
         </div>
+        <p className="mb-4 text-center text-[13px] font-bold text-[#60767B]">수수료는 모두 VAT 별도</p>
         <div className="overflow-hidden rounded-2xl border border-[#D8E5E7] shadow-[0_8px_28px_rgba(36,72,82,0.06)]">
           <div className="hidden grid-cols-[1.65fr_0.85fr_0.95fr] gap-px bg-[#EEF5F4] px-6 py-3 text-sm font-black text-[#263F46] md:grid">
             <div>대표 시험항목</div>
@@ -529,11 +529,11 @@ function HomeFeesQuickView() {
             <div>비고</div>
           </div>
           {[
-            ["내용량 / pH", "각 5,000원", "VAT 별도"],
-            ["중금속 5종 동시분석 (납·비소·안티몬·카드뮴·니켈)", "100,000원", " — "],
+            ["내용량 / pH", "각 5,000원", "기본 항목"],
+            ["중금속 5종 동시분석 (납·비소·안티몬·카드뮴·니켈)", "100,000원", "ICP-MS 분석"],
             ["유통화장품 안전관리기준 전 항목", "325,000원", "미생물 제외"],
-            ["기능성 단일 항목 (미백/주름개선)", "각 40,000원", ""],
-            ["파라벤류 7종 동시분석", "140,000원", ""],
+            ["기능성 단일 항목 (미백/주름개선)", "각 40,000원", "주성분 1종 기준"],
+            ["파라벤류 7종 동시분석", "140,000원", "동시분석 일괄"],
           ].map(([name, amt, note], i) => (
             <div key={name}
               className={cx(
@@ -578,7 +578,7 @@ function HomeFeesQuickView() {
 
 function HomeContactCenter() {
   return (
-    <section className="bg-[#FAFCFC] pb-14 pt-4 lg:pb-20">
+    <section className="bg-[#FAFCFC] pb-20 pt-4 lg:pb-24 lg:pt-6">
       <div className="mx-auto max-w-7xl px-5 py-14">
         <div className="mb-12 text-center">
           <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Direct</p>
