@@ -22,6 +22,11 @@ import {
   Zap,
   AlertTriangle,
   Clock,
+  ClipboardList,
+  Layers,
+  Package,
+  Plane,
+  CalendarClock,
 } from "lucide-react";
 
 /* ── 상수 ── */
@@ -292,6 +297,350 @@ function Footer() {
   );
 }
 
+function HomeHeroNew() {
+  return (
+    <section className="relative overflow-hidden bg-[#0A1E24]">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-[#1A4E5A] opacity-50 blur-[130px]" />
+        <div className="absolute -right-32 bottom-0 h-[400px] w-[500px] rounded-full bg-[#0E3A42] opacity-60 blur-[100px]" />
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage:"linear-gradient(#5DC8BE 1px,transparent 1px),linear-gradient(90deg,#5DC8BE 1px,transparent 1px)",backgroundSize:"48px 48px"}} />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-14 lg:pb-18 lg:pt-16">
+        <div className="grid gap-10 lg:grid-cols-[3fr_2fr] lg:items-start lg:gap-12">
+          <div>
+            <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#5DC8BE]/30 bg-[#5DC8BE]/10 px-4 py-2">
+              <ShieldCheck className="h-4 w-4 text-[#5DC8BE]" />
+              <span className="text-[13px] font-black text-[#5DC8BE]">
+                식약처 지정 화장품 위탁검사기관 — 전국 19개 중 제18호
+              </span>
+            </div>
+            <h1 className="max-w-[560px] text-[clamp(1.95rem,3.8vw,3rem)] font-black leading-[1.12] tracking-[-0.055em] text-white">
+              납기는 다가오는데,
+              <br />
+              검사 어디 맡겨야 할지 막막하신가요?
+            </h1>
+            <p className="mt-6 max-w-lg text-[clamp(0.95rem,1.2vw,1.06rem)] leading-[1.85] text-[#8BBFC4]">
+              제품명과 희망 납기만 보내주시면, 필요한 시험항목과 가능 일정을 전담 연구원이 먼저 검토해드립니다.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/8 px-3 py-2 pr-4 backdrop-blur-sm">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white">
+                  <img src={MFDS_LOGO} alt="" className="h-7 w-7 object-contain" /></span>
+                <span className="text-[12px] font-black text-white sm:text-[13px]">식약처 지정 제18호</span>
+              </span>
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/8 px-3 py-2 pr-4 backdrop-blur-sm">
+                <span className="flex h-8 w-[52px] shrink-0 items-center justify-center rounded-lg border border-white/25 bg-white">
+                  <img src={KOLAS_LOGO} alt="" className="h-6 w-[44px] object-contain" /></span>
+                <span className="text-[12px] font-black text-white sm:text-[13px]">KOLAS 제364호</span>
+              </span>
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/8 px-3 py-2 pr-4 backdrop-blur-sm">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#FEE500]/35 bg-white">
+                  <img src={YONSEI_LOGO} alt="" className="h-full w-full object-cover" /></span>
+                <span className="text-[12px] font-black text-white sm:text-[13px]">연세대 교원창업기업</span>
+              </span>
+            </div>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a href={KAKAO_URL} target="_blank" rel="noreferrer"
+                className="inline-flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-2xl bg-[#FEE500] px-6 py-4 text-[15px] font-black text-[#2D2926] shadow-[0_8px_28px_rgba(254,229,0,0.38)] transition hover:bg-[#F6D600]">
+                💬 카카오 1:1 상담
+              </a>
+              <a href="tel:02-312-0540"
+                className="inline-flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-2xl border border-white/30 bg-transparent px-6 py-4 text-[15px] font-black text-white shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition hover:bg-white/10">
+                📞 02-312-0540
+              </a>
+            </div>
+          </div>
+
+          <div className="rounded-[28px] border border-white/15 bg-white/10 p-7 shadow-[0_40px_80px_rgba(0,0,0,0.28)] backdrop-blur-md lg:sticky lg:top-28">
+            <p className="mb-2 text-[10px] font-black uppercase tracking-[0.22em] text-[#7FD4CC]">Quick Check</p>
+            <h2 className="text-lg font-black leading-snug tracking-[-0.04em] text-white">문의 시 먼저 확인하는 4가지</h2>
+            <div className="mt-4 space-y-2.5">
+              {[
+                ["제품명", "정식 제품명 또는 임시 제품명"],
+                ["제형", "크림, 앰플, 토너, 선크림 등"],
+                ["성적서 용도", "자가품질 / 납품 / 출시 / 수입 / 광고"],
+                ["희망 납기", "성적서가 필요한 날짜"],
+              ].map(([title, desc], i) => (
+                <div key={title}
+                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/8 px-4 py-3">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#285F67] text-xs font-black text-white">{i + 1}</span>
+                  <div className="min-w-0">
+                    <span className="block text-sm font-black text-white">{title}</span>
+                    <span className="block text-xs font-bold text-[#7FC8CC] sm:inline sm:font-bold">{desc}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 grid grid-cols-2 gap-2 rounded-2xl border border-white/10 bg-white/8 p-4">
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4 shrink-0 text-[#7FC8CC]" />
+                <div>
+                  <p className="text-[10px] font-black text-[#7FC8CC]">일반 의뢰</p>
+                  <p className="text-lg font-black text-white">5영업일</p>
+                  <p className="text-[9px] font-bold text-[#5A9EA4]">접수 완료 기준</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 border-l border-white/15 pl-3">
+                <Zap className="h-4 w-4 shrink-0 text-[#5DC8BE]" />
+                <div>
+                  <p className="text-[10px] font-black text-[#7FC8CC]">긴급 의뢰</p>
+                  <p className="text-lg font-black text-[#5DC8BE]">3영업일</p>
+                  <p className="text-[9px] font-bold text-[#5A9EA4]">일정 협의 후 확정</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-5 space-y-2.5">
+              <a href={KAKAO_URL} target="_blank" rel="noreferrer"
+                className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-[#FEE500] font-black text-[#2D2926] shadow-[0_8px_24px_rgba(254,229,0,0.35)] transition hover:bg-[#F6D600]">
+                <MessageCircle className="h-5 w-5" />💬 카카오톡으로 납기 확인하기 <ArrowRight className="h-4 w-4 shrink-0" />
+              </a>
+              <div className="grid grid-cols-2 gap-2">
+                <a href="tel:02-312-0540"
+                  className="flex h-11 items-center justify-center gap-1 rounded-xl border border-white/22 bg-white/12 text-[13px] font-black text-white transition hover:bg-white/18">
+                  📞 전화 상담
+                </a>
+                <a href="mailto:testing@ysiet.com"
+                  className="flex h-11 items-center justify-center gap-1 rounded-xl border border-white/22 bg-white/12 text-[13px] font-black text-white transition hover:bg-white/18">
+                  ✉ 이메일 견적
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-14 flex justify-center pb-6">
+          <a href="#home-usp" className="group inline-flex flex-col items-center gap-1 text-[13px] font-bold text-[#7FC8CC] transition hover:text-[#5DC8BE]">
+            <span className="animate-bounce text-xl leading-none text-[#5DC8BE]">↓</span>
+            <span>왜 와이에스인가</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeUSP3() {
+  return (
+    <section id="home-usp" className="border-t border-[#EEF3F3] bg-white py-16 lg:py-[5.25rem]">
+      <div className="mx-auto max-w-7xl px-5">
+        <div className="mb-12 text-center lg:mb-14">
+          <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Why us</p>
+          <h2 className="text-[clamp(1.5rem,2.8vw,2.25rem)] font-black leading-[1.12] tracking-[-0.045em] text-[#0A1E24]">
+            19개 식약처 지정기관 중, 와이에스만의 3가지
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-8 text-[#60767B]">
+            법적 지정·국제공인을 넘어, 학술 기반 + 직통 상담
+          </p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {([
+            ["border-t-[#FEE500]", "/why", "19개 기관 중 유일", "대학 연구 기반 분석 인력이 직접 검사. 단순 접수·외주가 아닌, 석·박사 연구자가 결과를 책임집니다.", "자세히"],
+            ["border-t-[#285F67]", "/proof", "법정 지정 + 국제공인", "식약처 지정 제18호 + KOLAS 제364호(ISO/IEC 17025). 법적 효력과 국제 신뢰를 동시에 갖춘 시험성적서를 발행합니다.", "품질근거 보기"],
+            ["border-t-[#5DC8BE]", "/how", "대표번호 거치지 않고 바로", "무기분석(중금속 등)·유기분석(보존제·자외선차단 등) 분야 담당 연구원에게 직접 연결됩니다.", "전담 직통 보기"],
+          ]).map(([top, href, headline, desc, lbl]) => (
+            <div key={href}
+              className={cx(
+                "group rounded-2xl border border-[#D8E5E7] border-t-4 bg-white p-7 shadow-[0_10px_32px_rgba(36,72,82,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(40,95,103,0.13)]",
+                top
+              )}
+            >
+              <p className="text-[13px] font-black text-[#285F67]">{headline}</p>
+              <p className="mt-3 text-[14px] leading-[1.8] font-semibold text-[#60767B]">{desc}</p>
+              <a href={href}
+                className="mt-5 inline-flex items-center gap-1 text-sm font-black text-[#285F67] underline-offset-4 hover:underline">
+                {lbl} <ArrowRight className="h-4 w-4 shrink-0" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeOrderSituations() {
+  const items = [
+    { Icon: ClipboardList, title: "자가품질 위탁검사 처음 의뢰", desc: "법정 검사항목부터 준비서류까지 한 번에 정리해서 안내드립니다." },
+    { Icon: Package,       title: "거래처 납품용 성적서 필요", desc: "납품·입점 일정에 맞춰 가능 여부부터 확인합니다." },
+    { Icon: CalendarClock, title: "제품 출시 일정으로 납기 확인", desc: "마케팅 일정까지 고려해 일정부터 잡습니다." },
+    { Icon: Plane,         title: "수입화장품 제출용 검토", desc: "수입 신고 및 제출용 서류 검토 플로우를 함께 맞춥니다." },
+    { Icon: Star,          title: "기능성화장품 품질관리 항목 확인", desc: "단일항목·복합항목 포함 가능 범위를 안내합니다." },
+    { Icon: Layers,       title: "원료·부자재·R&D 분석 상담", desc: "원료 분석부터 개발 과정 컨설팅까지 협업합니다." },
+  ];
+  return (
+    <section className="bg-[#F5F8F8] py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-5">
+        <div className="mb-10 text-center lg:mb-12">
+          <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">When to ask</p>
+          <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black leading-[1.15] tracking-[-0.045em] text-[#0A1E24]">
+            이 중 한 상황이라면, 지금 문의하세요
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-8 text-[#60767B]">
+            처음이든, 다른 기관과 거래 중이든 — 모두 환영합니다
+          </p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map(({ Icon, title, desc }) => (
+            <div key={title}
+              className="rounded-2xl border border-[#D8E5E7] bg-white p-6 shadow-[0_10px_28px_rgba(36,72,82,0.055)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)]">
+              <Icon className="mb-4 h-8 w-8 text-[#4F888B]" strokeWidth={1.75} />
+              <p className="text-[15px] font-black text-[#263F46]">{title}</p>
+              <p className="mt-2 text-[13px] leading-[1.75] font-semibold text-[#60767B]">{desc}</p>
+              <a href={KAKAO_URL} target="_blank" rel="noreferrer"
+                className="mt-5 inline-flex w-full items-center justify-center gap-1 rounded-xl bg-[#FEE500] py-3 text-[13px] font-black text-[#2D2926] shadow-[0_6px_20px_rgba(254,229,0,0.28)] transition hover:bg-[#F6D600]">
+                💬 이 경우 문의하기 <ArrowRight className="h-4 w-4 shrink-0" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeFeesQuickView() {
+  return (
+    <section className="bg-white py-16 lg:py-20">
+      <div className="mx-auto max-w-7xl px-5">
+        <div className="mb-12 text-center">
+          <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Pricing</p>
+          <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black tracking-[-0.045em] text-[#0A1E24]">일정과 비용, 명확하게</h2>
+        </div>
+        <div className="mx-auto mb-12 grid max-w-4xl gap-4 sm:grid-cols-3">
+          {[
+            { big: "5영업일", sub: "일반 의뢰 기준" },
+            { big: "3영업일", sub: "긴급 의뢰 (협의)" },
+            { big: "무료", sub: "위탁계약 체결" },
+          ].map((s) => (
+            <div key={s.big}
+              className="overflow-hidden rounded-2xl border border-[#D8E5E7] bg-[#FAFCFC] text-center shadow-[0_10px_28px_rgba(36,72,82,0.05)]">
+              <div className="h-1.5 bg-gradient-to-r from-[#285F67] to-[#5DC8BE]" />
+              <div className="px-4 py-6">
+                <p className="text-2xl font-black text-[#285F67]">{s.big}</p>
+                <p className="mt-2 text-[12px] font-bold leading-5 text-[#60767B]">{s.sub}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-[#D8E5E7] shadow-[0_8px_28px_rgba(36,72,82,0.06)]">
+          <div className="hidden grid-cols-[1.65fr_0.85fr_0.95fr] gap-px bg-[#EEF5F4] px-6 py-3 text-sm font-black text-[#263F46] md:grid">
+            <div>대표 시험항목</div>
+            <div className="text-right">금액</div>
+            <div>비고</div>
+          </div>
+          {[
+            ["내용량 / pH", "각 5,000원", "VAT 별도"],
+            ["중금속 5종 동시분석 (납·비소·안티몬·카드뮴·니켈)", "100,000원", " — "],
+            ["유통화장품 안전관리기준 전 항목", "325,000원", "미생물 제외"],
+            ["기능성 단일 항목 (미백/주름개선)", "각 40,000원", ""],
+            ["파라벤류 7종 동시분석", "140,000원", ""],
+          ].map(([name, amt, note], i) => (
+            <div key={name}
+              className={cx(
+                "flex flex-wrap items-start justify-between gap-3 border-t border-[#F0F3F3] px-6 py-4 md:grid md:grid-cols-[1.65fr_0.85fr_0.95fr]",
+                i % 2 === 0 ? "bg-white" : "bg-[#FAFCFC]"
+              )}
+            >
+              <p className="font-semibold leading-6 text-[#4F656A] md:col-span-1">{name}</p>
+              <p className="text-right font-black text-[#285F67] md:col-start-2 md:justify-self-end">{amt}</p>
+              <p className="text-sm font-semibold text-[#8A9EA2] md:col-start-3">{note || " "}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mx-auto mt-8 grid max-w-4xl gap-4 lg:grid-cols-2">
+          <div className="rounded-2xl border border-[#D8E5E7] bg-[#F8FBFB] p-6">
+            <p className="text-[13px] font-bold leading-7 text-[#4F656A]">
+              <span className="mr-2 font-black text-[#285F67]">✓</span>
+              Raw Data는 사전 요청 시 제공 가능 (의뢰항목 수수료의 10% 추가)
+            </p>
+          </div>
+          <div className="rounded-2xl border border-[#D8E5E7] bg-[#F8FBFB] p-6">
+            <p className="text-[13px] font-bold leading-7 text-[#4F656A]">
+              <span className="mr-2 font-black text-[#285F67]">✓</span>
+              일반 7일 / 긴급 3일 기준 (시험일정에 따라 협의)
+            </p>
+          </div>
+        </div>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="/fees"
+            className="inline-flex h-12 min-w-[200px] items-center justify-center gap-2 rounded-2xl border border-[#D8E5E7] bg-white px-7 text-[14px] font-black text-[#28474E] shadow-sm transition hover:border-[#9DBFC4]">
+            전체 수수료 보기 <ArrowRight className="h-4 w-4 shrink-0" />
+          </a>
+          <a href={FEE_GUIDE_PDF} target="_blank" rel="noreferrer"
+            className="inline-flex h-12 min-w-[200px] items-center justify-center gap-2 rounded-2xl bg-[#285F67] px-7 text-[14px] font-black text-white shadow-[0_8px_24px_rgba(40,95,103,0.25)] transition hover:bg-[#1C4D54]">
+            수수료 PDF 다운로드 <ExternalLink className="h-4 w-4 shrink-0" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeContactCenter() {
+  return (
+    <section className="bg-[#FAFCFC] pb-14 pt-4 lg:pb-20">
+      <div className="mx-auto max-w-7xl px-5 py-14">
+        <div className="mb-12 text-center">
+          <p className="mb-3 text-[11px] font-black uppercase tracking-[0.24em] text-[#5E8E90]">Direct</p>
+          <h2 className="text-[clamp(1.45rem,2.6vw,2.1rem)] font-black tracking-[-0.045em] text-[#0A1E24]">지금 바로, 분야 담당 연구원에게</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-8 text-[#60767B]">
+            대표번호를 거치지 않고, 분야 담당 연구원과 직접 상담하세요
+          </p>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2">
+          <div className="group rounded-2xl border border-[#D8E5E7] bg-white p-7 shadow-[0_10px_28px_rgba(36,72,82,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)]">
+            <p className="mb-3 inline-block rounded-full bg-[#EEF5F4] px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#285F67]">무기분석</p>
+            <p className="text-lg font-black text-[#263F46]">전석호 수석연구원</p>
+            <p className="mt-3 text-[13px] font-semibold leading-[1.8] text-[#60767B]">
+              중금속·디옥산·메탄올·포름알데하이드 등
+            </p>
+            <a href="tel:07043374869"
+              className="mt-6 flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#285F67] text-sm font-black text-white transition hover:bg-[#1C4D54]">
+              <Phone className="h-4 w-4 shrink-0" /> 070-4337-4869
+            </a>
+          </div>
+          <div className="group rounded-2xl border border-[#D8E5E7] bg-white p-7 shadow-[0_10px_28px_rgba(36,72,82,0.06)] transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(40,95,103,0.11)]">
+            <p className="mb-3 inline-block rounded-full bg-[#EEF5F4] px-3 py-1 text-[11px] font-black uppercase tracking-[0.12em] text-[#285F67]">유기분석</p>
+            <p className="text-lg font-black text-[#263F46]">박미희 책임연구원</p>
+            <p className="mt-3 text-[13px] font-semibold leading-[1.8] text-[#60767B]">
+              살균·보존제·자외선차단·기능성 주성분 등
+            </p>
+            <a href="tel:07043374830"
+              className="mt-6 flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#285F67] text-sm font-black text-white transition hover:bg-[#1C4D54]">
+              <Phone className="h-4 w-4 shrink-0" /> 070-4337-4830
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="rounded-t-[32px] bg-[#0A1E24] px-5 py-14">
+        <div className="mx-auto max-w-3xl space-y-5">
+          <a href={KAKAO_URL} target="_blank" rel="noreferrer"
+            className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-[#FEE500] text-[16px] font-black text-[#2D2926] shadow-[0_10px_32px_rgba(254,229,0,0.38)] transition hover:bg-[#F6D600]">
+            <MessageCircle className="h-5 w-5" /> 💬 카카오톡 1:1 상담
+          </a>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <a href="tel:02-312-0540"
+              className="flex h-12 items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/10 text-[14px] font-black text-white transition hover:bg-white/14">
+              ☎ 대표번호 02-312-0540
+            </a>
+            <a href="mailto:testing@ysiet.com"
+              className="flex h-12 items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/8 text-[14px] font-black text-white transition hover:bg-white/12">
+              ✉ testing@ysiet.com
+            </a>
+          </div>
+          <div className="rounded-2xl border border-white/12 bg-white/8 p-5 text-[13px] font-bold leading-7 text-[#AECDD0]">
+            ✓ 위탁계약 체결 무료 (실비만)
+            <br />
+            ✓ 화장품법 시행규칙 제12조 5항 법정 위탁검사
+            <br />
+            시료 발송: 서울 종로구 인사동5길 42 종로빌딩 10층
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function MobileStickyBar() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#0A1E24] px-3 pb-[env(safe-area-inset-bottom)] pt-2 md:hidden">
@@ -392,7 +741,7 @@ function SubpageFooterCta({ eyebrow }) {
 /* ══════════════════════════
    홈 페이지
 ══════════════════════════ */
-function HomePage() {
+function LegacyHomePage() {
   return (
     <>
       <Header showKakao />
@@ -2052,7 +2401,7 @@ function AboutPage() {
 
 export default function App() {
   const path = window.location.pathname;
-  let Page = HomePage;
+  let Page = LegacyHomePage;
   if (path === "/about") Page = AboutPage;
   else if (path === "/why") Page = WhyPage;
   else if (path === "/proof") Page = ProofPage;
